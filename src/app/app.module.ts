@@ -17,6 +17,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TradeInPageComponent } from './trade-in-page/trade-in-page.component';
 import { StoryPageComponent } from './story-page/story-page.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { StoryPageComponent } from './story-page/story-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    SharedModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
