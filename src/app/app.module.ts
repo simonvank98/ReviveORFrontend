@@ -15,6 +15,8 @@ import { StorypageComponent } from './storypage/storypage.component';
 import { TradeInpageComponent } from './trade-inpage/trade-inpage.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     TradeInpageComponent,
     AccountPageComponent,
     AdminPanelComponent,
+    ErrorPageComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
