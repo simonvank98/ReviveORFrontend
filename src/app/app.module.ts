@@ -11,12 +11,12 @@ import { ShopItemComponent } from './shop/shop-list/shop-item/shop-item.componen
 import { ShopSearchComponent } from './shop/shop-search/shop-search.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
 import { ShopComponent } from './shop/shop.component';
-import { StorypageComponent } from './storypage/storypage.component';
-import { TradeInpageComponent } from './trade-inpage/trade-inpage.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TradeInPageComponent } from './trade-in-page/trade-in-page.component';
+import { StoryPageComponent } from './story-page/story-page.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +29,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ShopSearchComponent,
     ShopDetailComponent,
     ShopComponent,
-    StorypageComponent,
-    TradeInpageComponent,
     AccountPageComponent,
     AdminPanelComponent,
     ErrorPageComponent,
     PageNotFoundComponent,
+    TradeInPageComponent,
+    StoryPageComponent,
   ],
   imports: [
     BrowserModule,

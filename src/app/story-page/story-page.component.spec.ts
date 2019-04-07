@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StorypageComponent } from './storypage.component';
+import { StoryPageComponent } from './story-page.component';
 
-describe('StorypageComponent', () => {
-  let component: StorypageComponent;
-  let fixture: ComponentFixture<StorypageComponent>;
+describe('StoryPageComponent', () => {
+  let component: StoryPageComponent;
+  let fixture: ComponentFixture<StoryPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StorypageComponent ]
+      declarations: [ StoryPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StorypageComponent);
+    fixture = TestBed.createComponent(StoryPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
