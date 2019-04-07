@@ -1,27 +1,21 @@
 <nav>
-  <ul>
-    <li><a routerLink="/">Home (image)</a></li>
-    <li><a routerLink="/shop">Shop</a></li>
-    <li><a routerLink="/trade-in">Trade-in</a></li>
-    <li><a routerLink="/story">Story</a></li>
-    <li><a routerLink="/account">Account</a></li>
-    <li><a routerLink="/admin">Admin panel</a></li>
-  </ul>
-</nav>
-
-
-<header>
 
   <mat-toolbar class="nav-toolbar">
 
     <a class="brand" routerLink="/" mat-button>
-      <mat-icon svgIcon="logo" style="height: 40px; width: 40px;"></mat-icon>
-      Salmon IT
+      ReviveOR
     </a>
+
     <div class="spacer"></div>
 
+    <div class="links">
+      <a routerLink="/shop" mat-button>Shop used</a>
+      <a routerLink="/trade-in" mat-button>Trade-in</a>
+      <a routerLink="/stories" mat-button>Stories</a>
+    </div>
+
     <a routerLink="/shop/cart" class="shopping_cart" mat-button>
-      <mat-icon [matBadgeHidden]="cartItemsCount == 0" matBadgeColor="primary" [matBadge]="cartItemsCount"
+      <mat-icon [matBadgeHidden]="false" matBadgeColor="primary" [matBadge]="2"
                 matBadgePosition="above after">
         shopping_cart
       </mat-icon>
@@ -29,7 +23,7 @@
 
     <div class="account">
       <mat-menu #accountMenu="matMenu" class="account-dropdown">
-        <ng-container *ngIf="authService.isAuthenticated(); then loggedIn; else loggedOut"></ng-container>
+        <ng-container *ngIf="true; then loggedIn; else loggedOut"></ng-container>
 
         <ng-template #loggedIn>
           <button mat-menu-item [routerLink]="['/me', 'edit']">Account info</button>
@@ -46,62 +40,13 @@
 
       <button mat-button [matMenuTriggerFor]="accountMenu">
         <mat-icon>account_circle</mat-icon>
-        {{ authService.getAuthenticatedUser()?.firstName !== null ?
-        authService.getAuthenticatedUser().firstName + "'s" : 'Mijn' }} account
+        {{ "Sophie" !== null ?
+        "Sophie" + "'s" : 'Mijn' }} account
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
     </div>
   </mat-toolbar>
 
+  <div class="mat-elevation-z8"></div>
 
-  <mat-toolbar class="search-toolbar">
-
-
-
-    <div class="browseall-button">
-      <button class="" type="button" mat-stroked-button color="primary"
-              (click)="onSearchButtonClicked('')">Bekijk volledig assortiment</button>
-    </div>
-
-    <div hidden class="product-categories">
-      <mat-menu #productMenu="matMenu">
-        <a mat-menu-item routerLink="category/laptops">Laptops</a>
-        <a mat-menu-item>Desktops</a>
-        <a mat-menu-item [matMenuTriggerFor]="componentsMenu">Componenten</a>
-      </mat-menu>
-
-      <mat-menu #componentsMenu="matMenu">
-        <button mat-menu-item>Behuizingen</button>
-        <button mat-menu-item>RAM Geheugen</button>
-        <button mat-menu-item>Harde schijven/SSDs</button>
-        <button mat-menu-item>Processoren</button>
-        <button mat-menu-item>Videokaarten</button>
-        <button mat-menu-item>Voedingen</button>
-      </mat-menu>
-
-
-      <button mat-button [matMenuTriggerFor]="productMenu">
-        <mat-icon>apps</mat-icon>
-        Productcategorieën
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-    </div>
-
-
-    <div class="search-container">
-      <mat-form-field class="search-bar no-padding" appearance="outline">
-        <mat-label>Zoek hier op productnaam of beschrijving...</mat-label>
-        <button type="button" class="search-button" matSuffix mat-button color="primary"
-                (click)="onSearchButtonClicked(search.value)">
-          <mat-icon [inline]="true" class="search-icon" aria-label="Zoeken">search</mat-icon>
-        </button>
-        <input matInput type="search" #search
-               (keydown.enter)="onSearchButtonClicked(search.value)" placeholder="Waar bent u naar op zoek?" aria-label="Zoeken">
-      </mat-form-field>
-    </div>
-  </mat-toolbar>
-
-
-  <div class="header-gap bg mat-elevation-z8"></div>
-
-</header>
+</nav>
