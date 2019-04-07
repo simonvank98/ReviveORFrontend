@@ -24,7 +24,7 @@
             ],
             "styles": [
               "src/custom-theme.scss",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -132,5 +132,10 @@
       }
     }
   },
-  "defaultProject": "ReviveORPrototype"
+  "defaultProject": "ReviveORPrototype",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
