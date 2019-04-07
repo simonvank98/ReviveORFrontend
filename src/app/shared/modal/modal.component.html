@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>
+  {{ data.header }}
+</h1>
+
+<mat-dialog-content>
+  <p style="white-space: pre-line">{{ data.content }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions class="spacing">
+  <div *ngFor="let button of data.buttons">
+    <button mat-raised-button color="{{button.buttonColor}}" (click)="onButtonClicked(button)">{{ button.name }}
+    </button>
+  </div>
+</mat-dialog-actions>
