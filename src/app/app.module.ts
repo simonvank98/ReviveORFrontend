@@ -11,6 +11,10 @@ import { ShopItemComponent } from './shop/shop-list/shop-item/shop-item.componen
 import { ShopSearchComponent } from './shop/shop-search/shop-search.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
 import { ShopComponent } from './shop/shop.component';
+import { StorypageComponent } from './storypage/storypage.component';
+import { TradeInpageComponent } from './trade-inpage/trade-inpage.component';
+import { AccountPageComponent } from './account-page/account-page.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,10 @@ import { ShopComponent } from './shop/shop.component';
     ShopSearchComponent,
     ShopDetailComponent,
     ShopComponent,
+    StorypageComponent,
+    TradeInpageComponent,
+    AccountPageComponent,
+    AdminPanelComponent,
   ],
   imports: [
     BrowserModule,
