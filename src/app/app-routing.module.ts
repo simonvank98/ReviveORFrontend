@@ -12,8 +12,9 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'trade-in', component: TradeInPageComponent },
-  { path: 'story', component: StoryPageComponent },
-  { path: 'account', component: AccountPageComponent },
+  { path: 'stories', component: StoryPageComponent },
+  // { path: 'shopping-cart', component: ShoppingCartComponent },
+  { path: 'me/edit', component: AccountPageComponent },
   { path: 'admin', component: AdminPanelComponent },
   { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
   { path: '**', redirectTo: '/not-found' }
