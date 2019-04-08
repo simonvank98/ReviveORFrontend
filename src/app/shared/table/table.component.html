@@ -1,0 +1,26 @@
+<div class="wrapper mat-elevation-z5">
+
+    <div class="top-controls">
+        <mat-form-field class="full-width" *ngIf="search">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Zoeken">
+        </mat-form-field>
+    </div>
+
+    <mat-table matSort matSortActive="id" #table [dataSource]="dataSource">
+
+        <ng-container *ngFor="let attribute of attributes" matColumnDef="{{attribute}}">
+
+            <mat-header-cell *matHeaderCellDef mat-sort-header="{{attribute}}">{{ headers[attributes.indexOf(attribute)] }}</mat-header-cell>
+
+            <mat-cell *matCellDef="let model" attr.data-header="{{ headers[attributes.indexOf(attribute)] }}">{{ renderContent(model, attribute) | truncate:[40] }}</mat-cell>
+            
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="attributes"></mat-header-row>
+        <mat-row *matRowDef="let model; columns: attributes;" (click)="onRowClicked(model)"></mat-row>
+
+    </mat-table>
+
+    <mat-paginator *ngIf="pagination" [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+    
+</div>
