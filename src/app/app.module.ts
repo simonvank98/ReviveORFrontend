@@ -16,12 +16,15 @@ import { ShopComponent } from './shop/shop.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TradeInPageComponent } from './trade-in-page/trade-in-page.component';
 import { StoryPageComponent } from './story-page/story-page.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
 import { TableComponent } from './shared/table/table.component';
 import { MatTableModule, MatSortModule } from '@angular/material';
+import { TradeInRequestPageComponent } from './trade-in-request-page/trade-in-request-page.component';
+import { StepperComponent } from './shared/stepper/stepper.component';
+import { TradeInRequestJewelryTypeComponent } from './trade-in-request-page/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
+import { TradeInRequestJewelryMaterialComponent } from './trade-in-request-page/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
 
 @NgModule({
    declarations: [
@@ -38,10 +41,13 @@ import { MatTableModule, MatSortModule } from '@angular/material';
       AdminPanelComponent,
       ErrorPageComponent,
       PageNotFoundComponent,
-      TradeInPageComponent,
+      TradeInRequestPageComponent,
+      TradeInRequestJewelryTypeComponent,
+      TradeInRequestJewelryMaterialComponent,
       StoryPageComponent,
       AdminSideNavigationComponent,
-      TableComponent
+      TableComponent,
+      StepperComponent
    ],
    imports: [
       BrowserModule,

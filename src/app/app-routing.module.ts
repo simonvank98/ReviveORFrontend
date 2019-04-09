@@ -6,12 +6,21 @@ import {ShopComponent} from './shop/shop.component';
 import {AccountPageComponent} from './account-page/account-page.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
 import {StoryPageComponent} from './story-page/story-page.component';
-import {TradeInPageComponent} from './trade-in-page/trade-in-page.component';
+import {TradeInRequestPageComponent} from './trade-in-request-page/trade-in-request-page.component';
+import { TradeInRequestJewelryTypeComponent } from './trade-in-request-page/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
+import { TradeInRequestJewelryMaterialComponent } from './trade-in-request-page/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'shop', component: ShopComponent },
-  { path: 'trade-in', component: TradeInPageComponent },
+  { path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full' },
+  { path: 'trade-in',
+    component: TradeInRequestPageComponent,
+    children: [
+        { path: 'type', component: TradeInRequestJewelryTypeComponent, },
+        { path: 'material', component: TradeInRequestJewelryMaterialComponent, },
+    ]
+  },
   { path: 'stories', component: StoryPageComponent },
   // { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'me/edit', component: AccountPageComponent },

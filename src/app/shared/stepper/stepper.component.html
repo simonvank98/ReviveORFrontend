@@ -1,0 +1,20 @@
+<div class="wrapper">
+    <div class="step" *ngFor="let step of steps; let i = index" [ngClass]="{'active' : currentStep >= i}">
+        <div class="left">
+            <div class="orb">
+                {{ i+1 }}
+            </div>
+            <div class="line">
+
+            </div>
+        </div>
+        <div class="right">
+            <div class="label">
+                {{ step }}
+            </div>
+            <div class="description">
+                {{ descriptions[i] }}
+            </div>
+        </div>
+    </div>
+</div>

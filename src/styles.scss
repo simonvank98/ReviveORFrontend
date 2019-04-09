@@ -11,3 +11,9 @@ html, body {
 table {
     width: 100%;
 }
+.mat-button.top .mat-button-wrapper>* {
+    vertical-align: top !important;
+}
+.mat-button.bottom .mat-button-wrapper>* {
+    vertical-align: bottom !important;
+}

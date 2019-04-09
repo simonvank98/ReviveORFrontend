@@ -1,0 +1,39 @@
+h3 {
+    margin: 10px 0px;
+}
+.grid {
+    width: 100%;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+.grid > * {
+    width: 100%;
+}
+.grid > [style^='--aspect-ratio']::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 0;
+    padding-bottom: calc(100% / (var(--aspect-ratio)));
+}
+.mat-button {
+    padding: 0;
+}
+.mat-button span {
+    padding: 0px;
+    width: 100%;
+    /* float: left; */
+    display: inline-block;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    /* font-weight: bold; */
+    border-radius: 3px;
+}
+.material {
+    background-size: cover;
+    background-position: center;
+}
+// .material-gold { background-image: url("../../../assets/ring.png"); }
+// .material-silver { background-image: url("../../../assets/necklace.png"); }
+// .material-other { background-image: url("../../../assets/bracelet.png"); }
