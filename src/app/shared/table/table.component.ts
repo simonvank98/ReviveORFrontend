@@ -27,7 +27,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   // Aray of attributes of the models that should be displayed in the table.
   @Input() attributes = [];
   // Array of formatting functions to be applied to the model data.
-  @Input() formatters = [(content) => ('#' + content), (content) => content, (content) => moment(content).toLocaleString()];
+  @Input() formatters = [];
   // Array of widths to be applied to the table columns (in percentages).
   @Input() widths = [];
   // Toggles the visibility of the pagination control.

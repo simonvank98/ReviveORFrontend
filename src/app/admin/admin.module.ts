@@ -1,11 +1,37 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
+import { AdminProductsOverviewComponent } from './products/admin-products-overview/admin-products-overview.component';
+import { AdminStoriesOverviewComponent } from './stories/admin-stories-overview/admin-stories-overview.component';
+import { AdminPermissionsOverviewComponent } from './permissions/admin-permissions-overview/admin-permissions-overview.component';
+import {AdminPanelComponent} from './admin-panel/admin-panel.component';
+import {AdminSideNavigationComponent} from './admin-side-navigation/admin-side-navigation.component';
+import {TableComponent} from '../shared/table/table.component';
+import {SharedModule} from '../shared/shared.module';
+import {AdminTradeInRequestOverviewComponent} from './trade-in-requests/admin-trade-in-request-overview/admin-trade-in-request-overview.component';
+import {AdminCreditIndicationsOverviewComponent} from './credit-indications/admin-credit-indications-overview/admin-credit-indications-overview.component';
+import { AdminTradeInRequestEditComponent } from './trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
+import {AllTradeInRequestResolver} from './trade-in-requests/all-trade-in-request.resolver';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
-  declarations: [AdminComponent]
+  declarations: [
+    AdminComponent,
+    AdminTradeInRequestOverviewComponent,
+    AdminProductsOverviewComponent,
+    AdminStoriesOverviewComponent,
+    AdminCreditIndicationsOverviewComponent,
+    AdminPermissionsOverviewComponent,
+    AdminPanelComponent,
+    AdminSideNavigationComponent,
+    TableComponent,
+    AdminTradeInRequestEditComponent
+  ],
+  providers: [
+    AllTradeInRequestResolver
+  ],
 })
 export class AdminModule { }
