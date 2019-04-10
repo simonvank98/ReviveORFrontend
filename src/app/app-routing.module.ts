@@ -13,6 +13,8 @@ import {AdminTradeInRequestOverviewComponent} from './admin/trade-in-requests/ad
 import {AdminCreditIndicationsOverviewComponent} from './admin/credit-indications/admin-credit-indications-overview/admin-credit-indications-overview.component';
 import {AdminPermissionsOverviewComponent} from './admin/permissions/admin-permissions-overview/admin-permissions-overview.component';
 import {AllTradeInRequestResolver} from './admin/trade-in-requests/all-trade-in-request.resolver';
+import {AdminTradeInRequestEditComponent} from './admin/trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
+import {TradeInRequestResolver} from './admin/trade-in-requests/trade-in-request.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,11 +27,12 @@ const routes: Routes = [
       { path: 'products', component: AdminProductsOverviewComponent },
       { path: 'stories', component: AdminStoriesOverviewComponent },
       { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, resolve: { requests: AllTradeInRequestResolver }},
+      { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, resolve: { request: TradeInRequestResolver }},
       { path: 'credit-indications', component: AdminCreditIndicationsOverviewComponent },
       { path: 'permissions', component: AdminPermissionsOverviewComponent },
     ] },
-  { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
-  { path: '**', redirectTo: '/not-found' }
+  // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
+  // { path: '**', redirectTo: '/not-found' }
 ];
 
 @NgModule({

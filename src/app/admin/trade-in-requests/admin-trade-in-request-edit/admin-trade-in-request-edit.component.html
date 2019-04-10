@@ -1,3 +1,98 @@
-<p>
-  admin-trade-in-request-edit works!
-</p>
+<div class="grid">
+  <div class="left">
+    <mat-card-title><h3>Credit Request #{{ model.requestId }}</h3></mat-card-title>
+    <mat-card-content><p>Submitted on {{ model.dateCreated.toDateString() }}</p></mat-card-content>
+    <mat-card-content><p>By {{ model.user.name }} ({{ model.user.email }})</p></mat-card-content>
+  </div>
+  <div class="right">
+    <mat-card-content><p>Request status</p></mat-card-content>
+    <mat-card-content><p><b>{{ model.status }}</b></p></mat-card-content>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="left">
+    <mat-form-field>
+      <mat-label>Product</mat-label>
+      <select matNativeControl required>
+        <option value="{{ model.jewelryName }}">{{ model.jewelryName }}</option>
+        <option value="lavaBracelet">Lava bracelet</option>
+        <option value="paddlefishBraclet">Paddlefish bracelet</option>
+        <option value="contrastBracelet">Contrast bracelet</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Size</mat-label>
+      <select matNativeControl required>
+        <option value="{{ model.jewelryName }}">{{ model.jewelrySize }}</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+      </select>
+    </mat-form-field>
+  </div>
+  <div class="right">
+    <table>
+      <tr>
+        <th>Property</th>
+        <th>State</th>
+      </tr>
+      <tr>
+        <td>Scratches</td>
+        <td>{{ model.tradeInRequestsJewelryType.scratched }}</td>
+      </tr>
+      <tr>
+        <td>Bent</td>
+        <td>{{ model.tradeInRequestsJewelryType.bent }}</td>
+      </tr>
+      <tr>
+        <td>Broken</td>
+        <td>{{ model.tradeInRequestsJewelryType.broken }}</td>
+      </tr>
+      <tr>
+        <td>Missing piece</td>
+        <td>{{ model.tradeInRequestsJewelryType.missingPiece }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="left">
+    <div class="imageCollectionWrapper">
+      <div class="imageDiv" *ngFor="let image of model.tradeInRequestsImage.imagePath">
+        <img [src]="image" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="noteBorder">
+      <mat-label>Note from customer</mat-label>
+      <mat-card-content><p>{{ model.additionalDescription }}</p></mat-card-content>
+    </div>
+  </div>
+</div>
+
+<div class="storyWrapper">
+  <mat-label>{{ model.storyTitle }}</mat-label>
+  <div class="story">
+    <mat-card-content><p>{{ model.storyContent }}</p></mat-card-content>
+  </div>
+</div>
+
+<div class="indicationWrapper">
+  <mat-form-field class="indicationFormfield">
+    <label for="creditIndication">Estimated maximum credit</label>
+    <input matInput id="creditIndication" value="€ {{ model.estimatedCredit }}">
+  </mat-form-field>
+</div>
+
+<div class="buttonWrapper">
+  <div class="buttonLeft">
+    <button class="mat-button" (click)="back()">Back</button>
+  </div>
+  <div class="buttonRight">
+    <button class="mat-button">Cancel request</button>
+    <button class="mat-button">Approve for shipping</button>
+  </div>
+</div>
