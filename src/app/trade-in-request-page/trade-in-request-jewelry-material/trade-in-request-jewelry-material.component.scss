@@ -19,8 +19,12 @@ h3 {
 }
 .mat-button {
     padding: 0;
+    overflow: hidden;
+    border-radius: 3px;
 }
 .mat-button span {
+    margin-left: -1px;
+    margin-bottom: -1px;
     padding: 0px;
     width: 100%;
     /* float: left; */
@@ -30,10 +34,29 @@ h3 {
     /* font-weight: bold; */
     border-radius: 3px;
 }
+.mat-button.selected {
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        background-image: url('../../../assets/icon-selected.svg');
+        background-size: 40%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+    span {
+        border-radius: 0;
+    }
+}
 .material {
     background-size: cover;
     background-position: center;
 }
-// .material-gold { background-image: url("../../../assets/ring.png"); }
-// .material-silver { background-image: url("../../../assets/necklace.png"); }
-// .material-other { background-image: url("../../../assets/bracelet.png"); }
+.material-gold { background-image: url("../../../assets/mat-gold.png"); }
+.material-silver { background-image: url("../../../assets/mat-silver.png"); }
+.material-other { background-image: url("../../../assets/mat-other.png"); }

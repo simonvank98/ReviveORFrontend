@@ -1,5 +1,5 @@
 export class DialogButton {
-  public buttonColor = "accent";
+  public buttonColor = '';
 
   constructor(public name, public callback: () => void) {}
 }

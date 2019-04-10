@@ -1,13 +1,14 @@
 <h3>What type of material is your jewelry piece made out of?</h3>
 
 <div class="grid">
-    <button mat-button class="material material-gold" style="--aspect-ratio: 1/1;" (click)="onMaterialClicked('Gold')">
+    <button mat-button class="material material-gold" style="--aspect-ratio: 1/1;" (click)="onMaterialClicked($event, 'Gold')">
         <span class="name">Gold</span>
     </button>
-    <button mat-button class="material material-silver" style="--aspect-ratio: 1/1;" (click)="onMaterialClicked('Silver')">
+    <button mat-button class="material material-silver" style="--aspect-ratio: 1/1;" (click)="onMaterialClicked($event, 'Silver')">
         <span class="name">Silver</span>
     </button>
-    <button mat-button class="material material-other" style="--aspect-ratio: 1/1;" (click)="onMaterialClicked('Other')">
+    <button mat-button class="material material-other" style="--aspect-ratio: 1/1;" (click)="onMaterialClicked($event, 'Other')">
         <span class="name">Other</span>
     </button>
 </div>
+<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>

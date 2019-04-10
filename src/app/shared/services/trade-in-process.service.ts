@@ -5,13 +5,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TradeInProcessService {
+
+  emptyContainer;
   tradeInProcessContainer: TradeInProcessContainer = {
+    currentScreen: 0,
     jewelryType: '',
     jewelryMaterial: '',
-    jewelryModel: ''
+    jewelryModel: {}
   };
 
   constructor() {
+    this.emptyContainer = JSON.parse(JSON.stringify(this.tradeInProcessContainer));
+  }
+
+  stepForwards() {
+    this.tradeInProcessContainer.currentScreen += 1;
+  }
+
+  stepBackwards() {
+      if (this.tradeInProcessContainer.currentScreen >= 0) {
+        this.tradeInProcessContainer.currentScreen -= 1;
+      }
   }
 
   setType(type: string) {
@@ -27,6 +41,11 @@ export class TradeInProcessService {
   setModel(model: any) { // TradeInRequestModel
     this.tradeInProcessContainer.jewelryModel = model;
     this.storeContainer();
+  }
+
+  reset() {
+    this.tradeInProcessContainer = this.emptyContainer;
+    localStorage.removeItem('tradeInProcessContainer');
   }
 
   private storeContainer() {

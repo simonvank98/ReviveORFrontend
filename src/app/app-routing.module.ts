@@ -25,8 +25,8 @@ const routes: Routes = [
   // { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'me/edit', component: AccountPageComponent },
   { path: 'admin', component: AdminPanelComponent },
-  { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
-  { path: '**', redirectTo: '/not-found' }
+//   { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
+//   { path: '**', redirectTo: '/not-found' }
 ];
 
 @NgModule({

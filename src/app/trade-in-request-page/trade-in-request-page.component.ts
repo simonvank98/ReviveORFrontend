@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { TradeInProcessService } from '../shared/services/trade-in-process.service';
 
 @Component({
   selector: 'app-trade-in-request-page',
@@ -7,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class TradeInRequestPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public tradeInProcessService: TradeInProcessService) { }
 
   ngOnInit() {
   }

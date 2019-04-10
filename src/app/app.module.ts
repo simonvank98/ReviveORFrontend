@@ -1,3 +1,4 @@
+import { ControlButtonsComponent } from './trade-in-request-page/control-buttons/control-buttons.component';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { AdminSideNavigationComponent } from './admin/admin-side-navigation/admin-side-navigation.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -47,7 +48,8 @@ import { TradeInRequestJewelryMaterialComponent } from './trade-in-request-page/
       StoryPageComponent,
       AdminSideNavigationComponent,
       TableComponent,
-      StepperComponent
+      StepperComponent,
+      ControlButtonsComponent
    ],
    imports: [
       BrowserModule,

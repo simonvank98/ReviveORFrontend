@@ -7,7 +7,16 @@ button {
   color: #fff;
 }
 
+.mat-dialog-actions {
+    margin-bottom: unset;
+}
 .spacing {
-  display: flex;
-  justify-content: space-between;
+    text-align: right;
+    margin-top: 20px;
+  > * {
+      margin-left: 10px;
+      display: inline-block;
+  }
+
+  justify-content: flex-end;
 }
