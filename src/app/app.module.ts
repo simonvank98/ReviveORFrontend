@@ -1,6 +1,4 @@
 import { ControlButtonsComponent } from './trade-in-request-page/control-buttons/control-buttons.component';
-import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
-import { AdminSideNavigationComponent } from './admin/admin-side-navigation/admin-side-navigation.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -20,13 +18,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { StoryPageComponent } from './story-page/story-page.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
-import { TableComponent } from './shared/table/table.component';
-import { MatTableModule, MatSortModule } from '@angular/material';
 import { TradeInRequestPageComponent } from './trade-in-request-page/trade-in-request-page.component';
 import { StepperComponent } from './shared/stepper/stepper.component';
 import { TradeInRequestJewelryTypeComponent } from './trade-in-request-page/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
 import { TradeInRequestJewelryMaterialComponent } from './trade-in-request-page/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
 import {AdminModule} from './admin/admin.module';
+import { TableComponent } from './shared/table/table.component';
 
 @NgModule({
    declarations: [
@@ -46,8 +43,6 @@ import {AdminModule} from './admin/admin.module';
       TradeInRequestJewelryTypeComponent,
       TradeInRequestJewelryMaterialComponent,
       StoryPageComponent,
-      AdminSideNavigationComponent,
-      TableComponent,
       StepperComponent,
       ControlButtonsComponent
    ],

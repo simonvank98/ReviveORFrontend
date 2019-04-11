@@ -9,20 +9,36 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PriceFormatDirective} from './price-format.directive';
 import {ModalComponent} from './modal/modal.component';
 import {TruncatePipe} from './truncate.pipe';
+import { TableComponent } from './table/table.component';
 
 
 @NgModule({
-  declarations: [SafePipe, PriceFormatDirective, ModalComponent, TruncatePipe],
+  declarations: [
+      SafePipe,
+      PriceFormatDirective,
+      ModalComponent,
+      TruncatePipe,
+      TableComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MaterialModule,
+    MaterialModule
   ],
-  exports: [MaterialModule, AppRoutingModule, SafePipe, TruncatePipe,
-    ReactiveFormsModule, FormsModule, ModalComponent, PriceFormatDirective],
+  exports: [
+      MaterialModule,
+      AppRoutingModule,
+      SafePipe,
+      TruncatePipe,
+      ReactiveFormsModule,
+      FormsModule,
+      ModalComponent,
+      PriceFormatDirective,
+      TableComponent
+  ],
   entryComponents: [
     ModalComponent
   ],

@@ -26,7 +26,6 @@ import {TradeInRequestResolver} from './trade-in-requests/trade-in-request.resol
     AdminCreditIndicationsOverviewComponent,
     AdminPermissionsOverviewComponent,
     AdminSideNavigationComponent,
-    TableComponent,
     AdminTradeInRequestEditComponent
   ],
   providers: [

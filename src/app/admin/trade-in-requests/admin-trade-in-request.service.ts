@@ -75,7 +75,7 @@ export class AdminTradeInRequestService {
   constructor() {}
 
   public getAll() {
-    return of(this.requests).pipe(delay(1000));
+    return of(this.requests).pipe(delay(1));
   }
 
   get(id) {

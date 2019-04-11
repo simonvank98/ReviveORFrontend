@@ -8,7 +8,6 @@ import {StoryPageComponent} from './story-page/story-page.component';
 import {TradeInRequestPageComponent} from './trade-in-request-page/trade-in-request-page.component';
 import { TradeInRequestJewelryTypeComponent } from './trade-in-request-page/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
 import { TradeInRequestJewelryMaterialComponent } from './trade-in-request-page/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
-import {TradeInPageComponent} from './trade-in-page/trade-in-page.component';
 import {AdminComponent} from './admin/admin.component';
 import {AdminProductsOverviewComponent} from './admin/products/admin-products-overview/admin-products-overview.component';
 import {AdminStoriesOverviewComponent} from './admin/stories/admin-stories-overview/admin-stories-overview.component';
@@ -33,7 +32,6 @@ const routes: Routes = [
   { path: 'stories', component: StoryPageComponent },
   // { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'me/edit', component: AccountPageComponent },
-  { path: 'admin', component: AdminPanelComponent },
   { path: 'admin', component: AdminComponent, children: [
       { path: 'products', component: AdminProductsOverviewComponent },
       { path: 'stories', component: AdminStoriesOverviewComponent },
