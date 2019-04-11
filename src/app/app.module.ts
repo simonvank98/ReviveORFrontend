@@ -26,6 +26,7 @@ import { TradeInRequestPageComponent } from './trade-in-request-page/trade-in-re
 import { StepperComponent } from './shared/stepper/stepper.component';
 import { TradeInRequestJewelryTypeComponent } from './trade-in-request-page/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
 import { TradeInRequestJewelryMaterialComponent } from './trade-in-request-page/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
+import {AdminModule} from './admin/admin.module';
 
 @NgModule({
    declarations: [
@@ -39,7 +40,6 @@ import { TradeInRequestJewelryMaterialComponent } from './trade-in-request-page/
       ShopDetailComponent,
       ShopComponent,
       AccountPageComponent,
-      AdminPanelComponent,
       ErrorPageComponent,
       PageNotFoundComponent,
       TradeInRequestPageComponent,
@@ -56,9 +56,7 @@ import { TradeInRequestJewelryMaterialComponent } from './trade-in-request-page/
       BrowserAnimationsModule,
       SharedModule,
       AppRoutingModule,
-    //   BrowserModule,
-    //   MatTableModule,
-    //   MatSortModule
+      AdminModule
    ],
    providers: [],
    bootstrap: [
