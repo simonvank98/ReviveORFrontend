@@ -1,0 +1,56 @@
+$orbHeight: 40px;
+$color: #ccc;
+$activeColor: #3f51b5;
+
+.step {
+    // height: 80px;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 10px;
+
+    &.active {
+        .orb, .line {
+            background-color: $activeColor;
+            color: white;
+        }
+        .label {
+            color: $activeColor;
+            font-weight: bold;
+        }
+    }
+}
+.orb {
+    font-size: 20px;
+    width: $orbHeight;
+    height: $orbHeight;
+    background-color: $color;
+    text-align: center;
+    line-height: $orbHeight;
+    border-radius: $orbHeight;
+    font-weight: bold;
+}
+.label {
+    margin-top: 5px;
+}
+.wrapper .step:last-child .line {
+    display: none;
+}
+.orb, .label, .line {
+    transition: 0.3s background-color;
+}
+.orb {
+    // display: inline-block;
+    line-height: $orbHeight;
+}
+.line {
+    display: inline-block;
+    width: 4px;
+    height: 30px;
+    margin-left: 18px;
+    margin-top: 2px;
+    background-color: $color;
+    border-radius: 10px;
+}
+.description {
+    font-size: 11px;
+}

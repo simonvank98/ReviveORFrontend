@@ -30,7 +30,7 @@ export class ModalService {
   }
 
   confirm(message: string): Observable<boolean> | Promise<boolean> | boolean {
-    const dialog = this.createDialog('Bevestiging', message);
+    const dialog = this.createDialog('Confirmation', message);
 
     const confirmed = new Observable<boolean>(obs => {
       dialog.addButton('Nee', () => { obs.next(false); });

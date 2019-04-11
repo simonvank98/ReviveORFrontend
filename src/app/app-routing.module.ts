@@ -5,6 +5,9 @@ import {ShopComponent} from './shop/shop.component';
 import {AccountPageComponent} from './account-page/account-page.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
 import {StoryPageComponent} from './story-page/story-page.component';
+import {TradeInRequestPageComponent} from './trade-in-request-page/trade-in-request-page.component';
+import { TradeInRequestJewelryTypeComponent } from './trade-in-request-page/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
+import { TradeInRequestJewelryMaterialComponent } from './trade-in-request-page/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
 import {TradeInPageComponent} from './trade-in-page/trade-in-page.component';
 import {AdminComponent} from './admin/admin.component';
 import {AdminProductsOverviewComponent} from './admin/products/admin-products-overview/admin-products-overview.component';
@@ -19,10 +22,18 @@ import {TradeInRequestResolver} from './admin/trade-in-requests/trade-in-request
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'shop', component: ShopComponent },
-  { path: 'trade-in', component: TradeInPageComponent },
+  { path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full' },
+  { path: 'trade-in',
+    component: TradeInRequestPageComponent,
+    children: [
+        { path: 'type', component: TradeInRequestJewelryTypeComponent, },
+        { path: 'material', component: TradeInRequestJewelryMaterialComponent, },
+    ]
+  },
   { path: 'stories', component: StoryPageComponent },
   // { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'me/edit', component: AccountPageComponent },
+  { path: 'admin', component: AdminPanelComponent },
   { path: 'admin', component: AdminComponent, children: [
       { path: 'products', component: AdminProductsOverviewComponent },
       { path: 'stories', component: AdminStoriesOverviewComponent },
