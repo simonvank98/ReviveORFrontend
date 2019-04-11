@@ -1,5 +1,3 @@
-import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
-import { AdminSideNavigationComponent } from './admin/admin-side-navigation/admin-side-navigation.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -20,8 +18,7 @@ import { TradeInPageComponent } from './trade-in-page/trade-in-page.component';
 import { StoryPageComponent } from './story-page/story-page.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
-import { TableComponent } from './shared/table/table.component';
-import { MatTableModule, MatSortModule } from '@angular/material';
+import {AdminModule} from './admin/admin.module';
 
 @NgModule({
    declarations: [
@@ -35,22 +32,17 @@ import { MatTableModule, MatSortModule } from '@angular/material';
       ShopDetailComponent,
       ShopComponent,
       AccountPageComponent,
-      AdminPanelComponent,
       ErrorPageComponent,
       PageNotFoundComponent,
       TradeInPageComponent,
       StoryPageComponent,
-      AdminSideNavigationComponent,
-      TableComponent
    ],
    imports: [
       BrowserModule,
       BrowserAnimationsModule,
       SharedModule,
       AppRoutingModule,
-    //   BrowserModule,
-    //   MatTableModule,
-    //   MatSortModule
+      AdminModule
    ],
    providers: [],
    bootstrap: [
