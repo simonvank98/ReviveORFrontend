@@ -1,4 +1,4 @@
-export interface TradeInProcessContainer {
+export interface TradeInProcessContainerModel {
     currentScreen: number;
     jewelryType: string;
     jewelryMaterial: string;

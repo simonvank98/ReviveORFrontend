@@ -1,4 +1,4 @@
-import { TradeInProcessContainer } from './../models/trade-in-process-container';
+import { TradeInProcessContainerModel } from '../models/trade-in-process-container.model';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class TradeInProcessService {
 
   emptyContainer;
-  tradeInProcessContainer: TradeInProcessContainer = {
+  tradeInProcessContainer: TradeInProcessContainerModel = {
     currentScreen: 0,
     jewelryType: '',
     jewelryMaterial: '',
