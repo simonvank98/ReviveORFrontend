@@ -1,0 +1,17 @@
+<h3>What type of Ocean Republic jewelry do you want to trade in?</h3>
+
+<div class="grid">
+    <button mat-button class="bottom type type-bracelet" style="--aspect-ratio: 1/1;" (click)="onTypeClicked($event, 'Bracelets')">
+        <span class="name">Bracelet</span>
+    </button>
+    <button mat-button class="bottom type type-earrings" style="--aspect-ratio: 1/1;" (click)="onTypeClicked($event, 'Earrings')">
+        <span class="name">Earrings</span>
+    </button>
+    <button mat-button class="bottom type type-necklace" style="--aspect-ratio: 1/1;" (click)="onTypeClicked($event, 'Necklaces')">
+        <span class="name">Necklace</span>
+    </button>
+    <button mat-button class="bottom type type-ring" style="--aspect-ratio: 1/1;" (click)="onTypeClicked($event, 'Rings')">
+        <span class="name">Ring</span>
+    </button>
+</div>
+<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>
