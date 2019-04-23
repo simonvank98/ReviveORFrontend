@@ -5,10 +5,14 @@ h3 {
     width: 100%;
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 10px;
+    max-height: 500px;
+    overflow-y: auto;
+    border: 2px solid black;
+    padding: 5px;
 }
 .grid > * {
-    width: 100%;
+    // width: 100%;
 }
 .grid > [style^='--aspect-ratio']::before {
     content: "";
@@ -22,6 +26,8 @@ h3 {
     overflow: hidden;
     border-radius: 3px;
     position: relative;
+    background-size: cover;
+    background-position: center;
 }
 .mat-button.selected {
     &::after {
@@ -29,7 +35,7 @@ h3 {
         top: 0;
         left: 0;
         content: '';
-        background-image: url('../../../../assets/icon-selected.svg');
+        background-image: url('../../../assets/icon-selected.svg');
         background-size: 40%;
         background-repeat: no-repeat;
         background-position: center center;
@@ -54,12 +60,7 @@ h3 {
     color: white;
     /* font-weight: bold; */
     border-radius: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.type {
-    background-size: cover;
-    background-position: center;
-}
-.type-ring { background-image: url("../../../../assets/ring.png"); }
-.type-necklace { background-image: url("../../../../assets/necklace.png"); }
-.type-bracelet { background-image: url("../../../../assets/bracelet.png"); }
-.type-earrings { background-image: url("../../../../assets/earrings.png"); }

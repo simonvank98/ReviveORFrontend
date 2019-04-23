@@ -22,6 +22,10 @@ import { StepperComponent } from './shared/components/stepper/stepper.component'
 import { TradeInRequestJewelryTypeComponent } from './features/trade-in-requests/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
 import { TradeInRequestJewelryMaterialComponent } from './features/trade-in-requests/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
 import {AdminModule} from './admin/admin.module';
+import { ApiService } from './shared/api.service';
+import { ORApiService } from './shared/or-api.service';
+import { TempApiService } from './shared/temp-api.service';
+import { TradeInRequestJewelryPieceComponent } from './features/trade-in-requests/trade-in-request-jewelry-piece/trade-in-request-jewelry-piece.component';
 
 @NgModule({
    declarations: [
@@ -39,6 +43,7 @@ import {AdminModule} from './admin/admin.module';
       TradeInRequestPageComponent,
       TradeInRequestJewelryTypeComponent,
       TradeInRequestJewelryMaterialComponent,
+      TradeInRequestJewelryPieceComponent,
       StoryPageComponent,
       StepperComponent,
       ControlButtonsComponent
@@ -50,7 +55,11 @@ import {AdminModule} from './admin/admin.module';
       AppRoutingModule,
       AdminModule
    ],
-   providers: [],
+   providers: [
+       ApiService,
+       ORApiService,
+       TempApiService
+   ],
    bootstrap: [
       AppComponent
    ]

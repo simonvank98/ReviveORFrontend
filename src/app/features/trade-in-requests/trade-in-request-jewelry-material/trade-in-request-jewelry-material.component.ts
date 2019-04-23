@@ -15,7 +15,8 @@ export class TradeInRequestJewelryMaterialComponent implements OnInit {
     const buttons = <NodeListOf<HTMLElement>>document.querySelectorAll('button');
     for (let i = 0; i < buttons.length; i++) {
       const button = <HTMLElement>buttons[i];
-      if (this.tradeInProcessService.tradeInProcessContainer.jewelryMaterial === button.innerText) {
+      console.log(this.tradeInProcessService.tradeInProcessContainer.jewelryMaterial);
+      if (this.tradeInProcessService.tradeInProcessContainer.jewelryMaterial === button.dataset.selection) {
         button.classList.add('selected');
       }
     }
@@ -33,7 +34,7 @@ export class TradeInRequestJewelryMaterialComponent implements OnInit {
 
   onNextClicked() {
     if (this.tradeInProcessService.tradeInProcessContainer.jewelryType.length > 0) {
-      this.router.navigate(['/trade-in/material']);
+      this.router.navigate(['/trade-in/piece']);
     } else {
         console.log('ded');
     }
