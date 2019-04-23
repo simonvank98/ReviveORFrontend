@@ -1,7 +1,7 @@
-import { ModalService } from '../../../shared/services/modal/modal.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { TradeInProcessService } from 'src/app/shared/services/trade-in-process/trade-in-process.service';
-import { Router } from '@angular/router';
+import {ModalService} from '../../../shared/services/modal-service/modal.service';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {TradeInProcessService} from 'src/app/features/trade-in-requests/trade-in-process.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-control-buttons',

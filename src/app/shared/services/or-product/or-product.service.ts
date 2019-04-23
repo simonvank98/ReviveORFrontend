@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { TempApiService } from '../../temp-api.service';
-import { OrProductModel } from './or-product.model';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {TempApiService} from '../api/temp-api.service';
+import {OrProductModel} from './or-product.model';
 
 @Injectable({
   providedIn: 'root'

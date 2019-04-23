@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
-export class TempApiService {
+export class ORApiService {
   constructor(private http: HttpClient) {
 
   }
@@ -26,7 +26,7 @@ export class TempApiService {
   private createURI(path: string, queryParameters: object): string {
     const queryString = this.createQueryString(queryParameters);
 
-    return `http://localhost:4200/assets/${path}.json`;
+    return `https://theoceanrepublic.com/api/v2/${path}${queryString}`;
   }
 
   private createRequestHeaders(): HttpHeaders {

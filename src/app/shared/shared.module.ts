@@ -7,9 +7,9 @@ import {AppRoutingModule} from '../app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PriceFormatDirective} from './directives/price-format.directive';
-import {ModalComponent} from './services/modal/modal.component';
+import {ModalComponent} from './services/modal-service/modal.component';
 import {TruncatePipe} from './pipes/truncate.pipe';
-import { TableComponent } from './components/table/table.component';
+import {TableComponent} from './components/table/table.component';
 
 
 @NgModule({

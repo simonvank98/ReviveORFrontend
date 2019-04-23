@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { TradeInProcessService } from '../../shared/services/trade-in-process/trade-in-process.service';
+import {TradeInProcessService} from './trade-in-process.service';
 
 @Component({
   selector: 'app-trade-in-request-page',

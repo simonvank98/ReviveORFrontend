@@ -1,9 +1,9 @@
-import { TradeInProcessService } from './../../../shared/services/trade-in-process/trade-in-process.service';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TempApiService } from 'src/app/shared/temp-api.service';
-import { OrProductModel } from 'src/app/shared/services/or-product/or-product.model';
-import { ORProductService } from 'src/app/shared/services/or-product/or-product.service';
+import {TradeInProcessService} from '../trade-in-process.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {TempApiService} from 'src/app/shared/services/api/temp-api.service';
+import {OrProductModel} from 'src/app/shared/services/or-product/or-product.model';
+import {ORProductService} from 'src/app/shared/services/or-product/or-product.service';
 
 @Component({
   selector: 'app-trade-in-request-jewelry-piece',

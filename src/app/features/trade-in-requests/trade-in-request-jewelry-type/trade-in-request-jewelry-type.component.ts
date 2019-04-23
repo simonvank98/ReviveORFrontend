@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { TradeInProcessService } from 'src/app/shared/services/trade-in-process/trade-in-process.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {TradeInProcessService} from 'src/app/features/trade-in-requests/trade-in-process.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-trade-in-request-jewelry-type',

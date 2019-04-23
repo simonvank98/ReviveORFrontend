@@ -1,5 +1,5 @@
-import { TradeInProcessContainerModel } from './trade-in-process-container.model';
-import { Injectable } from '@angular/core';
+import {TradeInProcessContainerModel} from './trade-in-process-container.model';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
