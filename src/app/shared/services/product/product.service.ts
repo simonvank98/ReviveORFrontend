@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {ProductModel} from '../models/product.model';
+import {ProductModel} from './product.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShopService {
+export class ProductService {
 
   private products: ProductModel[] = [
     {

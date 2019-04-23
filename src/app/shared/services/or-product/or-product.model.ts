@@ -1,4 +1,4 @@
-export class ORProduct {
+export class OrProductModel {
     constructor(
         public id?: number,
         public name?: string,

@@ -1,5 +1,3 @@
-import {ProductCategoryModel} from './product-category.model';
-import {ProductConditionModel} from './product-condition.model';
 import {ProductImageModel} from './product-image.model';
 
 export interface ProductModel {
