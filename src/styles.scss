@@ -17,3 +17,6 @@ table {
 .mat-button.bottom .mat-button-wrapper>* {
     vertical-align: bottom !important;
 }
+.mat-button-wrapper {
+    pointer-events: none;
+}

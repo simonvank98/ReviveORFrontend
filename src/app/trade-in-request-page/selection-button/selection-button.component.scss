@@ -1,26 +1,9 @@
-h3 {
-    margin: 10px 0px;
-}
-.grid {
-    width: 100%;
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
-}
-.grid > * {
-    width: 100%;
-}
-.grid > [style^='--aspect-ratio']::before {
-    content: "";
-    display: inline-block;
-    width: 1px;
-    height: 0;
-    padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
 .mat-button {
     padding: 0;
     overflow: hidden;
     border-radius: 3px;
+    background-size: cover;
+    background-position: center;
 }
 .mat-button span {
     margin-left: -1px;
@@ -53,10 +36,3 @@ h3 {
         border-radius: 0;
     }
 }
-.material {
-    background-size: cover;
-    background-position: center;
-}
-.material-gold { background-image: url("../../../assets/mat-gold.png"); }
-.material-silver { background-image: url("../../../assets/mat-silver.png"); }
-.material-other { background-image: url("../../../assets/mat-other.png"); }

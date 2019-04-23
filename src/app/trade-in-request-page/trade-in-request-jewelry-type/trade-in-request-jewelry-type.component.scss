@@ -43,9 +43,10 @@ h3 {
     }
 }
 .mat-button span {
+    pointer-events: none;
     margin-left: -1px;
     margin-bottom: -1px;
-    padding: 0px;
+    padding: 0px 5px;
     width: 100%;
     /* float: left; */
     display: inline-block;

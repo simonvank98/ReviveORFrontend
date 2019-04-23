@@ -2,9 +2,13 @@
     width: calc(100% - 32px);
     position: absolute;
     bottom: 16px;
-    overflow-y: auto;
     button {
         font-weight: bold;
+        margin-left: 10px;
+        &.main {
+            background-color: #3f51b5;
+            color: white;
+        }
     }
     .left {
         display: inline-block;

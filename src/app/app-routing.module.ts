@@ -17,6 +17,7 @@ import {AdminPermissionsOverviewComponent} from './admin/permissions/admin-permi
 import {AllTradeInRequestResolver} from './admin/trade-in-requests/all-trade-in-request.resolver';
 import {AdminTradeInRequestEditComponent} from './admin/trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
 import {TradeInRequestResolver} from './admin/trade-in-requests/trade-in-request.resolver';
+import { TradeInRequestJewelryPieceComponent } from './trade-in-request-page/trade-in-request-jewelry-piece/trade-in-request-jewelry-piece.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
     children: [
         { path: 'type', component: TradeInRequestJewelryTypeComponent, },
         { path: 'material', component: TradeInRequestJewelryMaterialComponent, },
+        { path: 'piece', component: TradeInRequestJewelryPieceComponent, },
     ]
   },
   { path: 'stories', component: StoryPageComponent },
