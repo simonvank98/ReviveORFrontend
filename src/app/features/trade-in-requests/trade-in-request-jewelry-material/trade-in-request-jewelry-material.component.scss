@@ -40,7 +40,7 @@ h3 {
         top: 0;
         left: 0;
         content: '';
-        background-image: url('../../../assets/icon-selected.svg');
+        background-image: url('../../../../assets/icon-selected.svg');
         background-size: 40%;
         background-repeat: no-repeat;
         background-position: center center;
@@ -57,6 +57,6 @@ h3 {
     background-size: cover;
     background-position: center;
 }
-.material-gold { background-image: url("../../../assets/mat-gold.png"); }
-.material-silver { background-image: url("../../../assets/mat-silver.png"); }
-.material-other { background-image: url("../../../assets/mat-other.png"); }
+.material-gold { background-image: url("../../../../assets/mat-gold.png"); }
+.material-silver { background-image: url("../../../../assets/mat-silver.png"); }
+.material-other { background-image: url("../../../../assets/mat-other.png"); }

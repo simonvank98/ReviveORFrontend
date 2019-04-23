@@ -1,29 +1,29 @@
-import { ControlButtonsComponent } from './trade-in-request-page/control-buttons/control-buttons.component';
+import { ControlButtonsComponent } from './features/trade-in-requests/control-buttons/control-buttons.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/header/header.component';
-import { FooterComponent } from './core/footer/footer.component';
-import { HomeComponent } from './core/home/home.component';
-import { ShopListComponent } from './shop/shop-list/shop-list.component';
-import { ShopItemComponent } from './shop/shop-list/shop-item/shop-item.component';
-import { ShopSearchComponent } from './shop/shop-search/shop-search.component';
-import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
-import { ShopComponent } from './shop/shop.component';
-import { AccountPageComponent } from './account-page/account-page.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
+import { HeaderComponent } from './features/core/header/header.component';
+import { FooterComponent } from './features/core/footer/footer.component';
+import { HomeComponent } from './features/core/home/home.component';
+import { ShopListComponent } from './features/shop/shop-list/shop-list.component';
+import { ShopItemComponent } from './features/shop/shop-list/shop-item/shop-item.component';
+import { ShopSearchComponent } from './features/shop/shop-search/shop-search.component';
+import { ShopDetailComponent } from './features/shop/shop-detail/shop-detail.component';
+import { ShopComponent } from './features/shop/shop.component';
+import { AccountPageComponent } from './features/accounts/account-page.component';
+import { ErrorPageComponent } from './shared/components/error-page/error-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { StoryPageComponent } from './story-page/story-page.component';
+import { StoryPageComponent } from './features/stories/story-page.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
-import { TradeInRequestPageComponent } from './trade-in-request-page/trade-in-request-page.component';
-import { StepperComponent } from './shared/stepper/stepper.component';
-import { TradeInRequestJewelryTypeComponent } from './trade-in-request-page/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
-import { TradeInRequestJewelryMaterialComponent } from './trade-in-request-page/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
+import { TradeInRequestPageComponent } from './features/trade-in-requests/trade-in-request-page.component';
+import { StepperComponent } from './shared/components/stepper/stepper.component';
+import { TradeInRequestJewelryTypeComponent } from './features/trade-in-requests/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
+import { TradeInRequestJewelryMaterialComponent } from './features/trade-in-requests/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
 import {AdminModule} from './admin/admin.module';
-import { TableComponent } from './shared/table/table.component';
+import { TableComponent } from './shared/components/table/table.component';
 
 @NgModule({
    declarations: [

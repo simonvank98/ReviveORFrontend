@@ -1,6 +1,6 @@
-import { ModalService } from './../../shared/modal/modal.service';
+import { ModalService } from '../../../shared/services/modal/modal.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { TradeInProcessService } from 'src/app/shared/services/trade-in-process.service';
+import { TradeInProcessService } from 'src/app/shared/services/trade-in-process/trade-in-process.service';
 import { Router } from '@angular/router';
 
 @Component({

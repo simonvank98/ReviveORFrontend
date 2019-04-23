@@ -1,4 +1,4 @@
-import { TradeInProcessContainer } from './../models/trade-in-process-container';
+import { TradeInProcessContainer } from './trade-in-process-container';
 import { Injectable } from '@angular/core';
 
 @Injectable({
