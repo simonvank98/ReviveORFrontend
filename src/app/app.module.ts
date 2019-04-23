@@ -14,7 +14,6 @@ import { ShopDetailComponent } from './features/shop/shop-detail/shop-detail.com
 import { ShopComponent } from './features/shop/shop.component';
 import { AccountPageComponent } from './features/accounts/account-page.component';
 import { ErrorPageComponent } from './shared/components/error-page/error-page.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { StoryPageComponent } from './features/stories/story-page.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
@@ -23,7 +22,6 @@ import { StepperComponent } from './shared/components/stepper/stepper.component'
 import { TradeInRequestJewelryTypeComponent } from './features/trade-in-requests/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
 import { TradeInRequestJewelryMaterialComponent } from './features/trade-in-requests/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
 import {AdminModule} from './admin/admin.module';
-import { TableComponent } from './shared/components/table/table.component';
 
 @NgModule({
    declarations: [
@@ -38,7 +36,6 @@ import { TableComponent } from './shared/components/table/table.component';
       ShopComponent,
       AccountPageComponent,
       ErrorPageComponent,
-      PageNotFoundComponent,
       TradeInRequestPageComponent,
       TradeInRequestJewelryTypeComponent,
       TradeInRequestJewelryMaterialComponent,
