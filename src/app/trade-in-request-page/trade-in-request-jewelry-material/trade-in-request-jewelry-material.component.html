@@ -1,29 +1,26 @@
 <h3>What type of material is your jewelry piece made out of?</h3>
 
 <div class="grid">
-    <button 
-        mat-button 
-        class="material material-gold" 
-        style="--aspect-ratio: 1/1;" 
-        (click)="onMaterialClicked($event, 'gold')"
-        [attr.data-selection]="'gold'">
-        <span class="name">Gold</span>
-    </button>
-    <button 
-        mat-button 
-        class="material material-silver" 
-        style="--aspect-ratio: 1/1;" 
-        (click)="onMaterialClicked($event, 'silver')"
-        [attr.data-selection]="'silver'">
-        <span class="name">Silver</span>
-    </button>
-    <button 
-        mat-button 
-        class="material material-other" 
-        style="--aspect-ratio: 1/1;" 
-        (click)="onMaterialClicked($event, 'other')"
-        [attr.data-selection]="'other'">
-        <span class="name">Other</span>
-    </button>
+    <app-selection-button
+        class="keep-aspect"
+        [value]="'gold'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryMaterial"
+        [text]="'Gold'"
+        [imageUrl]="'../../../assets/mat-gold.png'">
+    </app-selection-button>
+    <app-selection-button
+        class="keep-aspect"
+        [value]="'silver'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryMaterial"
+        [text]="'Silver'"
+        [imageUrl]="'../../../assets/mat-silver.png'">
+    </app-selection-button>
+    <app-selection-button
+        class="keep-aspect"
+        [value]="'other'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryMaterial"
+        [text]="'Other'"
+        [imageUrl]="'../../../assets/mat-other.png'">
+    </app-selection-button>
 </div>
 <app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>

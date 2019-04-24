@@ -28,6 +28,7 @@ import { TradeInRequestJewelryPieceComponent } from './trade-in-request-page/tra
 import { ApiService } from './shared/api.service';
 import { ORApiService } from './shared/or-api.service';
 import { TempApiService } from './shared/temp-api.service';
+import { SelectionButtonComponent } from './trade-in-request-page/selection-button/selection-button.component';
 
 @NgModule({
    declarations: [
@@ -47,6 +48,7 @@ import { TempApiService } from './shared/temp-api.service';
       TradeInRequestJewelryTypeComponent,
       TradeInRequestJewelryMaterialComponent,
       TradeInRequestJewelryPieceComponent,
+      SelectionButtonComponent,
       StoryPageComponent,
       StepperComponent,
       ControlButtonsComponent
