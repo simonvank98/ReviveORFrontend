@@ -15,6 +15,10 @@ export class TradeInRequestJewelryMaterialComponent implements OnInit {
 
   }
 
+  onButtonClicked(event) {
+      this.tradeInProcessService.setMaterial(event.value);
+  }
+
   onNextClicked() {
     if (this.tradeInProcessService.tradeInProcessContainer.jewelryMaterial.length > 0) {
       this.router.navigate(['/trade-in/piece']);

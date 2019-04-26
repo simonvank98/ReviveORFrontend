@@ -41,6 +41,18 @@ export class ORProduct {
             title?: string,
             url?: string
         }
-        ) {
+    ) {}
+
+    public isType(type: string) {
+        return this.category.name.toLowerCase() === type;
+    }
+
+    public isMaterial(material: string) {
+        const name = this.name.toLowerCase();
+        if (material === 'other') {
+            return !name.includes('gold') && !name.includes('silver');
+        } else {
+            return name.includes(material);
+        }
     }
 }

@@ -11,24 +11,10 @@ export class TradeInRequestJewelryTypeComponent implements OnInit {
 
   constructor(public tradeInProcessService: TradeInProcessService, private router: Router) { }
 
-  ngOnInit() {
-    const buttons = <NodeListOf<HTMLElement>>document.querySelectorAll('button');
-    for (let i = 0; i < buttons.length; i++) {
-      const button = <HTMLElement>buttons[i];
-      if (this.tradeInProcessService.tradeInProcessContainer.jewelryType === button.innerText) {
-        button.classList.add('selected');
-      }
-    }
-  }
+  ngOnInit() {}
 
-  onTypeClicked(event, type) {
-    this.tradeInProcessService.setType(type);
-    const buttons = <NodeListOf<HTMLElement>>document.querySelectorAll('button');
-    for (let i = 0; i < buttons.length; i++) {
-      const button = <HTMLElement>buttons[i];
-      button.classList.remove('selected');
-    }
-    event.srcElement.classList.add('selected');
+  onButtonClicked(event) {
+    this.tradeInProcessService.setType(event.value);
   }
 
   onNextClicked() {

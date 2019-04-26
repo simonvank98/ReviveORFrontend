@@ -16,6 +16,7 @@ export class TradeInProcessService {
 
   constructor() {
     this.emptyContainer = JSON.parse(JSON.stringify(this.tradeInProcessContainer));
+    localStorage.emptyContainer = JSON.stringify(this.emptyContainer);
   }
 
   stepForwards() {

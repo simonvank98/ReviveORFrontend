@@ -40,19 +40,13 @@ export class TradeInRequestJewelryPieceComponent implements OnInit {
     }
 
     filterProducts() {
-        for (let i = 0; i < this.allProducts.length; i++) {
-            if (this.tradeInProcessService.tradeInProcessContainer.jewelryMaterial === 'other') {
-                if (!this.allProducts[i].name.toLowerCase().includes('gold') &&
-                    !this.allProducts[i].name.toLowerCase().includes('silver')) {
-                    this.products.push(this.allProducts[i]);
-                }
-            } else {
-                if (this.allProducts[i].category.name === this.tradeInParameters.jewelryType &&
-                    this.allProducts[i].name.toLowerCase().includes(this.tradeInParameters.jewelryMaterial)) {
-                    this.products.push(this.allProducts[i]);
-                }
-            }
-        }
+        this.allProducts.forEach((product: ORProduct) => {
+            console.log(this.allProducts[0] instanceof ORProduct);
+            // if (product.isType(this.tradeInProcessService.tradeInProcessContainer.jewelryType) &&
+            //     product.isMaterial(this.tradeInProcessService.tradeInProcessContainer.jewelryMaterial)) {
+            //     this.products.push(product);
+            // }
+        });
     }
 
     onItemClicked(event, item) {

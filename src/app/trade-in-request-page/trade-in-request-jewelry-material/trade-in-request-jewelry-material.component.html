@@ -6,21 +6,24 @@
         [value]="'gold'"
         [match]="tradeInProcessService.tradeInProcessContainer.jewelryMaterial"
         [text]="'Gold'"
-        [imageUrl]="'../../../assets/mat-gold.png'">
+        [imageUrl]="'../../../assets/mat-gold.png'"
+        (buttonClicked)="onButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
         class="keep-aspect"
         [value]="'silver'"
         [match]="tradeInProcessService.tradeInProcessContainer.jewelryMaterial"
         [text]="'Silver'"
-        [imageUrl]="'../../../assets/mat-silver.png'">
+        [imageUrl]="'../../../assets/mat-silver.png'"
+        (buttonClicked)="onButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
         class="keep-aspect"
         [value]="'other'"
         [match]="tradeInProcessService.tradeInProcessContainer.jewelryMaterial"
         [text]="'Other'"
-        [imageUrl]="'../../../assets/mat-other.png'">
+        [imageUrl]="'../../../assets/mat-other.png'"
+        (buttonClicked)="onButtonClicked($event)">
     </app-selection-button>
 </div>
 <app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>

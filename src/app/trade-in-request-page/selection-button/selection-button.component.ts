@@ -22,8 +22,6 @@ export class SelectionButtonComponent implements OnInit, AfterViewInit {
         const buttons = <NodeListOf<HTMLElement>>document.querySelectorAll('.trade-in-process-selection-button');
         for (let i = 0; i < buttons.length; i++) {
             const button = <HTMLElement>buttons[i];
-            console.log(button.dataset.selection);
-            console.log(this.match);
             if (button.dataset.selection === this.match) {
                 button.classList.add('selected');
             }
@@ -37,6 +35,7 @@ export class SelectionButtonComponent implements OnInit, AfterViewInit {
             button.classList.remove('selected');
         }
         event.srcElement.classList.add('selected');
+        this.buttonClicked.emit({value: value});
     }
 
 }
