@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TradeInProcessService } from 'src/app/shared/services/trade-in-process.service';
 import { Router } from '@angular/router';
+import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-trade-in-request-jewelry-type',
@@ -9,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class TradeInRequestJewelryTypeComponent implements OnInit {
 
-  constructor(public tradeInProcessService: TradeInProcessService, private router: Router) { }
+  constructor(public tradeInProcessService: TradeInProcessService, 
+              private router: Router,
+              private snackBarService: SnackbarService) { }
 
   ngOnInit() {}
 
@@ -21,7 +24,7 @@ export class TradeInRequestJewelryTypeComponent implements OnInit {
     if (this.tradeInProcessService.tradeInProcessContainer.jewelryType.length > 0) {
       this.router.navigate(['/trade-in/material']);
     } else {
-        console.log('ded');
+      this.snackBarService.show('Please choose your jewelry type.');
     }
   }
 

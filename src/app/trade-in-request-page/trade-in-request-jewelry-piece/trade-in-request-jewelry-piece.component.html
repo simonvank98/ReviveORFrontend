@@ -3,13 +3,14 @@
 <div class="grid products-container">
     <ng-container *ngFor="let product of products">
 
-        <button 
-            [ngStyle]="{'background-image': 'url(' + product.thumbnail.url + ')'}"
-            mat-button class="material material-gold" 
-            style="--aspect-ratio: 1/1;" 
-            (click)="onItemClicked($event, product)">
-            <span class="name">{{ product.name | titlecase }}</span>
-        </button>
+        <app-selection-button
+            class="keep-aspect"
+            [value]="product"
+            [match]="product"
+            text="{{ product.name | titlecase }}"
+            [imageUrl]="product.thumbnail.url"
+            (buttonClicked)="onButtonClicked($event)">
+        </app-selection-button>
 
     </ng-container>
 </div>

@@ -25,5 +25,13 @@ export class StepperComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  nextStep() {
+    this.currentStep++;
+  }
+
+  previousStep() {
+    this.currentStep--;
+  }
 
 }

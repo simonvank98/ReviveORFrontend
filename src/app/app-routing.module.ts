@@ -18,6 +18,7 @@ import {AllTradeInRequestResolver} from './admin/trade-in-requests/all-trade-in-
 import {AdminTradeInRequestEditComponent} from './admin/trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
 import {TradeInRequestResolver} from './admin/trade-in-requests/trade-in-request.resolver';
 import { TradeInRequestJewelryPieceComponent } from './trade-in-request-page/trade-in-request-jewelry-piece/trade-in-request-jewelry-piece.component';
+import { TradeInRequestJewelryConditionComponent } from './trade-in-request-page/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
         { path: 'type', component: TradeInRequestJewelryTypeComponent, },
         { path: 'material', component: TradeInRequestJewelryMaterialComponent, },
         { path: 'piece', component: TradeInRequestJewelryPieceComponent, },
+        { path: 'condition', component: TradeInRequestJewelryConditionComponent, },
     ]
   },
   { path: 'stories', component: StoryPageComponent },

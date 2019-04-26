@@ -1,5 +1,6 @@
 import { TradeInProcessContainer } from './../models/trade-in-process-container';
 import { Injectable } from '@angular/core';
+import { ORProduct } from '../models/or-product';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,9 @@ export class TradeInProcessService {
 
   emptyContainer;
   tradeInProcessContainer: TradeInProcessContainer = {
-    currentScreen: 0,
     jewelryType: '',
     jewelryMaterial: '',
-    jewelryModel: {}
+    jewelryPiece: {}
   };
 
   constructor() {
@@ -19,14 +19,12 @@ export class TradeInProcessService {
     localStorage.emptyContainer = JSON.stringify(this.emptyContainer);
   }
 
-  stepForwards() {
-    this.tradeInProcessContainer.currentScreen += 1;
+  hasType() {
+    return this.tradeInProcessContainer.jewelryType.length > 0;
   }
 
-  stepBackwards() {
-      if (this.tradeInProcessContainer.currentScreen >= 0) {
-        this.tradeInProcessContainer.currentScreen -= 1;
-      }
+  getType() {
+    return this.tradeInProcessContainer.jewelryType;
   }
 
   setType(type: string) {
@@ -34,13 +32,30 @@ export class TradeInProcessService {
     this.storeContainer();
   }
 
+  hasMaterial() {
+    return this.tradeInProcessContainer.jewelryMaterial.length > 0;
+  }
+
+  getMaterial() {
+    return this.tradeInProcessContainer.jewelryMaterial;
+  }
+
   setMaterial(material: string) {
     this.tradeInProcessContainer.jewelryMaterial = material;
     this.storeContainer();
   }
 
-  setModel(model: any) { // TradeInRequestModel
-    this.tradeInProcessContainer.jewelryModel = model;
+  hasPiece() {
+    return Object.entries(this.tradeInProcessContainer.jewelryPiece).length !== 0 && 
+                          this.tradeInProcessContainer.jewelryPiece.constructor === Object;
+  }
+
+  getPiece() {
+    return this.tradeInProcessContainer.jewelryPiece;
+  }
+
+  setPiece(piece: ORProduct) {
+    this.tradeInProcessContainer.jewelryPiece = piece;
     this.storeContainer();
   }
 

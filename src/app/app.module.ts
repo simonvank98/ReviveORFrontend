@@ -29,6 +29,7 @@ import { ApiService } from './shared/api.service';
 import { ORApiService } from './shared/or-api.service';
 import { TempApiService } from './shared/temp-api.service';
 import { SelectionButtonComponent } from './trade-in-request-page/selection-button/selection-button.component';
+import { TradeInRequestJewelryConditionComponent } from './trade-in-request-page/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
 
 @NgModule({
    declarations: [
@@ -51,7 +52,8 @@ import { SelectionButtonComponent } from './trade-in-request-page/selection-butt
       SelectionButtonComponent,
       StoryPageComponent,
       StepperComponent,
-      ControlButtonsComponent
+      ControlButtonsComponent,
+      TradeInRequestJewelryConditionComponent
    ],
    imports: [
       BrowserModule,

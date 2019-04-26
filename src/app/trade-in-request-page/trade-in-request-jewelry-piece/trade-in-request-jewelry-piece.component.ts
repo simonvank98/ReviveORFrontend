@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { TradeInProcessService } from 'src/app/shared/services/trade-in-process.service';
 import { Router } from '@angular/router';
 import { ORProduct } from 'src/app/shared/models/or-product';
+import { MatSnackBar } from '@angular/material';
+import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-trade-in-request-jewelry-piece',
@@ -15,55 +17,31 @@ import { ORProduct } from 'src/app/shared/models/or-product';
 })
 export class TradeInRequestJewelryPieceComponent implements OnInit {
 
-    allProducts: ORProduct[];
     products: ORProduct[] = [];
-    tradeInParameters = this.tradeInProcessService.tradeInProcessContainer;
 
     constructor(private tradeInProcessService: TradeInProcessService,
                 private orProductService: ORProductService,
-                private router: Router) { }
+                private router: Router,
+                private snackBarService: SnackbarService) { }
 
     ngOnInit() {
-      const buttons = <NodeListOf<HTMLElement>>document.querySelectorAll('button');
-      for (let i = 0; i < buttons.length; i++) {
-        const button = <HTMLElement>buttons[i];
-        if (this.tradeInProcessService.tradeInProcessContainer.jewelryMaterial === button.innerText) {
-          button.classList.add('selected');
-        }
-      }
-      this.orProductService.getAll().subscribe(data => {
-        this.orProductService.getAll().subscribe(data => {
-            this.allProducts = data;
-            this.filterProducts();
-        });
-    });
+      const jewelryType = this.tradeInProcessService.getType();
+      const jewelryMaterial = this.tradeInProcessService.getMaterial();
+
+      this.orProductService.getAllWithTypeAndMaterial(jewelryType, jewelryMaterial).subscribe(data => {
+            this.products = data;
+      });
     }
 
-    filterProducts() {
-        this.allProducts.forEach((product: ORProduct) => {
-            console.log(this.allProducts[0] instanceof ORProduct);
-            // if (product.isType(this.tradeInProcessService.tradeInProcessContainer.jewelryType) &&
-            //     product.isMaterial(this.tradeInProcessService.tradeInProcessContainer.jewelryMaterial)) {
-            //     this.products.push(product);
-            // }
-        });
-    }
-
-    onItemClicked(event, item) {
-      this.tradeInProcessService.setModel(item);
-      const buttons = <NodeListOf<HTMLElement>>document.querySelectorAll('button');
-      for (let i = 0; i < buttons.length; i++) {
-        const button = <HTMLElement>buttons[i];
-        button.classList.remove('selected');
-      }
-      event.srcElement.classList.add('selected');
+    onButtonClicked(event) {
+      this.tradeInProcessService.setPiece(event.value);
     }
 
     onNextClicked() {
-      if (this.tradeInProcessService.tradeInProcessContainer.jewelryType.length > 0) {
+      if (this.tradeInProcessService.hasPiece()) {
         // this.router.navigate(['/trade-in/material']);
       } else {
-          console.log('ded');
+        this.snackBarService.show('Please choose your jewelry piece.');
       }
     }
 
