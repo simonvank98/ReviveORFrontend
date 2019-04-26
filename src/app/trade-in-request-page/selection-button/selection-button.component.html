@@ -1,8 +1,10 @@
-<button 
+<button
     mat-button
     class="trade-in-process-selection-button"
     [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}"
+    [ngClass]="{'selected': selected, 'no-bg': !hasBackground}"
     (click)="onSelectionButtonClicked($event, value)"
-    [attr.data-selection]="value">
+    [attr.data-selection]="value"
+    [attr.data-group]="group">
     <span class="name">{{ text }}</span>
 </button>

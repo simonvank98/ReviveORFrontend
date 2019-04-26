@@ -1,3 +1,103 @@
-<p>
-  trade-in-request-jewelry-condition works!
-</p>
+<h3>Select your jewelry piece options</h3>
+
+<ng-container *ngIf="properties.length > 0">
+    <h4>Properties</h4>
+    <div class="grid">
+        <app-selection-button
+        *ngFor="let property of properties"
+        class="keep-aspect"
+        [value]="property.value"
+        [match]="tradeInProcessService.tradeInProcessContainer.property"
+        [text]="property.value"
+        [group]="'group-0'"
+        (buttonClicked)="onPropertyButtonClicked($event)">
+        </app-selection-button>
+    </div>
+</ng-container>
+
+<h4>Is there a piece missing?</h4>
+
+<div class="grid">
+    <app-selection-button
+        class="keep-aspect"
+        [value]="false"
+        [match]="tradeInProcessService.tradeInProcessContainer.missing"
+        [text]="'No'"
+        [group]="'group-1'"
+        (buttonClicked)="onMissingButtonClicked($event)">
+    </app-selection-button>
+    <app-selection-button
+        class="keep-aspect"
+        [value]="true"
+        [match]="tradeInProcessService.tradeInProcessContainer.missing"
+        [text]="'Yes'"
+        [group]="'group-1'"
+        (buttonClicked)="onMissingButtonClicked($event)">
+    </app-selection-button>
+</div>
+
+<h4>Is the piece scratched?</h4>
+
+<div class="grid">
+    <app-selection-button
+        class="keep-aspect"
+        [value]="false"
+        [match]="tradeInProcessService.tradeInProcessContainer.scratched"
+        [text]="'No'"
+        [group]="'group-2'"
+        (buttonClicked)="onScratchedButtonClicked($event)">
+    </app-selection-button>
+    <app-selection-button
+        class="keep-aspect"
+        [value]="true"
+        [match]="tradeInProcessService.tradeInProcessContainer.scratched"
+        [text]="'Yes'"
+        [group]="'group-2'"
+        (buttonClicked)="onScratchedButtonClicked($event)">
+    </app-selection-button>
+</div>
+
+<h4>Is the piece bent?</h4>
+
+<div class="grid">
+    <app-selection-button
+        class="keep-aspect"
+        [value]="false"
+        [match]="tradeInProcessService.tradeInProcessContainer.bent"
+        [text]="'No'"
+        [group]="'group-3'"
+        (buttonClicked)="onBentButtonClicked($event)">
+    </app-selection-button>
+    <app-selection-button
+        class="keep-aspect"
+        [value]="true"
+        [match]="tradeInProcessService.tradeInProcessContainer.bent"
+        [text]="'Yes'"
+        [group]="'group-3'"
+        (buttonClicked)="onBentButtonClicked($event)">
+    </app-selection-button>
+</div>
+
+<h4>Is the piece broken?</h4>
+
+<div class="grid">
+    <app-selection-button
+        class="keep-aspect"
+        [value]="false"
+        [match]="tradeInProcessService.tradeInProcessContainer.broken"
+        [text]="'No'"
+        [group]="'group-4'"
+        (buttonClicked)="onBrokenButtonClicked($event)">
+    </app-selection-button>
+    <app-selection-button
+        class="keep-aspect"
+        [value]="true"
+        [match]="tradeInProcessService.tradeInProcessContainer.broken"
+        [text]="'Yes'"
+        [group]="'group-4'"
+        (buttonClicked)="onBrokenButtonClicked($event)">
+    </app-selection-button>
+</div>
+
+
+<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>

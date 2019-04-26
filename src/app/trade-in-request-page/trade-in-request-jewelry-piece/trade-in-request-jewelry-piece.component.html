@@ -6,9 +6,10 @@
         <app-selection-button
             class="keep-aspect"
             [value]="product"
-            [match]="product"
+            [match]="tradeInProcessService.tradeInProcessContainer.jewelryPiece"
             text="{{ product.name | titlecase }}"
             [imageUrl]="product.thumbnail.url"
+            [group]="group-1"
             (buttonClicked)="onButtonClicked($event)">
         </app-selection-button>
 

@@ -30,6 +30,8 @@ import { ORApiService } from './shared/or-api.service';
 import { TempApiService } from './shared/temp-api.service';
 import { SelectionButtonComponent } from './trade-in-request-page/selection-button/selection-button.component';
 import { TradeInRequestJewelryConditionComponent } from './trade-in-request-page/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
+import { TradeInRequestCreditIndicationComponent } from './trade-in-request-page/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
+import { CountUpModule } from 'countup.js-angular2';
 
 @NgModule({
    declarations: [
@@ -53,14 +55,16 @@ import { TradeInRequestJewelryConditionComponent } from './trade-in-request-page
       StoryPageComponent,
       StepperComponent,
       ControlButtonsComponent,
-      TradeInRequestJewelryConditionComponent
+      TradeInRequestJewelryConditionComponent,
+      TradeInRequestCreditIndicationComponent
    ],
    imports: [
       BrowserModule,
       BrowserAnimationsModule,
       SharedModule,
       AppRoutingModule,
-      AdminModule
+      AdminModule,
+      CountUpModule
    ],
    providers: [
        ApiService,

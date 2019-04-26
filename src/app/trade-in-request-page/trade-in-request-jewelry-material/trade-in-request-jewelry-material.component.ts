@@ -11,7 +11,7 @@ import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 })
 export class TradeInRequestJewelryMaterialComponent implements OnInit {
 
-  constructor(private tradeInProcessService: TradeInProcessService, 
+  constructor(private tradeInProcessService: TradeInProcessService,
               private router: Router,
               private snackBarService: SnackbarService) { }
 
