@@ -1,9 +1,7 @@
 import { TradeInProcessContainer } from './../../../features/trade-in-requests/trade-in-process-container.model';
 import { CreditIndicationModifierService } from './credit-indication-modifier/credit-indication-modifier.service';
-import { Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { CreditIndicationModifier } from './credit-indication-modifier/credit-indication-modifier';
-import { resolve } from 'url';
 import { ORProductService } from '../or-product/or-product.service';
 
 @Injectable({
@@ -16,14 +14,14 @@ export class CreditIndicationService {
 
     // Maps database property names to TradeInProcessContainer property names
     private dict = {
+        'Base': 'base',
         'Missing piece': 'missing',
         'Bent': 'bent',
         'Scratched': 'scratched',
         'Broken': 'broken'
     };
 
-    constructor(private creditIndicationModifierService: CreditIndicationModifierService,
-                private orProductService: ORProductService) { }
+    constructor(private creditIndicationModifierService: CreditIndicationModifierService) { }
 
     // Gets the current price indication of a trade in request using a TradeInProcessContainer
     public getIndication(tradeInProcessContainer: TradeInProcessContainer): Promise<{}> {
@@ -58,32 +56,28 @@ export class CreditIndicationService {
         const modifiers = [0];
 
         // Determine the new price of the selected property
-        jewelryPiece.properties.forEach(property => {
+        for (const property of jewelryPiece.properties) {
+            newPrice = property.price;
             if (property.value === this.tradeInProcessContainer.property) {
                 newPrice = property.price;
+                break;
             }
-        });
-
-        // If no properties were found then this means the property name is null,
-        // but there is still a price available in the first property
-        if (newPrice === 0) {
-            newPrice = jewelryPiece.properties[0].price;
         }
+
+        // Check if category matches, e.g. only 'Rings' modifiers should apply to a ring
+        this.creditIndicationModifiers = this.creditIndicationModifiers.filter(function(modifier) {
+            return modifier.category.name === category;
+        });
 
         // Determine the value of the indication
         this.creditIndicationModifiers.forEach(creditIndicationModifier => {
-            const criterionName = creditIndicationModifier.criterion.name;
-            // Check if category matches e.g. only 'Rings' modifiers should apply to a ring
-            if (creditIndicationModifier.category.name === category) {
-                // If the criterion name is 'Base', determine the base price of the jewelry piece
-                if (criterionName === 'Base') {
-                    basePrice = this.round(newPrice * (creditIndicationModifier.effect / 100));
-                } else {
-                    // If the modifier is active, calculate the amount to modify the final price by
-                    if (this.tradeInProcessContainer[this.dict[criterionName]]) {
-                        modifiers.push(this.round((newPrice * (creditIndicationModifier.effect / 100))));
-                    }
-                }
+            const criterionName = this.dict[creditIndicationModifier.criterion.name];
+            // If the criterion name is 'base', determine the base price of the jewelry piece
+            if (criterionName === 'base') {
+                basePrice = this.round(newPrice * (creditIndicationModifier.effect / 100));
+            } else if (this.tradeInProcessContainer[criterionName]) {
+                // If the modifier is active, calculate the amount to modify the final price by
+                modifiers.push(this.round((newPrice * (creditIndicationModifier.effect / 100))));
             }
         });
 
@@ -96,8 +90,11 @@ export class CreditIndicationService {
         console.log('Modifier subtractions: ' + modifiers);
         console.log('Indication: ' + indication);
 
-        // Return an object with the indication and the maximum value possible for this jewelry piece (basePrice)
-        return {indication: indication, basePrice: basePrice };
+        return {
+                indication: indication,
+                newPrice: newPrice,
+                basePrice: basePrice
+        };
     }
 
     // Rounds number to 2 decimal places
@@ -109,5 +106,4 @@ export class CreditIndicationService {
     private getSum(total, num) {
         return total + num;
     }
-
 }
