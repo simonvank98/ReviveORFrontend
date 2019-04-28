@@ -1,5 +1,5 @@
+import { TradeInProcessService } from './../trade-in-process.service';
 import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
-import { TradeInProcessService } from './../../shared/services/trade-in-process.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 

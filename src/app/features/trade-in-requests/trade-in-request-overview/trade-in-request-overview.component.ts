@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TradeInProcessService } from 'src/app/shared/services/trade-in-process.service';
 import { Router } from '@angular/router';
+import { TradeInProcessService } from '../trade-in-process.service';
 
 @Component({
     selector: 'app-trade-in-request-overview',

@@ -1,4 +1,3 @@
-import { TradeInProcessService } from './../services/trade-in-process.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
