@@ -1,4 +1,4 @@
-import { CreditIndicationModifier } from './../../../models/credit-indication-modifier';
+import { CreditIndicationModifier } from './credit-indication-modifier';
 import { TempApiService } from '../../api/temp-api.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
