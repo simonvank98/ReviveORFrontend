@@ -1,45 +1,36 @@
-import {Component, OnInit} from '@angular/core';
-import {TradeInProcessService} from 'src/app/features/trade-in-requests/trade-in-process.service';
-import {Router} from '@angular/router';
+import { TradeInProcessService } from './../trade-in-process.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 
 @Component({
-  selector: 'app-trade-in-request-jewelry-type',
-  templateUrl: './trade-in-request-jewelry-type.component.html',
-  styleUrls: ['./trade-in-request-jewelry-type.component.scss']
+    selector: 'app-trade-in-request-jewelry-type',
+    templateUrl: './trade-in-request-jewelry-type.component.html',
+    styleUrls: ['./trade-in-request-jewelry-type.component.scss']
 })
 export class TradeInRequestJewelryTypeComponent implements OnInit {
 
-  constructor(public tradeInProcessService: TradeInProcessService, private router: Router) { }
+    constructor(public tradeInProcessService: TradeInProcessService,
+        private router: Router,
+        private snackBarService: SnackbarService) { }
 
-  ngOnInit() {
-    const buttons = <NodeListOf<HTMLElement>>document.querySelectorAll('button');
-    for (let i = 0; i < buttons.length; i++) {
-      const button = <HTMLElement>buttons[i];
-      if (this.tradeInProcessService.tradeInProcessContainer.jewelryType === button.innerText) {
-        button.classList.add('selected');
-      }
+    ngOnInit() {
+        this.tradeInProcessService.setCurrentStep(0);
     }
-  }
 
-  onTypeClicked(event, type) {
-    this.tradeInProcessService.setType(type);
-    const buttons = <NodeListOf<HTMLElement>>document.querySelectorAll('button');
-    for (let i = 0; i < buttons.length; i++) {
-      const button = <HTMLElement>buttons[i];
-      button.classList.remove('selected');
+    onButtonClicked(event) {
+        this.tradeInProcessService.setType(event.value);
     }
-    event.srcElement.classList.add('selected');
-  }
 
-  onNextClicked() {
-    if (this.tradeInProcessService.tradeInProcessContainer.jewelryType.length > 0) {
-      this.router.navigate(['/trade-in/material']);
-    } else {
-        console.log('ded');
+    onNextClicked() {
+        if (this.tradeInProcessService.tradeInProcessContainer.jewelryType.length > 0) {
+            this.router.navigate(['/trade-in/material']);
+        } else {
+            this.snackBarService.show('Please choose your jewelry type.');
+        }
     }
-  }
 
-  onBackClicked() {
+    onBackClicked() {
 
-  }
+    }
 }

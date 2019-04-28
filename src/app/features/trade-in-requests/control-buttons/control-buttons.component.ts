@@ -33,6 +33,7 @@ export class ControlButtonsComponent implements OnInit {
     dialog.addButton('No', () => {} );
     dialog.addButton('Yes', () => {
         this.tradeInProcessService.reset();
+        this.router.navigate(['/trade-in']);
     });
     this.modalService.showDialog(dialog);
   }

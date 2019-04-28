@@ -20,3 +20,6 @@ table {
 .mat-button-wrapper {
     pointer-events: none;
 }
+.indication-spinner.mat-progress-spinner circle {
+    transition: stroke-dashoffset 1500ms ease-in-out !important;
+}

@@ -1,3 +1,4 @@
+import { CountUpModule } from 'countup.js-angular2';
 import {ControlButtonsComponent} from './features/trade-in-requests/control-buttons/control-buttons.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -26,6 +27,10 @@ import {ApiService} from './shared/services/api/api.service';
 import {ORApiService} from './shared/services/api/or-api.service';
 import {TempApiService} from './shared/services/api/temp-api.service';
 import {TradeInRequestJewelryPieceComponent} from './features/trade-in-requests/trade-in-request-jewelry-piece/trade-in-request-jewelry-piece.component';
+import { SelectionButtonComponent } from './features/trade-in-requests/selection-button/selection-button.component';
+import { TradeInRequestJewelryConditionComponent } from './features/trade-in-requests/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
+import { TradeInRequestCreditIndicationComponent } from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
+import { TradeInRequestOverviewComponent } from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
 
 @NgModule({
    declarations: [
@@ -44,16 +49,21 @@ import {TradeInRequestJewelryPieceComponent} from './features/trade-in-requests/
       TradeInRequestJewelryTypeComponent,
       TradeInRequestJewelryMaterialComponent,
       TradeInRequestJewelryPieceComponent,
+      SelectionButtonComponent,
       StoryPageComponent,
       StepperComponent,
-      ControlButtonsComponent
+      ControlButtonsComponent,
+      TradeInRequestJewelryConditionComponent,
+      TradeInRequestCreditIndicationComponent,
+      TradeInRequestOverviewComponent
    ],
    imports: [
       BrowserModule,
       BrowserAnimationsModule,
       SharedModule,
       AppRoutingModule,
-      AdminModule
+      AdminModule,
+      CountUpModule
    ],
    providers: [
        ApiService,
