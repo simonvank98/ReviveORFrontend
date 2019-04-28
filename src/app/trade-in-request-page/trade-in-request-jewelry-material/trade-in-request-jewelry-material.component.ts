@@ -16,7 +16,7 @@ export class TradeInRequestJewelryMaterialComponent implements OnInit {
               private snackBarService: SnackbarService) { }
 
   ngOnInit() {
-
+    this.tradeInProcessService.setCurrentStep(0);
   }
 
   onButtonClicked(event) {

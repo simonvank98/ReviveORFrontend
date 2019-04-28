@@ -9,6 +9,7 @@ export class TradeInProcessService {
 
     emptyContainer;
     tradeInProcessContainer: TradeInProcessContainer = {
+        currentStep: 0,
         jewelryType: '',
         jewelryMaterial: '',
         jewelryPiece: {},
@@ -28,8 +29,18 @@ export class TradeInProcessService {
         }
     }
 
+    setCurrentStep(step) {
+        setTimeout(() => {
+            this.tradeInProcessContainer.currentStep = step;
+            this.storeContainer();
+        });
+    }
+
     hasCondition() {
         return this.hasMissing() && this.hasScratched && this.hasBent && this.hasBroken();
+    }
+    getCondition() {
+        return {'Missing': this.getMissing(), 'Scratched': this.getScratched(), 'Bent': this.getBent(), 'Broken': this.getBroken()};
     }
 
     hasProperty() { return this.tradeInProcessContainer.property.length > 0; }

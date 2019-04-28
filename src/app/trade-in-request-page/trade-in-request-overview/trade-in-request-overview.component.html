@@ -1,0 +1,27 @@
+<h3>Trade-in overview</h3>
+<div class="grid">
+    <div>
+        <div class="label">Jewelry piece name</div>
+        <div class="value">{{ tradeInProcessService.getPiece().name | titlecase }}</div>
+        <div class="label">Jewelry material</div>
+        <div class="value">{{ tradeInProcessService.getMaterial() | titlecase }}</div>
+        <ng-container *ngIf="tradeInProcessService.hasProperty()">
+            <div class="label">Property</div>
+            <div class="value">{{ tradeInProcessService.getProperty() | titlecase  }}</div>
+        </ng-container>
+    </div>
+    <div>
+        <app-table
+         [search]="false"
+         [pagination]="false"
+         [sortable]="false"
+         [headers]="['Property', 'Value']"
+         [models]="conditionModels"
+         [attributes]="['name', 'value']"
+         [formatters]="formatters">
+
+        </app-table>
+    </div>
+</div>
+
+<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>

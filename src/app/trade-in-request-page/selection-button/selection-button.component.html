@@ -1,7 +1,7 @@
 <button
     mat-button
-    class="trade-in-process-selection-button"
-    [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}"
+    class="trade-in-process-selection-button mat-elevation-z5"
+    [style.background-image]="imageUrl === undefined ? 'none' : 'url('+imageUrl+')'"
     [ngClass]="{'selected': selected, 'no-bg': !hasBackground}"
     (click)="onSelectionButtonClicked($event, value)"
     [attr.data-selection]="value"

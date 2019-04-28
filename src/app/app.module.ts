@@ -32,6 +32,7 @@ import { SelectionButtonComponent } from './trade-in-request-page/selection-butt
 import { TradeInRequestJewelryConditionComponent } from './trade-in-request-page/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
 import { TradeInRequestCreditIndicationComponent } from './trade-in-request-page/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
 import { CountUpModule } from 'countup.js-angular2';
+import { TradeInRequestOverviewComponent } from './trade-in-request-page/trade-in-request-overview/trade-in-request-overview.component';
 
 @NgModule({
    declarations: [
@@ -56,7 +57,8 @@ import { CountUpModule } from 'countup.js-angular2';
       StepperComponent,
       ControlButtonsComponent,
       TradeInRequestJewelryConditionComponent,
-      TradeInRequestCreditIndicationComponent
+      TradeInRequestCreditIndicationComponent,
+      TradeInRequestOverviewComponent
    ],
    imports: [
       BrowserModule,

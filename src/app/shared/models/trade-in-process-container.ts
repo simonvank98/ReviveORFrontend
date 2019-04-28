@@ -1,6 +1,7 @@
 import { ORProduct } from './or-product';
 
 export interface TradeInProcessContainer {
+    currentStep: number;
     jewelryType: string;
     jewelryMaterial: string;
     jewelryPiece: ORProduct;
