@@ -1,46 +1,43 @@
-export class OrProductModel {
-    constructor(
-        public id?: number,
-        public name?: string,
-        public position?: number,
-        public weight?: number,
-        public url?: string,
-        public description?: string,
+export interface ORProduct {
+    id?: number;
+    name?: string;
+    position?: number;
+    weight?: number;
+    url?: string;
+    description?: string;
 
-        public category?: {
-            id?: number,
-            name?: string
-        },
+    category?: {
+        id?: number,
+        name?: string
+    };
 
-        public images?: [{
-            alt?: string,
-            filename?: string,
-            height?: number,
-            width?: number,
-            mimetype?: string,
-            path?: string,
-            title?: string,
-            url?: string
-        }],
+    images?: [{
+        alt?: string,
+        filename?: string,
+        height?: number,
+        width?: number,
+        mimetype?: string,
+        path?: string,
+        title?: string,
+        url?: string
+    }];
 
-        public properties?: [{
-            id?: number,
-            name?: string,
-            price?: number,
-            supply?: number,
-            value?: string
-        }],
+    properties?: [{
+        id?: number,
+        name?: string,
+        price?: number,
+        supply?: number,
+        value?: string
+    }];
 
-        public thumbnail?: {
-            alt?: string,
-            filename?: string,
-            height?: number,
-            width?: number,
-            mimetype?: string,
-            path?: string,
-            title?: string,
-            url?: string
-        }
-        ) {
-    }
+    thumbnail?: {
+        alt?: string,
+        filename?: string,
+        height?: number,
+        width?: number,
+        mimetype?: string,
+        path?: string,
+        title?: string,
+        url?: string
+    };
 }

@@ -1,7 +1,7 @@
 .wrapper {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    height: 500px;
+    // display: grid;
+    // grid-template-columns: 3fr 1fr;
+    // height: 500px;
 }
 .trade-in-process-container {
     background-color: #ccc;
@@ -12,11 +12,16 @@
 }
 .stepper-container {
     height: 100%;
-    padding: 20px;
+    margin: 20px 0;
+    // padding: 20px;
 }
 .breadcrumbs {
     margin-bottom: 10px;
     margin-top: 10px;
+}
+.left {
+    padding-bottom: 85px;
+    position: relative;
 }
 mat-card {
     padding-bottom: 85px;

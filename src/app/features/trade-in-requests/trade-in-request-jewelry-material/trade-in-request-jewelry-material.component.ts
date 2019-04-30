@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {TradeInProcessService} from 'src/app/features/trade-in-requests/trade-in-process.service';
+import { TradeInProcessService } from 'src/app/features/trade-in-requests/trade-in-process.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-trade-in-request-jewelry-material',
@@ -9,34 +11,23 @@ import {TradeInProcessService} from 'src/app/features/trade-in-requests/trade-in
 })
 export class TradeInRequestJewelryMaterialComponent implements OnInit {
 
-  constructor(private tradeInProcessService: TradeInProcessService, private router: Router) { }
+  constructor(private tradeInProcessService: TradeInProcessService,
+              private router: Router,
+              private snackBarService: SnackbarService) { }
 
   ngOnInit() {
-    const buttons = <NodeListOf<HTMLElement>>document.querySelectorAll('button');
-    for (let i = 0; i < buttons.length; i++) {
-      const button = <HTMLElement>buttons[i];
-      console.log(this.tradeInProcessService.tradeInProcessContainer.jewelryMaterial);
-      if (this.tradeInProcessService.tradeInProcessContainer.jewelryMaterial === button.dataset.selection) {
-        button.classList.add('selected');
-      }
-    }
+    this.tradeInProcessService.setCurrentStep(0);
   }
 
-  onMaterialClicked(event, type) {
-    this.tradeInProcessService.setMaterial(type);
-    const buttons = <NodeListOf<HTMLElement>>document.querySelectorAll('button');
-    for (let i = 0; i < buttons.length; i++) {
-      const button = <HTMLElement>buttons[i];
-      button.classList.remove('selected');
-    }
-    event.srcElement.classList.add('selected');
+  onButtonClicked(event) {
+      this.tradeInProcessService.setMaterial(event.value);
   }
 
   onNextClicked() {
-    if (this.tradeInProcessService.tradeInProcessContainer.jewelryType.length > 0) {
+    if (this.tradeInProcessService.hasMaterial()) {
       this.router.navigate(['/trade-in/piece']);
     } else {
-        console.log('ded');
+        this.snackBarService.show('Please choose your jewelry material type.');
     }
   }
 
