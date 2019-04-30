@@ -18,6 +18,10 @@ import {AllTradeInRequestResolver} from './admin/features/trade-in-requests/all-
 import {AdminTradeInRequestEditComponent} from './admin/features/trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
 import {TradeInRequestResolver} from './admin/features/trade-in-requests/trade-in-request.resolver';
 import { TradeInRequestJewelryPieceComponent } from './features/trade-in-requests/trade-in-request-jewelry-piece/trade-in-request-jewelry-piece.component';
+import {TradeInRequestFinalizationComponent} from './features/trade-in-requests/trade-in-request-finalization/trade-in-request-finalization.component';
+import { TradeInRequestJewelryConditionComponent } from './features/trade-in-requests/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
+import { TradeInRequestCreditIndicationComponent } from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
+import { TradeInRequestOverviewComponent } from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +33,10 @@ const routes: Routes = [
         { path: 'type', component: TradeInRequestJewelryTypeComponent, },
         { path: 'material', component: TradeInRequestJewelryMaterialComponent, },
         { path: 'piece', component: TradeInRequestJewelryPieceComponent, },
+        { path: 'condition', component: TradeInRequestJewelryConditionComponent, },
+        { path: 'indication', component: TradeInRequestCreditIndicationComponent, },
+        { path: 'overview', component: TradeInRequestOverviewComponent, },
+        { path: 'finalize', component: TradeInRequestFinalizationComponent, },
     ]
   },
   { path: 'stories', component: StoryPageComponent },

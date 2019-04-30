@@ -10,15 +10,21 @@ import {PriceFormatDirective} from './directives/price-format.directive';
 import {ModalComponent} from './services/modal-service/modal.component';
 import {TruncatePipe} from './pipes/truncate.pipe';
 import {TableComponent} from './components/table/table.component';
+import {FileUploadInputForSafeDirective} from './components/mass-file-uploader/fileUploadInputForSafe.directive';
+import { MassFileUploaderComponent } from './components/mass-file-uploader/mass-file-uploader.component';
+import {FileSelectionComponent} from './components/file-selection/file-selection.component';
 
 
 @NgModule({
   declarations: [
       SafePipe,
       PriceFormatDirective,
+      FileUploadInputForSafeDirective,
       ModalComponent,
       TruncatePipe,
-      TableComponent
+      TableComponent,
+      MassFileUploaderComponent,
+      FileSelectionComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +43,9 @@ import {TableComponent} from './components/table/table.component';
       FormsModule,
       ModalComponent,
       PriceFormatDirective,
-      TableComponent
+      FileUploadInputForSafeDirective,
+      TableComponent,
+      MassFileUploaderComponent
   ],
   entryComponents: [
     ModalComponent

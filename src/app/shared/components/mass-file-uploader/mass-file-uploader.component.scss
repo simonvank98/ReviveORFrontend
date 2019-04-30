@@ -1,0 +1,38 @@
+.dropzone {
+    width: 100%;
+    margin-top: 15px;
+    padding: 80px 120px;
+    text-align: center;
+    line-height: 2em;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+
+
+    &.hovered {
+        border-color: blue;
+    }
+}
+
+.queue-wrapper {
+    margin: 10px 0;
+}
+
+.browse-only-wrapper {
+    margin: 10px;
+}
+
+
+
+p {
+    margin-top: 0;
+}
+
+#gallery {
+    margin-top: 10px;
+}
+#gallery img {
+    width: 150px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+}

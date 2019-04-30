@@ -1,0 +1,28 @@
+<div class="dropzone"
+     *ngIf="dragAndDropEnabled"
+     [fileUploadInputForSafe]="fileUploadQueue"
+     (filesHovered)="onFilesHovered($event)"
+     [ngClass]="{'hovered': dropzoneActive}">
+    <p>Drag & drop images here</p>
+    <p>or</p>
+    <app-file-selection [allowedExtensions]="allowedImageExtensions"
+                        (filesSelected)="onFilesSelected($event)"></app-file-selection>
+</div>
+
+<div *ngIf="!dragAndDropEnabled && browseButtonVisible" class="browse-only-wrapper">
+    <app-file-selection [allowedExtensions]="allowedImageExtensions"
+                        (filesSelected)="onFilesSelected($event)"></app-file-selection>
+</div>
+
+
+<mat-card class="queue-wrapper mat-elevation-z3">
+    <mat-file-upload-queue #fileUploadQueue
+                           [fileAlias]="'file'"
+                           httpUrl='http://revapi.local/api/v1/images'>
+
+        <ng-container>
+            <mat-file-upload [file]="file" [id]="i"
+                             *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+        </ng-container>
+    </mat-file-upload-queue>
+</mat-card>
