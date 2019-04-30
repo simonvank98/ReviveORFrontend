@@ -1,6 +1,7 @@
 <div class="dropzone"
      *ngIf="dragAndDropEnabled"
-     [fileUploadInputForSafe]="fileUploadQueue"
+     fileDragAndDrop
+     (filesDropped)="onFilesSelected($event)"
      (filesHovered)="onFilesHovered($event)"
      [ngClass]="{'hovered': dropzoneActive}">
     <p>Drag & drop images here</p>

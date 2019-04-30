@@ -10,50 +10,53 @@ import {PriceFormatDirective} from './directives/price-format.directive';
 import {ModalComponent} from './services/modal-service/modal.component';
 import {TruncatePipe} from './pipes/truncate.pipe';
 import {TableComponent} from './components/table/table.component';
-import {FileUploadInputForSafeDirective} from './components/mass-file-uploader/fileUploadInputForSafe.directive';
-import { MassFileUploaderComponent } from './components/mass-file-uploader/mass-file-uploader.component';
+import {MassFileUploaderComponent} from './components/mass-file-uploader/mass-file-uploader.component';
 import {FileSelectionComponent} from './components/file-selection/file-selection.component';
-
+import {FileDragAndDropDirective} from './components/mass-file-uploader/fileDragAndDrop.directive';
+import { FileUploadQueueComponent } from './components/file-upload-queue/file-upload-queue.component';
+import { FileUploadControlBarComponent } from './components/file-upload-control-bar/file-upload-control-bar.component';
 
 @NgModule({
-  declarations: [
-      SafePipe,
-      PriceFormatDirective,
-      FileUploadInputForSafeDirective,
-      ModalComponent,
-      TruncatePipe,
-      TableComponent,
-      MassFileUploaderComponent,
-      FileSelectionComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    MaterialModule
-  ],
-  exports: [
-      MaterialModule,
-      AppRoutingModule,
-      SafePipe,
-      TruncatePipe,
-      ReactiveFormsModule,
-      FormsModule,
-      ModalComponent,
-      PriceFormatDirective,
-      FileUploadInputForSafeDirective,
-      TableComponent,
-      MassFileUploaderComponent
-  ],
-  entryComponents: [
-    ModalComponent
-  ],
-  providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'nl-NL'},
+    declarations: [
+        SafePipe,
+        PriceFormatDirective,
+        FileDragAndDropDirective,
+        ModalComponent,
+        TruncatePipe,
+        TableComponent,
+        MassFileUploaderComponent,
+        FileSelectionComponent,
+        FileUploadQueueComponent,
+        FileUploadControlBarComponent
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        MaterialModule
+    ],
+    exports: [
+        MaterialModule,
+        AppRoutingModule,
+        SafePipe,
+        TruncatePipe,
+        ReactiveFormsModule,
+        FormsModule,
+        ModalComponent,
+        PriceFormatDirective,
+        FileDragAndDropDirective,
+        TableComponent,
+        MassFileUploaderComponent
+    ],
+    entryComponents: [
+        ModalComponent
+    ],
+    providers: [
+        {provide: MAT_DATE_LOCALE, useValue: 'nl-NL'},
 
-  ]
+    ]
 })
 export class SharedModule {
 }

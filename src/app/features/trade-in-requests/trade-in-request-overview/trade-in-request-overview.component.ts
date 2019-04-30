@@ -23,7 +23,7 @@ export class TradeInRequestOverviewComponent implements OnInit {
     }
 
     onNextClicked() {
-
+        this.router.navigate(['/trade-in/finalize']);
     }
 
     onBackClicked() {
