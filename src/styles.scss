@@ -1,9 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: Caslon;
+    src: url(assets/adobe-caslon-semibold.otf);
+}
+
+@font-face {
+    font-family: Neuzeit;
+    src: url(assets/neuzeit-grotesk-regular.otf);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Neuzeit, sans-serif;
 }
 html, body {
   height: 100%;
