@@ -24,7 +24,7 @@
     </ng-container>
 
     <ng-container *ngIf="horizontal">
-        <div class="stepper-container horizontal mat-elevation-z5">
+        <div class="stepper-container horizontal">
             <div class="step-horizontal"
             *ngFor="let step of steps; let i = index"
             [ngClass]="{'active' : currentStep >= i}">
