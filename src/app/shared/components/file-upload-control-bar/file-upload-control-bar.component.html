@@ -1,4 +1,4 @@
-<mat-card>
+<div class="control-wrapper">
     <span>{{file.name}} ({{file.size | bytes}})</span>
     <section class="progress-bar">
         <mat-progress-bar [value]="progressPercentage" [color]="hasErrors ? 'warn' : null"></mat-progress-bar>
@@ -8,4 +8,4 @@
     </section>
     <span>{{progressPercentage}}%</span> |
     <span> {{uploadedBytes | bytes}} of {{totalBytes | bytes}}</span>
-</mat-card>
+</div>

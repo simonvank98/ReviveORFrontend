@@ -10,8 +10,8 @@ import {SharedModule} from '../shared/shared.module';
 import {AdminTradeInRequestOverviewComponent} from './features/trade-in-requests/admin-trade-in-request-overview/admin-trade-in-request-overview.component';
 import {AdminCreditIndicationsOverviewComponent} from './features/credit-indications/admin-credit-indications-overview/admin-credit-indications-overview.component';
 import { AdminTradeInRequestEditComponent } from './features/trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
-import {AllTradeInRequestResolver} from './features/trade-in-requests/all-trade-in-request.resolver';
-import {TradeInRequestResolver} from './features/trade-in-requests/trade-in-request.resolver';
+import {AllTradeInRequestResolver} from './features/trade-in-requests/resolvers/all-trade-in-request.resolver';
+import {TradeInRequestResolver} from './features/trade-in-requests/resolvers/trade-in-request.resolver';
 
 @NgModule({
   imports: [

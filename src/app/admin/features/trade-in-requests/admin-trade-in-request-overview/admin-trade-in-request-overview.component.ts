@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AdminTradeInRequestOverviewComponent implements OnInit {
   models = [];
   headers = ['Request no.', 'Customer', 'Request date', 'Status', 'Story'];
-  attributes = ['requestId', 'userId', 'jewelryName', 'storyTitle', 'storyContent'];
+  attributes = ['requestId', 'id', 'jewelryName', 'storyTitle', 'storyContent'];
 
   constructor(private route: ActivatedRoute,
               private router: Router) { }

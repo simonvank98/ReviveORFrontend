@@ -1,23 +1,4 @@
-<div class="dropzone"
-     *ngIf="dragAndDropEnabled"
-     fileDragAndDrop
-     (filesDropped)="onFilesSelected($event)"
-     (filesHovered)="onFilesHovered($event)"
-     [ngClass]="{'hovered': dropzoneActive}">
-    <p>Drag & drop images here</p>
-    <p>or</p>
-    <app-file-selection
-        [allowedExtensions]="allowedImageExtensions"
-        (filesSelected)="onFilesSelected($event)">
-    </app-file-selection>
-</div>
-
-<div *ngIf="!dragAndDropEnabled && browseButtonVisible" class="browse-only-wrapper">
-    <app-file-selection
-        [allowedExtensions]="allowedImageExtensions"
-        (filesSelected)="onFilesSelected($event)">
-    </app-file-selection>
-</div>
+<app-file-dropzone (filesDropped)="onFilesSelected($event)" [allowedExtensions]="allowedExtensions"></app-file-dropzone>
 
 <mat-card class="queue-wrapper mat-elevation-z3">
     <app-file-upload-control-bar

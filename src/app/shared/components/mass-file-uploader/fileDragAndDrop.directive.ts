@@ -22,7 +22,6 @@ export class FileDragAndDropDirective {
     @HostListener('drop', ['$event'])
     public onDrop(event) {
         const files = event.dataTransfer.files;
-        console.log('onDrop', files);
         if (files) {
             this.filesDropped.emit(files);
             this.filesHovered.emit(false);

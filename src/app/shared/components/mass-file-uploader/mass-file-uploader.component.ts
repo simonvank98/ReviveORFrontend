@@ -10,19 +10,7 @@ import {FileUploader} from './file-uploader';
 export class MassFileUploaderComponent implements OnInit, FileUploader {
 
     @Input()
-    dragAndDropEnabled = true;
-
-    @Input()
-    browseButtonVisible = true;
-
-    @Input()
-    allowedImageExtensions = ['.png', '.jpg', '.jpeg', '.bmp'];
-
-    /*    @Input()
-        uploadImmediately = true;
-
-        @Input()
-        showProgressBars = true;*/
+    allowedExtensions = ['.png', '.jpg', '.jpeg', '.bmp'];
 
     @Input()
     removeUploadFromQueueOnSuccess = false;
@@ -49,18 +37,19 @@ export class MassFileUploaderComponent implements OnInit, FileUploader {
     @Output()
     fileUploaded = new EventEmitter();
 
+    /*    @Input()
+        uploadImmediately = true;
+
+        @Input()
+        showProgressBars = true;*/
+
 
     files: File[] = [];
-    dropzoneActive = false;
 
     constructor() {
     }
 
     ngOnInit() {
-        if (!this.dragAndDropEnabled && !this.browseButtonVisible) {
-            this.dragAndDropEnabled = true;
-            this.browseButtonVisible = true;
-        }
     }
 
     onFilesSelected(files: FileList) {
@@ -73,9 +62,6 @@ export class MassFileUploaderComponent implements OnInit, FileUploader {
         }
     }
 
-    onFilesHovered(event) {
-        this.dropzoneActive = event;
-    }
 
     onFileUploadSuccess(fileIndex, response) {
         console.log('fileIndex: ', fileIndex);

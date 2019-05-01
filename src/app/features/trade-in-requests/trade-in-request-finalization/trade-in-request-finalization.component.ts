@@ -11,6 +11,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class TradeInRequestFinalizationComponent implements OnInit {
 
     formGroup: FormGroup;
+    allowedImageExtensions = ['.png', '.jpg', '.jpeg', '.bmp'];
 
     constructor(private tradeInProcessService: TradeInProcessService, private router: Router, private formBuilder: FormBuilder) {
     }

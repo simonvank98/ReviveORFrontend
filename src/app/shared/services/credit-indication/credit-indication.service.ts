@@ -72,9 +72,12 @@ export class CreditIndicationService {
         // Determine the value of the indication
         this.creditIndicationModifiers.forEach(creditIndicationModifier => {
             const criterionName = this.dict[creditIndicationModifier.criterion.name];
+            console.log('pizza2', creditIndicationModifier);
+            console.log('pizza3', criterionName);
             // If the criterion name is 'base', determine the base price of the jewelry piece
             if (criterionName === 'base') {
                 basePrice = this.round(newPrice * (creditIndicationModifier.effect / 100));
+                console.log('pizza1', basePrice);
             } else if (this.tradeInProcessContainer[criterionName]) {
                 // If the modifier is active, calculate the amount to modify the final price by
                 modifiers.push(this.round((newPrice * (creditIndicationModifier.effect / 100))));
