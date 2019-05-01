@@ -28,7 +28,7 @@ export class TradeInRequestFinalizationComponent implements OnInit {
     }
 
     onBackClicked() {
-        this.router.navigate(['/trade-in/piece']);
+        this.router.navigate(['/trade-in/overview']);
     }
 
     private setupFormGroup() {

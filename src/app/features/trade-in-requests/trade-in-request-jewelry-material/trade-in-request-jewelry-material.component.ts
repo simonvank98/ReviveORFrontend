@@ -2,7 +2,7 @@ import { TradeInProcessService } from 'src/app/features/trade-in-requests/trade-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-trade-in-request-jewelry-material',

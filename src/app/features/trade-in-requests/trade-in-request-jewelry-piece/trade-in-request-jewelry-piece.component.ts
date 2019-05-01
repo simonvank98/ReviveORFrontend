@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
 import { TempApiService } from 'src/app/shared/services/api/temp-api.service';
 import { ORProduct } from 'src/app/shared/services/or-product/or-product.model';
 import { TradeInProcessService } from '../trade-in-process.service';

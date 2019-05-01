@@ -1,13 +1,13 @@
-import {Component, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {MatFileUpload, MatFileUploadQueue} from 'angular-material-fileupload';
-import {first} from 'rxjs/operators';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {HttpHeaders, HttpParams} from '@angular/common/http';
+import {FileUploader} from './file-uploader';
 
 @Component({
     selector: 'app-mass-file-uploader',
     templateUrl: './mass-file-uploader.component.html',
     styleUrls: ['./mass-file-uploader.component.scss']
 })
-export class MassFileUploaderComponent implements OnInit {
+export class MassFileUploaderComponent implements OnInit, FileUploader {
 
     @Input()
     dragAndDropEnabled = true;
@@ -16,23 +16,41 @@ export class MassFileUploaderComponent implements OnInit {
     browseButtonVisible = true;
 
     @Input()
-    imagesOnly = true;
+    allowedImageExtensions = ['.png', '.jpg', '.jpeg', '.bmp'];
 
-/*    @Input()
-    uploadImmediately = true;
+    /*    @Input()
+        uploadImmediately = true;
+
+        @Input()
+        showProgressBars = true;*/
 
     @Input()
-    showProgressBars = true;*/
+    removeUploadFromQueueOnSuccess = false;
 
     @Input()
     maxFiles = 0;
 
+    @Input()
+    httpUrl: string;
 
-    @ViewChild(MatFileUploadQueue)
-    private fileUploadQueue: MatFileUploadQueue;
+    @Input()
+    httpRequestHeaders: HttpHeaders | {
+        [header: string]: string | string[];
+    } = new HttpHeaders().set('Content-Type', 'multipart/form-data');
 
-    allowedImageExtensions = ['.png', '.jpg', '.jpeg', '.bmp'];
+    @Input()
+    httpRequestParams: HttpParams | {
+        [param: string]: string | string[];
+    } = new HttpParams();
 
+    @Input()
+    fileAlias = 'file';
+
+    @Output()
+    fileUploaded = new EventEmitter();
+
+
+    files: File[] = [];
     dropzoneActive = false;
 
     constructor() {
@@ -43,34 +61,40 @@ export class MassFileUploaderComponent implements OnInit {
             this.dragAndDropEnabled = true;
             this.browseButtonVisible = true;
         }
-
-        this.setupListeners();
     }
 
     onFilesSelected(files: FileList) {
         if (files) {
             for (let i = 0; i < files.length; i++) {
-                if (this.maxFiles === 0 || this.fileUploadQueue.files.length < this.maxFiles) {
-                    this.fileUploadQueue.add(files[i]);
+                if (this.maxFiles <= 0 || this.files.length < this.maxFiles) {
+                    this.addFileToQueue(files[i]);
                 }
             }
         }
     }
 
-
-    private setupListeners() {
-        if (this.fileUploadQueue) {
-/*            console.log(this.fileUploadQueue);
-            this.fileUploadQueue.fileUploads.changes.subscribe(
-                (matFileUpload: MatFileUpload) => {
-                    if (this.uploadImmediately) {
-                        matFileUpload.upload();
-                    }
-                });*/
-        }
+    onFilesHovered(event) {
+        this.dropzoneActive = event;
     }
 
-    onFilesHovered($event) {
-        this.dropzoneActive = $event;
+    onFileUploadSuccess(fileIndex, response) {
+        console.log('fileIndex: ', fileIndex);
+        console.log('response: ', response);
+        if (this.removeUploadFromQueueOnSuccess) {
+            this.removeFileFromQueue(fileIndex);
+        }
+        this.fileUploaded.emit(response);
+    }
+
+    onFileUploadCancelled(fileIndex) {
+        this.removeFileFromQueue(fileIndex);
+    }
+
+    private addFileToQueue(file: File) {
+        this.files.push(file);
+    }
+
+    private removeFileFromQueue(fileIndex) {
+        this.files.splice(fileIndex, 1);
     }
 }

@@ -24,8 +24,15 @@ table {
 
 .mat-form-field {
     font-size: 14px;
-    width: 100%;
+    color: #111;
+    width:100%;
 }
+
+
+.mat-progress-bar .mat-progress-bar-fill {
+    transition-duration: 100ms!important;
+}
+
 
 .mat-button.top .mat-button-wrapper>* {
     vertical-align: top !important;

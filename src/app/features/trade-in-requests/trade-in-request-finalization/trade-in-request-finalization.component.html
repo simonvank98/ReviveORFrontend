@@ -1,4 +1,4 @@
-<form [formGroup]="formGroup">
+<form class="form-wrapper" [formGroup]="formGroup">
 
     <p>Each piece of jewelry has a unique story, share yours!</p>
     <br>
@@ -10,16 +10,22 @@
 
     <span>Story content</span>
     <mat-form-field>
-        <textarea matInput matTextareaAutosize matAutosizeMinRows=5 placeholder="" formControlName="storyContent"></textarea>
+        <textarea matInput matTextareaAutosize matAutosizeMinRows=5 placeholder=""
+                  formControlName="storyContent"></textarea>
     </mat-form-field>
 
     <h5>Upload two detailed images of your jewelry
         <mat-icon matTooltipPosition="after"
                   matTooltip="These images will help make sure that we can give you a more accurate credit indication for your jewelry.">
-            help_outline</mat-icon>
+            help_outline
+        </mat-icon>
     </h5>
 
-    <app-mass-file-uploader></app-mass-file-uploader>
+    <app-mass-file-uploader
+        httpUrl='http://revapi.local/api/v1/images'>
+    </app-mass-file-uploader>
+
+    <br/>
 
     <h5>Extra notes about this trade-in request</h5>
     <mat-form-field>
