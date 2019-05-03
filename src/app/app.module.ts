@@ -31,47 +31,46 @@ import { SelectionButtonComponent } from './features/trade-in-requests/selection
 import { TradeInRequestJewelryConditionComponent } from './features/trade-in-requests/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
 import { TradeInRequestCreditIndicationComponent } from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
 import { TradeInRequestOverviewComponent } from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
+import {ShopModule} from './features/shop/shop.module';
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      HeaderComponent,
-      FooterComponent,
-      HomeComponent,
-      ShopListComponent,
-      ShopItemComponent,
-      ShopSearchComponent,
-      ShopDetailComponent,
-      ShopComponent,
-      AccountPageComponent,
-      ErrorPageComponent,
-      TradeInRequestPageComponent,
-      TradeInRequestJewelryTypeComponent,
-      TradeInRequestJewelryMaterialComponent,
-      TradeInRequestJewelryPieceComponent,
-      SelectionButtonComponent,
-      StoryPageComponent,
-      StepperComponent,
-      ControlButtonsComponent,
-      TradeInRequestJewelryConditionComponent,
-      TradeInRequestCreditIndicationComponent,
-      TradeInRequestOverviewComponent
-   ],
-   imports: [
-      BrowserModule,
-      BrowserAnimationsModule,
-      SharedModule,
-      AppRoutingModule,
-      AdminModule,
-      CountUpModule
-   ],
-   providers: [
-       ApiService,
-       ORApiService,
-       TempApiService
-   ],
-   bootstrap: [
-      AppComponent
-   ]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        HomeComponent,
+
+        AccountPageComponent,
+        ErrorPageComponent,
+        TradeInRequestPageComponent,
+        TradeInRequestJewelryTypeComponent,
+        TradeInRequestJewelryMaterialComponent,
+        TradeInRequestJewelryPieceComponent,
+        SelectionButtonComponent,
+        StoryPageComponent,
+        StepperComponent,
+        ControlButtonsComponent,
+        TradeInRequestJewelryConditionComponent,
+        TradeInRequestCreditIndicationComponent,
+        TradeInRequestOverviewComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        SharedModule,
+        AppRoutingModule,
+        AdminModule,
+        ShopModule,
+        CountUpModule
+    ],
+    providers: [
+        ApiService,
+        ORApiService,
+        TempApiService
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
-export class AppModule { }
+export class AppModule {
+}

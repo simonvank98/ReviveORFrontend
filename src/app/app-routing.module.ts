@@ -20,10 +20,11 @@ import { TradeInRequestJewelryPieceComponent } from './features/trade-in-request
 import { TradeInRequestJewelryConditionComponent } from './features/trade-in-requests/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
 import { TradeInRequestCreditIndicationComponent } from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
 import { TradeInRequestOverviewComponent } from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
+import {AllProductsResolver} from './features/shop/all-products.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'shop', component: ShopComponent },
+  { path: 'shop', component: ShopComponent, resolve: { products: AllProductsResolver } },
   { path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full' },
   { path: 'trade-in',
     component: TradeInRequestPageComponent,
