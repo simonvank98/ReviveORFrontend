@@ -18,10 +18,11 @@ import {AllTradeInRequestResolver} from './admin/features/trade-in-requests/all-
 import {AdminTradeInRequestEditComponent} from './admin/features/trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
 import {TradeInRequestResolver} from './admin/features/trade-in-requests/trade-in-request.resolver';
 import { TradeInRequestJewelryPieceComponent } from './features/trade-in-requests/trade-in-request-jewelry-piece/trade-in-request-jewelry-piece.component';
+import {AllProductsResolver} from './features/shop/all-products.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'shop', component: ShopComponent },
+  { path: 'shop', component: ShopComponent, resolve: { products: AllProductsResolver } },
   { path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full' },
   { path: 'trade-in',
     component: TradeInRequestPageComponent,

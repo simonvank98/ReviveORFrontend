@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ProductModel} from './product.model';
+import {of} from 'rxjs';
+import {delay} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -53,4 +55,8 @@ export class ProductService {
       ]
     }
   ];
+
+    public getAll() {
+        return of(this.products).pipe(delay(1));
+    }
 }

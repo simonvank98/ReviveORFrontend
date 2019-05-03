@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-shop-list',
@@ -6,10 +7,12 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./shop-list.component.scss']
 })
 export class ShopListComponent implements OnInit {
+    products = [];
+  constructor(private route: ActivatedRoute) { }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.products = this.route.snapshot.data['products'];
+        console.log(this.products);
+    }
 
 }

@@ -26,42 +26,41 @@ import {ApiService} from './shared/services/api/api.service';
 import {ORApiService} from './shared/services/api/or-api.service';
 import {TempApiService} from './shared/services/api/temp-api.service';
 import {TradeInRequestJewelryPieceComponent} from './features/trade-in-requests/trade-in-request-jewelry-piece/trade-in-request-jewelry-piece.component';
+import {ShopModule} from './features/shop/shop.module';
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      HeaderComponent,
-      FooterComponent,
-      HomeComponent,
-      ShopListComponent,
-      ShopItemComponent,
-      ShopSearchComponent,
-      ShopDetailComponent,
-      ShopComponent,
-      AccountPageComponent,
-      ErrorPageComponent,
-      TradeInRequestPageComponent,
-      TradeInRequestJewelryTypeComponent,
-      TradeInRequestJewelryMaterialComponent,
-      TradeInRequestJewelryPieceComponent,
-      StoryPageComponent,
-      StepperComponent,
-      ControlButtonsComponent
-   ],
-   imports: [
-      BrowserModule,
-      BrowserAnimationsModule,
-      SharedModule,
-      AppRoutingModule,
-      AdminModule
-   ],
-   providers: [
-       ApiService,
-       ORApiService,
-       TempApiService
-   ],
-   bootstrap: [
-      AppComponent
-   ]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        HomeComponent,
+
+        AccountPageComponent,
+        ErrorPageComponent,
+        TradeInRequestPageComponent,
+        TradeInRequestJewelryTypeComponent,
+        TradeInRequestJewelryMaterialComponent,
+        TradeInRequestJewelryPieceComponent,
+        StoryPageComponent,
+        StepperComponent,
+        ControlButtonsComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        SharedModule,
+        AppRoutingModule,
+        AdminModule,
+        ShopModule
+    ],
+    providers: [
+        ApiService,
+        ORApiService,
+        TempApiService
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
-export class AppModule { }
+export class AppModule {
+}
