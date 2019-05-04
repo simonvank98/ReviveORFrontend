@@ -12,7 +12,7 @@ export class TradeInRequestOverviewComponent implements OnInit {
     conditionModels = [];
     formatters = [(content) => content, (content) => (content === true ? 'Yes' : 'No')];
 
-    constructor(private tradeInProcessService: TradeInProcessService, private router: Router) { }
+    constructor(public tradeInProcessService: TradeInProcessService, private router: Router) { }
 
     ngOnInit() {
         this.tradeInProcessService.setCurrentStep(2);

@@ -11,11 +11,11 @@ import { CountUp } from 'countup.js';
 })
 export class TradeInRequestCreditIndicationComponent implements OnInit, AfterViewInit {
 
-    private color = 'primary';
-    private mode = 'determinate';
+    color = 'primary';
+    mode = 'determinate';
+    percentage = 0;
 
     private indication = 0;
-    private percentage = 0;
 
     private options = { decimalPlaces: 2, duration: 1.5, decimal: ',', separator: '.' };
 

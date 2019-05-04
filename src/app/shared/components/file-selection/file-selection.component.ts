@@ -20,7 +20,7 @@ export class FileSelectionComponent implements OnInit {
 
     @Output() filesSelected: EventEmitter<FileList> = new EventEmitter<FileList>();
 
-    protected buttonText: string;
+    buttonText: string;
 
     constructor() {
     }

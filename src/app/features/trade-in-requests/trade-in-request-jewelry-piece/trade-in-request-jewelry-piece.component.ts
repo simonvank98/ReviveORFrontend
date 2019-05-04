@@ -18,7 +18,7 @@ export class TradeInRequestJewelryPieceComponent implements OnInit {
 
     products: ORProduct[] = [];
 
-    constructor(private tradeInProcessService: TradeInProcessService,
+    constructor(public tradeInProcessService: TradeInProcessService,
         private orProductService: ORProductService,
         private router: Router,
         private snackBarService: SnackbarService) { }

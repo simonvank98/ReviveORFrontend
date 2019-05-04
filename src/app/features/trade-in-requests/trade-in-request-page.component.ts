@@ -8,7 +8,7 @@ import {TradeInProcessService} from './trade-in-process.service';
 })
 export class TradeInRequestPageComponent implements OnInit {
 
-  constructor(private tradeInProcessService: TradeInProcessService) { }
+  constructor(public tradeInProcessService: TradeInProcessService) { }
 
   ngOnInit() {
   }

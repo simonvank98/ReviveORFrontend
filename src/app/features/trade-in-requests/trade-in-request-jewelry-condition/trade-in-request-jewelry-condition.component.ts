@@ -13,7 +13,7 @@ export class TradeInRequestJewelryConditionComponent implements OnInit {
     properties = [];
 
     constructor(private router: Router,
-                private tradeInProcessService: TradeInProcessService,
+                public tradeInProcessService: TradeInProcessService,
                 private snackBarService: SnackbarService) { }
 
     ngOnInit() {
