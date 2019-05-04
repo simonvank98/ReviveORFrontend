@@ -1,6 +1,6 @@
 $orbHeight: 40px;
 $color: #ccc;
-$activeColor: #3f51b5;
+$activeColor: #2749b6;
 
 .step {
     // height: 80px;
@@ -43,14 +43,52 @@ $activeColor: #3f51b5;
     line-height: $orbHeight;
 }
 .line {
-    display: inline-block;
     width: 4px;
     height: 30px;
     margin-left: 18px;
-    margin-top: 2px;
     background-color: $color;
-    border-radius: 10px;
 }
 .description {
     font-size: 11px;
+}
+
+.horizontal {
+    border: 3px solid $activeColor;
+    border-radius: 3px;
+    display: flex;
+    overflow: hidden;
+    // flex-grow: 1;
+    .step-horizontal {
+        flex: 1;
+        text-align: center;
+        position: relative;
+        padding: 10px 0px;
+
+        &.active {
+            background-color: $activeColor;
+            color: white;
+
+            &::before {
+                background-color: $activeColor;
+            }
+        }
+        &::before {
+            transform: rotate(-45deg);
+            box-sizing: border-box;
+            display: block;
+            content: '';
+            border: solid $activeColor;
+            border-width: 0px 3px 3px 0px;
+            height: 40px;
+            width: 40px;
+            position: absolute;
+            right: -10px;
+            top: 0;
+            border-radius: 3px;
+        }
+
+        &:last-child::before {
+            display: none;
+        }
+    }
 }

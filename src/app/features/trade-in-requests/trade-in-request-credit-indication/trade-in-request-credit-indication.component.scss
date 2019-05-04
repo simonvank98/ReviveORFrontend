@@ -1,0 +1,26 @@
+.container {
+    position: relative;
+
+    h3 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #indication-amount {
+        position: absolute;
+        left: 0;
+        right: 0;
+        line-height: 200px;
+        font-size: 22px;
+        display: block;
+        font-weight: bold;
+        text-align: center;
+        &::before {
+            content: '€ ';
+        }
+    }
+    .indication-spinner {
+        display: block;
+        margin: 0px auto;
+    }
+}

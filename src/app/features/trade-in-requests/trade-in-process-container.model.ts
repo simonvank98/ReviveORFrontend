@@ -1,6 +1,13 @@
-export interface TradeInProcessContainerModel {
-    currentScreen: number;
+import { ORProduct } from 'src/app/shared/services/or-product/or-product.model';
+
+export interface TradeInProcessContainer {
+    currentStep: number;
     jewelryType: string;
     jewelryMaterial: string;
-    jewelryModel: any; // TradeInRequestModel
+    jewelryPiece: ORProduct;
+    property: string;
+    missing: boolean;
+    scratched: boolean;
+    bent: boolean;
+    broken: boolean;
 }

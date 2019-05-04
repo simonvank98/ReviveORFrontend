@@ -4,7 +4,7 @@ h3 {
 .grid {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
 }
 .grid > * {
@@ -17,4 +17,12 @@ h3 {
     width: 1px;
     height: 0;
     padding-bottom: calc(100% / (var(--aspect-ratio)));
+}
+.label {
+    font-size: 14px;
+    margin: 10px 0px 0px 0px;
+}
+.value {
+    font-size: 16px;
+    font-weight: bold;
 }
