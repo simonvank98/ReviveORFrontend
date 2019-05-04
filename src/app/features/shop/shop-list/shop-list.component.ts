@@ -12,7 +12,6 @@ export class ShopListComponent implements OnInit {
 
     ngOnInit() {
         this.products = this.route.snapshot.data['products'];
-        console.log(this.products);
     }
 
 }
