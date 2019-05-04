@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from '../../../../environments/environment';
 
 @Injectable()
 export class TempApiService {
@@ -26,7 +27,7 @@ export class TempApiService {
   private createURI(path: string, queryParameters: object): string {
     const queryString = this.createQueryString(queryParameters);
 
-    return `http://localhost:4200/assets/${path}.json`;
+    return `${environment.reviveORAPIUrl}assets/${path}.json`;
   }
 
   private createRequestHeaders(): HttpHeaders {
