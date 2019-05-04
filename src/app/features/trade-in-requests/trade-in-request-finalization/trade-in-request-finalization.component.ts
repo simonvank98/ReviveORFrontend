@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TradeInProcessService} from '../trade-in-process.service';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {environment} from '../../../../environments/environment';
 
 @Component({
     selector: 'app-trade-in-request-finalization',
@@ -12,6 +13,7 @@ export class TradeInRequestFinalizationComponent implements OnInit {
 
     formGroup: FormGroup;
     allowedImageExtensions = ['.png', '.jpg', '.jpeg', '.bmp'];
+    imageAPIUrl = `${environment.reviveORAPIUrl}images`;
 
     constructor(private tradeInProcessService: TradeInProcessService, private router: Router, private formBuilder: FormBuilder) {
     }
