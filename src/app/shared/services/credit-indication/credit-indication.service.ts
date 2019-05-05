@@ -1,19 +1,17 @@
-import { TradeInProcessContainer } from './../../../features/trade-in-requests/trade-in-process-container.model';
-import { CreditIndicationModifierService } from './credit-indication-modifier/credit-indication-modifier.service';
-import { Injectable } from '@angular/core';
-import { CreditIndicationModifier } from './credit-indication-modifier/credit-indication-modifier';
-import { ORProductService } from '../or-product/or-product.service';
+import {TradeInProcessContainer} from '../../../features/trade-in-requests/trade-in-process-container.model';
+import {CreditIndicationModifierService} from './credit-indication-modifier/credit-indication-modifier.service';
+import {Injectable} from '@angular/core';
+import {CreditIndicationModifier} from './credit-indication-modifier/credit-indication-modifier';
+import {CommonMath} from '../../utilities/common-math';
+import {ORProduct} from '../or-product/or-product.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CreditIndicationService {
 
-    private tradeInProcessContainer: TradeInProcessContainer;
-    private creditIndicationModifiers: CreditIndicationModifier[];
-
-    // Maps database property names to TradeInProcessContainer property names
-    private dict = {
+    // Maps API property names to TradeInProcessContainer property names
+    private criteriaDict = {
         'Base': 'base',
         'Missing piece': 'missing',
         'Bent': 'bent',
@@ -21,92 +19,76 @@ export class CreditIndicationService {
         'Broken': 'broken'
     };
 
-    constructor(private creditIndicationModifierService: CreditIndicationModifierService) { }
+    constructor(private creditIndicationModifierService: CreditIndicationModifierService) {
+    }
 
     // Gets the current price indication of a trade in request using a TradeInProcessContainer
     public getIndication(tradeInProcessContainer: TradeInProcessContainer): Promise<{}> {
-        this.tradeInProcessContainer = tradeInProcessContainer;
-
-        // Indication promise to return
-        const indication = new Promise<{}>(resolve => {
+        return new Promise<{}>(resolve => {
             // API call to get the credit indication modifiers
-            this.creditIndicationModifierService.getAll().subscribe(creditIndicationModifiers => {
-                this.setCreditIndicationModifiers(creditIndicationModifiers);
-
+            this.creditIndicationModifierService.getByCategory(tradeInProcessContainer.jewelryPiece.category.name).subscribe(creditIndicationModifiers => {
                 // Resolves the promise with a price indication number
-                resolve(this.calculateIndication());
+                resolve(this.calculateCreditIndication(tradeInProcessContainer, creditIndicationModifiers));
             });
         });
-
-        return indication;
     }
 
-    // Sets the credit indication modifiers to be used for the indication
-    public setCreditIndicationModifiers(creditIndicationModifiers: CreditIndicationModifier[]) {
-        this.creditIndicationModifiers = creditIndicationModifiers;
+    private calculateCreditIndication(tradeInProcessContainer: TradeInProcessContainer, creditIndicationModifiers: CreditIndicationModifier[]): {} {
+        const newPrice = this.getJewelryNewPriceBySelectedProperty(tradeInProcessContainer.jewelryPiece, tradeInProcessContainer.property);
+        const basePrice = this.calculateJewelryBasePrice(newPrice, creditIndicationModifiers);
+        const totalPenalty = Math.round(this.calculateTotalJewelryConditionPenalty(basePrice, tradeInProcessContainer, creditIndicationModifiers));
+        const indication = CommonMath.roundTo2Decimals(basePrice - totalPenalty);
+        this.logIndicationValues(newPrice, basePrice, totalPenalty, indication);
+
+        return {
+            indication: indication,
+            newPrice: newPrice,
+            basePrice: basePrice
+        };
     }
 
-    // Calculates the price indication of the trade in request
-    public calculateIndication(): {} {
-        const jewelryPiece = this.tradeInProcessContainer.jewelryPiece;
-        const category = jewelryPiece.category.name;
-        let newPrice = 0;
+    private calculateJewelryBasePrice(newPrice, creditIndicationModifiers: CreditIndicationModifier[]) {
         let basePrice = 0;
-        let indication = 0;
-        const modifiers = [0];
+        for (const modifier of creditIndicationModifiers) {
+            const criterionName = this.criteriaDict[modifier.criterion.name];
+            if (criterionName === 'base') {
+                basePrice = CommonMath.roundTo2Decimals(newPrice * (modifier.effect / 100));
+                break;
+            }
+        }
+        return basePrice;
+    }
 
-        // Determine the new price of the selected property
+    private calculateTotalJewelryConditionPenalty(basePrice, tradeInProcessContainer: TradeInProcessContainer, creditIndicationModifiers: CreditIndicationModifier[]) {
+        const penaltyEffects = [];
+        for (const modifier of creditIndicationModifiers) {
+            const criterionName = this.criteriaDict[modifier.criterion.name];
+            if (tradeInProcessContainer[criterionName]) {
+                // If the modifier is active, calculate the amount to modify the final price by
+                penaltyEffects.push(CommonMath.roundTo2Decimals((basePrice * (modifier.effect / 100))));
+            }
+        }
+        return CommonMath.findSumOfNumbers(penaltyEffects);
+    }
+
+    private getJewelryNewPriceBySelectedProperty(jewelryPiece: ORProduct, selectedProperty: String) {
+        let newPrice = jewelryPiece.properties[0].price; // default price to the first property
+
         for (const property of jewelryPiece.properties) {
-            newPrice = property.price;
-            if (property.value === this.tradeInProcessContainer.property) {
+            if (property.value === selectedProperty) {
                 newPrice = property.price;
                 break;
             }
         }
+        return newPrice;
+    }
 
-        // Check if category matches, e.g. only 'Rings' modifiers should apply to a ring
-        this.creditIndicationModifiers = this.creditIndicationModifiers.filter(function(modifier) {
-            return modifier.category.name === category;
-        });
-
-        // Determine the value of the indication
-        this.creditIndicationModifiers.forEach(creditIndicationModifier => {
-            const criterionName = this.dict[creditIndicationModifier.criterion.name];
-            console.log('pizza2', creditIndicationModifier);
-            console.log('pizza3', criterionName);
-            // If the criterion name is 'base', determine the base price of the jewelry piece
-            if (criterionName === 'base') {
-                basePrice = this.round(newPrice * (creditIndicationModifier.effect / 100));
-                console.log('pizza1', basePrice);
-            } else if (this.tradeInProcessContainer[criterionName]) {
-                // If the modifier is active, calculate the amount to modify the final price by
-                modifiers.push(this.round((newPrice * (creditIndicationModifier.effect / 100))));
-            }
-        });
-
-        // The indication is the base price minus the modifiers added up
-        indication = this.round(basePrice - modifiers.reduce(this.getSum));
-
+    private logIndicationValues(newPrice, basePrice, totalPenalty, indication) {
         console.log('-----Indication-----');
-        console.log('New price: ' + newPrice);
-        console.log('Base value: ' + basePrice);
-        console.log('Modifier subtractions: ' + modifiers);
-        console.log('Indication: ' + indication);
-
-        return {
-                indication: indication,
-                newPrice: newPrice,
-                basePrice: basePrice
-        };
-    }
-
-    // Rounds number to 2 decimal places
-    private round(num) {
-        return Math.round(num * 100) / 100;
-    }
-
-    // Adds up 2 numbers for use inside of a reduce
-    private getSum(total, num) {
-        return total + num;
+        console.log('New price:', newPrice);
+        console.log('Base value:', basePrice);
+        console.log('Total penalty:', totalPenalty);
+        console.log('Indication: ', indication);
+        console.log('-------------------');
     }
 }
