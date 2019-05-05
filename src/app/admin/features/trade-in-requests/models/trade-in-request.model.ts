@@ -1,7 +1,7 @@
 import {TradeInRequestJewelryTypeModel} from './trade-in-request-jewelry-type.model';
 import {TradeInRequestImageModel} from './trade-in-request-image.model';
 import {Moment} from 'moment';
-import {UserModel} from './user.model';
+import {UserModel} from '../../../../shared/services/user/user.model';
 
 export interface TradeInRequestModel {
   requestId: number;

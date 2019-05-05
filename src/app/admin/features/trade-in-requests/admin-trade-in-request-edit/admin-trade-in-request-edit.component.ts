@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TradeInRequestModel} from '../trade-in-request.model';
+import {TradeInRequestModel} from '../models/trade-in-request.model';
 
 @Component({
   selector: 'app-admin-trade-in-request-edit',
