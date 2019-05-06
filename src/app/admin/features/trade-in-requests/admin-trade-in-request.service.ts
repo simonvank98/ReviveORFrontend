@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {TradeInRequestModel} from './trade-in-request.model';
+import {TradeInRequestModel} from './models/trade-in-request.model';
 import {of} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
@@ -34,7 +34,7 @@ export class AdminTradeInRequestService {
                 scratched: false
             },
             user: {
-                userId: 1,
+                id: 1,
                 name: 'Satches Raadhuis',
                 email: 'satchezhuisraad@gmail.com',
                 role: 'Schoonmaker'
@@ -64,7 +64,7 @@ export class AdminTradeInRequestService {
                 scratched: true
             },
             user: {
-                userId: 2,
+                id: 2,
                 name: 'Simon van Kouteren',
                 email: 'simon123@gmail.com',
                 role: 'Baas'
