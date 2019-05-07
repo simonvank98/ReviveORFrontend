@@ -30,6 +30,7 @@ import {ShopModule} from './features/shop/shop.module';
 import { TradeInRequestFinalizationComponent } from './features/trade-in-requests/trade-in-request-finalization/trade-in-request-finalization.component';
 import {JSONCasingInterceptor} from './shared/utilities/JSONCasing.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import { TradeInRequestCompletionComponent } from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
 
 @NgModule({
     declarations: [
@@ -50,7 +51,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
         TradeInRequestJewelryConditionComponent,
         TradeInRequestCreditIndicationComponent,
         TradeInRequestOverviewComponent,
-        TradeInRequestFinalizationComponent
+        TradeInRequestFinalizationComponent,
+        TradeInRequestCompletionComponent
     ],
     imports: [
         BrowserModule,

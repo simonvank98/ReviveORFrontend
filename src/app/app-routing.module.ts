@@ -23,6 +23,7 @@ import { TradeInRequestJewelryConditionComponent } from './features/trade-in-req
 import { TradeInRequestCreditIndicationComponent } from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
 import { TradeInRequestOverviewComponent } from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
 import {AllProductsResolver} from './features/shop/all-products.resolver';
+import {TradeInRequestCompletionComponent} from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
         { path: 'indication', component: TradeInRequestCreditIndicationComponent, },
         { path: 'overview', component: TradeInRequestOverviewComponent, },
         { path: 'finalize', component: TradeInRequestFinalizationComponent, },
+        { path: 'complete', component: TradeInRequestCompletionComponent, },
     ]
   },
   { path: 'stories', component: StoryPageComponent },
