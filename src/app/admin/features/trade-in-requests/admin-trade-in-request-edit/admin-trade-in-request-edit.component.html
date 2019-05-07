@@ -24,7 +24,7 @@
     <mat-form-field>
       <mat-label>Size</mat-label>
       <select matNativeControl required>
-        <option value="{{ model.jewelryName }}">{{ model.jewelrySize }}</option>
+        <option value="{{ model.jewelrySize }}">{{ model.jewelrySize }}</option>
         <option value="S">S</option>
         <option value="M">M</option>
         <option value="L">L</option>
@@ -84,6 +84,7 @@
   <mat-form-field class="indicationFormfield">
     <label for="creditIndication">Estimated maximum credit</label>
     <input matInput id="creditIndication" value="€ {{ model.estimatedCredit }}">
+
   </mat-form-field>
 </div>
 

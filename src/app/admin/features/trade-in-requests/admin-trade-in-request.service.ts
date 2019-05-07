@@ -7,6 +7,13 @@ import {TempApiService} from '../../../shared/services/api/temp-api.service';
 })
 export class AdminTradeInRequestService {
 
+    /*
+                    { imageId: 2, url: 'https://theoceanrepublic.com/images/products/266/thumb/OR-8829.jpg' },
+                { imageId: 3, url: 'https://theoceanrepublic.com/images/products/281/thumb/OR-6848.jpg' }
+                imagePath: ['https://theoceanrepublic.com/images/products/281/thumb/OR-6848.jpg']
+         
+     */
+
     constructor(private api: TempApiService) {
     }
 
