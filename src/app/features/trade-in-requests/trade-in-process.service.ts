@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { TradeInProcessContainer } from './trade-in-process-container.model';
 import { ORProduct } from 'src/app/shared/services/or-product/or-product.model';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TradeInProcessService {
 
-    emptyContainer;
+    emptyContainer: TradeInProcessContainer;
     tradeInProcessContainer: TradeInProcessContainer = {
         currentStep: 0,
         jewelryType: '',
         jewelryMaterial: '',
         jewelryPiece: {},
+        estimatedCredit: 0,
         property: '',
         missing: false,
         scratched: false,
@@ -20,13 +23,17 @@ export class TradeInProcessService {
         broken: false
     };
 
-    constructor() {
+    constructor(private http: HttpClient) {
         this.emptyContainer = JSON.parse(JSON.stringify(this.tradeInProcessContainer));
         localStorage.emptyContainer = JSON.stringify(this.emptyContainer);
 
         if (localStorage.getItem('tradeInProcessContainer') !== null) {
             this.tradeInProcessContainer = JSON.parse(localStorage.getItem('tradeInProcessContainer'));
         }
+    }
+
+    submitRequest(tradeInRequest) {
+        return this.http.post(`${environment.reviveORAPIUrl}tradeinrequests`, tradeInRequest);
     }
 
     setCurrentStep(step) {

@@ -64,8 +64,8 @@ export class MassFileUploaderComponent implements OnInit, FileUploader {
 
 
     onFileUploadSuccess(fileIndex, response) {
-        console.log('fileIndex: ', fileIndex);
-        console.log('response: ', response);
+/*        console.log('fileIndex: ', fileIndex);
+        console.log('response: ', response);*/
         if (this.removeUploadFromQueueOnSuccess) {
             this.removeFileFromQueue(fileIndex);
         }

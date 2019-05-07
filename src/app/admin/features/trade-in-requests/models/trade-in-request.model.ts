@@ -1,21 +1,20 @@
-import {TradeInRequestJewelryTypeModel} from './trade-in-request-jewelry-type.model';
+import {TradeInRequestJewelryConditionModel} from './trade-in-request-jewelry-condition.model';
 import {TradeInRequestImageModel} from './trade-in-request-image.model';
-import {Moment} from 'moment';
 import {UserModel} from '../../../../shared/services/user/user.model';
 
 export interface TradeInRequestModel {
-  requestId: number;
-  userId: number;
-  status: string;
-  estimatedCredit: number;
-  dateCreated: Date;
-  dateUpdated: Date;
-  jewelryName: string;
-  jewelrySize: string;
-  additionalDescription: string;
-  storyTitle: string;
-  storyContent: string;
-  tradeInRequestsImage: TradeInRequestImageModel;
-  tradeInRequestsJewelryType: TradeInRequestJewelryTypeModel;
-  user: UserModel;
+    requestId: number;
+    userId: number;
+    status: string;
+    estimatedCredit: number;
+    jewelryName: string;
+    jewelrySize: string;
+    additionalNotes: string;
+    storyTitle: string;
+    storyContent: string;
+    images: TradeInRequestImageModel[];
+    jewelryCondition: TradeInRequestJewelryConditionModel;
+    createdAt?: Date;
+    updatedAt?: Date;
+    user?: UserModel;
 }

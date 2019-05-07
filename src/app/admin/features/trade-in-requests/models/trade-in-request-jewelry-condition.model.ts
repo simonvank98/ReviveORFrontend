@@ -1,4 +1,4 @@
-export interface TradeInRequestJewelryTypeModel {
+export interface TradeInRequestJewelryConditionModel {
   requestId: number;
   broken: boolean;
   bent: boolean;

@@ -28,6 +28,8 @@ import {TradeInRequestCreditIndicationComponent} from './features/trade-in-reque
 import {TradeInRequestOverviewComponent} from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
 import {ShopModule} from './features/shop/shop.module';
 import { TradeInRequestFinalizationComponent } from './features/trade-in-requests/trade-in-request-finalization/trade-in-request-finalization.component';
+import {JSONCasingInterceptor} from './shared/utilities/JSONCasing.interceptor';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -62,7 +64,8 @@ import { TradeInRequestFinalizationComponent } from './features/trade-in-request
     providers: [
         ApiService,
         ORApiService,
-        TempApiService
+        TempApiService,
+        { provide: HTTP_INTERCEPTORS, useClass: JSONCasingInterceptor, multi: true },
     ],
     bootstrap: [
         AppComponent

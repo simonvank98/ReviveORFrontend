@@ -27,7 +27,9 @@ export class TempApiService {
   private createURI(path: string, queryParameters: object): string {
     const queryString = this.createQueryString(queryParameters);
 
-    return `${environment.reviveORAPIUrl}assets/${path}.json`;
+    /*return `${environment.reviveORAPIUrl}assets/${path}.json`;*/
+      return `${environment.reviveORAPIUrl}${path}`;
+
   }
 
   private createRequestHeaders(): HttpHeaders {

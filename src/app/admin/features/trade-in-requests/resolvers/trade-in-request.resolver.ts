@@ -12,6 +12,7 @@ export class TradeInRequestResolver implements Resolve <TradeInRequestModel[]> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any>|Promise<any>|any {
+      console.log('tradeinrequestresolver, params id: ', route.params.id);
     return this.adminTradeInRequestService.get(route.params.id);
   }
 }

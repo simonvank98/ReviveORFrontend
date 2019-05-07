@@ -28,6 +28,7 @@ export class TradeInRequestCreditIndicationComponent implements OnInit, AfterVie
         this.creditIndicationService.getIndication(this.tradeInProcessService.tradeInProcessContainer).then(indication => {
             this.indication = indication['indication'];
             this.percentage = (indication['indication'] / indication['basePrice']) * 100;
+            this.tradeInProcessService.tradeInProcessContainer.estimatedCredit = this.indication;
             const countUp = new CountUp('indication-amount', this.indication, this.options).start();
         });
     }

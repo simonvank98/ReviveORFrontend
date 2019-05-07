@@ -22,8 +22,10 @@
     </h5>
 
     <app-mass-file-uploader
+        maxFiles=2
         [allowedExtensions]="allowedImageExtensions"
-        [httpUrl]="imageAPIUrl">
+        [httpUrl]="imageAPIUrl"
+        (fileUploaded)="onImageUploaded($event)">
     </app-mass-file-uploader>
 
     <br/>

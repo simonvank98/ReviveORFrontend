@@ -74,8 +74,6 @@ export class FileUploadControlBarComponent implements OnInit, OnDestroy {
         const formData = new FormData();
         formData.set(this.fileAlias, this._file, this._file.name);
 
-        console.log('URL b4 upload', this.httpUrl);
-
         // @ts-ignore
         this.fileUploadSubscription = this.httpClient.post(this.httpUrl, formData, this.getRequestOptions()).subscribe(
             (event) => {
