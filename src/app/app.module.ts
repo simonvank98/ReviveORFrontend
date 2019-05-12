@@ -61,7 +61,8 @@ import { TradeInRequestCompletionComponent } from './features/trade-in-requests/
         AppRoutingModule,
         AdminModule,
         ShopModule,
-        CountUpModule
+        CountUpModule,
+        BrowserAnimationsModule
     ],
     providers: [
         ApiService,

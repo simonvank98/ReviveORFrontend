@@ -32,9 +32,9 @@ const routes: Routes = [
   { path: 'trade-in',
     component: TradeInRequestPageComponent,
     children: [
-        { path: 'type', component: TradeInRequestJewelryTypeComponent, },
+        { path: 'type', component: TradeInRequestJewelryTypeComponent, data: {animation: 'isLeft'}},
         { path: 'material', component: TradeInRequestJewelryMaterialComponent, },
-        { path: 'piece', component: TradeInRequestJewelryPieceComponent, },
+        { path: 'piece', component: TradeInRequestJewelryPieceComponent, data: {animation: 'isLeft'}},
         { path: 'condition', component: TradeInRequestJewelryConditionComponent, },
         { path: 'indication', component: TradeInRequestCreditIndicationComponent, },
         { path: 'overview', component: TradeInRequestOverviewComponent, },
