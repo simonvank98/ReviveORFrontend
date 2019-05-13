@@ -1,61 +1,52 @@
-import { trigger, transition, style, query, group, animateChild, animate, keyframes } from '@angular/animations';
+import { transition, trigger, query, style, animate, group } from '@angular/animations';
 
-export const slider =
-  trigger('routeAnimations', [
-    transition('* => isLeft', slideTo('left') ),
-    transition('* => isRight', slideTo('right') ),
-    transition('isRight => *', slideTo('left') ),
-    transition('isLeft => *', slideTo('right') ),
-  ]);
-
-  // function slideTo(direction) {
-  //   const optional = { optional: true };
-  //   return [
-  //     query(':enter, :leave', [
-  //       style({
-  //         position: 'absolute',
-  //         top: 0,
-  //         [direction]: 0,
-  //         width: '100%',
-  //         opacity: '1'
-  //       })
-  //     ], optional),
-  //     query(':enter', [
-  //       style({ [direction]: '-100%', opacity: '0'})
-  //     ]),
-  //     group([
-  //       query(':leave', [
-  //         animate('600ms ease', style({ [direction]: '100%', opacity: '0'}))
-  //       ], optional),
-  //       query(':enter', [
-  //         animate('600ms ease', style({ [direction]: '0%', opacity: '1'}))
-  //       ])
-  //     ]),
-  //   ];
-  // }
-
-  function slideTo(direction) {
-    const optional = { optional: true };
-    return [
-      query(':enter, :leave', [
-        style({
-          position: 'absolute',
-          top: 0,
-          [direction]: 0,
-          width: '100%',
-          opacity: '1'
-        })
-      ], optional),
-      query(':enter', [
-        style({ [direction]: '-100%', opacity: '0'})
-      ]),
-      group([
-        query(':leave', [
-          animate('600ms ease', style({ [direction]: '100%', opacity: '0'}))
-        ], optional),
+const styles = {transform:'translateX(0)',position:'absolute',top:0,right:0,width:'100%',opacity:'1'};
+const animateBack = [
+    query(':enter, :leave', style(styles), { optional: true }),
+    group([
         query(':enter', [
-          animate('600ms ease', style({ [direction]: '0%', opacity: '1'}))
-        ])
-      ]),
-    ];
-  }
+            style({ transform: 'translateX(-100%)' }),
+            animate('0.5s ease-in-out', style({ transform: 'translateX(0%)', opacity: '1' }))
+        ], { optional: true }),
+        query(':leave', [
+            style({ transform: 'translateX(0%)' }),
+            animate('0.5s ease-in-out', style({ transform: 'translateX(100%)', opacity: '0' }))
+        ], { optional: true }),
+    ])
+]
+const animateNext = [
+    query(':enter, :leave', style(styles), { optional: true }),
+    group([
+        query(':enter', [
+            style({ transform: 'translateX(100%)' }),
+            animate('0.5s ease-in-out', style({ transform: 'translateX(0%)', opacity: '1' }))
+        ], { optional: true }),
+        query(':leave', [
+            style({ transform: 'translateX(0%)' }),
+            animate('0.5s ease-in-out', style({ transform: 'translateX(-100%)', opacity: '0' }))
+        ], { optional: true }),
+    ])
+]
+
+export const slideInAnimation =
+trigger('routeAnimations', [
+    transition('jewelryType => jewelryMaterial', animateNext),
+
+    transition('jewelryMaterial => jewelryType', animateBack),
+    transition('jewelryMaterial => jewelryPiece', animateNext),
+
+    transition('jewelryPiece => jewelryMaterial', animateBack),
+    transition('jewelryPiece => jewelryCondition', animateNext),
+
+    transition('jewelryCondition => jewelryPiece', animateBack),
+    transition('jewelryCondition => jewelryIndication', animateNext),
+
+    transition('jewelryIndication => jewelryCondition', animateBack),
+    transition('jewelryIndication => jewelryOverview', animateNext),
+
+    transition('jewelryOverview => jewelryIndication', animateBack),
+    transition('jewelryOverview => jewelryFinalization', animateNext),
+
+    transition('jewelryFinalization => jewelryOverview', animateBack),
+    transition('jewelryFinalization => jewelryCompletion', animateNext),
+]);
