@@ -5,7 +5,6 @@
     <div class="grid">
         <app-selection-button
         *ngFor="let property of properties"
-        class="keep-aspect"
         [value]="property.value"
         [match]="tradeInProcessService.tradeInProcessContainer.property"
         [text]="property.value"
@@ -19,7 +18,6 @@
 
 <div class="grid">
     <app-selection-button
-        class="keep-aspect"
         [value]="false"
         [match]="tradeInProcessService.tradeInProcessContainer.missing"
         [text]="'No'"
@@ -27,7 +25,6 @@
         (buttonClicked)="onMissingButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
-        class="keep-aspect"
         [value]="true"
         [match]="tradeInProcessService.tradeInProcessContainer.missing"
         [text]="'Yes'"
@@ -40,7 +37,6 @@
 
 <div class="grid">
     <app-selection-button
-        class="keep-aspect"
         [value]="false"
         [match]="tradeInProcessService.tradeInProcessContainer.scratched"
         [text]="'No'"
@@ -48,7 +44,6 @@
         (buttonClicked)="onScratchedButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
-        class="keep-aspect"
         [value]="true"
         [match]="tradeInProcessService.tradeInProcessContainer.scratched"
         [text]="'Yes'"
@@ -61,7 +56,6 @@
 
 <div class="grid">
     <app-selection-button
-        class="keep-aspect"
         [value]="false"
         [match]="tradeInProcessService.tradeInProcessContainer.bent"
         [text]="'No'"
@@ -69,7 +63,6 @@
         (buttonClicked)="onBentButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
-        class="keep-aspect"
         [value]="true"
         [match]="tradeInProcessService.tradeInProcessContainer.bent"
         [text]="'Yes'"
@@ -82,7 +75,6 @@
 
 <div class="grid">
     <app-selection-button
-        class="keep-aspect"
         [value]="false"
         [match]="tradeInProcessService.tradeInProcessContainer.broken"
         [text]="'No'"
@@ -90,7 +82,6 @@
         (buttonClicked)="onBrokenButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
-        class="keep-aspect"
         [value]="true"
         [match]="tradeInProcessService.tradeInProcessContainer.broken"
         [text]="'Yes'"
