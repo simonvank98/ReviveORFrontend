@@ -10,18 +10,10 @@ import {CreditIndicationModifier} from '../../../../shared/services/credit-indic
 })
 export class AdminCreditIndicationsOverviewComponent implements OnInit {
 
-    cars1 = [];
     modifierTypes: ModifierType[] = [];
     isDisabled = true;
 
     constructor(public creditIndicationModifierService: CreditIndicationModifierService) {
-        this.cars1.push('Test');
-        this.cars1.push('Test');
-        this.cars1.push('Test');
-        this.cars1.push('Test');
-        this.cars1.push('Test');
-        this.cars1.push('Test');
-        this.cars1.push('Test');
     }
 
     ngOnInit() {
