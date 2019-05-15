@@ -33,6 +33,10 @@ table {
 }
 
 
+.mat-progress-spinner.disabled circle, .mat-spinner.disabled circle {
+    stroke: #ccc !important;
+}
+
 .mat-progress-bar .mat-progress-bar-fill {
     transition-duration: 100ms!important;
 }

@@ -18,11 +18,13 @@ export class TradeInRequestJewelryConditionComponent implements OnInit {
 
     ngOnInit() {
         this.tradeInProcessService.setCurrentStep(0);
-        this.tradeInProcessService.getPiece().properties.forEach(property => {
-            if (property.value !== null) {
-                this.properties.push(property);
-            }
-        });
+        if (this.tradeInProcessService.hasPiece()) {
+            this.tradeInProcessService.getPiece().properties.forEach(property => {
+                if (property.value !== null) {
+                    this.properties.push(property);
+                }
+            });
+        }
     }
 
     onNextClicked() {
