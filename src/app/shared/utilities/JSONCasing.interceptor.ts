@@ -15,9 +15,12 @@ export class JSONCasingInterceptor implements HttpInterceptor {
             return next.handle(req);
         }
 
+        console.log('pizza');
+
         // Convert request json from camelCase to snake_case.
         if (req.body && CommonJs.isJSONObject(req.body)) {
             req = req.clone({body: humps.decamelizeKeys(req.body)});
+            console.log('pizza2');
         }
         // Convert response json from snake_case to camelCase
         return next.handle(req).pipe(map((event) => {

@@ -6,7 +6,7 @@ export const environment = {
     production: false,
 
     mainPlatformAPIUrl: 'https://www.theoceanrepublic.com/api/v2/',
-    reviveORAPIUrl: 'https://reviveor.sanchezhuisraad.nl/api/v1/',
+    reviveORAPIUrl: 'http://revapi.local/',
 };
 
 /*

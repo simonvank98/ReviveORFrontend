@@ -1,3 +1,61 @@
-<p>
-  admin-credit-indications-overview works!
-</p>
+<div>
+    <p-table [value]="modifierTypes" (onEditComplete)="onEdit($event)" (onEditInit)="onEditInit($event)">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Indications</th>
+                <th>Ring</th>
+                <th>Bracelet</th>
+                <th>Necklace</th>
+                <th>Earrings</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+            <tr>
+                <td pEditableColumn>
+                    {{rowData.name}}
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.indication[0].effect" required> <span>%</span>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.indication[0].effect}} <span>%</span>
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.indication[1].effect" required> <span>%</span>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.indication[1].effect}} <span>%</span>
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.indication[2].effect" required> <span>%</span>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.indication[2].effect}} <span>%</span>
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.indication[3].effect" required> <span>%</span>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.indication[3].effect}} <span>%</span>
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <button mat-button class="main mat-elevation-z3" [disabled]="isDisabled"  (click)="save()">Save</button>
+</div>
