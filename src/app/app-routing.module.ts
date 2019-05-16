@@ -24,10 +24,16 @@ import { TradeInRequestCreditIndicationComponent } from './features/trade-in-req
 import { TradeInRequestOverviewComponent } from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
 import {AllProductsResolver} from './features/shop/all-products.resolver';
 import {TradeInRequestCompletionComponent} from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
+import {ShopListComponent} from './features/shop/shop-list/shop-list.component';
+import {ShopDetailComponent} from './features/shop/shop-detail/shop-detail.component';
+import {ProductResolver} from './features/shop/product.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'shop', component: ShopComponent, resolve: { products: AllProductsResolver } },
+  { path: 'shop', component: ShopComponent, resolve: { products: AllProductsResolver }, children: [
+      { path: '', component: ShopListComponent },
+      { path: ':id', component: ShopDetailComponent, resolve: { product: ProductResolver }},
+  ]},
   { path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full' },
   { path: 'trade-in',
     component: TradeInRequestPageComponent,

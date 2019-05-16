@@ -7,5 +7,5 @@ export interface ProductModel {
   status: string;
   price: number;
   conditionId: number;
-  productImage: ProductImageModel[];
+  images: ProductImageModel[];
 }
