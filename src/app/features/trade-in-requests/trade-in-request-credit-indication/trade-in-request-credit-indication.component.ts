@@ -11,11 +11,11 @@ import { CountUp } from 'countup.js';
 })
 export class TradeInRequestCreditIndicationComponent implements OnInit, AfterViewInit {
 
-    private color = 'primary';
-    private mode = 'determinate';
+    color = 'primary';
+    mode = 'determinate';
+    percentage = 0;
 
     private indication = 0;
-    private percentage = 0;
 
     private options = { decimalPlaces: 2, duration: 1.5, decimal: ',', separator: '.' };
 
@@ -28,6 +28,7 @@ export class TradeInRequestCreditIndicationComponent implements OnInit, AfterVie
         this.creditIndicationService.getIndication(this.tradeInProcessService.tradeInProcessContainer).then(indication => {
             this.indication = indication['indication'];
             this.percentage = (indication['indication'] / indication['basePrice']) * 100;
+            this.tradeInProcessService.tradeInProcessContainer.estimatedCredit = this.indication;
             const countUp = new CountUp('indication-amount', this.indication, this.options).start();
         });
     }

@@ -1,0 +1,7 @@
+<input class="inputfile" id="file" type="file" [multiple]="allowMultipleSelection" (change)="onChange($event)" [accept]="allowedExtensions.toString()">
+<label for="file">
+    <button mat-raised-button color="primary">
+        <mat-icon>cloud_upload</mat-icon>&nbsp;
+        {{ buttonText }}
+    </button>
+</label>

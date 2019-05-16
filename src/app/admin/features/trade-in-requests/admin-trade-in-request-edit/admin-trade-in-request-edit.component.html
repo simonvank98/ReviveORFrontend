@@ -1,7 +1,7 @@
 <div class="grid">
   <div class="left">
-    <mat-card-title><h3>Credit Request #{{ model.requestId }}</h3></mat-card-title>
-    <mat-card-content><p>Submitted on {{ model.dateCreated.toDateString() }}</p></mat-card-content>
+    <mat-card-title><h3>Credit Request #{{ model.id }}</h3></mat-card-title>
+    <mat-card-content><p>Submitted on {{ model.createdAt }}</p></mat-card-content>
     <mat-card-content><p>By {{ model.user.name }} ({{ model.user.email }})</p></mat-card-content>
   </div>
   <div class="right">
@@ -24,7 +24,7 @@
     <mat-form-field>
       <mat-label>Size</mat-label>
       <select matNativeControl required>
-        <option value="{{ model.jewelryName }}">{{ model.jewelrySize }}</option>
+        <option value="{{ model.jewelrySize }}">{{ model.jewelrySize }}</option>
         <option value="S">S</option>
         <option value="M">M</option>
         <option value="L">L</option>
@@ -39,19 +39,19 @@
       </tr>
       <tr>
         <td>Scratches</td>
-        <td>{{ model.tradeInRequestsJewelryType.scratched }}</td>
+        <td>{{ model.jewelryCondition.scratched }}</td>
       </tr>
       <tr>
         <td>Bent</td>
-        <td>{{ model.tradeInRequestsJewelryType.bent }}</td>
+        <td>{{ model.jewelryCondition.bent }}</td>
       </tr>
       <tr>
         <td>Broken</td>
-        <td>{{ model.tradeInRequestsJewelryType.broken }}</td>
+        <td>{{ model.jewelryCondition.broken }}</td>
       </tr>
       <tr>
         <td>Missing piece</td>
-        <td>{{ model.tradeInRequestsJewelryType.missingPiece }}</td>
+        <td>{{ model.jewelryCondition.missingPiece }}</td>
       </tr>
     </table>
   </div>
@@ -60,15 +60,15 @@
 <div class="grid">
   <div class="left">
     <div class="imageCollectionWrapper">
-      <div class="imageDiv" *ngFor="let image of model.tradeInRequestsImage.imagePath">
-        <img [src]="image" alt="">
+      <div class="imageDiv" *ngFor="let image of model.images">
+        <img [src]="image.url" alt="">
       </div>
     </div>
   </div>
   <div class="right">
     <div class="noteBorder">
       <mat-label>Note from customer</mat-label>
-      <mat-card-content><p>{{ model.additionalDescription }}</p></mat-card-content>
+      <mat-card-content><p>{{ model.additionalNotes }}</p></mat-card-content>
     </div>
   </div>
 </div>
@@ -84,6 +84,7 @@
   <mat-form-field class="indicationFormfield">
     <label for="creditIndication">Estimated maximum credit</label>
     <input matInput id="creditIndication" value="€ {{ model.estimatedCredit }}">
+
   </mat-form-field>
 </div>
 

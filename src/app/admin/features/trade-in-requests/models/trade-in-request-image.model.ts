@@ -1,4 +1,4 @@
 export interface TradeInRequestImageModel {
-  requestId: number;
-  imagePath: string[];
+  imageId: number;
+  url: string;
 }

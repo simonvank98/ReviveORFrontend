@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './features/core/home/home.component';
 import {ShopComponent} from './features/shop/shop.component';
 import {AccountPageComponent} from './features/accounts/account-page.component';
+import {ErrorPageComponent} from './shared/components/error-page/error-page.component';
 import {StoryPageComponent} from './features/stories/story-page.component';
 import {TradeInRequestPageComponent} from './features/trade-in-requests/trade-in-request-page.component';
 import { TradeInRequestJewelryTypeComponent } from './features/trade-in-requests/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
@@ -13,14 +14,16 @@ import {AdminStoriesOverviewComponent} from './admin/features/stories/admin-stor
 import {AdminTradeInRequestOverviewComponent} from './admin/features/trade-in-requests/admin-trade-in-request-overview/admin-trade-in-request-overview.component';
 import {AdminCreditIndicationsOverviewComponent} from './admin/features/credit-indications/admin-credit-indications-overview/admin-credit-indications-overview.component';
 import {AdminPermissionsOverviewComponent} from './admin/features/permissions/admin-permissions-overview/admin-permissions-overview.component';
-import {AllTradeInRequestResolver} from './admin/features/trade-in-requests/all-trade-in-request.resolver';
+import {AllTradeInRequestResolver} from './admin/features/trade-in-requests/resolvers/all-trade-in-request.resolver';
 import {AdminTradeInRequestEditComponent} from './admin/features/trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
-import {TradeInRequestResolver} from './admin/features/trade-in-requests/trade-in-request.resolver';
+import {TradeInRequestResolver} from './admin/features/trade-in-requests/resolvers/trade-in-request.resolver';
 import { TradeInRequestJewelryPieceComponent } from './features/trade-in-requests/trade-in-request-jewelry-piece/trade-in-request-jewelry-piece.component';
+import {TradeInRequestFinalizationComponent} from './features/trade-in-requests/trade-in-request-finalization/trade-in-request-finalization.component';
 import { TradeInRequestJewelryConditionComponent } from './features/trade-in-requests/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
 import { TradeInRequestCreditIndicationComponent } from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
 import { TradeInRequestOverviewComponent } from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
 import {AllProductsResolver} from './features/shop/all-products.resolver';
+import {TradeInRequestCompletionComponent} from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,12 +32,14 @@ const routes: Routes = [
   { path: 'trade-in',
     component: TradeInRequestPageComponent,
     children: [
-        { path: 'type', component: TradeInRequestJewelryTypeComponent, },
-        { path: 'material', component: TradeInRequestJewelryMaterialComponent, },
-        { path: 'piece', component: TradeInRequestJewelryPieceComponent, },
-        { path: 'condition', component: TradeInRequestJewelryConditionComponent, },
-        { path: 'indication', component: TradeInRequestCreditIndicationComponent, },
-        { path: 'overview', component: TradeInRequestOverviewComponent, },
+        { path: 'type', component: TradeInRequestJewelryTypeComponent, data: {animation: 'jewelryType'}},
+        { path: 'material', component: TradeInRequestJewelryMaterialComponent, data: {animation: 'jewelryMaterial'}},
+        { path: 'piece', component: TradeInRequestJewelryPieceComponent, data: {animation: 'jewelryPiece'}},
+        { path: 'condition', component: TradeInRequestJewelryConditionComponent, data: {animation: 'jewelryCondition'}},
+        { path: 'indication', component: TradeInRequestCreditIndicationComponent, data: {animation: 'jewelryIndication'}},
+        { path: 'overview', component: TradeInRequestOverviewComponent, data: {animation: 'jewelryOverview'}},
+        { path: 'finalize', component: TradeInRequestFinalizationComponent, data: {animation: 'jewelryFinalization'}},
+        { path: 'complete', component: TradeInRequestCompletionComponent, data: {animation: 'jewelryCompletion'}},
     ]
   },
   { path: 'stories', component: StoryPageComponent },

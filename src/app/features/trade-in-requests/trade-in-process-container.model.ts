@@ -5,6 +5,7 @@ export interface TradeInProcessContainer {
     jewelryType: string;
     jewelryMaterial: string;
     jewelryPiece: ORProduct;
+    estimatedCredit: number;
     property: string;
     missing: boolean;
     scratched: boolean;
