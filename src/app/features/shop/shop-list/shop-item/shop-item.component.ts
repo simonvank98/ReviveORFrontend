@@ -8,6 +8,7 @@ import {ProductModel} from '../../../../shared/services/product/product.model';
 })
 export class ShopItemComponent implements OnInit {
     @Input() product: ProductModel;
+    @Input() index: number;
 
     constructor() {
     }

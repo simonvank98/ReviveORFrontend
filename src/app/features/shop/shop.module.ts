@@ -7,6 +7,7 @@ import {ShopItemComponent} from './shop-list/shop-item/shop-item.component';
 import {ShopSearchComponent} from './shop-search/shop-search.component';
 import {ShopDetailComponent} from './shop-detail/shop-detail.component';
 import {ShopComponent} from './shop.component';
+import {ProductResolver} from './product.resolver';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import {ShopComponent} from './shop.component';
         ShopComponent,
     ],
     providers: [
-        AllProductsResolver
+        AllProductsResolver,
+        ProductResolver
     ]
 })
 
