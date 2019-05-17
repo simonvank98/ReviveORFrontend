@@ -1,0 +1,28 @@
+h3 {
+    padding: 10px 0px;
+}
+.grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+.grid > * {
+    --aspect-ratio: 1/1;
+    position: relative;
+}
+.grid > .keep-aspect::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 0;
+    padding-bottom: calc(100% / (var(--aspect-ratio)));
+}
+.label {
+    font-size: 14px;
+    margin: 10px 0px 0px 0px;
+}
+.value {
+    font-size: 16px;
+    font-weight: bold;
+}

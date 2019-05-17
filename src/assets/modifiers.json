@@ -1,0 +1,402 @@
+[
+    {
+        "id": 1,
+        "product_category_id": 1,
+        "criterion_id": 1,
+        "effect": 55,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-27 22:13:58",
+        "criterion": {
+            "id": 1,
+            "name": "Base",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 1,
+            "name": "Rings",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 2,
+        "product_category_id": 2,
+        "criterion_id": 1,
+        "effect": 20,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-27 22:16:32",
+        "criterion": {
+            "id": 1,
+            "name": "Base",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 2,
+            "name": "Bracelets",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 3,
+        "product_category_id": 3,
+        "criterion_id": 1,
+        "effect": 35,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 1,
+            "name": "Base",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 3,
+            "name": "Necklaces",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 4,
+        "product_category_id": 4,
+        "criterion_id": 1,
+        "effect": 25,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 1,
+            "name": "Base",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 4,
+            "name": "Earrings",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 5,
+        "product_category_id": 1,
+        "criterion_id": 2,
+        "effect": 5,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 2,
+            "name": "Broken",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 1,
+            "name": "Rings",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 6,
+        "product_category_id": 2,
+        "criterion_id": 2,
+        "effect": 2,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 2,
+            "name": "Broken",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 2,
+            "name": "Bracelets",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 7,
+        "product_category_id": 3,
+        "criterion_id": 2,
+        "effect": 4,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 2,
+            "name": "Broken",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 3,
+            "name": "Necklaces",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 8,
+        "product_category_id": 4,
+        "criterion_id": 2,
+        "effect": 3,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 2,
+            "name": "Broken",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 4,
+            "name": "Earrings",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 9,
+        "product_category_id": 1,
+        "criterion_id": 3,
+        "effect": 4,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 3,
+            "name": "Bent",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 1,
+            "name": "Rings",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 10,
+        "product_category_id": 2,
+        "criterion_id": 3,
+        "effect": 6,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 3,
+            "name": "Bent",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 2,
+            "name": "Bracelets",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 11,
+        "product_category_id": 3,
+        "criterion_id": 3,
+        "effect": 9,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 3,
+            "name": "Bent",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 3,
+            "name": "Necklaces",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 12,
+        "product_category_id": 4,
+        "criterion_id": 3,
+        "effect": 6,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 3,
+            "name": "Bent",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 4,
+            "name": "Earrings",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 13,
+        "product_category_id": 1,
+        "criterion_id": 4,
+        "effect": 6,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 4,
+            "name": "Missing piece",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 1,
+            "name": "Rings",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 14,
+        "product_category_id": 2,
+        "criterion_id": 4,
+        "effect": 8,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 4,
+            "name": "Missing piece",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 2,
+            "name": "Bracelets",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 15,
+        "product_category_id": 3,
+        "criterion_id": 4,
+        "effect": 5,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 4,
+            "name": "Missing piece",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 3,
+            "name": "Necklaces",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 16,
+        "product_category_id": 4,
+        "criterion_id": 4,
+        "effect": 2,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 4,
+            "name": "Missing piece",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 4,
+            "name": "Earrings",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 17,
+        "product_category_id": 1,
+        "criterion_id": 5,
+        "effect": 10,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 5,
+            "name": "Scratched",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 1,
+            "name": "Rings",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 18,
+        "product_category_id": 2,
+        "criterion_id": 5,
+        "effect": 12,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 5,
+            "name": "Scratched",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 2,
+            "name": "Bracelets",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 19,
+        "product_category_id": 3,
+        "criterion_id": 5,
+        "effect": 9,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 5,
+            "name": "Scratched",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 3,
+            "name": "Necklaces",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    },
+    {
+        "id": 20,
+        "product_category_id": 4,
+        "criterion_id": 5,
+        "effect": 5,
+        "created_at": "2019-04-26 23:23:20",
+        "updated_at": "2019-04-26 23:23:20",
+        "criterion": {
+            "id": 5,
+            "name": "Scratched",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        },
+        "category": {
+            "id": 4,
+            "name": "Earrings",
+            "created_at": "2019-04-26 23:23:20",
+            "updated_at": "2019-04-26 23:23:20"
+        }
+    }
+]

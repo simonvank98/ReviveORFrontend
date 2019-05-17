@@ -1,0 +1,22 @@
+button {
+ color: black;
+}
+
+.mat-success {
+  background-color: green;
+  color: #fff;
+}
+
+.mat-dialog-actions {
+    margin-bottom: unset;
+}
+.spacing {
+    text-align: right;
+    margin-top: 20px;
+  > * {
+      margin-left: 10px;
+      display: inline-block;
+  }
+
+  justify-content: flex-end;
+}

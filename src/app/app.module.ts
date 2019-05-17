@@ -1,52 +1,78 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CountUpModule} from 'countup.js-angular2';
+import {ControlButtonsComponent} from './features/trade-in-requests/control-buttons/control-buttons.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/header/header.component';
-import { FooterComponent } from './core/footer/footer.component';
-import { HomeComponent } from './core/home/home.component';
-import { ShopListComponent } from './shop/shop-list/shop-list.component';
-import { ShopItemComponent } from './shop/shop-list/shop-item/shop-item.component';
-import { ShopSearchComponent } from './shop/shop-search/shop-search.component';
-import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
-import { ShopComponent } from './shop/shop.component';
-import { AccountPageComponent } from './account-page/account-page.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TradeInPageComponent } from './trade-in-page/trade-in-page.component';
-import { StoryPageComponent } from './story-page/story-page.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './features/core/header/header.component';
+import {FooterComponent} from './features/core/footer/footer.component';
+import {HomeComponent} from './features/core/home/home.component';
+import {AccountPageComponent} from './features/accounts/account-page.component';
+import {ErrorPageComponent} from './shared/components/error-page/error-page.component';
+import {StoryPageComponent} from './features/stories/story-page.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
+import {TradeInRequestPageComponent} from './features/trade-in-requests/trade-in-request-page.component';
+import {StepperComponent} from './shared/components/stepper/stepper.component';
+import {TradeInRequestJewelryTypeComponent} from './features/trade-in-requests/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
+import {TradeInRequestJewelryMaterialComponent} from './features/trade-in-requests/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
 import {AdminModule} from './admin/admin.module';
+import {ApiService} from './shared/services/api/api.service';
+import {ORApiService} from './shared/services/api/or-api.service';
+import {TempApiService} from './shared/services/api/temp-api.service';
+import {TradeInRequestJewelryPieceComponent} from './features/trade-in-requests/trade-in-request-jewelry-piece/trade-in-request-jewelry-piece.component';
+import {SelectionButtonComponent} from './features/trade-in-requests/selection-button/selection-button.component';
+import {TradeInRequestJewelryConditionComponent} from './features/trade-in-requests/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
+import {TradeInRequestCreditIndicationComponent} from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
+import {TradeInRequestOverviewComponent} from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
+import {ShopModule} from './features/shop/shop.module';
+import { TradeInRequestFinalizationComponent } from './features/trade-in-requests/trade-in-request-finalization/trade-in-request-finalization.component';
+import {JSONCasingInterceptor} from './shared/utilities/JSONCasing.interceptor';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import { TradeInRequestCompletionComponent } from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      HeaderComponent,
-      FooterComponent,
-      HomeComponent,
-      ShopListComponent,
-      ShopItemComponent,
-      ShopSearchComponent,
-      ShopDetailComponent,
-      ShopComponent,
-      AccountPageComponent,
-      ErrorPageComponent,
-      PageNotFoundComponent,
-      TradeInPageComponent,
-      StoryPageComponent,
-   ],
-   imports: [
-      BrowserModule,
-      BrowserAnimationsModule,
-      SharedModule,
-      AppRoutingModule,
-      AdminModule
-   ],
-   providers: [],
-   bootstrap: [
-      AppComponent
-   ]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        HomeComponent,
+        AccountPageComponent,
+        ErrorPageComponent,
+        TradeInRequestPageComponent,
+        TradeInRequestJewelryTypeComponent,
+        TradeInRequestJewelryMaterialComponent,
+        TradeInRequestJewelryPieceComponent,
+        SelectionButtonComponent,
+        StoryPageComponent,
+        StepperComponent,
+        ControlButtonsComponent,
+        TradeInRequestJewelryConditionComponent,
+        TradeInRequestCreditIndicationComponent,
+        TradeInRequestOverviewComponent,
+        TradeInRequestFinalizationComponent,
+        TradeInRequestCompletionComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        SharedModule,
+        AppRoutingModule,
+        AdminModule,
+        ShopModule,
+        CountUpModule,
+        BrowserAnimationsModule
+    ],
+    providers: [
+        ApiService,
+        ORApiService,
+        TempApiService,
+        { provide: HTTP_INTERCEPTORS, useClass: JSONCasingInterceptor, multi: true },
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -1,0 +1,41 @@
+<h3>What type of Ocean Republic jewelry do you want to trade in?</h3>
+
+<div class="grid">
+    <app-selection-button
+        class="keep-aspect"
+        [value]="'bracelets'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryType"
+        [text]="'Bracelet'"
+        [imageUrl]="'../../../assets/bracelet.png'"
+        group="group-1"
+        (buttonClicked)="onButtonClicked($event)">
+    </app-selection-button>
+    <app-selection-button
+        class="keep-aspect"
+        [value]="'earrings'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryType"
+        [text]="'Earrings'"
+        [imageUrl]="'../../../assets/earrings.png'"
+        group="group-1"
+        (buttonClicked)="onButtonClicked($event)">
+    </app-selection-button>
+    <app-selection-button
+        class="keep-aspect"
+        [value]="'necklaces'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryType"
+        [text]="'Necklace'"
+        [imageUrl]="'../../../assets/necklace.png'"
+        group="group-1"
+        (buttonClicked)="onButtonClicked($event)">
+    </app-selection-button>
+    <app-selection-button
+        class="keep-aspect"
+        [value]="'rings'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryType"
+        [text]="'Ring'"
+        [imageUrl]="'../../../assets/ring.png'"
+        group="group-1"
+        (buttonClicked)="onButtonClicked($event)">
+    </app-selection-button>
+</div>
+<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>

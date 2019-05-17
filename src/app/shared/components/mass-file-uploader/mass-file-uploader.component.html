@@ -1,0 +1,12 @@
+<app-file-dropzone (filesDropped)="onFilesSelected($event)" [allowedExtensions]="allowedExtensions"></app-file-dropzone>
+
+<mat-card class="queue-wrapper mat-elevation-z3">
+    <app-file-upload-control-bar
+        [fileUploader]="this"
+        [file]="file"
+        [id]="i"
+        (uploadCancelled)="onFileUploadCancelled(i)"
+        (uploadSuccess)="onFileUploadSuccess(i, $event)"
+        *ngFor="let file of files; let i = index">
+    </app-file-upload-control-bar>
+</mat-card>

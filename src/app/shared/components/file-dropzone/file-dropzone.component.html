@@ -1,0 +1,14 @@
+<div class="dropzone"
+     fileDragAndDrop
+     (filesDropped)="onFilesSelected($event)"
+     (filesHovered)="onFilesHovered($event)"
+     [ngClass]="{'hovered': dropzoneActive}">
+    <p>Drag & drop images here</p>
+    <ng-container *ngIf="showBrowseButton">
+        <p>or</p>
+        <app-file-selection
+            [allowedExtensions]="allowedExtensions"
+            (filesSelected)="onFilesSelected($event)">
+        </app-file-selection>
+    </ng-container>
+</div>

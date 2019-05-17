@@ -1,0 +1,94 @@
+$orbHeight: 40px;
+$color: #ccc;
+$activeColor: #2749b6;
+
+.step {
+    // height: 80px;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 10px;
+
+    &.active {
+        .orb, .line {
+            background-color: $activeColor;
+            color: white;
+        }
+        .label {
+            color: $activeColor;
+            font-weight: bold;
+        }
+    }
+}
+.orb {
+    font-size: 20px;
+    width: $orbHeight;
+    height: $orbHeight;
+    background-color: $color;
+    text-align: center;
+    line-height: $orbHeight;
+    border-radius: $orbHeight;
+    font-weight: bold;
+}
+.label {
+    margin-top: 5px;
+}
+.wrapper .step:last-child .line {
+    display: none;
+}
+.orb, .label, .line {
+    transition: 0.3s background-color;
+}
+.orb {
+    // display: inline-block;
+    line-height: $orbHeight;
+}
+.line {
+    width: 4px;
+    height: 30px;
+    margin-left: 18px;
+    background-color: $color;
+}
+.description {
+    font-size: 11px;
+}
+
+.horizontal {
+    border: 3px solid $activeColor;
+    border-radius: 3px;
+    display: flex;
+    overflow: hidden;
+    // flex-grow: 1;
+    .step-horizontal {
+        flex: 1;
+        text-align: center;
+        position: relative;
+        padding: 10px 0px;
+
+        &.active {
+            background-color: $activeColor;
+            color: white;
+
+            &::before {
+                background-color: $activeColor;
+            }
+        }
+        &::before {
+            transform: rotate(-45deg);
+            box-sizing: border-box;
+            display: block;
+            content: '';
+            border: solid $activeColor;
+            border-width: 0px 3px 3px 0px;
+            height: 40px;
+            width: 40px;
+            position: absolute;
+            right: -10px;
+            top: 0;
+            border-radius: 3px;
+        }
+
+        &:last-child::before {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+<h3>Please select your jewelry piece from the list below</h3>
+
+<div class="grid products-container">
+    <ng-container *ngFor="let product of products">
+
+        <app-selection-button
+            class="keep-aspect"
+            [value]="product"
+            [match]="tradeInProcessService.tradeInProcessContainer.jewelryPiece"
+            text="{{ product.name | titlecase }}"
+            [imageUrl]="product.thumbnail.url"
+            [group]="group-1"
+            (buttonClicked)="onButtonClicked($event)">
+        </app-selection-button>
+
+    </ng-container>
+</div>
+<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>
+
+
