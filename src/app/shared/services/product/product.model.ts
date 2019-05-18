@@ -1,6 +1,6 @@
 import {ProductImageModel} from './product-image.model';
 import {ProductCategoryModel} from './product-category.model';
-import {ProductConditionModel} from './product-condition.model';
+import {ProductRatingModel} from './product-rating.model';
 
 export interface ProductModel {
   id: number;
@@ -11,5 +11,5 @@ export interface ProductModel {
   conditionId: number;
   images: ProductImageModel[];
   category: ProductCategoryModel;
-  condition: ProductConditionModel;
+  rating: ProductRatingModel;
 }

@@ -15,7 +15,7 @@ export class StepperComponent implements OnInit {
     ];
     @Input() descriptions = [
         'Determine the type of Ocean Republic jewelry.',
-        'Determine the condition to estimate trade-in credit.',
+        'Determine the name to estimate trade-in credit.',
         '',
         ''
     ];

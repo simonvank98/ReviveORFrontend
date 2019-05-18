@@ -21,7 +21,6 @@ img {
 
 .noteBorder {
   border: 1px black solid;
-  height: 100%;
 }
 
 .story {
@@ -55,4 +54,8 @@ button {
 
 .buttonRight {
   text-align: right;
+}
+
+textarea {
+    width: 100%;
 }
