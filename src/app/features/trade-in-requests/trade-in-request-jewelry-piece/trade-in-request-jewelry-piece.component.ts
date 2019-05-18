@@ -39,7 +39,7 @@ export class TradeInRequestJewelryPieceComponent implements OnInit {
 
     onNextClicked() {
         if (this.tradeInProcessService.hasPiece()) {
-            this.router.navigate(['/trade-in/condition']);
+            this.router.navigate(['/trade-in/name']);
         } else {
             this.snackBarService.show('Please choose your jewelry piece.');
         }
