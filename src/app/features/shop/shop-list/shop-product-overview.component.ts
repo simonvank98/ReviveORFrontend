@@ -17,4 +17,8 @@ export class ShopProductOverviewComponent implements OnInit {
         this.products = this.route.snapshot.data['products'];
         console.log(this.products);
     }
+
+    filterCategory(event) {
+      //
+    }
 }
