@@ -15,6 +15,7 @@
     box-sizing: border-box;
     font-family: Neuzeit, sans-serif;
 }
+
 html, body {
   height: 100%;
 }
@@ -24,6 +25,10 @@ body {
 }
 table {
     width: 100%;
+}
+
+p {
+    margin: 16px 0;
 }
 
 .full-width {
@@ -36,6 +41,21 @@ table {
     width:100%;
 }
 
+.align-right {
+    text-align: right;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+
+.shopping-cart-alignment-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+    grid-gap: 10%;
+}
 
 .mat-progress-bar .mat-progress-bar-fill {
     transition-duration: 100ms!important;
