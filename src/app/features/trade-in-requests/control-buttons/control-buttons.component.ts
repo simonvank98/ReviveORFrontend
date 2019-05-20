@@ -1,5 +1,5 @@
 import {ModalService} from '../../../shared/services/modal-service/modal.service';
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, Input} from '@angular/core';
 import {TradeInProcessService} from 'src/app/features/trade-in-requests/trade-in-process.service';
 import {Router} from '@angular/router';
 
@@ -12,6 +12,9 @@ export class ControlButtonsComponent implements OnInit {
 
   @Output() nextClicked: EventEmitter<any> = new EventEmitter();
   @Output() backClicked: EventEmitter<any> = new EventEmitter();
+  @Output() customClicked: EventEmitter<any> = new EventEmitter();
+
+  @Input() customButton = '';
 
   resetDialogOpen = false;
 
@@ -26,6 +29,10 @@ export class ControlButtonsComponent implements OnInit {
 
   onBackClicked() {
     this.backClicked.emit();
+  }
+
+  onCustomClicked() {
+    this.customClicked.emit();
   }
 
   onResetClicked() {

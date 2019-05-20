@@ -1,6 +1,6 @@
 import { transition, trigger, query, style, animate, group } from '@angular/animations';
 
-const styles = {transform:'translateX(0)',position:'absolute',top:0,right:0,width:'100%',opacity:'1'};
+const styles = {transform: 'translateX(0)', position: 'absolute', top: 0, right: 0, width: '100%', opacity: '1'};
 const animateBack = [
     query(':enter, :leave', style(styles), { optional: true }),
     group([
@@ -42,11 +42,11 @@ trigger('routeAnimations', [
     transition('jewelryCondition => jewelryIndication', animateNext),
 
     transition('jewelryIndication => jewelryCondition', animateBack),
-    transition('jewelryIndication => jewelryOverview', animateNext),
+    transition('jewelryIndication => jewelryFinalization', animateNext),
 
-    transition('jewelryOverview => jewelryIndication', animateBack),
-    transition('jewelryOverview => jewelryFinalization', animateNext),
+    transition('jewelryFinalization => jewelryIndication', animateBack),
+    transition('jewelryFinalization => jewelryOverview', animateNext),
 
-    transition('jewelryFinalization => jewelryOverview', animateBack),
-    transition('jewelryFinalization => jewelryCompletion', animateNext),
+    transition('jewelryOverview => jewelryFinalization', animateBack),
+    transition('jewelryOverview => jewelryCompletion', animateNext),
 ]);

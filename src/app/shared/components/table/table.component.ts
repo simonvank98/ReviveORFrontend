@@ -36,6 +36,10 @@ export class TableComponent implements OnInit, AfterViewInit {
   @Input() search = true;
   // Toggles the visibility of the sort controls.
   @Input() sortable = true;
+  // Toggles the hoverable rows feature.
+  @Input() hoverable = true;
+  // Toggles the shadows.
+  @Input() shadows = true;
 
   // Datasource the table will use. Will be filled with model data.
   dataSource = new MatTableDataSource();

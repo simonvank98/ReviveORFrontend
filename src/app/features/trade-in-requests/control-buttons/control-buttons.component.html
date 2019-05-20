@@ -3,7 +3,8 @@
         <button mat-button class="mat-elevation-z3" (click)="onResetClicked()">Reset</button>   
     </div>
     <div class="right">
-        <button mat-button class="mat-elevation-z3" (click)="onBackClicked()">&lt; Back</button>
-        <button mat-button class="main mat-elevation-z3"  (click)="onNextClicked()">Next &gt;</button>
+        <button *ngIf="customButton.length > 0" mat-button class="mat-elevation-z3" (click)="onCustomClicked()">{{ customButton }}</button>
+        <button mat-button class="mat-elevation-z3" (click)="onBackClicked()">&lt; Last Step</button>
+        <button mat-button class="main mat-elevation-z3"  (click)="onNextClicked()">Next Step &gt;</button>
     </div>
 </div>

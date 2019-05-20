@@ -1,7 +1,7 @@
 <h3>Trade-in overview</h3>
 <div class="grid">
     <div>
-        <div class="label">Jewelry piece name</div>
+        <div class="label" *ngIf="tradeInProcessService.hasPiece()">Jewelry piece name</div>
         <div class="value">{{ tradeInProcessService.getPiece().name | titlecase }}</div>
         <div class="label">Jewelry material</div>
         <div class="value">{{ tradeInProcessService.getMaterial() | titlecase }}</div>
@@ -18,8 +18,9 @@
          [headers]="['Property', 'Value']"
          [models]="conditionModels"
          [attributes]="['name', 'value']"
-         [formatters]="formatters">
-
+         [formatters]="formatters"
+         [hoverable]="false"
+         [shadows]="false">
         </app-table>
     </div>
 </div>
