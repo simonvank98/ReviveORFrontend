@@ -2,7 +2,7 @@
 
 <ng-container *ngIf="properties.length > 0">
     <h4>Properties</h4>
-    <div class="grid">
+    <div class="trade-in-grid ">
         <app-selection-button
         *ngFor="let property of properties"
         [value]="property.value"
@@ -16,7 +16,7 @@
 
 <h4>Is there a piece missing?</h4>
 
-<div class="grid">
+<div class="trade-in-grid ">
     <app-selection-button
         [value]="false"
         [match]="tradeInProcessService.tradeInProcessContainer.missing"
@@ -35,7 +35,7 @@
 
 <h4>Is the piece scratched?</h4>
 
-<div class="grid">
+<div class="trade-in-grid ">
     <app-selection-button
         [value]="false"
         [match]="tradeInProcessService.tradeInProcessContainer.scratched"
@@ -54,7 +54,7 @@
 
 <h4>Is the piece bent?</h4>
 
-<div class="grid">
+<div class="trade-in-grid ">
     <app-selection-button
         [value]="false"
         [match]="tradeInProcessService.tradeInProcessContainer.bent"
@@ -73,7 +73,7 @@
 
 <h4>Is the piece broken?</h4>
 
-<div class="grid">
+<div class="trade-in-grid ">
     <app-selection-button
         [value]="false"
         [match]="tradeInProcessService.tradeInProcessContainer.broken"
