@@ -4,10 +4,10 @@ import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-shop-detail',
-  templateUrl: './shop-detail.component.html',
-  styleUrls: ['./shop-detail.component.scss']
+  templateUrl: './shop-product-details.component.html',
+  styleUrls: ['./shop-product-details.component.scss']
 })
-export class ShopDetailComponent implements OnInit {
+export class ShopProductDetailsComponent implements OnInit {
 
   product: ProductModel;
 

@@ -12,11 +12,11 @@ export class ORProductService {
     constructor(private api: TempApiService) { }
 
     public getAll(): Observable<ORProduct[]> {
-        return this.api.get<ORProduct[]>('products');
+        return this.api.get<ORProduct[]>('orproducts');
     }
 
     public getAllWithTypeAndMaterial(type: string, material: string): Observable<ORProduct[]> {
-        return this.api.get<ORProduct[]>('products').pipe(
+        return this.api.get<ORProduct[]>('orproducts').pipe(
             map(products => products
                 .filter(product => this.filterType(product, type))
                 .filter(product => this.filterMaterial(product, material)))

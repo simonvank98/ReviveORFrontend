@@ -5,10 +5,10 @@ import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-shop-list',
-  templateUrl: './shop-list.component.html',
-  styleUrls: ['./shop-list.component.scss']
+  templateUrl: './shop-product-overview.component.html',
+  styleUrls: ['./shop-product-overview.component.scss']
 })
-export class ShopListComponent implements OnInit {
+export class ShopProductOverviewComponent implements OnInit {
     products: ProductModel[];
 
   constructor(private route: ActivatedRoute) { }
