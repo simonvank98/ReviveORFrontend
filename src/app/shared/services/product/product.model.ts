@@ -5,6 +5,7 @@ import {ProductRatingModel} from './product-rating.model';
 export interface ProductModel {
   id: number;
   name: string;
+  description: string;
   categoryId: number;
   status: string;
   price: number;

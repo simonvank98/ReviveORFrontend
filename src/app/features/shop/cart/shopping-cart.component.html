@@ -1,0 +1,91 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>Winkelwagen</mat-card-title>
+
+    <div class="row table-header vertical-align">
+      <div class="col-sm-2">
+        <p>Items ({{cartItemsCount}})</p>
+      </div>
+
+      <div class="col-sm-5">
+        <p>Rating</p>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Qty</p>
+      </div>
+
+      <div class="col-sm-2">
+        <p>Price</p>
+      </div>
+    </div>
+
+    <div class="products">
+      <div class="row" *ngFor="let cartItem of cartItems">
+        <div class="col-sm-2 product-image">
+          <img src="{{cartItem.product.images[0].imagePath}}" alt="Product">
+        </div>
+
+        <div class="col-sm-5">
+          <a class="product-description" [routerLink]="['/shop', 'product', cartItem.product.id]">
+            <p>{{ cartItem.product.name }}</p>
+            <p>{{ cartItem.product.rating.name}}</p>
+            <p>Product ID: #{{ cartItem.product.id }}</p>
+          </a>
+        </div>
+
+        <div class="col-sm-2 quantity">
+          <input type="number" min="1" [(ngModel)]="cartItem.quantity" min="1" max="100"
+                 (ngModelChange)="quantityChanged($event, cartItem)">
+        </div>
+
+        <div class="col-sm-1">
+          {{ (cartItem.product.price * cartItem.quantity) | currency: '€' }}
+        </div>
+
+        <div class="col-lg-2 col-sm-10">
+          <button mat-raised-button color="accent" (click)="onRemoveCartItemButtonClicked(cartItem)">
+            <mat-icon>remove_shopping_cart</mat-icon>
+            Remove
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </mat-card>
+
+  <mat-card *ngIf="cartItemsCount > 0">
+
+    <div class="checkout">
+      <div class="row">
+        <div class="col-md-9">
+          <h5>Subtotal:</h5>
+        </div>
+        <div class="col-md-3">
+          <h4>{{ cartSubTotal | currency: '€' }}</h4>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-md-9">
+          <h3>Total:</h3>
+        </div>
+        <div class="col-md-3">
+          <h2>{{ cartTotal | currency: '€' }}</h2>
+        </div>
+      </div>
+
+      <div class="float-right">
+        <button mat-raised-button color="accent" [routerLink]="['/shop', 'checkout']">
+          <mat-icon>payment</mat-icon>
+          Continue to checkout
+        </button>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+  </mat-card>
+</div>

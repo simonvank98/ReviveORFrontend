@@ -1,0 +1,48 @@
+.mat-card {
+  margin-bottom: 30px;
+}
+
+.checkout {
+  h5, h3, h2, h4 {
+    text-align: right;
+  }
+}
+
+.product-image {
+  width: 100%;
+}
+
+.table-header {
+  border: 2px;
+  border-style: solid none;
+  border-color: #303030;
+}
+
+.vertical-align {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin: 10px 0;
+  }
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.products {
+  .row {
+    padding: 30px 0;
+  }
+
+  .quantity input {
+    width: 3em;
+  }
+}
+
+.product-description {
+    color: inherit;
+}
