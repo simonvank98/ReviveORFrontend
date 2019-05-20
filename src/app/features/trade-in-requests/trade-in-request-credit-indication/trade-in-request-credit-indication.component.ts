@@ -48,7 +48,7 @@ export class TradeInRequestCreditIndicationComponent implements OnInit, AfterVie
     }
 
     onNextClicked() {
-        this.router.navigate(['/trade-in/overview']);
+        this.router.navigate(['/trade-in/finalize']);
     }
 
     onBackClicked() {
