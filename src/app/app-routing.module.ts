@@ -17,7 +17,7 @@ import {AdminPermissionsOverviewComponent} from './admin/features/permissions/ad
 import {AllTradeInRequestResolver} from './admin/features/trade-in-requests/resolvers/all-trade-in-request.resolver';
 import {AdminTradeInRequestEditComponent} from './admin/features/trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
 import {TradeInRequestResolver} from './admin/features/trade-in-requests/resolvers/trade-in-request.resolver';
-import { TradeInRequestJewelrySelectionComponent } from './features/trade-in-requests/trade-in-request-jewelry-selection/trade-in-request-jewelry-piece.component';
+import { TradeInRequestJewelrySelectionComponent } from './features/trade-in-requests/trade-in-request-jewelry-selection/trade-in-request-jewelry-selection.component';
 import {TradeInRequestFinalizationComponent} from './features/trade-in-requests/trade-in-request-finalization/trade-in-request-finalization.component';
 import { TradeInRequestJewelryConditionComponent } from './features/trade-in-requests/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
 import { TradeInRequestCreditIndicationComponent } from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
