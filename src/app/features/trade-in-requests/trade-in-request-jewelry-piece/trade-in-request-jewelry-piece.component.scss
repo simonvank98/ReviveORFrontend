@@ -1,7 +1,7 @@
 h3 {
     padding: 10px 0px;
 }
-.grid {
+.trade-in-grid  {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -10,11 +10,11 @@ h3 {
     overflow-y: scroll;
     padding: 20px 10px 20px 10px;
 }
-.grid > * {
+.trade-in-grid > * {
     --aspect-ratio: 1/1;
     position: relative;
 }
-.grid > .keep-aspect::after {
+.trade-in-grid  > .keep-aspect::after {
     content: "";
     display: inline-block;
     width: 0px;
