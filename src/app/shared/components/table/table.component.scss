@@ -4,7 +4,7 @@
     padding: 10px;
 }
 
-mat-row:hover {
+mat-table.hoverable mat-row:hover {
     background-color: #ccc;
     cursor: pointer;
 }

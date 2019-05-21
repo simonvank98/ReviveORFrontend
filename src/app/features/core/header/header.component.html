@@ -15,7 +15,7 @@
     </div>
 
     <a routerLink="/shop/cart" class="shopping_cart" mat-button>
-      <mat-icon [matBadgeHidden]="false" matBadgeColor="primary" [matBadge]="2"
+      <mat-icon [matBadgeHidden]="cartItemsCount == 0" matBadgeColor="primary" [matBadge]="cartItemsCount"
                 matBadgePosition="above after">
         shopping_cart
       </mat-icon>

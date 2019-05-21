@@ -1,0 +1,23 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10%;
+}
+
+.right {
+    text-align: right;
+}
+
+img {
+    width: 400px;
+    height: 400px;
+}
+
+.storyWrapper {
+    border: 1px black solid;
+}
+
+.imageDiv img {
+    width: 200px;
+    height: 200px;
+}

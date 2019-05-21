@@ -7,14 +7,14 @@ import { TradeInProcessService } from '../trade-in-process.service';
 import { ORProductService } from 'src/app/shared/services/or-product/or-product.service';
 
 @Component({
-    selector: 'app-trade-in-request-jewelry-piece',
-    templateUrl: './trade-in-request-jewelry-piece.component.html',
-    styleUrls: ['./trade-in-request-jewelry-piece.component.scss'],
+    selector: 'app-trade-in-request-jewelry-selection',
+    templateUrl: './trade-in-request-jewelry-selection.component.html',
+    styleUrls: ['./trade-in-request-jewelry-selection.component.scss'],
     providers: [
         TempApiService
     ]
 })
-export class TradeInRequestJewelryPieceComponent implements OnInit {
+export class TradeInRequestJewelrySelectionComponent implements OnInit {
 
     products: ORProduct[] = [];
 
@@ -37,9 +37,14 @@ export class TradeInRequestJewelryPieceComponent implements OnInit {
         this.tradeInProcessService.setPiece(event.value);
     }
 
+    onCustomClicked() {
+        this.tradeInProcessService.setPiece({});
+        this.router.navigate(['/trade-in/condition']);
+    }
+
     onNextClicked() {
         if (this.tradeInProcessService.hasPiece()) {
-            this.router.navigate(['/trade-in/condition']);
+            this.router.navigate(['/trade-in/name']);
         } else {
             this.snackBarService.show('Please choose your jewelry piece.');
         }

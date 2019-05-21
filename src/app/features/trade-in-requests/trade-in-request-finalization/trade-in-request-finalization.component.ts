@@ -36,7 +36,7 @@ export class TradeInRequestFinalizationComponent implements OnInit {
             const tradeInRequest = this.createTradeInRequestModel();
             console.log('tradeinrequest', tradeInRequest);
             this.tradeInProcessService.submitRequest(tradeInRequest).subscribe(() => {
-                this.router.navigate(['/trade-in/complete']);
+                this.router.navigate(['/trade-in/overview']);
             }, (err) => {
                 // Todo show snackbar indicating error
                 console.log(err);
@@ -65,7 +65,7 @@ export class TradeInRequestFinalizationComponent implements OnInit {
     }
 
     onBackClicked() {
-        this.router.navigate(['/trade-in/overview']);
+        this.router.navigate(['/trade-in/indication']);
     }
 
     onImageUploaded(response: TradeInRequestImageModel) {

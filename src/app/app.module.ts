@@ -21,7 +21,7 @@ import {AdminModule} from './admin/admin.module';
 import {ApiService} from './shared/services/api/api.service';
 import {ORApiService} from './shared/services/api/or-api.service';
 import {TempApiService} from './shared/services/api/temp-api.service';
-import {TradeInRequestJewelryPieceComponent} from './features/trade-in-requests/trade-in-request-jewelry-piece/trade-in-request-jewelry-piece.component';
+import {TradeInRequestJewelrySelectionComponent} from './features/trade-in-requests/trade-in-request-jewelry-selection/trade-in-request-jewelry-selection.component';
 import {SelectionButtonComponent} from './features/trade-in-requests/selection-button/selection-button.component';
 import {TradeInRequestJewelryConditionComponent} from './features/trade-in-requests/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
 import {TradeInRequestCreditIndicationComponent} from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
@@ -43,7 +43,7 @@ import { TradeInRequestCompletionComponent } from './features/trade-in-requests/
         TradeInRequestPageComponent,
         TradeInRequestJewelryTypeComponent,
         TradeInRequestJewelryMaterialComponent,
-        TradeInRequestJewelryPieceComponent,
+        TradeInRequestJewelrySelectionComponent,
         SelectionButtonComponent,
         StoryPageComponent,
         StepperComponent,
@@ -52,7 +52,7 @@ import { TradeInRequestCompletionComponent } from './features/trade-in-requests/
         TradeInRequestCreditIndicationComponent,
         TradeInRequestOverviewComponent,
         TradeInRequestFinalizationComponent,
-        TradeInRequestCompletionComponent
+        TradeInRequestCompletionComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,6 +1,6 @@
 <h3>Please select your jewelry piece from the list below</h3>
 
-<div class="grid products-container">
+<div class="trade-in-grid products-container">
     <ng-container *ngFor="let product of products">
 
         <app-selection-button
@@ -15,6 +15,6 @@
 
     </ng-container>
 </div>
-<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>
+<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()" (customClicked)="onCustomClicked()" [customButton]="'I don\'t see my piece'"></app-control-buttons>
 
 
