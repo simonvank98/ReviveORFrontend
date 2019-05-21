@@ -80,7 +80,10 @@ export class ShoppingCartService implements OnDestroy {
     private retrieveAllItemsFromStorage(): CartItem[] {
         let cartItems = [];
         try {
-            cartItems = JSON.parse(localStorage.getItem(this.storageKey));
+            const cartItemsJSON = localStorage.getItem(this.storageKey);
+            if (cartItemsJSON !== null) {
+                cartItems = JSON.parse(cartItemsJSON);
+            }
         } catch (e) {
             cartItems = [];
         }
