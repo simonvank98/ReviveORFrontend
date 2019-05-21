@@ -1,5 +1,5 @@
 <div>
-    <p-table [value]="modifierTypes" (onEditComplete)="onEdit($event)" (onEditInit)="onEditInit($event)">
+    <p-table [value]="modifierTypes" (onEditComplete)="onEdit($event)">
         <ng-template pTemplate="header">
             <tr>
                 <th>Indications</th>
@@ -17,7 +17,7 @@
                 <td pEditableColumn>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="rowData.indication[0].effect" required> <span>%</span>
+                            <input price-format pInputText type="number" [(ngModel)]="rowData.indication[0].effect" lang="en" required step='0.01'> <span>%</span>
                         </ng-template>
                         <ng-template pTemplate="output">
                             {{rowData.indication[0].effect}} <span>%</span>
@@ -27,7 +27,7 @@
                 <td pEditableColumn>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="rowData.indication[1].effect" required> <span>%</span>
+                            <input price-format pInputText type="number" [(ngModel)]="rowData.indication[1].effect" required step='0.01'> <span>%</span>
                         </ng-template>
                         <ng-template pTemplate="output">
                             {{rowData.indication[1].effect}} <span>%</span>
@@ -37,7 +37,7 @@
                 <td pEditableColumn>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="rowData.indication[2].effect" required> <span>%</span>
+                            <input price-format pInputText type="number" [(ngModel)]="rowData.indication[2].effect" required step='0.01'> <span>%</span>
                         </ng-template>
                         <ng-template pTemplate="output">
                             {{rowData.indication[2].effect}} <span>%</span>
@@ -47,7 +47,7 @@
                 <td pEditableColumn>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="rowData.indication[3].effect" required> <span>%</span>
+                            <input price-format pInputText type="number" [(ngModel)]="rowData.indication[3].effect" required step='0.01'> <span>%</span>
                         </ng-template>
                         <ng-template pTemplate="output">
                             {{rowData.indication[3].effect}} <span>%</span>
