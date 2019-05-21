@@ -12,6 +12,7 @@ export class CommonJs {
         } else if (item instanceof Array) {
             try {
                 JSON.parse(JSON.stringify(item));
+                return true;
             } catch (e) {
                 return false;
             }
