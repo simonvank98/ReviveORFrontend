@@ -1,15 +1,32 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {ShoppingCartService} from '../../shop/cart/cart.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+    cartItemsCount = 0;
 
-  ngOnInit() {
-  }
+    private cartSubscription: Subscription;
+
+
+    constructor(private cartService: ShoppingCartService, private router: Router) { }
+
+
+    ngOnInit() {
+        this.cartSubscription = this.cartService.cartItemsSubject.subscribe((products) => {
+            this.cartItemsCount = products.length;
+        });
+        this.cartService.loadCartItemsFromStorage();
+    }
+
+    ngOnDestroy() {
+        this.cartSubscription.unsubscribe();
+    }
 
 }

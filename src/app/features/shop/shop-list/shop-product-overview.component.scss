@@ -6,5 +6,7 @@
 }
 
 .sortWrapper {
-    display: block;
+    > *:not(.label) {
+        display: inline-block;
+    }
 }
