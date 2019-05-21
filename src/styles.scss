@@ -25,6 +25,10 @@ body {
 }
 table {
     width: 100%;
+    border-spacing: 0;
+    &.table-border {
+        border: 1px solid gray;
+    }
 }
 
 p {
