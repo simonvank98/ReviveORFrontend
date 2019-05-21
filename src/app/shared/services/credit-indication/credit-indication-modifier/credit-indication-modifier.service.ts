@@ -21,4 +21,9 @@ export class CreditIndicationModifierService {
         return this.getAll().pipe(
             map(modifiers => modifiers.filter(modifier => modifier.category.name === categoryName)));
     }
+
+    update(alldata) {
+        console.log(alldata);
+        this.api.put('creditindicationmodifiers', alldata).subscribe();
+    }
 }
