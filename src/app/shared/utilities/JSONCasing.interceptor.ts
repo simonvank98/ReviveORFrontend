@@ -16,7 +16,7 @@ export class JSONCasingInterceptor implements HttpInterceptor {
         }
 
         // Convert request json from camelCase to snake_case.
-        if (req.body && CommonJs.isJSONObject(req.body)) {
+        if (req.body && CommonJs.isValidJSONObjectOrArray(req.body)) {
             req = req.clone({body: humps.decamelizeKeys(req.body)});
         }
         // Convert response json from snake_case to camelCase
