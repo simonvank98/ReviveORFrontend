@@ -14,24 +14,26 @@
     <div class="left">
         <mat-form-field>
             <mat-label>Product</mat-label>
-            <select matNativeControl required>
-                <option value="{{ model.jewelryName }}">{{ model.jewelryName }}</option>
-                <option value="lavaBracelet">Lava bracelet</option>
-                <option value="paddlefishBraclet">Paddlefish bracelet</option>
-                <option value="contrastBracelet">Contrast bracelet</option>
-            </select>
+            <mat-select [value]="model.jewelryName" (selectionChange)="onORProductSelected($event)" required>
+                <mat-option value="{{ model.jewelryName }}">{{ model.jewelryName }}</mat-option>
+                <mat-option *ngFor="let orProduct of orProducts" [value]="orProduct.name">
+                    {{ orProduct.name }}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
-        <mat-form-field>
+
+        <mat-form-field *ngIf="properties !== undefined && properties.length > 1">
             <mat-label>Size</mat-label>
-            <select matNativeControl required>
-                <option value="{{ model.jewelrySize }}">{{ model.jewelrySize }}</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-            </select>
+            <mat-select required value="{{ model.jewelrySize }}">
+                <mat-option value="{{ model.jewelrySize }}">{{ model.jewelrySize }}</mat-option>
+                <mat-option *ngFor="let property of properties" [value]="property">
+                    {{ property.value }}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
     </div>
     <div class="right">
+        <mat-label>Customer reported jewelry conditions</mat-label>
         <table>
             <tr>
                 <th>Property</th>
@@ -39,19 +41,19 @@
             </tr>
             <tr>
                 <td>Scratches</td>
-                        <td>{{ model.jewelryCondition.scratched }}</td>
+                <td>{{ model.jewelryCondition.scratched }}</td>
             </tr>
             <tr>
                 <td>Bent</td>
-                        <td>{{ model.jewelryCondition.bent }}</td>
+                <td>{{ model.jewelryCondition.bent }}</td>
             </tr>
             <tr>
                 <td>Broken</td>
-                        <td>{{ model.jewelryCondition.broken }}</td>
+                <td>{{ model.jewelryCondition.broken }}</td>
             </tr>
             <tr>
                 <td>Missing piece</td>
-                        <td>{{ model.jewelryCondition.missingPiece }}</td>
+                <td>{{ model.jewelryCondition.missingPiece }}</td>
             </tr>
         </table>
     </div>
@@ -71,14 +73,15 @@
             <mat-card-content><p>{{ model.additionalNotes }}</p></mat-card-content>
         </div>
         <mat-label>Notes for customer</mat-label>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <textarea cols="30" rows="10"></textarea>
     </div>
 </div>
 
 <div class="storyWrapper">
     <mat-label>Story: {{ model.storyTitle }}</mat-label>
     <div class="story">
-        <mat-card-content><p>{{ model.storyContent }}</p></mat-card-content>
+        <textarea cols="30" rows="10">{{ model.storyContent }}</textarea>
+
     </div>
 </div>
 
