@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {TradeInProcessService} from './trade-in-process.service';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 import { slideInAnimation } from 'src/app/app-routing-animations';
 
 @Component({
@@ -11,15 +11,19 @@ import { slideInAnimation } from 'src/app/app-routing-animations';
     slideInAnimation
   ]
 })
-export class TradeInRequestPageComponent implements OnInit {
+export class TradeInRequestPageComponent implements OnInit, AfterViewInit {
 
-  constructor(public tradeInProcessService: TradeInProcessService) { }
+    constructor(public tradeInProcessService: TradeInProcessService, private router: Router) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
-  }
+    ngAfterViewInit() {
+
+    }
+
+    prepareRoute(outlet: RouterOutlet) {
+        return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+    }
 
 }

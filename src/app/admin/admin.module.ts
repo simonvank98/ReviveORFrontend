@@ -12,12 +12,17 @@ import {AdminCreditIndicationsOverviewComponent} from './features/credit-indicat
 import { AdminTradeInRequestEditComponent } from './features/trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
 import {AllTradeInRequestResolver} from './features/trade-in-requests/resolvers/all-trade-in-request.resolver';
 import {TradeInRequestResolver} from './features/trade-in-requests/resolvers/trade-in-request.resolver';
+import {TableModule} from 'primeng/table';
+import {DropdownModule, InputTextModule} from 'primeng/primeng';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        TableModule,
+        DropdownModule,
+        InputTextModule
+    ],
   declarations: [
     AdminComponent,
     AdminTradeInRequestOverviewComponent,

@@ -1,0 +1,43 @@
+
+th {
+    text-align: left;
+    font-weight: bold;
+}
+
+td, th {
+    padding: 10px 5px;
+}
+
+tr > td, tr > th {
+    width: 15%;
+    border: 1px solid gray;
+}
+
+tr > td:nth-child(1), tr > th:nth-child(1) {
+    width: 30%;
+}
+
+div {
+    border: 1px solid gray;
+}
+input {
+    font-size: 16px;
+    border: none;
+    width: 80%;
+}
+
+span {
+    float: right;
+}
+
+button {
+    color: white;
+    background-color: #2749b6;
+    float: right;
+    margin: 15px;
+    transition: 0.3s background-color;
+}
+
+button[disabled] {
+    background-color: white;
+}
