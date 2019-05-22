@@ -14,28 +14,26 @@ export class ControlButtonsComponent implements OnInit {
   @Output() backClicked: EventEmitter<any> = new EventEmitter();
   @Output() customClicked: EventEmitter<any> = new EventEmitter();
 
-  @Input() customButton = '';
-
-  resetDialogOpen = false;
+  @Input() customButtonText = '';
 
   constructor(private tradeInProcessService: TradeInProcessService, private modalService: ModalService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  onNextClicked() {
+  onNextButtonClicked() {
     this.nextClicked.emit();
   }
 
-  onBackClicked() {
+  onBackButtonClicked() {
     this.backClicked.emit();
   }
 
-  onCustomClicked() {
+  onCustomButtonClicked() {
     this.customClicked.emit();
   }
 
-  onResetClicked() {
+  onResetButtonClicked() {
     const dialog = this.modalService.createDialog('Confirmation', 'Are you sure you wish to reset your Trade-in progress?');
     dialog.addButton('No', () => {} );
     dialog.addButton('Yes', () => {
@@ -44,12 +42,4 @@ export class ControlButtonsComponent implements OnInit {
     });
     this.modalService.showDialog(dialog);
   }
-
-  onDialogClosed(decision) {
-    this.resetDialogOpen = false;
-    if (decision) {
-        this.tradeInProcessService.reset();
-    }
-  }
-
 }
