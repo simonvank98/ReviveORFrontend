@@ -11,6 +11,8 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit, OnDestroy {
 
     cartItemsCount = 0;
+    navOpen = false;
+
 
     private cartSubscription: Subscription;
 
@@ -27,6 +29,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.cartSubscription.unsubscribe();
+    }
+
+    toggleNav() {
+        this.navOpen = !this.navOpen;
     }
 
 }
