@@ -23,7 +23,6 @@ export class CreditIndicationModifierService {
     }
 
     update(alldata) {
-        console.log(alldata);
-        this.api.put('creditindicationmodifiers', alldata).subscribe();
+        return this.api.put('creditindicationmodifiers', alldata);
     }
 }

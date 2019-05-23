@@ -46,7 +46,7 @@ const routes: Routes = [
         { path: 'type', component: TradeInRequestJewelryTypeComponent, data: {animation: 'jewelryType'}},
         { path: 'material', component: TradeInRequestJewelryMaterialComponent, data: {animation: 'jewelryMaterial'}},
         { path: 'piece', component: TradeInRequestJewelrySelectionComponent, data: {animation: 'jewelryPiece'}},
-        { path: 'condition', component: TradeInRequestJewelryConditionComponent, data: {animation: 'jewelryCondition'}},
+        { path: 'condition', component: TradeInRequestJewelryConditionComponent, data: {animation: 'jewelryConditions'}},
         { path: 'indication', component: TradeInRequestCreditIndicationComponent, data: {animation: 'jewelryIndication'}},
         { path: 'overview', component: TradeInRequestOverviewComponent, data: {animation: 'jewelryOverview'}},
         { path: 'finalize', component: TradeInRequestFinalizationComponent, data: {animation: 'jewelryFinalization'}},

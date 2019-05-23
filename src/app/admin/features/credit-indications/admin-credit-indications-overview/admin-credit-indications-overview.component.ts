@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CreditIndicationModifierService} from '../../../../shared/services/credit-indication/credit-indication-modifier/credit-indication-modifier.service';
 import {ModifierType} from './modifier-type';
 import {CreditIndicationModifier} from '../../../../shared/services/credit-indication/credit-indication-modifier/credit-indication-modifier';
+import {CreditIndicationService} from '../../../../shared/services/credit-indication/credit-indication.service';
 
 @Component({
   selector: 'app-admin-credit-indications-overview',
@@ -12,8 +13,22 @@ export class AdminCreditIndicationsOverviewComponent implements OnInit {
 
     modifierTypes: ModifierType[] = [];
     isDisabled = true;
+    newPrice: number;
+    indication: number;
 
-    constructor(public creditIndicationModifierService: CreditIndicationModifierService) {
+    // missingPiece = false;
+    // scratched = false;
+    // bent = false;
+    // broken = false;
+
+    jewelryConditions = {
+        missingPiece: false,
+        scratched: false,
+        bent: false,
+        broken: false
+    };
+
+    constructor(public creditIndicationModifierService: CreditIndicationModifierService, public creditIndicationService: CreditIndicationService) {
     }
 
     ngOnInit() {
@@ -26,8 +41,8 @@ export class AdminCreditIndicationsOverviewComponent implements OnInit {
                 }
                 this.modifierTypes[indicationModifier.criterion.id - 1].add(indicationModifier);
             }
-            console.log(this.modifierTypes);
         });
+        this.updatePrice();
     }
 
     onEdit($event: any) {
@@ -41,8 +56,23 @@ export class AdminCreditIndicationsOverviewComponent implements OnInit {
                 alldata.push(indication);
             }
         }
-        this.creditIndicationModifierService.update(alldata);
+        this.creditIndicationModifierService.update(alldata).subscribe( data => {
+            this.updatePrice();
+        });
         this.isDisabled = true;
     }
 
+    private checkboxChanged(event) {
+        this.jewelryConditions[event.target.id] = !this.jewelryConditions[event.target.id];
+        this.updatePrice();
+    }
+    private updatePrice() {
+        this.creditIndicationService.get(
+            {jewelryCondition: this.jewelryConditions,
+                jewelryType: 'rings', orProductId: '122', selectedProperty: 's'})
+            .subscribe( data => {
+            this.newPrice = data.newPrice;
+            this.indication = data.indication;
+        });
+    }
 }

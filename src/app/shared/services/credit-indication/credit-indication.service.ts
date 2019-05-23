@@ -15,6 +15,11 @@ export class CreditIndicationService {
         return this.api.post<CreditIndication>('creditindication', this.createIndicationModel(tradeInProcessContainer));
     }
 
+    public get(request): Observable<CreditIndication> {
+        return this.api.post<CreditIndication>('creditindication', request);
+    }
+
+
     private createIndicationModel(tradeInProcessContainer: TradeInProcessContainer) {
         const selectedProperty = tradeInProcessContainer.selectedProperty === '' ?
             tradeInProcessContainer.jewelryPiece.properties[0] : tradeInProcessContainer.selectedProperty;
