@@ -1,3 +1,8 @@
-<p>
-  admin-products-overview works!
-</p>
+<app-table
+    [models]="products"
+    [headers]="headers"
+    [attributes]="attributes"
+    [formatters]="formatters"
+    [widths]="[15, 40, 30, 15]"
+    (clickEvent)="toEditRequest($event)">
+</app-table>

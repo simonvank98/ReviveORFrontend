@@ -1,0 +1,46 @@
+<div class="grid">
+    <div class="left">
+
+        <mat-form-field class="nameFormfield">
+            <label for="name">Name</label>
+            <input matInput id="name" value=" {{ product.name }}">
+        </mat-form-field>
+
+    </div>
+    <div class="right">
+        <mat-form-field class="categoryFormfield">
+            <mat-label>Category</mat-label>
+            <select matNativeControl required>
+                <option value="{{ product.category.name }}">{{ product.category.name }}</option>
+                <option value="lavaBracelet">Lava bracelet</option>
+                <option value="paddlefishBraclet">Paddlefish bracelet</option>
+                <option value="contrastBracelet">Contrast bracelet</option>
+            </select>
+        </mat-form-field>
+
+        <mat-form-field class="statusFormfield">
+            <mat-label>Status</mat-label>
+            <select matNativeControl required>
+                <option value="{{ product.status }}">{{ product.status }}</option>
+                <option value="lavaBracelet">Lava bracelet</option>
+                <option value="paddlefishBraclet">Paddlefish bracelet</option>
+                <option value="contrastBracelet">Contrast bracelet</option>
+            </select>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="left">
+        <mat-label>Description</mat-label>
+        <div class="descriptionBox">
+            <input matInput id="description" value=" {{ product.description }}">
+        </div>
+    </div>
+    <div class="right">
+        <mat-label>Images</mat-label>
+        <div class="imageDiv" *ngFor="let image of product.images">
+            <img [src]="image.url" alt="">
+        </div>
+    </div>
+</div>

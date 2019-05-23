@@ -5,7 +5,7 @@ import {TradeInRequestModel} from '../models/trade-in-request.model';
 import {AdminTradeInRequestService} from '../admin-trade-in-request.service';
 
 @Injectable()
-export class AllTradeInRequestResolver implements Resolve <TradeInRequestModel[]> {
+export class AllTradeInRequestsResolver implements Resolve <TradeInRequestModel[]> {
   constructor(private adminTradeInRequestService: AdminTradeInRequestService) {}
 
   resolve(
