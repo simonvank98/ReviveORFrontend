@@ -18,7 +18,6 @@ export class AdminTradeInRequestOverviewComponent implements OnInit {
 
     ngOnInit() {
         this.models = this.route.snapshot.data['requests'];
-        console.log(this.models);
     }
 
     toEditRequest(event) {

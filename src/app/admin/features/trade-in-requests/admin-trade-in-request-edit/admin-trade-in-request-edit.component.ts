@@ -56,12 +56,17 @@ export class AdminTradeInRequestEditComponent implements OnInit {
         if (this.form.valid) {
             this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
                 if (confirmed) {
+                    if (this.model.status === 'Approved for shipping') {
+                        this.model.status = 'Complete';
+                    }
+                    if (this.model.status === 'Awaiting shipping approval') {
+                        this.model.status = 'Approved for shipping';
+                    }
                     if (this.model.status === 'New') {
                         this.model.status = 'Awaiting shipping approval';
-                        console.log(this.model.status);
                     }
-                    console.log(this.model);
-                    this.adminTradeInRequestService.put(this.model).subscribe(() => {
+
+                    this.adminTradeInRequestService.put(this.model).subscribe((res) => {
                         this.router.navigate(['/admin/trade-in']);
                         this.snackbarService.show('Request approved');
                     }, (err) => {
@@ -72,5 +77,17 @@ export class AdminTradeInRequestEditComponent implements OnInit {
         } else {
             this.snackbarService.show('Please fill out all required fields');
         }
+    }
+
+    onDeny() {
+        this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
+            if (confirmed) {
+                this.model.status = 'Denied';
+                this.adminTradeInRequestService.put(this.model).subscribe((res) => {
+                    this.router.navigate(['/admin/trade-in']);
+                    this.snackbarService.show('Request denied');
+                });
+            }
+        });
     }
 }
