@@ -1,4 +1,4 @@
-    <mat-card [routerLink]="product.id">
+    <mat-card [routerLink]="['/shop/product', product.id]">
                 <img src="{{ product.images[0].url }}" alt="">
                 <mat-card-footer>
                     <mat-card-title>{{ product.name }}</mat-card-title>

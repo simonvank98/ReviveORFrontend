@@ -1,4 +1,4 @@
-<div class="wrapper mat-elevation-z5">
+<div class="wrapper" [ngClass]="{'mat-elevation-z5': shadows}">
 
     <div class="top-controls" *ngIf="search">
         <mat-form-field class="full-width">
@@ -6,7 +6,7 @@
         </mat-form-field>
     </div>
 
-    <mat-table matSort matSortActive="id" #table [dataSource]="dataSource">
+    <mat-table matSort matSortActive="id" #table [dataSource]="dataSource" [ngClass]="{'hoverable': hoverable}">
 
         <ng-container *ngFor="let attribute of attributes" matColumnDef="{{attribute}}">
 

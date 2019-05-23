@@ -3,7 +3,7 @@ import {TradeInRequestImageModel} from './trade-in-request-image.model';
 import {UserModel} from '../../../../shared/services/user/user.model';
 
 export interface TradeInRequestModel {
-    requestId: number;
+    id: number;
     userId: number;
     status: string;
     estimatedCredit: number;

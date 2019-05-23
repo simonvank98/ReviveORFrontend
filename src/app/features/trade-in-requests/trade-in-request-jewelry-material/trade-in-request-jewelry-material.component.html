@@ -1,32 +1,36 @@
 <h3>What type of material is your jewelry piece made out of?</h3>
 
-<div class="grid">
+<div class="trade-in-grid ">
     <app-selection-button
         class="keep-aspect"
-        [value]="'gold'"
         [match]="tradeInProcessService.tradeInProcessContainer.jewelryMaterial"
-        [text]="'Gold'"
-        [imageUrl]="'../../../assets/mat-gold.png'"
+        value="gold"
+        text="Gold"
+        imageUrl="../../../assets/mat-gold.png"
         group="group-1"
         (buttonClicked)="onButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
         class="keep-aspect"
-        [value]="'silver'"
         [match]="tradeInProcessService.tradeInProcessContainer.jewelryMaterial"
-        [text]="'Silver'"
-        [imageUrl]="'../../../assets/mat-silver.png'"
+        value="silver"
+        text="Silver"
+        imageUrl="../../../assets/mat-silver.png"
         group="group-1"
         (buttonClicked)="onButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
         class="keep-aspect"
-        [value]="'other'"
         [match]="tradeInProcessService.tradeInProcessContainer.jewelryMaterial"
-        [text]="'Other'"
-        [imageUrl]="'../../../assets/mat-other.png'"
+        value="other"
+        text="Other"
+        imageUrl="../../../assets/mat-other.png"
         group="group-1"
         (buttonClicked)="onButtonClicked($event)">
     </app-selection-button>
 </div>
-<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>
+
+<app-control-buttons
+    (nextClicked)="onNextClicked()"
+    (backClicked)="onBackClicked()">
+</app-control-buttons>

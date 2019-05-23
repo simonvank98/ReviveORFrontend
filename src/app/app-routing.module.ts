@@ -17,22 +17,27 @@ import {AdminPermissionsOverviewComponent} from './admin/features/permissions/ad
 import {AllTradeInRequestResolver} from './admin/features/trade-in-requests/resolvers/all-trade-in-request.resolver';
 import {AdminTradeInRequestEditComponent} from './admin/features/trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
 import {TradeInRequestResolver} from './admin/features/trade-in-requests/resolvers/trade-in-request.resolver';
-import { TradeInRequestJewelryPieceComponent } from './features/trade-in-requests/trade-in-request-jewelry-piece/trade-in-request-jewelry-piece.component';
+import { TradeInRequestJewelrySelectionComponent } from './features/trade-in-requests/trade-in-request-jewelry-selection/trade-in-request-jewelry-selection.component';
 import {TradeInRequestFinalizationComponent} from './features/trade-in-requests/trade-in-request-finalization/trade-in-request-finalization.component';
 import { TradeInRequestJewelryConditionComponent } from './features/trade-in-requests/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
 import { TradeInRequestCreditIndicationComponent } from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
 import { TradeInRequestOverviewComponent } from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
 import {AllProductsResolver} from './features/shop/all-products.resolver';
 import {TradeInRequestCompletionComponent} from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
-import {ShopListComponent} from './features/shop/shop-list/shop-list.component';
-import {ShopDetailComponent} from './features/shop/shop-detail/shop-detail.component';
 import {ProductResolver} from './features/shop/product.resolver';
+import {ShoppingCartComponent} from './features/shop/cart/shopping-cart.component';
+import {ShopProductOverviewComponent} from './features/shop/shop-list/shop-product-overview.component';
+import {ShopProductDetailsComponent} from './features/shop/shop-detail/shop-product-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'shop', component: ShopComponent, resolve: { products: AllProductsResolver }, children: [
-      { path: '', component: ShopListComponent },
-      { path: ':id', component: ShopDetailComponent, resolve: { product: ProductResolver }},
+  { path: 'shop',
+      component: ShopComponent,
+      resolve: { products: AllProductsResolver },
+      children: [
+        { path: '', component: ShopProductOverviewComponent },
+        { path: 'product/:id', component: ShopProductDetailsComponent, resolve: { product: ProductResolver }},
+        { path: 'cart', component: ShoppingCartComponent},
   ]},
   { path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full' },
   { path: 'trade-in',
@@ -40,8 +45,8 @@ const routes: Routes = [
     children: [
         { path: 'type', component: TradeInRequestJewelryTypeComponent, data: {animation: 'jewelryType'}},
         { path: 'material', component: TradeInRequestJewelryMaterialComponent, data: {animation: 'jewelryMaterial'}},
-        { path: 'piece', component: TradeInRequestJewelryPieceComponent, data: {animation: 'jewelryPiece'}},
-        { path: 'name', component: TradeInRequestJewelryConditionComponent, data: {animation: 'jewelryCondition'}},
+        { path: 'piece', component: TradeInRequestJewelrySelectionComponent, data: {animation: 'jewelryPiece'}},
+        { path: 'condition', component: TradeInRequestJewelryConditionComponent, data: {animation: 'jewelryCondition'}},
         { path: 'indication', component: TradeInRequestCreditIndicationComponent, data: {animation: 'jewelryIndication'}},
         { path: 'overview', component: TradeInRequestOverviewComponent, data: {animation: 'jewelryOverview'}},
         { path: 'finalize', component: TradeInRequestFinalizationComponent, data: {animation: 'jewelryFinalization'}},
@@ -49,7 +54,6 @@ const routes: Routes = [
     ]
   },
   { path: 'stories', component: StoryPageComponent },
-  // { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'me/edit', component: AccountPageComponent },
   { path: 'admin', component: AdminComponent, children: [
       { path: 'products', component: AdminProductsOverviewComponent },

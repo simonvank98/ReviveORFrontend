@@ -13,7 +13,6 @@ import {TableComponent} from './components/table/table.component';
 import {MassFileUploaderComponent} from './components/mass-file-uploader/mass-file-uploader.component';
 import {FileSelectionComponent} from './components/file-selection/file-selection.component';
 import {FileDragAndDropDirective} from './components/mass-file-uploader/fileDragAndDrop.directive';
-import { FileUploadQueueComponent } from './components/file-upload-queue/file-upload-queue.component';
 import { FileUploadControlBarComponent } from './components/file-upload-control-bar/file-upload-control-bar.component';
 import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component';
 
@@ -27,7 +26,6 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
         TableComponent,
         MassFileUploaderComponent,
         FileSelectionComponent,
-        FileUploadQueueComponent,
         FileUploadControlBarComponent,
         FileDropzoneComponent
     ],

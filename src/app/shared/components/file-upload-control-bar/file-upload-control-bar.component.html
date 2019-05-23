@@ -1,11 +1,19 @@
 <div class="control-wrapper">
-    <span>{{file.name}} ({{file.size | bytes}})</span>
+
+    <div class="filename">
+        {{file.name}} ({{file.size | bytes}})
+    </div>
+
     <section class="progress-bar">
-        <mat-progress-bar [value]="progressPercentage" [color]="hasErrors ? 'warn' : null"></mat-progress-bar>
+        <mat-progress-bar [value]="progressPercentage" [color]="hasErrors ? 'warn' : 'primary'"></mat-progress-bar>
         <a mat-button (click)="cancelUpload()">
             <mat-icon *ngIf="isUploading">cancel</mat-icon>
         </a>
     </section>
-    <span>{{progressPercentage}}%</span> |
-    <span> {{uploadedBytes | bytes}} of {{totalBytes | bytes}}</span>
+
+    <div class="upload-details">
+        <span>{{progressPercentage}}%</span> |
+        <span> {{uploadedBytes | bytes}} of {{totalBytes | bytes}}</span>
+    </div>
+    
 </div>

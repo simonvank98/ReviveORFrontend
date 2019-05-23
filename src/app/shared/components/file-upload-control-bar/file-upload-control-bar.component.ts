@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, Optional, Inj
 import {HttpClient, HttpErrorResponse, HttpEventType, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {Subscription} from 'rxjs';
 import {FileUploader} from '../mass-file-uploader/file-uploader';
+import {FileUploaderEvent} from '../mass-file-uploader/file-uploader.event';
 
 @Component({
     selector: 'app-file-upload-control-bar',
@@ -98,7 +99,6 @@ export class FileUploadControlBarComponent implements OnInit, OnDestroy {
         this.stopUpload();
         this.uploadErrors.emit(error);
         this.hasErrors = true;
-        console.log(error);
     }
 
     private stopUpload() {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {TradeInProcessService} from '../trade-in-process.service';
 import {Router} from '@angular/router';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -6,6 +6,9 @@ import {environment} from '../../../../environments/environment';
 import {TradeInRequestModel} from '../../../admin/features/trade-in-requests/models/trade-in-request.model';
 import {TradeInRequestImageModel} from '../../../admin/features/trade-in-requests/models/trade-in-request-image.model';
 import {CreditIndicationService} from '../../../shared/services/credit-indication/credit-indication.service';
+import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
+import {FileUploaderEvent} from '../../../shared/components/mass-file-uploader/file-uploader.event';
+import {markFormGroupTouched} from '../../../shared/utilities/validators';
 
 @Component({
     selector: 'app-trade-in-request-finalization',
@@ -16,75 +19,48 @@ export class TradeInRequestFinalizationComponent implements OnInit {
 
     allowedImageExtensions = ['.png', '.jpg', '.jpeg', '.bmp'];
     imageAPIUrl = `${environment.reviveORAPIUrl}images`;
-    formGroup: FormGroup;
 
-    get images() {
-        return this.formGroup.get('images') as FormArray;
-    }
+    images: TradeInRequestImageModel[];
 
-    constructor(private tradeInProcessService: TradeInProcessService, private creditIndicationService: CreditIndicationService, private router: Router, private fb: FormBuilder) {
+    constructor(public tradeInProcessService: TradeInProcessService,
+                private router: Router,
+                private snackBarService: SnackbarService) {
     }
 
     ngOnInit() {
-        this.setupFormGroup();
+        this.tradeInProcessService.setCurrentStep(2);
+        this.initializeImages();
     }
 
     onNextClicked() {
-        console.log('form group', this.formGroup.getRawValue());
-        console.log('form group controls images', this.formGroup.controls['images']);
-        if (this.formGroup.valid) {
-            const tradeInRequest = this.createTradeInRequestModel();
-            console.log('tradeinrequest', tradeInRequest);
-            this.tradeInProcessService.submitRequest(tradeInRequest).subscribe(() => {
-                this.router.navigate(['/trade-in/complete']);
-            }, (err) => {
-                // Todo show snackbar indicating error
-                console.log(err);
-            });
+        if (this.images.length !== 2) {
+            this.snackBarService.show('Please upload two images of your jewelry piece.', 3000);
         } else {
-            console.log('ded');
+            this.tradeInProcessService.setImages(this.images);
+            this.router.navigate(['/trade-in/overview']);
         }
     }
 
-    // Todo: Add a tradeinrequest model interface
-    private createTradeInRequestModel(): TradeInRequestModel {
-        const processContainer = this.tradeInProcessService.tradeInProcessContainer;
-        const tradeInRequest = {
-            ...this.formGroup.getRawValue(),
-            estimatedCredit: processContainer.estimatedCredit,
-            jewelryName: processContainer.jewelryPiece.name,
-            jewelrySize: processContainer.property,
-            jewelryCondition: {
-                broken: processContainer.broken,
-                bent: processContainer.bent,
-                scratched: processContainer.scratched,
-                missingPiece: processContainer.missing,
-            }
-        };
-        return tradeInRequest as TradeInRequestModel;
-    }
-
     onBackClicked() {
-        this.router.navigate(['/trade-in/overview']);
+        this.router.navigate(['/trade-in/indication']);
     }
 
-    onImageUploaded(response: TradeInRequestImageModel) {
-        console.log('image id', response.imageId);
-        this.images.push(this.createImage(response.imageId));
+    onImageUploaded(event: FileUploaderEvent) {
+        console.log('image response', event.response);
+        this.images.push(event.response);
     }
 
-    private createImage(imageId): FormGroup {
-        return this.fb.group({
-            imageId: [imageId],
-        });
+    onImageUploadError(event: FileUploaderEvent) {
+        console.log('image upload error', event.response);
+        this.snackBarService.show('An error occurred during the upload of your file. ' +
+            'Please make sure the image file size is below the maximum file size of 5MB.', 7500);
     }
 
-    private setupFormGroup() {
-        this.formGroup = this.fb.group({
-            storyTitle: ['', Validators.required],
-            storyContent: ['', Validators.required],
-            images: this.fb.array([], Validators.required),
-            additionalNotes: ['', Validators.required],
-        });
+    private initializeImages() {
+        if (this.tradeInProcessService.hasImages()) {
+            this.images = this.tradeInProcessService.getImages();
+        } else {
+            this.images = [];
+        }
     }
 }

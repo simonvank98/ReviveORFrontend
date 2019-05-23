@@ -1,94 +1,72 @@
-$orbHeight: 40px;
-$color: #ccc;
 $activeColor: #2749b6;
+$inactiveColor: #ddd;
 
-.step {
-    // height: 80px;
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-gap: 10px;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
 
-    &.active {
-        .orb, .line {
-            background-color: $activeColor;
-            color: white;
-        }
-        .label {
-            color: $activeColor;
-            font-weight: bold;
-        }
+.stepper {
+    display: flex;
+    width: 100%;
+    list-style: none;
+    position: relative;
+    padding-left: 15px;
+    overflow: hidden;
+    border-radius: 5px;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        content: "";
+        width: calc(100% - 20px);
+        background: white;
     }
 }
-.orb {
-    font-size: 20px;
-    width: $orbHeight;
-    height: $orbHeight;
-    background-color: $color;
-    text-align: center;
-    line-height: $orbHeight;
-    border-radius: $orbHeight;
+.stepper-item {
     font-weight: bold;
-}
-.label {
-    margin-top: 5px;
-}
-.wrapper .step:last-child .line {
-    display: none;
-}
-.orb, .label, .line {
-    transition: 0.3s background-color;
-}
-.orb {
-    // display: inline-block;
-    line-height: $orbHeight;
-}
-.line {
-    width: 4px;
-    height: 30px;
-    margin-left: 18px;
-    background-color: $color;
-}
-.description {
-    font-size: 11px;
-}
+    flex: 100%;
+    padding: 20px 20px 20px 40px;
+    background: $inactiveColor;
+    color: $activeColor;
+    margin: 0 0 0 -15px;
+    clip-path: polygon(20px 50%, 0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
+    transition: background-color 0.6s, opacity 0.6s;
+    opacity: 0.5;
 
-.horizontal {
-    border: 3px solid $activeColor;
-    border-radius: 3px;
-    display: flex;
-    overflow: hidden;
-    // flex-grow: 1;
-    .step-horizontal {
-        flex: 1;
-        text-align: center;
-        position: relative;
-        padding: 10px 0px;
+    &.active {
+        background: $activeColor;
+        color: white;
+        opacity: 1;
+    }
 
-        &.active {
-            background-color: $activeColor;
-            color: white;
+    &:first-child {
+        padding: 20px;
+        clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
+    }
 
-            &::before {
-                background-color: $activeColor;
-            }
-        }
-        &::before {
-            transform: rotate(-45deg);
-            box-sizing: border-box;
-            display: block;
-            content: '';
-            border: solid $activeColor;
-            border-width: 0px 3px 3px 0px;
-            height: 40px;
-            width: 40px;
-            position: absolute;
-            right: -10px;
-            top: 0;
-            border-radius: 3px;
-        }
+    &:last-child {
+        clip-path: polygon(20px 50%, 0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+}
+@media (max-width: 800px) {
+    .stepper {
+        display: block;
+    }
+    .stepper-item {
+        padding: 10px 20px 10px 35px !important;
+        display: block;
+        position: initial;
+        flex: none;
+        clip-path: polygon(20px 50%, 0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%) !important;
+        margin-top: 5px;
 
-        &:last-child::before {
-            display: none;
+        &:first-child {
+            // padding-left: 35px;
         }
     }
 }

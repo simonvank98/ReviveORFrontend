@@ -1,4 +1,38 @@
 .form-wrapper {
     /*width: 75%;*/
     margin: 0 auto;
+    // max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 35px;
+
+}
+
+h3 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.story-wrapper {
+    margin-bottom: 30px;
+}
+
+.images-wrapper {
+    padding-top: 20px;
+
+    .imageDiv {
+        padding: 20px;
+        display: inline-block;
+
+        img {
+            width: 100px;
+        }
+    }
+}
+
+
+@media (max-width: 800px) {
+    .form-wrapper {
+        grid-template-columns: 1fr;
+    }
 }

@@ -1,94 +1,99 @@
 <h3>Select your jewelry piece options</h3>
 
 <ng-container *ngIf="properties.length > 0">
-    <h4>Properties</h4>
-    <div class="grid">
-        <app-selection-button
-        *ngFor="let property of properties"
-        [value]="property.value"
-        [match]="tradeInProcessService.tradeInProcessContainer.property"
-        [text]="property.value"
-        [group]="'group-0'"
-        (buttonClicked)="onPropertyButtonClicked($event)">
-        </app-selection-button>
+    <h4>Please select the property that matches your piece</h4>
+    <div class="trade-in-grid jewelry-properties">
+        <div *ngFor="let property of properties">
+            <mat-card class="mat-elevation-z0">
+                <mat-card-subtitle>{{ property.name | titlecase}}
+                    <mat-divider></mat-divider>
+                </mat-card-subtitle>
+            </mat-card>
+            <app-selection-button
+                [match]="tradeInProcessService.tradeInProcessContainer.selectedProperty"
+                [value]="property.value"
+                text="{{ property.value | titlecase }}"
+                group="group-0"
+                (buttonClicked)="onPropertyButtonClicked($event)">
+            </app-selection-button>
+        </div>
     </div>
 </ng-container>
 
 <h4>Is there a piece missing?</h4>
-
-<div class="grid">
+<div class="trade-in-grid">
     <app-selection-button
         [value]="false"
-        [match]="tradeInProcessService.tradeInProcessContainer.missing"
-        [text]="'No'"
-        [group]="'group-1'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryCondition.missingPiece"
+        text="No"
+        group="group-1"
         (buttonClicked)="onMissingButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
         [value]="true"
-        [match]="tradeInProcessService.tradeInProcessContainer.missing"
-        [text]="'Yes'"
-        [group]="'group-1'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryCondition.missingPiece"
+        text="Yes"
+        group="group-1"
         (buttonClicked)="onMissingButtonClicked($event)">
     </app-selection-button>
 </div>
 
 <h4>Is the piece scratched?</h4>
-
-<div class="grid">
+<div class="trade-in-grid">
     <app-selection-button
         [value]="false"
-        [match]="tradeInProcessService.tradeInProcessContainer.scratched"
-        [text]="'No'"
-        [group]="'group-2'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryCondition.scratched"
+        text="No"
+        group="group-2"
         (buttonClicked)="onScratchedButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
         [value]="true"
-        [match]="tradeInProcessService.tradeInProcessContainer.scratched"
-        [text]="'Yes'"
-        [group]="'group-2'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryCondition.scratched"
+        text="Yes"
+        group="group-2"
         (buttonClicked)="onScratchedButtonClicked($event)">
     </app-selection-button>
 </div>
 
 <h4>Is the piece bent?</h4>
-
-<div class="grid">
+<div class="trade-in-grid">
     <app-selection-button
         [value]="false"
-        [match]="tradeInProcessService.tradeInProcessContainer.bent"
-        [text]="'No'"
-        [group]="'group-3'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryCondition.bent"
+        text="No"
+        group="group-3"
         (buttonClicked)="onBentButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
         [value]="true"
-        [match]="tradeInProcessService.tradeInProcessContainer.bent"
-        [text]="'Yes'"
-        [group]="'group-3'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryCondition.bent"
+        text="Yes"
+        group="group-3"
         (buttonClicked)="onBentButtonClicked($event)">
     </app-selection-button>
 </div>
 
 <h4>Is the piece broken?</h4>
-
-<div class="grid">
+<div class="trade-in-grid">
     <app-selection-button
         [value]="false"
-        [match]="tradeInProcessService.tradeInProcessContainer.broken"
-        [text]="'No'"
-        [group]="'group-4'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryCondition.broken"
+        text="No"
+        group="group-4"
         (buttonClicked)="onBrokenButtonClicked($event)">
     </app-selection-button>
     <app-selection-button
         [value]="true"
-        [match]="tradeInProcessService.tradeInProcessContainer.broken"
-        [text]="'Yes'"
-        [group]="'group-4'"
+        [match]="tradeInProcessService.tradeInProcessContainer.jewelryCondition.broken"
+        text="Yes"
+        group="group-4"
         (buttonClicked)="onBrokenButtonClicked($event)">
     </app-selection-button>
 </div>
 
 
-<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>
+<app-control-buttons
+    (nextClicked)="onNextClicked()"
+    (backClicked)="onBackClicked()">
+</app-control-buttons>

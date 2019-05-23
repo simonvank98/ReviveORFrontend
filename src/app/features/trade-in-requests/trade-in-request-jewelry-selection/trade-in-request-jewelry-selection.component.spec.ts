@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { TradeInRequestJewelryPieceComponent } from './trade-in-request-jewelry-piece.component';
+import { TradeInRequestJewelrySelectionComponent } from './trade-in-request-jewelry-piece.component';
 
 describe('TradeInRequestJewelryPieceComponent', () => {
-  let component: TradeInRequestJewelryPieceComponent;
-  let fixture: ComponentFixture<TradeInRequestJewelryPieceComponent>;
+  let component: TradeInRequestJewelrySelectionComponent;
+  let fixture: ComponentFixture<TradeInRequestJewelrySelectionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TradeInRequestJewelryPieceComponent ]
+      declarations: [ TradeInRequestJewelrySelectionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TradeInRequestJewelryPieceComponent);
+    fixture = TestBed.createComponent(TradeInRequestJewelrySelectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
