@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MaterialModule} from './modules/material-module/material.module';
-import {MAT_DATE_LOCALE} from '@angular/material';
+import {MAT_DATE_LOCALE, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {SafePipe} from './pipes/safe.pipe';
 import {AppRoutingModule} from '../app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
@@ -35,7 +35,9 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
         HttpClientModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        MaterialModule
+        MaterialModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
     exports: [
         MaterialModule,

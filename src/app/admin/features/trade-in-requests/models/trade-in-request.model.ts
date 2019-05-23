@@ -8,7 +8,7 @@ export interface TradeInRequestModel {
     status: string;
     estimatedCredit: number;
     jewelryName: string;
-    jewelrySize: string;
+    selectedProperty: string;
     additionalNotes: string;
     storyTitle: string;
     storyContent: string;
