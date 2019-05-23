@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MaterialModule} from './modules/material-module/material.module';
-import {MAT_DATE_LOCALE} from '@angular/material';
+import {MAT_DATE_LOCALE, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {SafePipe} from './pipes/safe.pipe';
 import {AppRoutingModule} from '../app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
@@ -13,7 +13,6 @@ import {TableComponent} from './components/table/table.component';
 import {MassFileUploaderComponent} from './components/mass-file-uploader/mass-file-uploader.component';
 import {FileSelectionComponent} from './components/file-selection/file-selection.component';
 import {FileDragAndDropDirective} from './components/mass-file-uploader/fileDragAndDrop.directive';
-import { FileUploadQueueComponent } from './components/file-upload-queue/file-upload-queue.component';
 import { FileUploadControlBarComponent } from './components/file-upload-control-bar/file-upload-control-bar.component';
 import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component';
 
@@ -27,7 +26,6 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
         TableComponent,
         MassFileUploaderComponent,
         FileSelectionComponent,
-        FileUploadQueueComponent,
         FileUploadControlBarComponent,
         FileDropzoneComponent
     ],
@@ -37,7 +35,9 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
         HttpClientModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        MaterialModule
+        MaterialModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
     exports: [
         MaterialModule,

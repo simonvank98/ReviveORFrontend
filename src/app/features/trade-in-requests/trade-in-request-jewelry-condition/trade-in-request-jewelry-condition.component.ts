@@ -1,7 +1,7 @@
-import { TradeInProcessService } from './../trade-in-process.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {TradeInProcessService} from './../trade-in-process.service';
+import {SnackbarService} from 'src/app/shared/services/snackbar/snackbar.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-trade-in-request-jewelry-condition',
@@ -14,18 +14,14 @@ export class TradeInRequestJewelryConditionComponent implements OnInit {
 
     constructor(private router: Router,
                 public tradeInProcessService: TradeInProcessService,
-                private snackBarService: SnackbarService) { }
+                private snackBarService: SnackbarService) {
+    }
 
     ngOnInit() {
         this.tradeInProcessService.setCurrentStep(0);
-        if (this.tradeInProcessService.hasPiece()) {
-            this.tradeInProcessService.getPiece().properties.forEach(property => {
-                if (property.value !== null) {
-                    this.properties.push(property);
-                }
-            });
-        }
+        this.initializeProperties();
     }
+
 
     onNextClicked() {
         if (this.tradeInProcessService.hasCondition()) {
@@ -39,10 +35,36 @@ export class TradeInRequestJewelryConditionComponent implements OnInit {
         this.router.navigate(['/trade-in/piece']);
     }
 
-    onPropertyButtonClicked(event)  { this.tradeInProcessService.setProperty(event.value); }
-    onMissingButtonClicked(event)   { this.tradeInProcessService.setMissing(event.value); }
-    onScratchedButtonClicked(event) { this.tradeInProcessService.setScratched(event.value); }
-    onBentButtonClicked(event)      { this.tradeInProcessService.setBent(event.value); }
-    onBrokenButtonClicked(event)    { this.tradeInProcessService.setBroken(event.value); }
+    onPropertyButtonClicked(event) {
+        this.tradeInProcessService.setProperty(event.value);
+    }
 
+    onMissingButtonClicked(event) {
+        this.tradeInProcessService.setMissing(event.value);
+    }
+
+    onScratchedButtonClicked(event) {
+        this.tradeInProcessService.setScratched(event.value);
+    }
+
+    onBentButtonClicked(event) {
+        this.tradeInProcessService.setBent(event.value);
+    }
+
+    onBrokenButtonClicked(event) {
+        this.tradeInProcessService.setBroken(event.value);
+    }
+
+    private initializeProperties() {
+        if (this.tradeInProcessService.hasPiece()) {
+            this.tradeInProcessService.getPiece().properties.forEach(property => {
+                if (property.value !== null) {
+                    this.properties.push(property);
+                }
+            });
+            if (this.properties.length > 0 && !this.tradeInProcessService.hasProperty()) {
+                this.tradeInProcessService.setProperty(this.properties[0].value);
+            }
+        }
+    }
 }

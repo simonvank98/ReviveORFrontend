@@ -49,25 +49,25 @@ export class TempApiService {
     return this.http.get<T>(uri, { headers: headers });
   }
 
-  public post<T>(path: string, data: Object, queryParameters?: Object): Observable<any> {
+  public post<T>(path: string, data: Object, queryParameters?: Object): Observable<T> {
     const uri = this.createURI(path, queryParameters);
     const headers = this.createRequestHeaders();
 
-    return this.http.post(uri, data, { headers: headers });
+    return this.http.post<T>(uri, data, { headers: headers });
   }
 
-  public put<T>(path: string, data: Object, queryParameters?: Object): Observable<any> {
+  public put<T>(path: string, data: Object, queryParameters?: Object): Observable<T> {
     const uri = this.createURI(path, queryParameters);
     const headers = this.createRequestHeaders();
 
-    return this.http.put(uri, data, { headers: headers });
+    return this.http.put<T>(uri, data, { headers: headers });
   }
 
-  public delete<T>(path: string, queryParameters?: Object): Observable<any> {
+  public delete<T>(path: string, queryParameters?: Object): Observable<T> {
     const uri = this.createURI(path, queryParameters);
     const headers = this.createRequestHeaders();
 
-    return this.http.delete(uri, { headers: headers });
+    return this.http.delete<T>(uri, { headers: headers });
   }
 
 }

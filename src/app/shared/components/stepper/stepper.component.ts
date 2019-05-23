@@ -10,8 +10,8 @@ export class StepperComponent implements OnInit {
     @Input() steps = [
         'Jewelry type',
         'Value',
-        'Trade-in overview',
-        'Complete Trade-in'
+        'Extra details',
+        'Trade-in overview'
     ];
     @Input() descriptions = [
         'Determine the type of Ocean Republic jewelry.',
