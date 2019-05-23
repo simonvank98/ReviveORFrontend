@@ -17,7 +17,6 @@
             <mat-form-field>
                 <mat-label>Product</mat-label>
                 <mat-select name="jewelryName" [(ngModel)]="model.jewelryName" [value]="model.jewelryName" (selectionChange)="onORProductSelected($event)" required>
-                    <mat-option value="{{ model.jewelryName }}">{{ model.jewelryName }}</mat-option>
                     <mat-option *ngFor="let orProduct of orProducts" [value]="orProduct.name">
                         {{ orProduct.name }}
                     </mat-option>
@@ -25,10 +24,9 @@
             </mat-form-field>
 
             <mat-form-field *ngIf="properties !== undefined && properties.length > 1">
-                <mat-label>Size</mat-label>
+                <mat-label>Property</mat-label>
                 <mat-select name="selectedProperty" [(ngModel)]="model.selectedProperty" value="{{ model.selectedProperty }}">
-                    <mat-option value="{{ model.selectedProperty }}">{{ model.selectedProperty }}</mat-option>
-                    <mat-option *ngFor="let property of properties" [value]="property">
+                    <mat-option *ngFor="let property of properties" [value]="property.value">
                         {{ property.value }}
                     </mat-option>
                 </mat-select>
@@ -98,7 +96,7 @@
             <button class="mat-button" (click)="back()">Back</button>
         </div>
         <div class="buttonRight">
-            <button class="mat-button">Cancel request</button>
+            <button class="mat-button" (click)="onDeny()">Cancel request</button>
             <button class="mat-button" (click)="onSubmit()">Approve for shipping</button>
         </div>
     </div>
