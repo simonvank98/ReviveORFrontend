@@ -26,8 +26,8 @@
 
             <mat-form-field *ngIf="properties !== undefined && properties.length > 1">
                 <mat-label>Size</mat-label>
-                <mat-select name="jewelrySize" [(ngModel)]="model.jewelrySize" value="{{ model.jewelrySize }}">
-                    <mat-option value="{{ model.jewelrySize }}">{{ model.jewelrySize }}</mat-option>
+                <mat-select name="selectedProperty" [(ngModel)]="model.selectedProperty" value="{{ model.selectedProperty }}">
+                    <mat-option value="{{ model.selectedProperty }}">{{ model.selectedProperty }}</mat-option>
                     <mat-option *ngFor="let property of properties" [value]="property">
                         {{ property.value }}
                     </mat-option>
