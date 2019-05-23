@@ -1,101 +1,105 @@
-<div class="grid">
-    <div class="left">
-        <mat-card-title><h3>Credit Request #{{ model.id }}</h3></mat-card-title>
-        <mat-card-content><p>Submitted on {{ model.createdAt }}</p></mat-card-content>
-        <mat-card-content><p>By {{ model.user.name }} ({{ model.user.email }})</p></mat-card-content>
-    </div>
-    <div class="right">
-        <mat-card-content><p>Request status</p></mat-card-content>
-        <mat-card-content><p><b>{{ model.status }}</b></p></mat-card-content>
-    </div>
-</div>
+<form #f="ngForm">
 
-<div class="grid">
-    <div class="left">
-        <mat-form-field>
-            <mat-label>Product</mat-label>
-            <select matNativeControl required>
-                <option value="{{ model.jewelryName }}">{{ model.jewelryName }}</option>
-                <option value="lavaBracelet">Lava bracelet</option>
-                <option value="paddlefishBraclet">Paddlefish bracelet</option>
-                <option value="contrastBracelet">Contrast bracelet</option>
-            </select>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Size</mat-label>
-            <select matNativeControl required>
-                <option value="{{ model.jewelrySize }}">{{ model.jewelrySize }}</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-            </select>
-        </mat-form-field>
+    <div class="grid">
+        <div class="left">
+            <mat-card-title><h3>Credit Request #{{ model.id }}</h3></mat-card-title>
+            <mat-card-content><p>Submitted on {{ model.createdAt }}</p></mat-card-content>
+            <mat-card-content><p>By {{ model.user.name }} ({{ model.user.email }})</p></mat-card-content>
+        </div>
+        <div class="right">
+            <mat-card-content><p>Request status</p></mat-card-content>
+            <mat-card-content><p><b>{{ model.status }}</b></p></mat-card-content>
+        </div>
     </div>
-    <div class="right">
-        <table>
-            <tr>
-                <th>Property</th>
-                <th>State</th>
-            </tr>
-            <tr>
-                <td>Scratches</td>
-                        <td>{{ model.jewelryCondition.scratched }}</td>
-            </tr>
-            <tr>
-                <td>Bent</td>
-                        <td>{{ model.jewelryCondition.bent }}</td>
-            </tr>
-            <tr>
-                <td>Broken</td>
-                        <td>{{ model.jewelryCondition.broken }}</td>
-            </tr>
-            <tr>
-                <td>Missing piece</td>
-                        <td>{{ model.jewelryCondition.missingPiece }}</td>
-            </tr>
-        </table>
-    </div>
-</div>
 
-<div class="grid">
-    <div class="left">
-        <div class="imageCollectionWrapper">
-            <div class="imageDiv" *ngFor="let image of model.images">
-                <img [src]="image.url" alt="">
+    <div class="grid">
+        <div class="left">
+            <mat-form-field>
+                <mat-label>Product</mat-label>
+                <mat-select name="jewelryName" [(ngModel)]="model.jewelryName" [value]="model.jewelryName" (selectionChange)="onORProductSelected($event)" required>
+                    <mat-option value="{{ model.jewelryName }}">{{ model.jewelryName }}</mat-option>
+                    <mat-option *ngFor="let orProduct of orProducts" [value]="orProduct.name">
+                        {{ orProduct.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="properties !== undefined && properties.length > 1">
+                <mat-label>Size</mat-label>
+                <mat-select name="jewelrySize" [(ngModel)]="model.jewelrySize" value="{{ model.jewelrySize }}">
+                    <mat-option value="{{ model.jewelrySize }}">{{ model.jewelrySize }}</mat-option>
+                    <mat-option *ngFor="let property of properties" [value]="property">
+                        {{ property.value }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="right">
+            <mat-label>Customer reported jewelry conditions</mat-label>
+            <table>
+                <tr>
+                    <th>Property</th>
+                    <th>State</th>
+                </tr>
+                <tr>
+                    <td>Scratches</td>
+                    <td>{{ model.jewelryCondition.scratched }}</td>
+                </tr>
+                <tr>
+                    <td>Bent</td>
+                    <td>{{ model.jewelryCondition.bent }}</td>
+                </tr>
+                <tr>
+                    <td>Broken</td>
+                    <td>{{ model.jewelryCondition.broken }}</td>
+                </tr>
+                <tr>
+                    <td>Missing piece</td>
+                    <td>{{ model.jewelryCondition.missingPiece }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="left">
+            <div class="imageCollectionWrapper">
+                <div class="imageDiv" *ngFor="let image of model.images">
+                    <img [src]="image.url" alt="">
+                </div>
             </div>
         </div>
-    </div>
-    <div class="right">
-        <mat-label>Notes from customer</mat-label>
-        <div class="noteBorder">
-            <mat-card-content><p>{{ model.additionalNotes }}</p></mat-card-content>
+        <div class="right">
+            <mat-label>Notes from customer</mat-label>
+            <div class="noteBorder">
+                <mat-card-content><p>{{ model.additionalNotes }}</p></mat-card-content>
+            </div>
+            <mat-label>Notes for customer</mat-label>
+            <textarea cols="30" rows="10" ></textarea>
         </div>
-        <mat-label>Notes for customer</mat-label>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
     </div>
-</div>
 
-<div class="storyWrapper">
-    <mat-label>Story: {{ model.storyTitle }}</mat-label>
-    <div class="story">
-        <mat-card-content><p>{{ model.storyContent }}</p></mat-card-content>
+    <div class="storyWrapper">
+        <mat-label>Story: {{ model.storyTitle }}</mat-label>
+        <div class="story">
+            <textarea   cols="30" rows="10"  name="storyContent" [(ngModel)]="model.storyContent" id="storyContent" >{{ model.storyContent }}</textarea>
+        </div>
     </div>
-</div>
 
-<div class="indicationWrapper">
-    <mat-form-field class="indicationFormfield">
-        <label for="creditIndication">Estimated maximum credit</label>
-        <input matInput id="creditIndication" value="€ {{ model.estimatedCredit }}">
-
-    </mat-form-field>
-</div>
-
-<div class="buttonWrapper">
-    <div class="buttonLeft">
-        <button class="mat-button" (click)="back()">Back</button>
+    <div class="indicationWrapper">
+        <mat-form-field class="indicationFormfield">
+            <label for="creditIndication">Estimated maximum credit €</label>
+            <input matInput id="creditIndication" name="creditIndication" [(ngModel)]="model.estimatedCredit" required type="number">
+        </mat-form-field>
     </div>
-    <div class="buttonRight">
-        <button class="mat-button">Cancel request</button>
-        <button class="mat-button">Approve for shipping</button>
+
+    <div class="buttonWrapper">
+        <div class="buttonLeft">
+            <button class="mat-button" (click)="back()">Back</button>
+        </div>
+        <div class="buttonRight">
+            <button class="mat-button">Cancel request</button>
+            <button class="mat-button" (click)="onSubmit()">Approve for shipping</button>
+        </div>
     </div>
-</div>
+</form>

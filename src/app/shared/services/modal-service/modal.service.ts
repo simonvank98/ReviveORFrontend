@@ -29,12 +29,12 @@ export class ModalService {
     return new ModalDialog(header, content);
   }
 
-  confirm(message: string): Observable<boolean> | Promise<boolean> | boolean {
+  confirm(message: string): Observable<boolean> {
     const dialog = this.createDialog('Confirmation', message);
 
     const confirmed = new Observable<boolean>(obs => {
-      dialog.addButton('Nee', () => { obs.next(false); });
-      dialog.addButton('Ja', () => { obs.next(true); }).buttonColor = 'primary';
+      dialog.addButton('No', () => { obs.next(false); });
+      dialog.addButton('Yes', () => { obs.next(true); }).buttonColor = 'primary';
     });
 
     this.showDialog(dialog);
