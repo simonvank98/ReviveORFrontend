@@ -6,7 +6,7 @@ export const environment = {
     production: false,
 
     mainPlatformAPIUrl: 'https://www.theoceanrepublic.com/api/v2/',
-    reviveORAPIUrl: 'http://revapi.local/',
+    reviveORAPIUrl: 'http://localhost:8000/',
 };
 
 /*
