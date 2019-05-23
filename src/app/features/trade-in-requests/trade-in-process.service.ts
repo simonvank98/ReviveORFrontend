@@ -51,7 +51,7 @@ export class TradeInProcessService {
             ...tradeInRequest,
             jewelryType: processContainer.jewelryType,
             jewelryMaterial: processContainer.jewelryMaterial,
-            property: processContainer.property
+            property: processContainer.selectedProperty
 
         };
         return appendedTradeInRequest;
