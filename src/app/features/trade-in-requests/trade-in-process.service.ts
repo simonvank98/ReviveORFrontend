@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { TradeInProcessContainer } from './trade-in-process-container.model';
-import { ORProduct } from 'src/app/shared/services/or-product/or-product.model';
+import {Injectable} from '@angular/core';
+import {TradeInProcessContainer} from './trade-in-process-container.model';
+import {ORProduct} from 'src/app/shared/services/or-product/or-product.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 
@@ -12,15 +12,22 @@ export class TradeInProcessService {
     emptyContainer: TradeInProcessContainer;
     tradeInProcessContainer: TradeInProcessContainer = {
         currentStep: 0,
+        estimatedCredit: 0,
         jewelryType: '',
         jewelryMaterial: '',
         jewelryPiece: {},
-        estimatedCredit: 0,
-        property: '',
-        missing: false,
-        scratched: false,
-        bent: false,
-        broken: false
+        selectedProperty: '',
+        storyTitle: '',
+        storyContent: '',
+        images: [],
+        additionalNotes: '',
+
+        jewelryCondition: {
+            missingPiece: false,
+            scratched: false,
+            bent: false,
+            broken: false
+        }
     };
 
     constructor(private http: HttpClient) {
@@ -46,51 +53,97 @@ export class TradeInProcessService {
     hasCondition() {
         return this.hasMissing() && this.hasScratched && this.hasBent && this.hasBroken();
     }
+
     getCondition() {
         return {'Missing': this.getMissing(), 'Scratched': this.getScratched(), 'Bent': this.getBent(), 'Broken': this.getBroken()};
     }
 
-    hasProperty() { return this.tradeInProcessContainer.property.length > 0; }
-    getProperty() { return this.tradeInProcessContainer.property; }
+    hasProperty() {
+        return this.tradeInProcessContainer.selectedProperty.length > 0;
+    }
+
+    getProperty() {
+        return this.tradeInProcessContainer.selectedProperty;
+    }
+
     setProperty(property) {
-        this.tradeInProcessContainer.property = property;
+        this.tradeInProcessContainer.selectedProperty = property;
         this.storeContainer();
     }
 
-    hasMissing() { return this.tradeInProcessContainer.missing !== null; }
-    getMissing() { return this.tradeInProcessContainer.missing; }
+    hasMissing() {
+        return this.tradeInProcessContainer.jewelryCondition.missingPiece !== null;
+    }
+
+    getMissing() {
+        return this.tradeInProcessContainer.jewelryCondition.missingPiece;
+    }
+
     setMissing(missing) {
-        this.tradeInProcessContainer.missing = missing;
+        this.tradeInProcessContainer.jewelryCondition.missingPiece = missing;
         this.storeContainer();
     }
 
-    hasScratched() { return this.tradeInProcessContainer.scratched !== null; }
-    getScratched() { return this.tradeInProcessContainer.scratched; }
+    hasScratched() {
+        return this.tradeInProcessContainer.jewelryCondition.scratched !== null;
+    }
+
+    getScratched() {
+        return this.tradeInProcessContainer.jewelryCondition.scratched;
+    }
+
     setScratched(scratched) {
-        this.tradeInProcessContainer.scratched = scratched;
+        this.tradeInProcessContainer.jewelryCondition.scratched = scratched;
         this.storeContainer();
     }
 
-    hasBent() { return this.tradeInProcessContainer.bent !== null; }
-    getBent() { return this.tradeInProcessContainer.bent; }
+    hasBent() {
+        return this.tradeInProcessContainer.jewelryCondition.bent !== null;
+    }
+
+    getBent() {
+        return this.tradeInProcessContainer.jewelryCondition.bent;
+    }
+
     setBent(bent) {
-        this.tradeInProcessContainer.bent = bent;
+        this.tradeInProcessContainer.jewelryCondition.bent = bent;
         this.storeContainer();
     }
 
-    hasBroken() { return this.tradeInProcessContainer.broken !== null; }
-    getBroken() { return this.tradeInProcessContainer.broken; }
-    setBroken(broken) { this.tradeInProcessContainer.broken = broken; this.storeContainer(); }
+    hasBroken() {
+        return this.tradeInProcessContainer.jewelryCondition.broken !== null;
+    }
 
-    hasType() { return this.tradeInProcessContainer.jewelryType.length > 0; }
-    getType() { return this.tradeInProcessContainer.jewelryType; }
+    getBroken() {
+        return this.tradeInProcessContainer.jewelryCondition.broken;
+    }
+
+    setBroken(broken) {
+        this.tradeInProcessContainer.jewelryCondition.broken = broken;
+        this.storeContainer();
+    }
+
+    hasType() {
+        return this.tradeInProcessContainer.jewelryType.length > 0;
+    }
+
+    getType() {
+        return this.tradeInProcessContainer.jewelryType;
+    }
+
     setType(type: string) {
         this.tradeInProcessContainer.jewelryType = type;
         this.storeContainer();
     }
 
-    hasMaterial() { return this.tradeInProcessContainer.jewelryMaterial.length > 0; }
-    getMaterial() { return this.tradeInProcessContainer.jewelryMaterial; }
+    hasMaterial() {
+        return this.tradeInProcessContainer.jewelryMaterial.length > 0;
+    }
+
+    getMaterial() {
+        return this.tradeInProcessContainer.jewelryMaterial;
+    }
+
     setMaterial(material: string) {
         this.tradeInProcessContainer.jewelryMaterial = material;
         this.storeContainer();
@@ -98,11 +151,82 @@ export class TradeInProcessService {
 
     hasPiece() {
         return Object.entries(this.tradeInProcessContainer.jewelryPiece).length !== 0 &&
-        this.tradeInProcessContainer.jewelryPiece.constructor === Object;
+            this.tradeInProcessContainer.jewelryPiece.constructor === Object;
     }
-    getPiece() { return this.tradeInProcessContainer.jewelryPiece; }
+
+    getPiece() {
+        return this.tradeInProcessContainer.jewelryPiece;
+    }
+
     setPiece(piece: ORProduct) {
         this.tradeInProcessContainer.jewelryPiece = piece;
+        this.storeContainer();
+    }
+
+
+    hasImages() {
+        return this.tradeInProcessContainer.images.length > 0;
+    }
+
+    getImages() {
+        return this.tradeInProcessContainer.images;
+    }
+
+    setImages(images) {
+        this.tradeInProcessContainer.images = images;
+        this.storeContainer();
+    }
+
+    hasEstimatedCredit() {
+        return this.tradeInProcessContainer.estimatedCredit > 0;
+    }
+
+    getEstimatedCredit() {
+        return this.tradeInProcessContainer.estimatedCredit;
+    }
+
+    setEstimatedCredit(estimatedCredit) {
+        this.tradeInProcessContainer.estimatedCredit = estimatedCredit;
+        this.storeContainer();
+    }
+
+
+    hasStoryTitle() {
+        return this.tradeInProcessContainer.storyTitle.length > 0;
+    }
+
+    getStoryTitle() {
+        return this.tradeInProcessContainer.storyTitle;
+    }
+
+    setStoryTitle(storyTitle) {
+        this.tradeInProcessContainer.storyTitle = storyTitle;
+        this.storeContainer();
+    }
+
+    hasStoryContent() {
+        return this.tradeInProcessContainer.storyContent.length > 0;
+    }
+
+    getStoryContent() {
+        return this.tradeInProcessContainer.storyContent;
+    }
+
+    setStoryContent(storyContent) {
+        this.tradeInProcessContainer.storyContent = storyContent;
+        this.storeContainer();
+    }
+
+    hasAdditionalNotes() {
+        return this.tradeInProcessContainer.additionalNotes.length > 0;
+    }
+
+    getAdditionalNotes() {
+        return this.tradeInProcessContainer.additionalNotes;
+    }
+
+    setAdditionalNotes(additionalNotes) {
+        this.tradeInProcessContainer.additionalNotes = additionalNotes;
         this.storeContainer();
     }
 
@@ -111,7 +235,7 @@ export class TradeInProcessService {
         localStorage.removeItem('tradeInProcessContainer');
     }
 
-    private storeContainer() {
+    storeContainer() {
         localStorage.tradeInProcessContainer = JSON.stringify(this.tradeInProcessContainer);
     }
 }

@@ -24,3 +24,13 @@ export function RepeatPasswordValidator(group: FormGroup) {
 
   return password === passwordConfirmation ? null : { passwordsNotEqual: true };
 }
+
+export const markFormGroupTouched = (formGroup) => {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+        control.markAsTouched();
+
+        if (control.controls) {
+            markFormGroupTouched(control);
+        }
+    });
+};

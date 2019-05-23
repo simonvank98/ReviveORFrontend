@@ -5,16 +5,22 @@
 
         <app-selection-button
             class="keep-aspect"
-            [value]="product"
             [match]="tradeInProcessService.tradeInProcessContainer.jewelryPiece"
+            [value]="product"
             text="{{ product.name | titlecase }}"
             [imageUrl]="product.thumbnail.url"
-            [group]="group-1"
+            group="group-1"
             (buttonClicked)="onButtonClicked($event)">
         </app-selection-button>
 
     </ng-container>
 </div>
-<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()" (customClicked)="onCustomClicked()" [customButton]="'I don\'t see my piece'"></app-control-buttons>
+
+<app-control-buttons
+    (nextClicked)="onNextClicked()"
+    (backClicked)="onBackClicked()"
+    (customClicked)="onCustomClicked()"
+    customButtonText="I don't see my piece">
+</app-control-buttons>
 
 

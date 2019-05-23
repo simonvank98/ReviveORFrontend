@@ -1,23 +1,30 @@
 <h3>Each piece of jewelry has a unique story, share yours!</h3>
-<form class="form-wrapper" [formGroup]="formGroup">
+
+<form class="form-wrapper">
 
     <div>
-        <h4>Story Title</h4>
-        <mat-form-field>
-            <input matInput placeholder="" formControlName="storyTitle">
-        </mat-form-field>
+        <div class="story-wrapper">
+            <span>Story Title (optional)</span>
+            <mat-form-field>
+                <input matInput placeholder=""
+                       [(ngModel)]="tradeInProcessService.tradeInProcessContainer.storyTitle"
+                       name="storyTitle">
+            </mat-form-field>
 
-        <span>Story</span>
-        <mat-form-field>
+            <span>Story (optional)</span>
+            <mat-form-field>
             <textarea matInput matTextareaAutosize matAutosizeMinRows=5 placeholder=""
-                    formControlName="storyContent"></textarea>
-        </mat-form-field>
+                      [(ngModel)]="tradeInProcessService.tradeInProcessContainer.storyContent"
+                      name="storyContent"></textarea>
+            </mat-form-field>
+        </div>
 
-        <h4>Extra notes about this trade-in request</h4>
+        <span>Any questions or notes regarding this trade-in request? If not, leave this field blank.</span>
         <mat-form-field>
             <textarea matInput
-                    placeholder="Perhaps a description of special damages to the jewelry piece."
-                    formControlName="additionalNotes"></textarea>
+                      placeholder="Perhaps a description of special damages to the jewelry piece."
+                      [(ngModel)]="tradeInProcessService.tradeInProcessContainer.additionalNotes"
+                      name="additionalNotes"></textarea>
         </mat-form-field>
     </div>
 
@@ -28,13 +35,23 @@
                 help_outline
             </mat-icon>
         </h4>
-    
+
         <app-mass-file-uploader
             maxFiles=2
             [allowedExtensions]="allowedImageExtensions"
             [httpUrl]="imageAPIUrl"
-            (fileUploaded)="onImageUploaded($event)">
+            (fileUploaded)="onImageUploaded($event)"
+            (fileUploadError)="onImageUploadError($event)">
         </app-mass-file-uploader>
+
+        <div class="images-wrapper">
+            <div class="label">Your images</div>
+            <div class="imageCollectionWrapper">
+                <div class="imageDiv" *ngFor="let image of images">
+                    <img [src]="image.url" alt="">
+                </div>
+            </div>
+        </div>
     </div>
 
 </form>

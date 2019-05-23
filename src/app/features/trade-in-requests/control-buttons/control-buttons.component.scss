@@ -19,18 +19,40 @@ $color: #2749b6;
     }
     .left {
         display: inline-block;
-        width: 50%;
+        width: 25%;
+        position: relative;
+
         button {
             margin-right: 10px;
         }
     }
     .right {
         display: inline-block;
-        width: 50%;
+        width: 75%;
         text-align: right;
+        position: relative;
 
         button {
             margin-left: 10px;
         }
+    }
+}
+@media (max-width: 700px) {
+    .right {
+        padding-top: 55px;
+    }
+    .custom-button {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    
+    .control-buttons button {
+        letter-spacing: 0px;
+        padding: 4px 8px;
     }
 }
