@@ -12,9 +12,10 @@
             <mat-label>Category</mat-label>
             <select matNativeControl required>
                 <option value="{{ product.category.name }}">{{ product.category.name }}</option>
-                <option value="lavaBracelet">Lava bracelet</option>
-                <option value="paddlefishBraclet">Paddlefish bracelet</option>
-                <option value="contrastBracelet">Contrast bracelet</option>
+                <option value="lavaBracelet">Bracelet</option>
+                <option value="paddlefishBraclet">Earrings</option>
+                <option value="contrastBracelet">Necklace</option>
+                <option value="contrastBracelet">Ring</option>
             </select>
         </mat-form-field>
 
@@ -22,9 +23,9 @@
             <mat-label>Status</mat-label>
             <select matNativeControl required>
                 <option value="{{ product.status }}">{{ product.status }}</option>
-                <option value="lavaBracelet">Lava bracelet</option>
-                <option value="paddlefishBraclet">Paddlefish bracelet</option>
-                <option value="contrastBracelet">Contrast bracelet</option>
+                <option value="lavaBracelet">1</option>
+                <option value="paddlefishBraclet">2</option>
+                <option value="contrastBracelet">3</option>
             </select>
         </mat-form-field>
     </div>
@@ -39,8 +40,52 @@
     </div>
     <div class="right">
         <mat-label>Images</mat-label>
-        <div class="imageDiv" *ngFor="let image of product.images">
-            <img [src]="image.url" alt="">
+        <div class="imageContainer">
+            <div class="imageDiv" *ngFor="let image of product.images">
+                <img class="productImg" [src]="image.url" alt="">
+            </div>
+            <div class="col-1-4" *ngFor="let image of product.images">
+                <img [src]="image.url" alt=""/>
+            </div>
+            <div class="col-1-4" *ngFor="let image of product.images">
+                <img [src]="image.url" alt=""/>
+            </div>
+            <div class="col-1-4" *ngFor="let image of product.images">
+                <img [src]="image.url" alt=""/>
+            </div>
+            <div class="col-1-4" *ngFor="let image of product.images">
+                <img [src]="image.url" alt=""/>
+            </div>
+        </div>
+        <div>
+            <button class="mat-button">Browse files</button>
+        </div>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="left">
+        <mat-label>Price (in €)</mat-label>
+        <div class="priceBox">
+            <input matInput id="price" value=" {{ product.price }}">
+        </div>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="left">
+        <mat-label>Condition</mat-label>
+        <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5" />
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4" />
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" title="text">1 star</label>
         </div>
     </div>
 </div>

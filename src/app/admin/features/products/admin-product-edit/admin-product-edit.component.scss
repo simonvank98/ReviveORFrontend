@@ -6,6 +6,7 @@
 .right {
     text-align: right;
     padding-top: 15px;
+    padding-left: 15px;
 }
 
 .left{
@@ -25,11 +26,72 @@
     width: 200px;
 }
 
-.descriptionBox{
+.descriptionBox, .priceBox{
     border: 1px black solid;
-    height: 200px;
+}
+
+.descriptionBox{
+    height: 300px;
+}
+
+.productImg{
+    max-height: 300px;
+}
+
+button {
+    background-color: #ccc;
+}
+
+
+.col-1-4{
+    width:25%;
+    float:left;
 }
 
 img{
-    max-height: 300px;
+    max-width: 100%;
+}
+
+.imageContainer{
+    max-width: 300px;
+}
+
+.priceBox{
+    width: 75px;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
 }
