@@ -14,11 +14,18 @@ import {AllTradeInRequestsResolver} from './features/trade-in-requests/resolvers
 import {TradeInRequestResolver} from './features/trade-in-requests/resolvers/trade-in-request.resolver';
 import {AdminProductEditComponent} from './features/products/admin-product-edit/admin-product-edit.components';
 
+import {TableModule} from 'primeng/table';
+import {DropdownModule, InputTextModule} from 'primeng/primeng';
+
+
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        TableModule,
+        DropdownModule,
+        InputTextModule
+    ],
   declarations: [
     AdminComponent,
     AdminTradeInRequestOverviewComponent,

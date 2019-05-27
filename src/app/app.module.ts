@@ -52,7 +52,7 @@ import { TradeInRequestCompletionComponent } from './features/trade-in-requests/
         TradeInRequestCreditIndicationComponent,
         TradeInRequestOverviewComponent,
         TradeInRequestFinalizationComponent,
-        TradeInRequestCompletionComponent
+        TradeInRequestCompletionComponent,
     ],
     imports: [
         BrowserModule,

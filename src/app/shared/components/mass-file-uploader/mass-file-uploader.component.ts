@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {HttpHeaders, HttpParams} from '@angular/common/http';
 import {FileUploader} from './file-uploader';
+import {FileUploaderEvent} from './file-uploader.event';
 
 @Component({
     selector: 'app-mass-file-uploader',
@@ -14,6 +15,9 @@ export class MassFileUploaderComponent implements OnInit, FileUploader {
 
     @Input()
     removeUploadFromQueueOnSuccess = false;
+
+    @Input()
+    removeUploadFromQueueOnError = true;
 
     @Input()
     maxFiles = 0;
@@ -35,7 +39,10 @@ export class MassFileUploaderComponent implements OnInit, FileUploader {
     fileAlias = 'file';
 
     @Output()
-    fileUploaded = new EventEmitter();
+    fileUploaded = new EventEmitter<FileUploaderEvent>();
+
+    @Output()
+    fileUploadError = new EventEmitter<FileUploaderEvent>();
 
     /*    @Input()
         uploadImmediately = true;
@@ -69,18 +76,26 @@ export class MassFileUploaderComponent implements OnInit, FileUploader {
         if (this.removeUploadFromQueueOnSuccess) {
             this.removeFileFromQueue(fileIndex);
         }
-        this.fileUploaded.emit(response);
+        this.fileUploaded.emit({ response: response, queueIndex: fileIndex });
+    }
+
+
+    onFileUploadError(fileIndex, response) {
+        if (this.removeUploadFromQueueOnError) {
+            this.removeFileFromQueue(fileIndex);
+        }
+        this.fileUploadError.emit({ response: response, queueIndex: fileIndex });
     }
 
     onFileUploadCancelled(fileIndex) {
         this.removeFileFromQueue(fileIndex);
     }
 
-    private addFileToQueue(file: File) {
+    addFileToQueue(file: File) {
         this.files.push(file);
     }
 
-    private removeFileFromQueue(fileIndex) {
+    removeFileFromQueue(fileIndex) {
         this.files.splice(fileIndex, 1);
     }
 }

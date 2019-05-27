@@ -1,52 +1,47 @@
-<nav>
-
-  <mat-toolbar class="nav-toolbar">
-
-    <a class="brand" routerLink="/" mat-button>
-      ReviveOR
+<nav class="nav-toolbar">      
+    <a class="brand" routerLink="/">
+        ReviveOR
     </a>
-
-    <div class="spacer"></div>
-
-    <div class="links">
-      <a routerLink="/shop" mat-button>Shop used</a>
-      <a routerLink="/trade-in" mat-button>Trade-in</a>
-      <a routerLink="/stories" mat-button>Stories</a>
+    
+    <div class="links" [ngClass]="navOpen ? 'open' : ''" >
+        <a (click)="navOpen = false" routerLink="/shop">Shop used</a>
+        <a (click)="navOpen = false" routerLink="/trade-in">Trade-in</a>
+        <a (click)="navOpen = false" routerLink="/stories">Stories</a>
+        <a (click)="navOpen = false" routerLink="/shop/cart" class="shopping_cart">
+            <mat-icon [matBadgeHidden]="cartItemsCount == 0" matBadgeColor="primary" [matBadge]="cartItemsCount"
+            matBadgePosition="above after">
+            shopping_cart
+            </mat-icon>
+        </a>
+        <div class="account">
+            <mat-menu #accountMenu="matMenu" class="account-dropdown">
+                <ng-container *ngIf="true; then loggedIn; else loggedOut"></ng-container>
+                
+                <ng-template #loggedIn>
+                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/me', 'edit']">Account info</button>
+                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/admin']" *ngIf="true">Admin dashboard</button>
+                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/logout']">Logout</button>
+                </ng-template>
+                
+                <ng-template #loggedOut>
+                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/login']">Login</button>
+                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/register']">Register</button>
+                </ng-template>
+                
+            </mat-menu>
+            
+            <button [matMenuTriggerFor]="accountMenu">
+                <mat-icon>account_circle</mat-icon>
+                {{ "Sophie" !== null ?
+                "Sophie" + "'s" : 'Mijn' }} account
+                <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+        </div>
     </div>
 
-    <a routerLink="/shop/cart" class="shopping_cart" mat-button>
-      <mat-icon [matBadgeHidden]="false" matBadgeColor="primary" [matBadge]="2"
-                matBadgePosition="above after">
-        shopping_cart
-      </mat-icon>
-    </a>
-
-    <div class="account">
-      <mat-menu #accountMenu="matMenu" class="account-dropdown">
-        <ng-container *ngIf="true; then loggedIn; else loggedOut"></ng-container>
-
-        <ng-template #loggedIn>
-          <button mat-menu-item [routerLink]="['/me', 'edit']">Account info</button>
-          <button mat-menu-item [routerLink]="['/admin']" *ngIf="true">Admin dashboard</button>
-          <button mat-menu-item [routerLink]="['/logout']">Logout</button>
-        </ng-template>
-
-        <ng-template #loggedOut>
-          <button mat-menu-item [routerLink]="['/login']">Login</button>
-          <button mat-menu-item [routerLink]="['/register']">Register</button>
-        </ng-template>
-
-      </mat-menu>
-
-      <button mat-button [matMenuTriggerFor]="accountMenu">
-        <mat-icon>account_circle</mat-icon>
-        {{ "Sophie" !== null ?
-        "Sophie" + "'s" : 'Mijn' }} account
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
+    <div class="hamburger" (click)="toggleNav()" [ngClass]="navOpen ? 'open' : ''">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
-  </mat-toolbar>
-
-  <div class="mat-elevation-z8"></div>
-
 </nav>

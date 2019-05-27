@@ -1,3 +1,99 @@
-<p>
-  admin-credit-indications-overview works!
-</p>
+<div>
+    <div class="table-wrapper">
+        <p-table [value]="modifierTypes" (onEditComplete)="onEdit($event)">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Indications</th>
+                    <th>Ring</th>
+                    <th>Bracelet</th>
+                    <th>Necklace</th>
+                    <th>Earrings</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData>
+                <tr>
+                    <td pEditableColumn>
+                        {{rowData.name}}
+                    </td>
+                    <td pEditableColumn>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input price-format type="text" [(ngModel)]="rowData.indication[0].effect" lang="en" required step='0.01'> <span>%</span>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData.indication[0].effect}} <span>%</span>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input price-format type="text" [(ngModel)]="rowData.indication[1].effect" required step='0.01'> <span>%</span>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData.indication[1].effect}} <span>%</span>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input price-format type="text" [(ngModel)]="rowData.indication[2].effect" required step='0.01'> <span>%</span>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData.indication[2].effect}} <span>%</span>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input price-format type="text" [(ngModel)]="rowData.indication[3].effect" required step='0.01'> <span>%</span>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData.indication[3].effect}} <span>%</span>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <h2>Example</h2>
+    <div class="example-indication">
+        <div class="product">
+            <div class="product-name">Shell ring gold</div>
+            <img src="https://theoceanrepublic.com/images/products/239/thumb/3.Thumbnail-OCEANREPUBLIC-silverblack.png" alt="" class="product-image">
+        </div>
+        <div class="conditions">
+            <div class="condition">
+                <input type="checkbox" id="missingPiece" (change)="checkboxChanged($event)">
+                <label for="missingPiece">Missing piece</label>
+            </div>
+            <div class="condition">
+                <input type="checkbox" id="broken" (change)="checkboxChanged($event)">
+                <label for="broken">Broken</label>
+            </div>
+            <div class="condition">
+                <input type="checkbox" id="bent" (change)="checkboxChanged($event)">
+                <label for="bent">Bent</label>
+            </div>
+            <div class="condition">
+                <input type="checkbox" id="scratched" (change)="checkboxChanged($event)" >
+                <label for="scratched">Scratched</label>
+            </div>
+        </div>
+        <div class="indication">
+            <div class="new">
+                <div class="text">New price</div>
+                <div class="price">€{{newPrice}}</div>
+            </div>
+            <div class="indication">
+                <div class="text">Indication</div>
+                <div class="price">€{{indication}}</div>
+            </div>
+        </div>
+    </div>
+
+    <button mat-button class="main mat-elevation-z3" [disabled]="isDisabled"  (click)="save()">Save</button>
+</div>

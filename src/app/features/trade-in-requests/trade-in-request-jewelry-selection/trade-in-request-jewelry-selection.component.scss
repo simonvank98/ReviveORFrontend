@@ -1,23 +1,15 @@
 h3 {
     padding: 10px 0px;
 }
-.grid {
-    width: 100%;
-    display: grid;
+.trade-in-grid  {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px !important;
     max-height: 500px;
     overflow-y: scroll;
-    padding: 10px;
+    padding: 10px 10px 20px 10px;
 }
-.grid > * {
+.trade-in-grid > * {
     --aspect-ratio: 1/1;
-    position: relative;
-}
-.grid > .keep-aspect::after {
-    content: "";
-    display: inline-block;
-    width: 0px;
-    height: 0;
-    padding-bottom: calc(100% / (var(--aspect-ratio)));
+    margin-bottom: 10px;
 }

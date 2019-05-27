@@ -1,67 +1,103 @@
-import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Injectable, OnDestroy} from '@angular/core';
+import {Subject, Subscription} from 'rxjs';
 import {CartItem} from './cart-product.model';
 import {ProductModel} from '../../../shared/services/product/product.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
-export class ShoppingCartService {
-  private storageKey = 'cartItems';
+export class ShoppingCartService implements OnDestroy {
+    private storageKey = 'cartItems';
 
-  public cartItems: Subject<CartItem[]> = new Subject();
+    public cartItemsSubject: Subject<CartItem[]> = new Subject();
 
-  loadCartItems() {
-    this.cartItems.next(this.retrieveAll());
-  }
+    private cartValue: number;
+    private cartItemsSubscription: Subscription;
 
-  addProductToCart(productToAdd: ProductModel, quantity = 1) {
-    const cartItems = this.retrieveAll();
-    let found = false;
-    for (const cartItem of cartItems) {
-      if (cartItem.product.id === productToAdd.id) {
-        found = true;
-        cartItem.quantity += quantity;
-        break;
-      }
+    constructor() {
+        this.cartItemsSubscription = this.cartItemsSubject.subscribe((cartItems) => {
+            this.updateCartValue(cartItems);
+        });
     }
-    if (!found) {
-      cartItems.push({product: productToAdd, quantity: quantity});
+
+    ngOnDestroy(): void {
+        this.cartItemsSubscription.unsubscribe();
     }
-    this.storeAll(cartItems);
-  }
 
-  removeItemFromCart(cartItem: CartItem) {
-    const cartItems = this.retrieveAll().filter(item => !(item.product.id === cartItem.product.id));
-    this.storeAll(cartItems);
-  }
-
-  setCartItemQuantity(cartItem: CartItem, quantity: number) {
-    const cartItems = this.retrieveAll();
-    for (const item of cartItems) {
-      if (item.product.id === cartItem.product.id) {
-        item.quantity = quantity;
-        break;
-      }
+    public loadCartItemsFromStorage() {
+        this.cartItemsSubject.next(this.retrieveAllItemsFromStorage());
     }
-    this.storeAll(cartItems);
-  }
 
-  private retrieveAll(): CartItem[] {
-    let cartItems = JSON.parse(localStorage.getItem(this.storageKey));
-    if (cartItems === null) {
-      cartItems = [];
+    public addProductToCart(productToAdd: ProductModel, quantity = 1) {
+        const cartItems = this.retrieveAllItemsFromStorage();
+        let found = false;
+        for (const cartItem of cartItems) {
+            if (cartItem.product.id === productToAdd.id) {
+                found = true;
+                break;
+            }
+        }
+        if (found) {
+            throw new Error('Item already exists in cart');
+        }
+        cartItems.push({product: productToAdd, quantity: quantity});
+        this.storeAllItems(cartItems);
+        this.notifyObservers(cartItems);
     }
-    return cartItems;
-  }
+
+    public removeItemFromCart(cartItem: CartItem) {
+        const cartItems = this.retrieveAllItemsFromStorage().filter(item => !(item.product.id === cartItem.product.id));
+        this.storeAllItems(cartItems);
+        this.notifyObservers(cartItems);
+    }
+
+    public setCartItemQuantity(cartItem: CartItem, quantity: number) {
+        const cartItems = this.retrieveAllItemsFromStorage();
+        for (const item of cartItems) {
+            if (item.product.id === cartItem.product.id) {
+                item.quantity = quantity;
+                break;
+            }
+        }
+        this.storeAllItems(cartItems);
+        this.notifyObservers(cartItems);
+    }
 
 
-  private storeAll(products: CartItem[]) {
-    localStorage.setItem(this.storageKey, JSON.stringify(products));
-    this.cartItems.next(products);
-  }
+    public clearCart() {
+        this.storeAllItems([]);
+        this.notifyObservers([]);
+    }
 
-  clearCart() {
-    this.storeAll([]);
-  }
+    public getCartValue() {
+        return this.cartValue;
+    }
+
+    private notifyObservers(cartItems: CartItem[]) {
+        this.cartItemsSubject.next(cartItems);
+    }
+
+    private retrieveAllItemsFromStorage(): CartItem[] {
+        let cartItems = [];
+        try {
+            const cartItemsJSON = localStorage.getItem(this.storageKey);
+            if (cartItemsJSON !== null) {
+                cartItems = JSON.parse(cartItemsJSON);
+            }
+        } catch (e) {
+            cartItems = [];
+        }
+        return cartItems;
+    }
+
+    private storeAllItems(cartItems: CartItem[]) {
+        localStorage.setItem(this.storageKey, JSON.stringify(cartItems));
+    }
+
+    private updateCartValue(cartItems: CartItem[]) {
+        this.cartValue = 0;
+        for (const cartItem of cartItems) {
+            this.cartValue += (cartItem.product.price * cartItem.quantity);
+        }
+    }
 }

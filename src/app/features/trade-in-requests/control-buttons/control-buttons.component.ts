@@ -1,5 +1,5 @@
 import {ModalService} from '../../../shared/services/modal-service/modal.service';
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, Input} from '@angular/core';
 import {TradeInProcessService} from 'src/app/features/trade-in-requests/trade-in-process.service';
 import {Router} from '@angular/router';
 
@@ -12,23 +12,28 @@ export class ControlButtonsComponent implements OnInit {
 
   @Output() nextClicked: EventEmitter<any> = new EventEmitter();
   @Output() backClicked: EventEmitter<any> = new EventEmitter();
+  @Output() customClicked: EventEmitter<any> = new EventEmitter();
 
-  resetDialogOpen = false;
+  @Input() customButtonText = '';
 
   constructor(private tradeInProcessService: TradeInProcessService, private modalService: ModalService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  onNextClicked() {
+  onNextButtonClicked() {
     this.nextClicked.emit();
   }
 
-  onBackClicked() {
+  onBackButtonClicked() {
     this.backClicked.emit();
   }
 
-  onResetClicked() {
+  onCustomButtonClicked() {
+    this.customClicked.emit();
+  }
+
+  onResetButtonClicked() {
     const dialog = this.modalService.createDialog('Confirmation', 'Are you sure you wish to reset your Trade-in progress?');
     dialog.addButton('No', () => {} );
     dialog.addButton('Yes', () => {
@@ -37,12 +42,4 @@ export class ControlButtonsComponent implements OnInit {
     });
     this.modalService.showDialog(dialog);
   }
-
-  onDialogClosed(decision) {
-    this.resetDialogOpen = false;
-    if (decision) {
-        this.tradeInProcessService.reset();
-    }
-  }
-
 }

@@ -18,7 +18,7 @@ export class TradeInRequestJewelryTypeComponent implements OnInit {
         this.tradeInProcessService.setCurrentStep(0);
     }
 
-    onButtonClicked(event) {
+    onJewelryTypeButtonClicked(event) {
         this.tradeInProcessService.setType(event.value);
     }
 

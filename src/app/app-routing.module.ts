@@ -30,47 +30,42 @@ import {ShopProductDetailsComponent} from './features/shop/shop-detail/shop-prod
 import {AdminProductEditComponent} from './admin/features/products/admin-product-edit/admin-product-edit.components';
 
 const routes: Routes = [
-    {path: '', component: HomeComponent},
-    {
-        path: 'shop',
-        component: ShopComponent,
-        resolve: {products: AllProductsResolver},
-        children: [
-            {path: '', component: ShopProductOverviewComponent},
-            {path: 'product/:id', component: ShopProductDetailsComponent, resolve: {product: ProductResolver}},
-            {path: 'cart', component: ShoppingCartComponent},
-        ]
-    },
-    {path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full'},
-    {
-        path: 'trade-in',
-        component: TradeInRequestPageComponent,
-        children: [
-            {path: 'type', component: TradeInRequestJewelryTypeComponent, data: {animation: 'jewelryType'}},
-            {path: 'material', component: TradeInRequestJewelryMaterialComponent, data: {animation: 'jewelryMaterial'}},
-            {path: 'piece', component: TradeInRequestJewelrySelectionComponent, data: {animation: 'jewelryPiece'}},
-            {path: 'name', component: TradeInRequestJewelryConditionComponent, data: {animation: 'jewelryCondition'}},
-            {path: 'indication', component: TradeInRequestCreditIndicationComponent, data: {animation: 'jewelryIndication'}},
-            {path: 'overview', component: TradeInRequestOverviewComponent, data: {animation: 'jewelryOverview'}},
-            {path: 'finalize', component: TradeInRequestFinalizationComponent, data: {animation: 'jewelryFinalization'}},
-            {path: 'complete', component: TradeInRequestCompletionComponent, data: {animation: 'jewelryCompletion'}},
-        ]
-    },
-    {path: 'stories', component: StoryPageComponent},
-    {path: 'me/edit', component: AccountPageComponent},
-    {
-        path: 'admin', component: AdminComponent, children: [
-            {path: 'products', component: AdminProductsOverviewComponent, resolve: {products: AllProductsResolver}},
-            {path: 'products/edit/:id', component: AdminProductEditComponent, resolve: {product: ProductResolver}},
-            {path: 'stories', component: AdminStoriesOverviewComponent},
-            {path: 'trade-in', component: AdminTradeInRequestOverviewComponent, resolve: {requests: AllTradeInRequestsResolver}},
-            {path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, resolve: {request: TradeInRequestResolver}},
-            {path: 'credit-indications', component: AdminCreditIndicationsOverviewComponent},
-            {path: 'permissions', component: AdminPermissionsOverviewComponent},
-        ]
-    },
-    // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
-    // { path: '**', redirectTo: '/not-found' }
+
+  { path: '', component: HomeComponent },
+  { path: 'shop',
+      component: ShopComponent,
+      resolve: { products: AllProductsResolver },
+      children: [
+        { path: '', component: ShopProductOverviewComponent },
+        { path: 'product/:id', component: ShopProductDetailsComponent, resolve: { product: ProductResolver }},
+        { path: 'cart', component: ShoppingCartComponent},
+  ]},
+  { path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full' },
+  { path: 'trade-in',
+    component: TradeInRequestPageComponent,
+    children: [
+        { path: 'type', component: TradeInRequestJewelryTypeComponent, data: {animation: 'jewelryType'}},
+        { path: 'material', component: TradeInRequestJewelryMaterialComponent, data: {animation: 'jewelryMaterial'}},
+        { path: 'piece', component: TradeInRequestJewelrySelectionComponent, data: {animation: 'jewelryPiece'}},
+        { path: 'condition', component: TradeInRequestJewelryConditionComponent, data: {animation: 'jewelryConditions'}},
+        { path: 'indication', component: TradeInRequestCreditIndicationComponent, data: {animation: 'jewelryIndication'}},
+        { path: 'overview', component: TradeInRequestOverviewComponent, data: {animation: 'jewelryOverview'}},
+        { path: 'finalize', component: TradeInRequestFinalizationComponent, data: {animation: 'jewelryFinalization'}},
+        { path: 'complete', component: TradeInRequestCompletionComponent, data: {animation: 'jewelryCompletion'}},
+    ]
+  },
+  { path: 'stories', component: StoryPageComponent },
+  { path: 'me/edit', component: AccountPageComponent },
+  { path: 'admin', component: AdminComponent, children: [
+      { path: 'products', component: AdminProductsOverviewComponent },
+      { path: 'stories', component: AdminStoriesOverviewComponent },
+      { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, resolve: { requests: AllTradeInRequestResolver }},
+      { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, resolve: { request: TradeInRequestResolver }},
+      { path: 'credit-indications', component: AdminCreditIndicationsOverviewComponent },
+      { path: 'permissions', component: AdminPermissionsOverviewComponent },
+    ] },
+  // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
+  // { path: '**', redirectTo: '/not-found' }
 ];
 
 @NgModule({

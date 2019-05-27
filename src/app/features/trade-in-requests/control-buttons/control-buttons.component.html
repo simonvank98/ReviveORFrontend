@@ -1,9 +1,10 @@
 <div class="control-buttons">
     <div class="left">
-        <button mat-button class="mat-elevation-z3" (click)="onResetClicked()">Reset</button>   
+        <button mat-button class="mat-elevation-z3" (click)="onResetButtonClicked()">Reset</button>
     </div>
     <div class="right">
-        <button mat-button class="mat-elevation-z3" (click)="onBackClicked()">&lt; Back</button>
-        <button mat-button class="main mat-elevation-z3"  (click)="onNextClicked()">Next &gt;</button>
+        <button *ngIf="customButtonText.length > 0" mat-button class="mat-elevation-z3 custom-button" (click)="onCustomButtonClicked()">{{ customButtonText }}</button>
+        <button mat-button class="mat-elevation-z3" (click)="onBackButtonClicked()">&lt; Go back</button>
+        <button mat-button class="main mat-elevation-z3"  (click)="onNextButtonClicked()">Next step &gt;</button>
     </div>
 </div>
