@@ -4,7 +4,6 @@
 }
 
 .right {
-    text-align: right;
     padding-top: 15px;
     padding-left: 15px;
 }
@@ -18,20 +17,31 @@
 }
 
 .categoryFormfield{
-    width: 200px;
+    width: 150px;
     float: left;
 }
 
 .statusFormfield{
-    width: 200px;
+    width: 150px;
+    margin-left: 10px;
 }
 
 .descriptionBox, .priceBox{
     border: 1px black solid;
 }
 
+.priceBoxContainer{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .descriptionBox{
-    height: 300px;
+    height: 150px;
+    padding: 10px 10px 10px 10px;
+}
+
+.conditionLabel{
+    margin-bottom: 10px;
 }
 
 .productImg{
@@ -42,18 +52,30 @@ button {
     background-color: #ccc;
 }
 
+.deleteButton{
+    margin-left: 20px;
+}
 
-.col-1-4{
-    width:25%;
-    float:left;
+.saveButton{
+
 }
 
 img{
     max-width: 100%;
 }
 
+.small-images-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 .imageContainer{
     max-width: 300px;
+    margin-left: 20px;
+}
+
+.formfieldContainer{
+    margin-left: 20px;
 }
 
 .priceBox{

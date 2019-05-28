@@ -50,7 +50,8 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
         PriceFormatDirective,
         FileDragAndDropDirective,
         TableComponent,
-        MassFileUploaderComponent
+        MassFileUploaderComponent,
+        FileSelectionComponent
     ],
     entryComponents: [
         ModalComponent

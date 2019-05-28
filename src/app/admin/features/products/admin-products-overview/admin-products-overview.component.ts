@@ -18,6 +18,7 @@ export class AdminProductsOverviewComponent implements OnInit {
 
     ngOnInit() {
         this.products = this.route.snapshot.data['products'];
+        console.log(this.products);
     }
 
     toEditRequest(event) {

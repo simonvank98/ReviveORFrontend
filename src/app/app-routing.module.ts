@@ -57,9 +57,10 @@ const routes: Routes = [
   { path: 'stories', component: StoryPageComponent },
   { path: 'me/edit', component: AccountPageComponent },
   { path: 'admin', component: AdminComponent, children: [
-      { path: 'products', component: AdminProductsOverviewComponent },
+      {path: 'products', component: AdminProductsOverviewComponent, resolve: {products: AllProductsResolver}},
+      {path: 'products/edit/:id', component: AdminProductEditComponent, resolve: {product: ProductResolver}},
       { path: 'stories', component: AdminStoriesOverviewComponent },
-      { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, resolve: { requests: AllTradeInRequestResolver }},
+      { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, resolve: { requests: AllTradeInRequestsResolver }},
       { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, resolve: { request: TradeInRequestResolver }},
       { path: 'credit-indications', component: AdminCreditIndicationsOverviewComponent },
       { path: 'permissions', component: AdminPermissionsOverviewComponent },
