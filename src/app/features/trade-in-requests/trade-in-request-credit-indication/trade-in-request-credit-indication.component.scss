@@ -1,0 +1,35 @@
+.container {
+    position: relative;
+
+    h3 {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    #indication-amount {
+        position: absolute;
+        left: 0;
+        right: 0;
+        line-height: 200px;
+        font-size: 22px;
+        display: block;
+        font-weight: bold;
+        text-align: center;
+        &::before {
+            content: '€ ';
+        }
+    }
+    .indication-spinner {
+        display: block;
+        margin: 0px auto;
+    }
+    .disclaimer {
+        width: 100%;
+        max-width: 650px;
+        margin: 30px auto;
+
+        h3 {
+            padding: 5px 0px;
+        }
+    }
+}

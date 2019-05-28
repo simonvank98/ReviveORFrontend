@@ -1,0 +1,72 @@
+$activeColor: #2749b6;
+$inactiveColor: #ddd;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.stepper {
+    display: flex;
+    width: 100%;
+    list-style: none;
+    position: relative;
+    padding-left: 15px;
+    overflow: hidden;
+    border-radius: 5px;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        content: "";
+        width: calc(100% - 20px);
+        background: white;
+    }
+}
+.stepper-item {
+    font-weight: bold;
+    flex: 100%;
+    padding: 20px 20px 20px 40px;
+    background: $inactiveColor;
+    color: $activeColor;
+    margin: 0 0 0 -15px;
+    clip-path: polygon(20px 50%, 0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
+    transition: background-color 0.6s, opacity 0.6s;
+    opacity: 0.5;
+
+    &.active {
+        background: $activeColor;
+        color: white;
+        opacity: 1;
+    }
+
+    &:first-child {
+        padding: 20px;
+        clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
+    }
+
+    &:last-child {
+        clip-path: polygon(20px 50%, 0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+}
+@media (max-width: 800px) {
+    .stepper {
+        display: block;
+    }
+    .stepper-item {
+        padding: 10px 20px 10px 35px !important;
+        display: block;
+        position: initial;
+        flex: none;
+        clip-path: polygon(20px 50%, 0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%) !important;
+        margin-top: 5px;
+
+        &:first-child {
+            // padding-left: 35px;
+        }
+    }
+}

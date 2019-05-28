@@ -1,0 +1,26 @@
+<div class="container">
+    <h3> {{ headerText }}</h3>
+
+    <div id="indication-amount">
+        {{ indication }}
+    </div>
+
+    <mat-progress-spinner
+        class="indication-spinner"
+        [ngClass]="{'disabled': !tradeInProcessService.hasPiece()}"
+        [color]="color"
+        [mode]="mode"
+        [value]="percentage"
+        [diameter]="200">
+    </mat-progress-spinner>
+
+    <div class="disclaimer">
+        <h3>Disclaimer</h3>
+        <p>
+            {{ disclaimerText }}
+        </p>
+    </div>
+
+</div>
+
+<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>

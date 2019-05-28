@@ -1,0 +1,12 @@
+.wrapper {
+    width: 100%;
+    float: none;
+    text-align: center;
+    justify-content: center;
+}
+
+.sortWrapper {
+    > *:not(.label) {
+        display: inline-block;
+    }
+}

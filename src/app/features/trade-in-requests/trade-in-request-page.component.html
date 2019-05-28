@@ -1,0 +1,28 @@
+<!-- <div class="wrapper">
+    <div class="trade-in-process-container">
+        <div class="breadcrumbs">
+
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+    <div class="stepper-container">
+        <app-stepper></app-stepper>
+    </div>
+</div> -->
+<div class="wrapper">
+    <!-- <mat-card class="mat-elevation-z5"> -->
+        <div class="stepper-container">
+            <app-stepper [horizontal]="true" [currentStep]="tradeInProcessService.tradeInProcessContainer.currentStep"></app-stepper>
+        </div>
+        <div class="left">
+            <div class="breadcrumbs">
+
+            </div>
+            <div class="router-container" [@routeAnimations]="prepareRoute(outlet)">
+                <router-outlet #outlet="outlet"></router-outlet>
+            </div>
+
+        </div>
+    <!-- </mat-card> -->
+
+</div>

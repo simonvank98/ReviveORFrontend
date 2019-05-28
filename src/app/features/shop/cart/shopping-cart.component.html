@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-title>Shopping cart</mat-card-title>
+
+    <div class="shopping-cart-alignment-wrapper table-header">
+        <p>Items ({{cartItemsCount}})</p>
+
+        <p>Description</p>
+
+        <p>Price</p>
+    </div>
+
+    <div class="products">
+        <div class="row" *ngFor="let cartItem of cartItems">
+            <app-shopping-cart-item [cartItem]="cartItem"></app-shopping-cart-item>
+        </div>
+    </div>
+</mat-card>
+
+<mat-card *ngIf="cartItemsCount > 0">
+
+    <div class="checkout">
+        <div class="row">
+            <div class="col-md-9">
+                <h5>Subtotal:</h5>
+            </div>
+            <div class="col-md-3">
+                <h4>{{ cartSubTotal | currency: '€' }}</h4>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-9">
+                <h3>Total:</h3>
+            </div>
+            <div class="col-md-3">
+                <h2>{{ cartTotal | currency: '€' }}</h2>
+            </div>
+        </div>
+
+        <div class="align-right">
+            <button mat-raised-button color="accent" [routerLink]="['/shop', 'checkout']">
+                <mat-icon>payment</mat-icon>
+                Continue to checkout
+            </button>
+        </div>
+    </div>
+</mat-card>

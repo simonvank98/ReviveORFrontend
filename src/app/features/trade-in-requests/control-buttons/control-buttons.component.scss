@@ -1,0 +1,58 @@
+$color: #2749b6;
+
+.control-buttons {
+    width: 100%;
+    // position: absolute;
+    left: 0px;
+    bottom: 0;
+    padding: 30px 0px;
+
+    button {
+        letter-spacing: 1px;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 4px 15px;
+        &.main {
+            background-color: $color;
+            color: white;
+        }
+    }
+    .left {
+        display: inline-block;
+        width: 25%;
+        position: relative;
+
+        button {
+            margin-right: 10px;
+        }
+    }
+    .right {
+        display: inline-block;
+        width: 75%;
+        text-align: right;
+        position: relative;
+
+        button {
+            margin-left: 10px;
+        }
+    }
+}
+@media (max-width: 700px) {
+    .right {
+        padding-top: 55px;
+    }
+    .custom-button {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    
+    .control-buttons button {
+        letter-spacing: 0px;
+        padding: 4px 8px;
+    }
+}

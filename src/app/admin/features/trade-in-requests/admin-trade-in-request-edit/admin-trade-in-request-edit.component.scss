@@ -1,0 +1,61 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.right {
+  text-align: right;
+}
+
+mat-form-field {
+  display: block;
+}
+
+.imageDiv {
+  display: inline-block;
+}
+
+img {
+  width: 200px;
+}
+
+.noteBorder {
+  border: 1px black solid;
+}
+
+.story {
+  border: 1px black solid;
+  height: 100%;
+}
+
+.indicationFormfield {
+  max-width: 100px;
+  margin: 0 auto;
+}
+
+.indicationWrapper label {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+.buttonWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+button {
+  background-color: #ccc;
+}
+
+.buttonLeft {
+  text-align: left;
+}
+
+.buttonRight {
+  text-align: right;
+}
+
+textarea {
+    width: 100%;
+}

@@ -1,0 +1,29 @@
+<h3>Please select your jewelry piece from the list below</h3>
+
+<mat-spinner *ngIf="!productsLoaded"></mat-spinner>
+
+<div class="trade-in-grid products-container" *ngIf="productsLoaded">
+
+    <ng-container *ngFor="let product of products">
+
+        <app-selection-button
+            class="keep-aspect"
+            [match]="tradeInProcessService.tradeInProcessContainer.jewelryPiece"
+            [value]="product"
+            text="{{ product.name | titlecase }}"
+            [imageUrl]="product.thumbnail.url"
+            group="group-1"
+            (buttonClicked)="onButtonClicked($event)">
+        </app-selection-button>
+
+    </ng-container>
+</div>
+
+<app-control-buttons
+    (nextClicked)="onNextClicked()"
+    (backClicked)="onBackClicked()"
+    (customClicked)="onCustomClicked()"
+    customButtonText="I don't see my piece">
+</app-control-buttons>
+
+

@@ -1,0 +1,16 @@
+h3 {
+    padding: 10px 0px;
+}
+h4 {
+    margin: 20px 0px 0px 0px;
+}
+.trade-in-grid  {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.trade-in-grid  > * {
+    --aspect-ratio: 1/0.2;
+}
+
+.jewelry-properties {
+    margin-bottom: 30px;
+}

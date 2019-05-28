@@ -1,0 +1,19 @@
+import {Component, Input, OnInit} from '@angular/core';
+import {ProductModel} from '../../../../shared/services/product/product.model';
+import {ShoppingCartService} from '../../cart/cart.service';
+import {SnackbarService} from '../../../../shared/services/snackbar/snackbar.service';
+
+@Component({
+    selector: 'app-shop-item',
+    templateUrl: './shop-item.component.html',
+    styleUrls: ['./shop-item.component.scss']
+})
+export class ShopItemComponent implements OnInit {
+    @Input() product: ProductModel;
+    @Input() index: number;
+
+    constructor() {}
+
+    ngOnInit() {
+    }
+}

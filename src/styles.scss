@@ -1,10 +1,119 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: Caslon;
+    src: url(assets/adobe-caslon-semibold.otf);
+}
 
-html, body {
-  height: 100%;
+@font-face {
+    font-family: Neuzeit;
+    src: url(assets/neuzeit-grotesk-regular.otf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Neuzeit, sans-serif;
 }
 
 body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif !important;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+table {
+    width: 100%;
+    border-spacing: 0;
+    &.table-border {
+        border: 1px solid gray;
+    }
+}
+
+p {
+    margin: 16px 0;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    color: #111;
+    width:100%;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+
+.shopping-cart-alignment-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+    grid-gap: 10%;
+}
+
+.mat-progress-spinner.disabled circle, .mat-spinner.disabled circle {
+    stroke: #ccc !important;
+}
+
+.mat-progress-bar .mat-progress-bar-fill {
+    transition-duration: 100ms!important;
+}
+
+
+.mat-button.top .mat-button-wrapper>* {
+    vertical-align: top !important;
+}
+.mat-button.bottom .mat-button-wrapper>* {
+    vertical-align: bottom !important;
+}
+.mat-button-wrapper {
+    pointer-events: none;
+}
+.indication-spinner.mat-progress-spinner circle {
+    transition: stroke-dashoffset 1500ms ease-in-out !important;
+}
+.mat-icon {
+    vertical-align: bottom;
+}
+
+.queue-wrapper {
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.trade-in-grid  {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+
+    > * {
+        position: relative;
+    }
+
+    > .keep-aspect::before {
+        content: "";
+        display: inline-block;
+        width: 0px;
+        height: 0;
+        padding-bottom: calc(100% / (var(--aspect-ratio)));
+    }
+}
+@media (max-width: 1000px) {
+    .trade-in-grid {
+        grid-template-columns: 1fr 1fr 1fr !important;
+    }
+}
+@media (max-width: 800px) {
+    .trade-in-grid {
+        grid-gap: 10px !important;
+        grid-template-columns: 1fr 1fr !important;
+    }
 }

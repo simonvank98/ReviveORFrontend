@@ -1,0 +1,60 @@
+<h3>Trade-in overview</h3>
+<div class="grid">
+    <div>
+        <div class="label" *ngIf="tradeInProcessService.hasPiece()">Jewelry piece name</div>
+        <div class="value">{{ tradeInProcessService.getPiece().name | titlecase }}</div>
+
+        <div class="label">Jewelry material</div>
+        <div class="value">{{ tradeInProcessService.getMaterial() | titlecase }}</div>
+
+        <ng-container *ngIf="tradeInProcessService.hasProperty()">
+            <div class="label">Property</div>
+            <div class="value">{{ tradeInProcessService.getProperty() | titlecase  }}</div>
+        </ng-container>
+
+        <ng-container *ngIf="tradeInProcessService.hasEstimatedCredit()">
+            <div class="label">Estimated credit</div>
+            <div class="value">{{ tradeInProcessService.getEstimatedCredit() | currency: '€' }}</div>
+        </ng-container>
+
+
+        <br>
+
+        <ng-container *ngIf="tradeInProcessService.hasStoryTitle()">
+            <div class="label">Story title</div>
+            <div class="value">{{ tradeInProcessService.tradeInProcessContainer.storyTitle }}</div>
+        </ng-container>
+
+        <ng-container *ngIf="tradeInProcessService.hasStoryContent()">
+            <div class="label">Story content</div>
+            <div class="value">{{ tradeInProcessService.tradeInProcessContainer.storyContent }}</div>
+        </ng-container>
+
+        <ng-container *ngIf="tradeInProcessService.hasAdditionalNotes()">
+            <div class="label">Additional notes</div>
+            <div class="value">{{ tradeInProcessService.tradeInProcessContainer.additionalNotes }}</div>
+        </ng-container>
+
+        <div class="label">Jewelry images</div>
+        <div class="imageCollectionWrapper">
+            <div class="imageDiv" *ngFor="let image of tradeInProcessService.tradeInProcessContainer.images">
+                <img [src]="image.url" alt="">
+            </div>
+        </div>
+    </div>
+    <div>
+        <app-table
+            [search]="false"
+            [pagination]="false"
+            [sortable]="false"
+            [headers]="['Property', 'Value']"
+            [models]="conditionModels"
+            [attributes]="['name', 'value']"
+            [formatters]="formatters"
+            [hoverable]="false"
+            [shadows]="false">
+        </app-table>
+    </div>
+</div>
+
+<app-control-buttons (nextClicked)="onNextClicked()" (backClicked)="onBackClicked()"></app-control-buttons>

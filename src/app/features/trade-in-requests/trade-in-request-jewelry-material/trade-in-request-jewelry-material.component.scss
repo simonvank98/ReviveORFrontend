@@ -1,0 +1,9 @@
+h3 {
+    padding: 10px 0px;
+}
+.trade-in-grid  {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.trade-in-grid  > * {
+    --aspect-ratio: 1/1;
+}

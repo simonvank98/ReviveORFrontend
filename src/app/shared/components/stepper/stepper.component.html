@@ -1,0 +1,36 @@
+<div class="wrapper">
+    <ng-container *ngIf="!horizontal">
+        <div
+        class="step"
+        *ngFor="let step of steps; let i = index"
+        [ngClass]="{'active' : currentStep >= i}">
+            <div class="left">
+                <div class="orb">
+                    {{ i+1 }}
+                </div>
+                <div class="line">
+
+                </div>
+            </div>
+            <div class="right">
+                <div class="label">
+                    {{ step }}
+                </div>
+                <div class="description">
+                    {{ descriptions[i] }}
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="horizontal">
+        <ul class="stepper">
+            <li class="stepper-item"
+            *ngFor="let step of steps; let i = index"
+            [ngClass]="{'active' : currentStep >= i}">
+                {{ step }}
+        </li>
+        </ul>
+    </ng-container>
+
+</div>
