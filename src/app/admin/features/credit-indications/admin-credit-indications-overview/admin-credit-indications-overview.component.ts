@@ -16,11 +16,6 @@ export class AdminCreditIndicationsOverviewComponent implements OnInit {
     newPrice: number;
     indication: number;
 
-    // missingPiece = false;
-    // scratched = false;
-    // bent = false;
-    // broken = false;
-
     jewelryConditions = {
         missingPiece: false,
         scratched: false,
@@ -64,10 +59,11 @@ export class AdminCreditIndicationsOverviewComponent implements OnInit {
 
     private checkboxChanged(event) {
         this.jewelryConditions[event.target.id] = !this.jewelryConditions[event.target.id];
+        console.log(this.jewelryConditions);
         this.updatePrice();
     }
     private updatePrice() {
-        this.creditIndicationService.get(
+        this.creditIndicationService.getExampleIndication(
             {jewelryCondition: this.jewelryConditions,
                 jewelryType: 'rings', orProductId: '122', selectedProperty: 's'})
             .subscribe( data => {
