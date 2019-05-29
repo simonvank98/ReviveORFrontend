@@ -1,0 +1,121 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.grid2 {
+    grid-template-columns: none;
+}
+.right {
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.left{
+    text-align: left;
+}
+
+.nameFormfield{
+    width: 250px;
+}
+
+.categoryFormfield{
+    width: 150px;
+    float: left;
+}
+
+.statusFormfield{
+    width: 150px;
+    margin-left: 10px;
+}
+
+.descriptionBox, .priceBox{
+    border: 1px black solid;
+}
+
+.priceBoxContainer{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.descriptionBox{
+    height: 150px;
+    padding: 10px 10px 10px 10px;
+}
+
+.conditionLabel{
+    margin-bottom: 10px;
+    display: block;
+}
+
+.productImg{
+    max-height: 300px;
+}
+
+button {
+    background-color: #ccc;
+}
+
+.deleteButton{
+    margin-left: 20px;
+}
+
+.saveButton{
+
+}
+
+img{
+    max-width: 100%;
+}
+
+.small-images-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.imageContainer{
+    max-width: 300px;
+    margin-left: 20px;
+}
+
+.formfieldContainer{
+    margin-left: 20px;
+}
+
+.priceBox{
+    width: 75px;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}

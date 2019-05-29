@@ -10,10 +10,13 @@ import {SharedModule} from '../shared/shared.module';
 import {AdminTradeInRequestOverviewComponent} from './features/trade-in-requests/admin-trade-in-request-overview/admin-trade-in-request-overview.component';
 import {AdminCreditIndicationsOverviewComponent} from './features/credit-indications/admin-credit-indications-overview/admin-credit-indications-overview.component';
 import { AdminTradeInRequestEditComponent } from './features/trade-in-requests/admin-trade-in-request-edit/admin-trade-in-request-edit.component';
-import {AllTradeInRequestResolver} from './features/trade-in-requests/resolvers/all-trade-in-request.resolver';
+import {AllTradeInRequestsResolver} from './features/trade-in-requests/resolvers/all-trade-in-requests-resolver.service';
 import {TradeInRequestResolver} from './features/trade-in-requests/resolvers/trade-in-request.resolver';
+import {AdminProductEditComponent} from './features/products/admin-product-edit/admin-product-edit.components';
+
 import {TableModule} from 'primeng/table';
 import {DropdownModule, InputTextModule} from 'primeng/primeng';
+
 
 @NgModule({
     imports: [
@@ -27,6 +30,7 @@ import {DropdownModule, InputTextModule} from 'primeng/primeng';
     AdminComponent,
     AdminTradeInRequestOverviewComponent,
     AdminProductsOverviewComponent,
+    AdminProductEditComponent,
     AdminStoriesOverviewComponent,
     AdminCreditIndicationsOverviewComponent,
     AdminPermissionsOverviewComponent,
@@ -34,7 +38,7 @@ import {DropdownModule, InputTextModule} from 'primeng/primeng';
     AdminTradeInRequestEditComponent
   ],
   providers: [
-    AllTradeInRequestResolver,
+    AllTradeInRequestsResolver,
     TradeInRequestResolver
   ],
 })
