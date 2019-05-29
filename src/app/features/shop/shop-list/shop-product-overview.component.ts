@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductModel} from '../../../shared/services/product/product.model';
-import {ProductService} from '../../../shared/services/product/product.service';
 import {ActivatedRoute} from '@angular/router';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-shop-list',
@@ -21,12 +19,24 @@ export class ShopProductOverviewComponent implements OnInit {
     }
 
     filterCategory(event) {
+      this.filteredProducts = [];
         event.value.forEach(category => {
-            this.filteredProducts = this.products.filter(product => {
-                console.log(category);
-                return product.category.name.toString().toLocaleLowerCase() === category.toString().toLocaleLowerCase();
+                this.products.filter(product => {
+                if (product.category.name.toString().toLocaleLowerCase() === category.toString().toLocaleLowerCase()) {
+                    this.filteredProducts.push(product);
+                }
             });
         });
-        console.log('last one', this.filteredProducts);
+    }
+
+    filterMaterial(event) {
+      this.filteredProducts = [];
+        event.value.forEach(material => {
+            this.products.filter(product => {
+                if (product.material.toLocaleLowerCase() === material.toString().toLocaleLowerCase()) {
+                    this.filteredProducts.push(product);
+                }
+            });
+        });
     }
 }

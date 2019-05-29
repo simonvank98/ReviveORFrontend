@@ -10,10 +10,10 @@
     </div>
     <mat-label class="label">Material</mat-label>
     <div class="jewelryMaterialWrapper">
-        <mat-button-toggle-group multiple (change)="$event">
-            <mat-button-toggle checked>Gold</mat-button-toggle>
-            <mat-button-toggle checked>Silver</mat-button-toggle>
-            <mat-button-toggle checked>Other</mat-button-toggle>
+        <mat-button-toggle-group multiple (change)="filterMaterial($event)">
+            <mat-button-toggle checked value="Gold">Gold</mat-button-toggle>
+            <mat-button-toggle checked value="Silver">Silver</mat-button-toggle>
+            <mat-button-toggle checked value="Other">Other</mat-button-toggle>
         </mat-button-toggle-group>
     </div>
 </div>
