@@ -1,10 +1,10 @@
 <div class="grid">
     <div class="left">
 
-        <mat-form-field class="nameFormfield">
+
             <label for="name">Name</label>
-            <input matInput id="name" value=" {{ product.name }}">
-        </mat-form-field>
+            <input id="name" value=" {{ product.name }}">
+
 
     </div>
     <div class="right">
@@ -36,9 +36,8 @@
 <div class="grid">
     <div class="left">
         <mat-label>Description</mat-label>
-        <div class="descriptionBox">
-            <textarea matInput id="description" value="{{ product.description }}"></textarea>
-        </div>
+            <textarea class="descriptionBox" id="description" value="{{ product.description }}"></textarea>
+
     </div>
     <div class="right">
 
@@ -97,24 +96,24 @@
     </div>
 </div>
 
-<div class="grid">
+<div class="grid2">
     <div class="left">
-        <mat-accordion>
+        <mat-accordion [ngClass]="'custom-mat-input'">
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Story information
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <p>Story Author</p>
+                <label>Story Author</label>
                 <mat-form-field>
                     <input matInput placeholder="Story Author">
                 </mat-form-field>
-                <p>Story Title</p>
+                <label>Story Title</label>
                 <mat-form-field>
                     <input matInput placeholder="Story Title">
                 </mat-form-field>
-                <p>Story Content</p>
+                <label>Story Content</label>
                 <mat-form-field>
                     <textarea matInput placeholder="Story Content"></textarea>
                 </mat-form-field>

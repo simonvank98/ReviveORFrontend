@@ -2,7 +2,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-
+.grid2 {
+    grid-template-columns: none;
+}
 .right {
     padding-top: 15px;
     padding-left: 15px;
@@ -42,6 +44,7 @@
 
 .conditionLabel{
     margin-bottom: 10px;
+    display: block;
 }
 
 .productImg{
@@ -85,7 +88,6 @@ img{
 .rate {
     float: left;
     height: 46px;
-    padding: 0 10px;
 }
 .rate:not(:checked) > input {
     position:absolute;
