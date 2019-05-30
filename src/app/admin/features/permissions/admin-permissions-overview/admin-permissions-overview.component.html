@@ -1,13 +1,23 @@
 <div class="grid">
-    <form class="example-form" *ngIf="loaded">
+    <form class="example-form" *ngIf="usersLoaded">
         <mat-form-field class="example-full-width">
-            <input type="text" placeholder="User" aria-label="User" matInput [formControl]="formControl" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <input type="text" placeholder="User" aria-label="User" matInput [formControl]="userFormControl" [matAutocomplete]="auto">
+            <mat-autocomplete (optionSelected)="onUserChanged($event)" #auto="matAutocomplete" [displayWith]="displayFn">
                 <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
                     {{ user.email }}
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
     </form>
-    
+    <form class="example-form" *ngIf="usersLoaded">
+        <mat-form-field>
+            <mat-select (selectionChange)="onRolesChanged($event)" placeholder="Roles" [formControl]="roleFormControl" multiple>
+                <mat-option *ngFor="let role of roles" [value]="role"> 
+                    {{role.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
 </div>
+
+<button mat-button [color]="primary" class="save-button mat-elevation-z3" (click)="onSaveClicked()">Save</button>
