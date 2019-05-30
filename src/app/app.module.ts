@@ -31,6 +31,7 @@ import { TradeInRequestFinalizationComponent } from './features/trade-in-request
 import {JSONCasingInterceptor} from './shared/utilities/JSONCasing.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TradeInRequestCompletionComponent } from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
+import { LoginComponent } from './features/login/login.component';
 
 @NgModule({
     declarations: [
@@ -53,6 +54,7 @@ import { TradeInRequestCompletionComponent } from './features/trade-in-requests/
         TradeInRequestOverviewComponent,
         TradeInRequestFinalizationComponent,
         TradeInRequestCompletionComponent,
+        LoginComponent,
     ],
     imports: [
         BrowserModule,

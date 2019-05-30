@@ -28,6 +28,7 @@ import {ProductResolver} from './features/shop/product.resolver';
 import {ShoppingCartComponent} from './features/shop/cart/shopping-cart.component';
 import {ShopProductOverviewComponent} from './features/shop/shop-list/shop-product-overview.component';
 import {ShopProductDetailsComponent} from './features/shop/shop-detail/shop-product-details.component';
+import {LoginComponent} from './features/login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -54,6 +55,7 @@ const routes: Routes = [
     ]
   },
   { path: 'stories', component: StoryPageComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'me/edit', component: AccountPageComponent },
   { path: 'admin', component: AdminComponent, children: [
       { path: 'products', component: AdminProductsOverviewComponent },

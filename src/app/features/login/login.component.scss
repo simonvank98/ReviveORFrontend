@@ -1,0 +1,23 @@
+h1 {
+    color: #2749b6;
+    text-align: center;
+}
+form {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0px auto;
+    display: block;
+
+    input {
+        font-size: 18px;
+    }
+}
+.button-wrapper {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+
+}
