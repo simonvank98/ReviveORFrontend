@@ -2,6 +2,13 @@ h1 {
     color: #5e646b;
     text-align: center;
 }
+a {
+    color: #5e646b;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
 form {
     margin-top: 20px;
     width: 100%;
