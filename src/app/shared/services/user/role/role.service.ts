@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from 'selenium-webdriver/http';
 import { environment } from 'src/environments/environment';
-import { TempApiService } from '../api/temp-api.service';
+import { TempApiService } from '../../api/temp-api.service';
 import { Observable } from 'rxjs';
-import { UserModel } from './user.model';
+import { Role } from './role.model';
+
 
 @Injectable({
     providedIn: 'root'
 })
-export class UserService {
+export class RoleService {
     
     constructor(private api: TempApiService) {}
     
-    public getAll(): Observable<UserModel[]> {
-        return this.api.get<UserModel[]>('users');
-    }
-
-
-    public updateRoles() {
-        // this.api.put
+    public getAll(): Observable<Role[]> {
+        return this.api.get<Role[]>('roles');
     }
 }
