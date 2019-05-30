@@ -32,7 +32,7 @@ p {
     margin: 16px 0;
 }
 
-input, textarea, .custom-mat-input input.mat-input-element {
+.custom-inputs input, .custom-inputs textarea, .custom-mat-input input.mat-input-element {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
@@ -55,7 +55,7 @@ input, textarea, .custom-mat-input input.mat-input-element {
     }
 }
 
-.custom-mat-input {
+.custom-inputs {
     .mat-form-field-label-wrapper {
         display: none !important;
     }
