@@ -13,11 +13,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     cartItemsCount = 0;
     navOpen = false;
+    user = '';
 
     private cartSubscription: Subscription;
 
 
-    constructor(private cartService: ShoppingCartService, private router: Router, public authenticationService: AuthenticationService) { }
+    constructor(private cartService: ShoppingCartService, private router: Router, public authenticationService: AuthenticationService) {
+        console.log(authenticationService.userinfo);
+        authenticationService.userInfoChanged.subscribe(() => {
+            if (authenticationService.userinfo) {
+                this.user = authenticationService.userinfo['name'];
+            }
+        });
+    }
 
 
     ngOnInit() {

@@ -32,6 +32,7 @@ import {JSONCasingInterceptor} from './shared/utilities/JSONCasing.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TradeInRequestCompletionComponent } from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
 import { LoginComponent } from './features/login/login.component';
+import {AuthInterceptor} from './features/auth/auth.interceptor';
 
 @NgModule({
     declarations: [
@@ -71,6 +72,7 @@ import { LoginComponent } from './features/login/login.component';
         ORApiService,
         TempApiService,
         { provide: HTTP_INTERCEPTORS, useClass: JSONCasingInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
     ],
     bootstrap: [
         AppComponent

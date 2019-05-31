@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {environment} from '../environments/environment';
@@ -9,6 +9,8 @@ import {environment} from '../environments/environment';
 export class AuthenticationService {
 
     token: string;
+    userinfo;
+    userInfoChanged: EventEmitter<any> = new EventEmitter();
 
     constructor(public httpClient: HttpClient) {
     }
@@ -20,19 +22,15 @@ export class AuthenticationService {
             })
         };
         const logindata = {'email' : email, 'password' : password};
-        console.log(logindata);
-
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('password', password);
-
-
-        const params = new HttpParams();
-        params.append('email', email);
-        params.append('password', password);
-        return this.httpClient.post<{ access_token: string }>(`${environment.reviveORAPIUrl}auth\\login`, logindata).pipe(tap(res => {
-            localStorage.setItem('access_token', res.access_token);
-            this.token = res.access_token;
+        return this.httpClient.post(`${environment.reviveORAPIUrl}auth\\login`, logindata).pipe(tap(res => {
+            localStorage.setItem('access_token', res['accessToken']);
+            this.token = res['accessToken'];
+            console.log(this.token);
+            this.httpClient.post(`${environment.reviveORAPIUrl}auth\\me`, null).subscribe(data => {
+                this.userinfo = data;
+                this.userInfoChanged.emit();
+                console.log(this.userinfo);
+            });
         }));
     }
 

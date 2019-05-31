@@ -32,8 +32,8 @@
             
             <button [matMenuTriggerFor]="accountMenu">
                 <mat-icon>account_circle</mat-icon>
-                {{ "Sophie" !== null ?
-                "Sophie" + "'s" : 'Mijn' }} account
+                {{ user !== null ?
+                user + "'s" : 'Mijn' }} account
                 <mat-icon>arrow_drop_down</mat-icon>
             </button>
         </div>

@@ -1,5 +1,8 @@
 <form (ngSubmit)="onSubmit()" class="mat-elevation-z3" #form="ngForm">
     <h1>Login</h1>
+    <div *ngIf="showWarning">
+        <p>{{warning}}</p>
+    </div>
     <mat-form-field>
         <input matInput type="text" placeholder="E-mail address" [(ngModel)]="email" name="email">
     </mat-form-field>
