@@ -15,7 +15,7 @@
         </a>
         <div class="account">
             <mat-menu #accountMenu="matMenu" class="account-dropdown">
-                <ng-container *ngIf="true; then loggedIn; else loggedOut"></ng-container>
+                <ng-container *ngIf="authenticationService.loggedIn; then loggedIn; else loggedOut"></ng-container>
                 
                 <ng-template #loggedIn>
                     <button mat-menu-item (click)="navOpen = false" [routerLink]="['/me', 'edit']">Account info</button>

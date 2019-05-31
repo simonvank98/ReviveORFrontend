@@ -5,15 +5,19 @@ import {
 } from '@angular/common/http';
 import { throwError, Observable, BehaviorSubject, of } from 'rxjs';
 import {catchError, filter, take, switchMap, finalize} from 'rxjs/operators';
+import {AuthenticationService} from '../../authentication.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private AUTH_HEADER = 'Authorization';
-  private token = 'secrettoken';
   private refreshTokenInProgress = false;
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    constructor(public authenticationService: AuthenticationService) {
+    }
+
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     if (!req.headers.has('Content-Type')) {
       req = req.clone({
@@ -65,15 +69,15 @@ export class AuthInterceptor implements HttpInterceptor {
   private addAuthenticationToken(request: HttpRequest<any>): HttpRequest<any> {
     // If we do not have a token yet then we should not set the header.
     // Here we could first retrieve the token from where we store it.
-    if (!this.token) {
+    if (!this.authenticationService.token) {
       return request;
     }
     // If you are calling an outside domain then do not add the token.
-    if (!request.url.match(/www.mydomain.com\//)) {
+    if (!request.url.match(/`${environment.reviveORAPIUrl}`\//)) {
       return request;
     }
     return request.clone({
-      headers: request.headers.set(this.AUTH_HEADER, 'Bearer ' + this.token)
+      headers: request.headers.set(this.AUTH_HEADER, 'Bearer ' + this.authenticationService.token),
     });
   }
 }
