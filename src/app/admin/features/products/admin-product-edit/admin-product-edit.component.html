@@ -2,33 +2,33 @@
     <div class="left">
 
 
-            <label for="name">Name</label>
-            <input id="name" value=" {{ product.name }}">
+        <label for="name">Name</label>
+        <input id="name" value=" {{ product.name }}">
 
 
     </div>
     <div class="right">
         <div class="formfieldContainer">
-        <mat-form-field class="categoryFormfield">
-            <mat-label>Category</mat-label>
-            <select matNativeControl required>
-                <option value="{{ product.category.name }}">{{ product.category.name }}</option>
-                <option value="optionBracelet">Bracelet</option>
-                <option value="optionEarrings">Earrings</option>
-                <option value="optionNecklace">Necklace</option>
-                <option value="optionRing">Ring</option>
-            </select>
-        </mat-form-field>
+            <mat-form-field class="categoryFormfield">
+                <mat-label>Category</mat-label>
+                <select matNativeControl required>
+                    <option value="{{ product.category.name }}">{{ product.category.name }}</option>
+                    <option value="optionBracelet">Bracelet</option>
+                    <option value="optionEarrings">Earrings</option>
+                    <option value="optionNecklace">Necklace</option>
+                    <option value="optionRing">Ring</option>
+                </select>
+            </mat-form-field>
 
-        <mat-form-field class="statusFormfield">
-            <mat-label>Status</mat-label>
-            <select matNativeControl required>
-                <option value="{{ product.status }}">{{ product.status }}</option>
-                <option value="lavaBracelet">1</option>
-                <option value="paddlefishBraclet">2</option>
-                <option value="contrastBracelet">3</option>
-            </select>
-        </mat-form-field>
+            <mat-form-field class="statusFormfield">
+                <mat-label>Status</mat-label>
+                <select matNativeControl required>
+                    <option value="{{ product.status }}">{{ product.status }}</option>
+                    <option value="lavaBracelet">1</option>
+                    <option value="paddlefishBraclet">2</option>
+                    <option value="contrastBracelet">3</option>
+                </select>
+            </mat-form-field>
         </div>
     </div>
 </div>
@@ -36,35 +36,24 @@
 <div class="grid">
     <div class="left">
         <mat-label>Description</mat-label>
-            <textarea class="descriptionBox" id="description" value="{{ product.description }}"></textarea>
-
+        <textarea class="descriptionBox" id="description" value="{{ product.description }}"></textarea>
     </div>
     <div class="right">
-
         <div class="imageContainer">
             <mat-label>Images</mat-label>
-            <div class="imageDiv" *ngFor="let image of product.images">
-                <img class="productImg" [src]="image.url" alt="">
-            </div>
-
-            <div class="small-images-wrapper">
-                <div class="image" *ngFor="let image of product.images">
-                    <img [src]="image.url" alt=""/>
-                </div>
-                <div class="image" *ngFor="let image of product.images">
-                    <img [src]="image.url" alt=""/>
-                </div>
-                <div class="image" *ngFor="let image of product.images">
-                    <img [src]="image.url" alt=""/>
-                </div>
-                <div class="image" *ngFor="let image of product.images">
-                    <img [src]="image.url" alt=""/>
-                </div>
-            </div>
-            <app-file-selection></app-file-selection>
-        </div>
-        <div>
-
+            <app-image-gallery [imageURLs]="displayedImages"
+                               [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
+                               [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
+            </app-image-gallery>
+            <app-file-upload-control-bar
+                *ngIf="imageFile"
+                [file]="imageFile"
+                [httpUrl]="imageAPIUrl"
+                (uploadCancelled)="onImageUploadCancelled()"
+                (uploadErrors)="onImageUploadError($event)"
+                (uploadSuccess)="onImageUploadSuccess($event)">
+            </app-file-upload-control-bar>
+            <app-file-selection (filesSelected)="onFileSelected($event)"></app-file-selection>
         </div>
     </div>
 </div>
@@ -73,7 +62,7 @@
     <div class="priceBoxContainer">
         <mat-label>Price (in €)</mat-label>
         <div class="priceBox">
-            <input matInput id="price" value=" {{ product.price }}">
+            <input id="price" value=" {{ product.price }}">
         </div>
     </div>
 </div>
