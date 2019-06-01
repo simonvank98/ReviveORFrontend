@@ -34,6 +34,16 @@ export class AuthenticationService {
         }));
     }
 
+    renew() {
+        return this.httpClient.post(`${environment.reviveORAPIUrl}auth\\refresh`, null).pipe(tap(res => {
+            localStorage.setItem('access_token', res['accessToken']);
+            this.token = res['accessToken'];
+            this.getUserData();
+        }, error => {
+            this.logout();
+        }));
+    }
+
     logout() {
         this.userinfo = null;
         this.userInfoChanged.emit();

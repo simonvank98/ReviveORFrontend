@@ -62,7 +62,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     private refreshAccessToken(): Observable<any> {
-        return of('secret token');
+        return this.authenticationService.renew();
     }
 
     private addAuthenticationToken(request: HttpRequest<any>): HttpRequest<any> {
