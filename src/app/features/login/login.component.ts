@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit {
         this.route.queryParams.subscribe(params => {
             this.redirect = params['redirectTo'];
         });
+        if (this.authenticationService.loggedIn) {
+            this.router.navigate(['me', 'edit']);
+        }
     }
 
     onSubmit() {
