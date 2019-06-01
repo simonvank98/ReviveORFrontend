@@ -33,6 +33,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TradeInRequestCompletionComponent } from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
 import { LoginComponent } from './features/login/login.component';
 import {AuthInterceptor} from './features/auth/auth.interceptor';
+import { LogoutComponent } from './features/logout/logout.component';
 
 @NgModule({
     declarations: [
@@ -56,6 +57,7 @@ import {AuthInterceptor} from './features/auth/auth.interceptor';
         TradeInRequestFinalizationComponent,
         TradeInRequestCompletionComponent,
         LoginComponent,
+        LogoutComponent,
     ],
     imports: [
         BrowserModule,

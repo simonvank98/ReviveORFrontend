@@ -32,8 +32,8 @@
             
             <button [matMenuTriggerFor]="accountMenu">
                 <mat-icon>account_circle</mat-icon>
-                {{ user !== null ?
-                user + "'s" : 'Mijn' }} account
+                {{ authenticationService.loggedIn ?
+                user + "'s" : 'My' }} account
                 <mat-icon>arrow_drop_down</mat-icon>
             </button>
         </div>

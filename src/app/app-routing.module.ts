@@ -29,6 +29,7 @@ import {ShopProductOverviewComponent} from './features/shop/shop-list/shop-produ
 import {ShopProductDetailsComponent} from './features/shop/shop-detail/shop-product-details.component';
 import {AdminProductEditComponent} from './admin/features/products/admin-product-edit/admin-product-edit.components';
 import {LoginComponent} from './features/login/login.component';
+import {LogoutComponent} from './features/logout/logout.component';
 
 const routes: Routes = [
 
@@ -57,6 +58,7 @@ const routes: Routes = [
   },
   { path: 'stories', component: StoryPageComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: 'me/edit', component: AccountPageComponent },
   { path: 'admin', component: AdminComponent, children: [
       {path: 'products', component: AdminProductsOverviewComponent, resolve: {products: AllProductsResolver}},
