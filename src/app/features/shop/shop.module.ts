@@ -2,24 +2,28 @@ import {NgModule} from '@angular/core';
 import {SharedModule} from '../../shared/shared.module';
 import {CommonModule, CurrencyPipe} from '@angular/common';
 import {AllProductsResolver} from './all-products.resolver';
-import {ShopProductOverviewComponent} from './shop-list/shop-product-overview.component';
+import {ShopListComponent} from './shop-list/shop-list.component';
 import {ShopItemComponent} from './shop-list/shop-item/shop-item.component';
-import {ShopSearchComponent} from './shop-search/shop-search.component';
 import {ShopProductDetailsComponent} from './shop-detail/shop-product-details.component';
 import {ShopComponent} from './shop.component';
 import {ProductResolver} from './product.resolver';
 import {ShoppingCartComponent} from './cart/shopping-cart.component';
 import { ShoppingCartItemComponent } from './cart/shopping-cart-item/shopping-cart-item.component';
+import {SliderModule} from 'primeng/slider';
+import {Ng5SliderModule} from 'ng5-slider';
+import {StarRatingConfigService, StarRatingModule} from 'angular-star-rating';
 
 @NgModule({
     imports: [
         CommonModule,
-        SharedModule
+        SharedModule,
+        SliderModule,
+        Ng5SliderModule,
+        StarRatingModule
     ],
     declarations: [
-        ShopProductOverviewComponent,
+        ShopListComponent,
         ShopItemComponent,
-        ShopSearchComponent,
         ShopProductDetailsComponent,
         ShopComponent,
         ShoppingCartComponent,
@@ -28,7 +32,8 @@ import { ShoppingCartItemComponent } from './cart/shopping-cart-item/shopping-ca
     providers: [
         AllProductsResolver,
         ProductResolver,
-        CurrencyPipe
+        CurrencyPipe,
+        StarRatingConfigService
     ]
 })
 
