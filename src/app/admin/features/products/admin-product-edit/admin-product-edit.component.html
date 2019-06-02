@@ -1,0 +1,122 @@
+<div class="grid">
+    <div class="left">
+
+
+        <label for="name">Name</label>
+        <input id="name" value=" {{ product.name }}">
+
+
+    </div>
+    <div class="right">
+        <div class="formfieldContainer">
+            <mat-form-field class="categoryFormfield">
+                <mat-label>Category</mat-label>
+                <select matNativeControl required>
+                    <option value="{{ product.category.name }}">{{ product.category.name }}</option>
+                    <option value="optionBracelet">Bracelet</option>
+                    <option value="optionEarrings">Earrings</option>
+                    <option value="optionNecklace">Necklace</option>
+                    <option value="optionRing">Ring</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="statusFormfield">
+                <mat-label>Status</mat-label>
+                <select matNativeControl required>
+                    <option value="{{ product.status }}">{{ product.status }}</option>
+                    <option value="lavaBracelet">1</option>
+                    <option value="paddlefishBraclet">2</option>
+                    <option value="contrastBracelet">3</option>
+                </select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="left">
+        <mat-label>Description</mat-label>
+        <textarea class="descriptionBox" id="description" value="{{ product.description }}"></textarea>
+    </div>
+    <div class="right">
+        <div class="imageContainer">
+            <mat-label>Images</mat-label>
+            <app-image-gallery [imageURLs]="displayedImages"
+                               [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
+                               [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
+            </app-image-gallery>
+            <app-file-upload-control-bar
+                *ngIf="imageFile"
+                [file]="imageFile"
+                [httpUrl]="imageAPIUrl"
+                (uploadCancelled)="onImageUploadCancelled()"
+                (uploadErrors)="onImageUploadError($event)"
+                (uploadSuccess)="onImageUploadSuccess($event)">
+            </app-file-upload-control-bar>
+            <app-file-selection (filesSelected)="onFileSelected($event)"></app-file-selection>
+        </div>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="priceBoxContainer">
+        <mat-label>Price (in €)</mat-label>
+        <div class="priceBox">
+            <input id="price" value=" {{ product.price }}">
+        </div>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="left">
+        <mat-label class="conditionLabel">Condition</mat-label>
+        <div class="rate">
+            <input type="radio" id="star5" name="rate" value="5"/>
+            <label for="star5" title="text">5 stars</label>
+            <input type="radio" id="star4" name="rate" value="4"/>
+            <label for="star4" title="text">4 stars</label>
+            <input type="radio" id="star3" name="rate" value="3"/>
+            <label for="star3" title="text">3 stars</label>
+            <input type="radio" id="star2" name="rate" value="2"/>
+            <label for="star2" title="text">2 stars</label>
+            <input type="radio" id="star1" name="rate" value="1"/>
+            <label for="star1" title="text">1 star</label>
+        </div>
+    </div>
+</div>
+
+<div class="grid2">
+    <div class="left">
+        <mat-accordion [ngClass]="'custom-inputs'">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Story information
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <label>Story Author</label>
+                <mat-form-field>
+                    <input matInput placeholder="Story Author">
+                </mat-form-field>
+                <label>Story Title</label>
+                <mat-form-field>
+                    <input matInput placeholder="Story Title">
+                </mat-form-field>
+                <label>Story Content</label>
+                <mat-form-field>
+                    <textarea matInput placeholder="Story Content"></textarea>
+                </mat-form-field>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <!--<div class="storyAuthorBox">
+            <input matInput id="storyAuthor" value=" {{ product.story?.author }}">
+        </div>-->
+    </div>
+</div>
+<div class="grid">
+    <div class="right">
+        <button mat-button class="saveButton">Save</button>
+        <button mat-button class="deleteButton">Delete</button>
+    </div>
+</div>
+

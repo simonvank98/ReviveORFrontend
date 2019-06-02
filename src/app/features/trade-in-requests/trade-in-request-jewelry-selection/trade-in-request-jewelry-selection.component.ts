@@ -17,6 +17,7 @@ import { ORProductService } from 'src/app/shared/services/or-product/or-product.
 export class TradeInRequestJewelrySelectionComponent implements OnInit {
 
     products: ORProduct[] = [];
+    productsLoaded = false;
 
     constructor(public tradeInProcessService: TradeInProcessService,
         private orProductService: ORProductService,
@@ -30,6 +31,7 @@ export class TradeInRequestJewelrySelectionComponent implements OnInit {
 
         this.orProductService.getAllWithTypeAndMaterial(jewelryType, jewelryMaterial).subscribe(data => {
             this.products = data;
+            this.productsLoaded = true;
         });
     }
 

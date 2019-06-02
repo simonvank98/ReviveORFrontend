@@ -17,18 +17,20 @@ tr > td:nth-child(1), tr > th:nth-child(1) {
     width: 30%;
 }
 
-div {
+.table-wrapper {
     border: 1px solid gray;
-}
-input {
-    font-size: 16px;
-    border: none;
-    width: 80%;
+
+    input {
+        font-size: 16px;
+        border: none;
+        width: 80%;
+    }
+
+    span {
+        float: right;
+    }
 }
 
-span {
-    float: right;
-}
 
 button {
     color: white;
@@ -41,3 +43,45 @@ button {
 button[disabled] {
     background-color: white;
 }
+h2 {
+    margin: 10px 0px 5px 0px;
+}
+.example-indication {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    border: 2px solid gray;
+    padding: 10px;
+
+    .product-name {
+        text-align: center;
+    }
+    .product-image {
+        width:100px;
+        height: 100px;
+        display: block;
+        margin: 0px auto;
+
+
+    }
+    .conditions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .condition {
+            > * {
+                cursor: pointer;
+                user-select: none;
+                font-size: 18px;
+                padding-left: 5px;
+                display: inline-block;
+            }
+        }
+
+    }
+    .indication {
+        .text, .price {
+            text-align: center;
+        }
+    }
+}
+

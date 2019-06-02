@@ -36,12 +36,12 @@ trigger('routeAnimations', [
     transition('jewelryMaterial => jewelryPiece', animateNext),
 
     transition('jewelryPiece => jewelryMaterial', animateBack),
-    transition('jewelryPiece => jewelryCondition', animateNext),
+    transition('jewelryPiece => jewelryConditions', animateNext),
 
-    transition('jewelryCondition => jewelryPiece', animateBack),
-    transition('jewelryCondition => jewelryIndication', animateNext),
+    transition('jewelryConditions => jewelryPiece', animateBack),
+    transition('jewelryConditions => jewelryIndication', animateNext),
 
-    transition('jewelryIndication => jewelryCondition', animateBack),
+    transition('jewelryIndication => jewelryConditions', animateBack),
     transition('jewelryIndication => jewelryFinalization', animateNext),
 
     transition('jewelryFinalization => jewelryIndication', animateBack),

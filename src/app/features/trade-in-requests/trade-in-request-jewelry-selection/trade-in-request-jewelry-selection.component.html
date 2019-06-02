@@ -1,6 +1,9 @@
 <h3>Please select your jewelry piece from the list below</h3>
 
-<div class="trade-in-grid products-container">
+<mat-spinner *ngIf="!productsLoaded"></mat-spinner>
+
+<div class="trade-in-grid products-container" *ngIf="productsLoaded">
+
     <ng-container *ngFor="let product of products">
 
         <app-selection-button
