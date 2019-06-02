@@ -25,7 +25,7 @@ import {AllProductsResolver} from './features/shop/all-products.resolver';
 import {TradeInRequestCompletionComponent} from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
 import {ProductResolver} from './features/shop/product.resolver';
 import {ShoppingCartComponent} from './features/shop/cart/shopping-cart.component';
-import {ShopProductOverviewComponent} from './features/shop/shop-list/shop-product-overview.component';
+import {ShopListComponent} from './features/shop/shop-list/shop-list.component';
 import {ShopProductDetailsComponent} from './features/shop/shop-detail/shop-product-details.component';
 import {AdminProductEditComponent} from './admin/features/products/admin-product-edit/admin-product-edit.components';
 import {LoginComponent} from './features/login/login.component';
@@ -37,7 +37,7 @@ const routes: Routes = [
       component: ShopComponent,
       resolve: { products: AllProductsResolver },
       children: [
-        { path: '', component: ShopProductOverviewComponent },
+        { path: '', component: ShopListComponent },
         { path: 'product/:id', component: ShopProductDetailsComponent, resolve: { product: ProductResolver }},
         { path: 'cart', component: ShoppingCartComponent},
   ]},
