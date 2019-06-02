@@ -74,20 +74,41 @@ export class ShopListComponent implements OnInit {
         });
     }
 
+    sortProducts(event) {
+        switch (event.value) {
+            case 'newest':
+                this.sortByNewest();
+                break;
+            case 'oldest':
+                this.sortByOldest();
+                break;
+            case 'highestPrice':
+                this.sortByHighestPrice();
+                break;
+            case 'lowestPrice':
+                this.sortByLowestPrice();
+                break;
+        }
+    }
+
     sortByNewest() {
         this.displayedProducts.sort(function(a, b) {
-            const date1 = new Date(a.updatedAt).getTime();
-            const date2 = new Date(b.updatedAt).getTime();
+            const date1 = new Date(a.createdAt).getTime();
+            const date2 = new Date(b.createdAt).getTime();
             return date1 - date2;
         });
     }
 
     sortByOldest() {
-        //
+        this.displayedProducts.sort(function(a, b) {
+            const date1 = new Date(a.createdAt).getTime();
+            const date2 = new Date(b.createdAt).getTime();
+            return date2 - date1;
+        });
     }
 
     sortByHighestPrice() {
-        // this.displayedProducts.sort()
+        this.displayedProducts.sort(function(a, b) {return b.price - a.price; });
     }
     
     sortByLowestPrice() {
