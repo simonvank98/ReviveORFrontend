@@ -16,8 +16,8 @@
             <mat-button-toggle checked value="other">Other</mat-button-toggle>
         </mat-button-toggle-group>
     </div>
-    <div class="priceWrapper">
-        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="priceOptions" (userChangeEnd)="filterPrice($event)"></ng5-slider>
+    <div class="priceWrapper custom-slider">
+        <ng5-slider  [(value)]="value" [(highValue)]="highValue" [options]="priceOptions" (userChangeEnd)="filterPrice($event)"></ng5-slider>
     </div>
     <div class="ratingWrapper">
         <star-rating starType="icon" rating="1" (starClickChange)="filterRating($event)"></star-rating>
@@ -32,15 +32,9 @@
     </div>
 </div>
 
-<!--<mat-select name="selectedProperty" [(ngModel)]="model.selectedProperty" value="{{ model.selectedProperty }}">-->
-<!--    <mat-option *ngFor="let property of properties" [value]="property.value">-->
-<!--        {{ property.value }}-->
-<!--    </mat-option>-->
-<!--</mat-select>-->
-
 <hr>
 
-<div class="wrapper">
+<div class="shop-grid">
     <app-shop-item *ngFor="let product of displayedProducts; let i = index"
                    [product]="product"
                    [index]="i">
