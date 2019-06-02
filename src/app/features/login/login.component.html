@@ -1,13 +1,16 @@
-<form action="" class="mat-elevation-z3">
+<form (ngSubmit)="onSubmit()" class="mat-elevation-z3" #form="ngForm" id="form">
     <h1>Login</h1>
+    <div *ngIf="showWarning">
+        <p>{{warning}}</p>
+    </div>
     <mat-form-field>
-        <input matInput type="text" placeholder="E-mail address">
+        <input matInput type="text" placeholder="E-mail address" [(ngModel)]="email" name="email" required ngModel [email]="true">
     </mat-form-field>
     <mat-form-field>
-        <input matInput type="password" placeholder="Password">
+        <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required ngModel minlength="4">
     </mat-form-field>
     <div class="button-wrapper">
-        <button mat-raised-button color="primary" class="mat-elevation-z3">Log In</button>
+        <button mat-raised-button color="primary" class="mat-elevation-z3" [disabled]="!form.valid">Log In</button>
     </div>
     <a href="https://theoceanrepublic.com/password/remind" title="forgotten password?">Forgotten password?</a> <br>
     <a routerLink="/" title="forgotten password?">Dont have an account?</a>

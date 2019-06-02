@@ -31,6 +31,7 @@ import {AdminProductEditComponent} from './admin/features/products/admin-product
 import {LoginComponent} from './features/login/login.component';
 import {AllProductRatingsResolver} from './shared/services/product/all-product-ratings.resolver';
 import {AllProductCategoriesResolver} from './shared/services/product/all-product-categories.resolver';
+import {LogoutComponent} from './features/logout/logout.component';
 
 const routes: Routes = [
 
@@ -59,6 +60,7 @@ const routes: Routes = [
   },
   { path: 'stories', component: StoryPageComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: 'me/edit', component: AccountPageComponent },
   { path: 'admin', component: AdminComponent, children: [
       {path: 'products', component: AdminProductsOverviewComponent, resolve: {products: AllProductsResolver}},
