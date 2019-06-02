@@ -17,6 +17,11 @@ import { FileUploadControlBarComponent } from './components/file-upload-control-
 import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component';
 import { ImageGalleryComponent } from './components/image-gallery/image-gallery.component';
 import {NgxGalleryModule} from 'ngx-gallery';
+import {AllProductRatingsResolver} from './services/product/all-product-ratings.resolver';
+import {AllProductCategoriesResolver} from './services/product/all-product-categories.resolver';
+import {SliderModule} from 'primeng/slider';
+import {Ng5SliderModule} from 'ng5-slider';
+import {StarRatingConfigService, StarRatingModule} from 'angular-star-rating';
 
 @NgModule({
     declarations: [
@@ -42,6 +47,9 @@ import {NgxGalleryModule} from 'ngx-gallery';
         MatFormFieldModule,
         MatInputModule,
         NgxGalleryModule,
+        SliderModule,
+        Ng5SliderModule,
+        StarRatingModule
     ],
     exports: [
         MaterialModule,
@@ -50,6 +58,9 @@ import {NgxGalleryModule} from 'ngx-gallery';
         TruncatePipe,
         ReactiveFormsModule,
         FormsModule,
+        StarRatingModule,
+        SliderModule,
+        Ng5SliderModule,
         ModalComponent,
         PriceFormatDirective,
         FileDragAndDropDirective,
@@ -64,7 +75,9 @@ import {NgxGalleryModule} from 'ngx-gallery';
     ],
     providers: [
         {provide: MAT_DATE_LOCALE, useValue: 'nl-NL'},
-
+        AllProductRatingsResolver,
+        AllProductCategoriesResolver,
+        StarRatingConfigService
     ]
 })
 export class SharedModule {

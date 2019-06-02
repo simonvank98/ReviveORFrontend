@@ -29,6 +29,8 @@ import {ShopListComponent} from './features/shop/shop-list/shop-list.component';
 import {ShopProductDetailsComponent} from './features/shop/shop-detail/shop-product-details.component';
 import {AdminProductEditComponent} from './admin/features/products/admin-product-edit/admin-product-edit.components';
 import {LoginComponent} from './features/login/login.component';
+import {AllProductRatingsResolver} from './shared/services/product/all-product-ratings.resolver';
+import {AllProductCategoriesResolver} from './shared/services/product/all-product-categories.resolver';
 
 const routes: Routes = [
 
@@ -60,7 +62,13 @@ const routes: Routes = [
   { path: 'me/edit', component: AccountPageComponent },
   { path: 'admin', component: AdminComponent, children: [
       {path: 'products', component: AdminProductsOverviewComponent, resolve: {products: AllProductsResolver}},
-      {path: 'products/edit/:id', component: AdminProductEditComponent, resolve: {product: ProductResolver}},
+      {
+          path: 'products/edit/:id', component: AdminProductEditComponent,
+          resolve: {
+            product: ProductResolver,
+            productCategories: AllProductCategoriesResolver,
+            productRatings: AllProductRatingsResolver
+      }},
       { path: 'stories', component: AdminStoriesOverviewComponent },
       { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, resolve: { requests: AllTradeInRequestsResolver }},
       { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, resolve: { request: TradeInRequestResolver }},

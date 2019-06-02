@@ -9,17 +9,11 @@ import {ShopComponent} from './shop.component';
 import {ProductResolver} from './product.resolver';
 import {ShoppingCartComponent} from './cart/shopping-cart.component';
 import { ShoppingCartItemComponent } from './cart/shopping-cart-item/shopping-cart-item.component';
-import {SliderModule} from 'primeng/slider';
-import {Ng5SliderModule} from 'ng5-slider';
-import {StarRatingConfigService, StarRatingModule} from 'angular-star-rating';
 
 @NgModule({
     imports: [
         CommonModule,
         SharedModule,
-        SliderModule,
-        Ng5SliderModule,
-        StarRatingModule
     ],
     declarations: [
         ShopListComponent,
@@ -32,8 +26,7 @@ import {StarRatingConfigService, StarRatingModule} from 'angular-star-rating';
     providers: [
         AllProductsResolver,
         ProductResolver,
-        CurrencyPipe,
-        StarRatingConfigService
+        CurrencyPipe
     ]
 })
 

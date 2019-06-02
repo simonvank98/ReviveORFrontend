@@ -8,6 +8,8 @@ import {NgForm} from '@angular/forms';
 import {ModalService} from '../../../../shared/services/modal-service/modal.service';
 import {ProductService} from '../../../../shared/services/product/product.service';
 import {SnackbarService} from '../../../../shared/services/snackbar/snackbar.service';
+import {ProductCategoryModel} from '../../../../shared/services/product/product-category.model';
+import {ProductRatingModel} from '../../../../shared/services/product/product-rating.model';
 
 @Component({
     selector: 'app-admin-products-edit',
@@ -16,6 +18,9 @@ import {SnackbarService} from '../../../../shared/services/snackbar/snackbar.ser
 })
 export class AdminProductEditComponent implements OnInit {
     product: ProductModel;
+
+    productCategories: ProductCategoryModel[];
+    productRatings: ProductRatingModel[];
 
     imageAPIUrl = `${environment.reviveORAPIUrl}images`;
     displayedImages: string[];
@@ -35,11 +40,13 @@ export class AdminProductEditComponent implements OnInit {
 
     ngOnInit() {
         this.product = this.route.snapshot.data['product'];
+        this.productCategories = this.route.snapshot.data['productCategories'];
+        this.productRatings = this.route.snapshot.data['productRatings'];
         this.refreshDisplayedImages();
-        //this.product.category = this.route.snapshot.data['productCategory'];
     }
 
-    onSave() {
+    onSaveButtonClicked() {
+        console.log('on save', this.product);
         if (this.form.valid) {
             this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
                 if (confirmed) {
@@ -56,7 +63,7 @@ export class AdminProductEditComponent implements OnInit {
         }
     }
 
-    onDelete() {
+    onDeleteButtonClicked() {
 
     }
 
