@@ -15,6 +15,8 @@ import {FileSelectionComponent} from './components/file-selection/file-selection
 import {FileDragAndDropDirective} from './components/mass-file-uploader/fileDragAndDrop.directive';
 import { FileUploadControlBarComponent } from './components/file-upload-control-bar/file-upload-control-bar.component';
 import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component';
+import { ImageGalleryComponent } from './components/image-gallery/image-gallery.component';
+import {NgxGalleryModule} from 'ngx-gallery';
 
 @NgModule({
     declarations: [
@@ -27,7 +29,8 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
         MassFileUploaderComponent,
         FileSelectionComponent,
         FileUploadControlBarComponent,
-        FileDropzoneComponent
+        FileDropzoneComponent,
+        ImageGalleryComponent
     ],
     imports: [
         CommonModule,
@@ -37,7 +40,8 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
         ReactiveFormsModule,
         MaterialModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        NgxGalleryModule,
     ],
     exports: [
         MaterialModule,
@@ -51,7 +55,9 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
         FileDragAndDropDirective,
         TableComponent,
         MassFileUploaderComponent,
-        FileSelectionComponent
+        FileSelectionComponent,
+        ImageGalleryComponent,
+        FileUploadControlBarComponent
     ],
     entryComponents: [
         ModalComponent

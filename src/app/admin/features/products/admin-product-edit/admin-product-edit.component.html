@@ -33,41 +33,30 @@
         </div>
     </div>
 
-    <div class="grid">
-        <div class="left">
-            <mat-label>Description</mat-label>
-            <textarea class="descriptionBox" name="productDescription" [(ngModel)]="product.description" [value]="product.description" required></textarea>
-
-        </div>
-        <div class="right">
-
-            <div class="imageContainer">
-                <mat-label>Images</mat-label>
-                <div class="imageDiv" *ngFor="let image of product.images">
-                    <img class="productImg" [src]="image.url" alt="">
-                </div>
-
-                <div class="small-images-wrapper">
-                    <div class="image" *ngFor="let image of product.images">
-                        <img [src]="image.url" alt=""/>
-                    </div>
-                    <div class="image" *ngFor="let image of product.images">
-                        <img [src]="image.url" alt=""/>
-                    </div>
-                    <div class="image" *ngFor="let image of product.images">
-                        <img [src]="image.url" alt=""/>
-                    </div>
-                    <div class="image" *ngFor="let image of product.images">
-                        <img [src]="image.url" alt=""/>
-                    </div>
-                </div>
-                <app-file-selection></app-file-selection>
-            </div>
-            <div>
-
-            </div>
+<div class="grid">
+    <div class="left">
+        <mat-label>Description</mat-label>
+        <textarea class="descriptionBox" id="description"  name="productDescription" [(ngModel)]="product.description" [value]="product.description" required></textarea>
+    </div>
+    <div class="right">
+        <div class="imageContainer">
+            <mat-label>Images</mat-label>
+            <app-image-gallery [imageURLs]="displayedImages"
+                               [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
+                               [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
+            </app-image-gallery>
+            <app-file-upload-control-bar
+                *ngIf="imageFile"
+                [file]="imageFile"
+                [httpUrl]="imageAPIUrl"
+                (uploadCancelled)="onImageUploadCancelled()"
+                (uploadErrors)="onImageUploadError($event)"
+                (uploadSuccess)="onImageUploadSuccess($event)">
+            </app-file-upload-control-bar>
+            <app-file-selection (filesSelected)="onFileSelected($event)"></app-file-selection>
         </div>
     </div>
+</div>
 
     <div class="grid">
         <div class="priceBoxContainer">
@@ -98,7 +87,7 @@
 
     <div class="grid2">
         <div class="left">
-            <mat-accordion [ngClass]="'custom-mat-input'">
+            <mat-accordion [ngClass]="'custom-inputs'">
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
