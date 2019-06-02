@@ -11,6 +11,6 @@ export class AllProductsResolver implements Resolve <ProductModel> {
     resolve(route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot
     ): Observable<any>|Promise<any> {
-        return this.productService.getAll();
+        return this.productService.getAllProducts();
     }
 }

@@ -2,52 +2,51 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
 .grid2 {
     grid-template-columns: none;
 }
+
 .right {
     padding-top: 15px;
     padding-left: 15px;
 }
 
-.left{
+
+.left {
     text-align: left;
 }
 
-.nameFormfield{
+.nameFormfield {
     width: 250px;
 }
 
-.categoryFormfield{
+.categoryFormfield {
     width: 150px;
     float: left;
 }
 
-.statusFormfield{
+.statusFormfield {
     width: 150px;
     margin-left: 10px;
 }
 
-.descriptionBox, .priceBox{
-    border: 1px black solid;
-}
-
-.priceBoxContainer{
+.priceBoxContainer {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.descriptionBox{
+.descriptionBox {
     height: 150px;
     padding: 10px 10px 10px 10px;
 }
 
-.conditionLabel{
+.conditionLabel {
     margin-bottom: 10px;
     display: block;
 }
 
-.productImg{
+.productImg {
     max-height: 300px;
 }
 
@@ -55,15 +54,15 @@ button {
     background-color: #ccc;
 }
 
-.deleteButton{
+.deleteButton {
     margin-left: 20px;
 }
 
-.saveButton{
+.saveButton {
 
 }
 
-img{
+img {
     max-width: 100%;
 }
 
@@ -72,16 +71,16 @@ img{
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.imageContainer{
+.imageContainer {
     max-width: 300px;
     margin-left: 20px;
 }
 
-.formfieldContainer{
+.formfieldContainer {
     margin-left: 20px;
 }
 
-.priceBox{
+.priceBox {
     width: 75px;
 }
 
@@ -89,29 +88,35 @@ img{
     float: left;
     height: 46px;
 }
+
 .rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
+    position: absolute;
+    top: -9999px;
 }
+
 .rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
 }
+
 .rate:not(:checked) > label:before {
     content: '★ ';
 }
+
 .rate > input:checked ~ label {
     color: #ffc700;
 }
+
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
     color: #deb217;
 }
+
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,

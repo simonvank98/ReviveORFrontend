@@ -1,133 +1,133 @@
-<div class="grid">
-    <div class="left">
+<form #f="ngForm">
+    <div class="grid">
+        <div class="left">
 
 
-            <label for="name">Name</label>
-            <input id="name" value=" {{ product.name }}">
+            <label class="name">Name</label>
+            <input name="productName" [(ngModel)]="product.name" [value]="product.name" required>
 
 
-    </div>
-    <div class="right">
-        <div class="formfieldContainer">
-        <mat-form-field class="categoryFormfield">
-            <mat-label>Category</mat-label>
-            <select matNativeControl required>
-                <option value="{{ product.category.name }}">{{ product.category.name }}</option>
-                <option value="optionBracelet">Bracelet</option>
-                <option value="optionEarrings">Earrings</option>
-                <option value="optionNecklace">Necklace</option>
-                <option value="optionRing">Ring</option>
-            </select>
-        </mat-form-field>
-
-        <mat-form-field class="statusFormfield">
-            <mat-label>Status</mat-label>
-            <select matNativeControl required>
-                <option value="{{ product.status }}">{{ product.status }}</option>
-                <option value="lavaBracelet">1</option>
-                <option value="paddlefishBraclet">2</option>
-                <option value="contrastBracelet">3</option>
-            </select>
-        </mat-form-field>
         </div>
-    </div>
-</div>
+        <div class="right">
+            <div class="formfieldContainer">
+                <mat-form-field class="categoryFormfield">
+                    <mat-label>Category</mat-label>
+                    <mat-select name="productCategory" [(ngModel)]="product.category.name" [value]="product.category.name" required>
+                        <mat-option value="Bracelet">Bracelet</mat-option>
+                        <mat-option value="Earrings">Earrings</mat-option>
+                        <mat-option value="Necklaces">Necklaces</mat-option>
+                        <mat-option value="Rings">Rings</mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-<div class="grid">
-    <div class="left">
-        <mat-label>Description</mat-label>
-            <textarea class="descriptionBox" id="description" value="{{ product.description }}"></textarea>
-
-    </div>
-    <div class="right">
-
-        <div class="imageContainer">
-            <mat-label>Images</mat-label>
-            <div class="imageDiv" *ngFor="let image of product.images">
-                <img class="productImg" [src]="image.url" alt="">
+                <mat-form-field class="statusFormfield">
+                    <mat-label>Status</mat-label>
+                    <mat-select name="productStatus" [(ngModel)]="product.status" [value]="product.status" required>
+                        <mat-option value="Draft">Draft</mat-option>
+                        <mat-option value="Available">Available</mat-option>
+                        <mat-option value="Unavailable">Unavailable</mat-option>
+                        <mat-option value="Sold">Sold</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
+        </div>
+    </div>
 
-            <div class="small-images-wrapper">
-                <div class="image" *ngFor="let image of product.images">
-                    <img [src]="image.url" alt=""/>
+    <div class="grid">
+        <div class="left">
+            <mat-label>Description</mat-label>
+            <textarea class="descriptionBox" name="productDescription" [(ngModel)]="product.description" [value]="product.description" required></textarea>
+
+        </div>
+        <div class="right">
+
+            <div class="imageContainer">
+                <mat-label>Images</mat-label>
+                <div class="imageDiv" *ngFor="let image of product.images">
+                    <img class="productImg" [src]="image.url" alt="">
                 </div>
-                <div class="image" *ngFor="let image of product.images">
-                    <img [src]="image.url" alt=""/>
+
+                <div class="small-images-wrapper">
+                    <div class="image" *ngFor="let image of product.images">
+                        <img [src]="image.url" alt=""/>
+                    </div>
+                    <div class="image" *ngFor="let image of product.images">
+                        <img [src]="image.url" alt=""/>
+                    </div>
+                    <div class="image" *ngFor="let image of product.images">
+                        <img [src]="image.url" alt=""/>
+                    </div>
+                    <div class="image" *ngFor="let image of product.images">
+                        <img [src]="image.url" alt=""/>
+                    </div>
                 </div>
-                <div class="image" *ngFor="let image of product.images">
-                    <img [src]="image.url" alt=""/>
-                </div>
-                <div class="image" *ngFor="let image of product.images">
-                    <img [src]="image.url" alt=""/>
-                </div>
+                <app-file-selection></app-file-selection>
             </div>
-            <app-file-selection></app-file-selection>
-        </div>
-        <div>
+            <div>
 
-        </div>
-    </div>
-</div>
-
-<div class="grid">
-    <div class="priceBoxContainer">
-        <mat-label>Price (in €)</mat-label>
-        <div class="priceBox">
-            <input matInput id="price" value=" {{ product.price }}">
+            </div>
         </div>
     </div>
-</div>
 
-<div class="grid">
-    <div class="left">
-        <mat-label class="conditionLabel">Condition</mat-label>
-        <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5"/>
-            <label for="star5" title="text">5 stars</label>
-            <input type="radio" id="star4" name="rate" value="4"/>
-            <label for="star4" title="text">4 stars</label>
-            <input type="radio" id="star3" name="rate" value="3"/>
-            <label for="star3" title="text">3 stars</label>
-            <input type="radio" id="star2" name="rate" value="2"/>
-            <label for="star2" title="text">2 stars</label>
-            <input type="radio" id="star1" name="rate" value="1"/>
-            <label for="star1" title="text">1 star</label>
+    <div class="grid">
+        <div class="priceBoxContainer">
+            <mat-label>Price (in €)</mat-label>
+            <div class="priceBox">
+                <input name="productPrice" [(ngModel)]="product.price" [value]="product.price" required>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="grid2">
-    <div class="left">
-        <mat-accordion [ngClass]="'custom-mat-input'">
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Story information
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <label>Story Author</label>
-                <mat-form-field>
-                    <input matInput placeholder="Story Author">
-                </mat-form-field>
-                <label>Story Title</label>
-                <mat-form-field>
-                    <input matInput placeholder="Story Title">
-                </mat-form-field>
-                <label>Story Content</label>
-                <mat-form-field>
-                    <textarea matInput placeholder="Story Content"></textarea>
-                </mat-form-field>
-            </mat-expansion-panel>
-        </mat-accordion>
-        <!--<div class="storyAuthorBox">
-            <input matInput id="storyAuthor" value=" {{ product.story?.author }}">
-        </div>-->
+    <div class="grid">
+        <div class="left">
+            <mat-label class="conditionLabel">Condition</mat-label>
+            <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5"/>
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4"/>
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3"/>
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2"/>
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1"/>
+                <label for="star1" title="text">1 star</label>
+            </div>
+        </div>
     </div>
-</div>
-<div class="grid">
-    <div class="right">
-        <button mat-button class="saveButton">Save</button>
-        <button mat-button class="deleteButton">Delete</button>
-    </div>
-</div>
 
+    <div class="grid2">
+        <div class="left">
+            <mat-accordion [ngClass]="'custom-mat-input'">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Story information
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <label>Story Author</label>
+                    <mat-form-field>
+                        <input matInput placeholder="Story Author">
+                    </mat-form-field>
+                    <label>Story Title</label>
+                    <mat-form-field>
+                        <input matInput placeholder="Story Title">
+                    </mat-form-field>
+                    <label>Story Content</label>
+                    <mat-form-field>
+                        <textarea matInput placeholder="Story Content"></textarea>
+                    </mat-form-field>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <!--<div class="storyAuthorBox">
+                <input matInput id="storyAuthor" value=" {{ product.story?.author }}">
+            </div>-->
+        </div>
+    </div>
+    <div class="grid">
+        <div class="right">
+            <button mat-button class="saveButton"   (click)="onSave()">Save</button>
+            <button mat-button class="deleteButton" (click)="onDelete()">Delete</button>
+        </div>
+    </div>
+</form>
