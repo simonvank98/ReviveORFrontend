@@ -23,7 +23,7 @@
         <star-rating starType="icon" rating="1" (starClickChange)="filterRating($event)"></star-rating>
     </div>
     <div class="sortWrapper">
-        <mat-select [(value)]="sortSelect">
+        <mat-select [(value)]="sortSelect" (selectionChange)="sortProducts($event)">
             <mat-option value="newest">Newest</mat-option>
             <mat-option value="oldest">Oldest</mat-option>
             <mat-option value="highestPrice">Highest price</mat-option>
