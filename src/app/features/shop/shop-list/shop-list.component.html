@@ -1,4 +1,4 @@
-<div class="sortWrapper">
+<div class="optionWrapper">
     <mat-label class="label">Jewelry category</mat-label>
     <div class="jewelryCategoryWrapper">
         <mat-button-toggle-group multiple (change)="filterCategory($event)">
@@ -22,14 +22,26 @@
     <div class="ratingWrapper">
         <star-rating starType="icon" rating="1" (starClickChange)="filterRating($event)"></star-rating>
     </div>
+    <div class="sortWrapper">
+        <mat-select [(value)]="sortSelect">
+            <mat-option value="newest">Newest</mat-option>
+            <mat-option value="oldest">Oldest</mat-option>
+            <mat-option value="highestPrice">Highest price</mat-option>
+            <mat-option value="lowestPrice">Lowest price</mat-option>
+        </mat-select>
+    </div>
 </div>
 
-
+<!--<mat-select name="selectedProperty" [(ngModel)]="model.selectedProperty" value="{{ model.selectedProperty }}">-->
+<!--    <mat-option *ngFor="let property of properties" [value]="property.value">-->
+<!--        {{ property.value }}-->
+<!--    </mat-option>-->
+<!--</mat-select>-->
 
 <hr>
 
 <div class="wrapper">
-    <app-shop-item *ngFor="let product of filteredProducts; let i = index"
+    <app-shop-item *ngFor="let product of displayedProducts; let i = index"
                    [product]="product"
                    [index]="i">
     </app-shop-item>
