@@ -5,7 +5,7 @@
     justify-content: center;
 }
 
-.sortWrapper {
+.optionWrapper {
     > *:not(.label) {
         display: inline-block;
     }
@@ -13,4 +13,8 @@
 ng5-slider {
     margin: 0px 20px 0px 20px;
     width: 200px;
+}
+
+.sortWrapper {
+    width: 120px;
 }

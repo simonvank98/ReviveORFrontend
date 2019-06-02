@@ -10,12 +10,13 @@ import {LabelType, Options} from 'ng5-slider';
 })
 export class ShopListComponent implements OnInit {
     products: ProductModel[];
-    filteredProducts: ProductModel[];
+    displayedProducts: ProductModel[];
     categoryFilter = ['rings', 'necklaces', 'earrings', 'bracelets'];
     materialFilter = ['gold', 'silver', 'other'];
     lowPrice = 0;
     highPrice = 300;
     rating = 1;
+    sortSelect = 'newest';
 
     // slider settings
     value = 0;
@@ -39,7 +40,8 @@ export class ShopListComponent implements OnInit {
 
     ngOnInit() {
         this.products = this.route.snapshot.data['products'];
-        this.filteredProducts = this.products;
+        this.displayedProducts = this.products;
+        this.sortByNewest();
     }
 
     filterCategory(event) {
@@ -64,7 +66,7 @@ export class ShopListComponent implements OnInit {
     }
 
     filter() {
-        this.filteredProducts = this.products.filter(product => {
+        this.displayedProducts = this.products.filter(product => {
             return this.categoryFilter.includes(product.category.name.toLocaleLowerCase()) &&
                 this.materialFilter.includes(product.material.toLocaleLowerCase()) &&
                 product.price >= this.lowPrice && product.price <= this.highPrice &&
@@ -72,7 +74,25 @@ export class ShopListComponent implements OnInit {
         });
     }
 
-    sort() {
-        // this.filteredProducts.sort
+    sortByNewest() {
+        this.displayedProducts.sort(function(a, b) {
+            const date1 = new Date(a.updatedAt).getTime();
+            const date2 = new Date(b.updatedAt).getTime();
+            return date1 - date2;
+        });
     }
+
+    sortByOldest() {
+        //
+    }
+
+    sortByHighestPrice() {
+        // this.displayedProducts.sort()
+    }
+    
+    sortByLowestPrice() {
+        this.displayedProducts.sort(function(a, b) {return a.price - b.price; });
+    }
+
+
 }
