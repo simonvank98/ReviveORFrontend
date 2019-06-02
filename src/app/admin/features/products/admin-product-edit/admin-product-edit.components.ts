@@ -2,10 +2,14 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductModel} from '../../../../shared/services/product/product.model';
 import {NgxGalleryAction} from 'ngx-gallery';
-import {ModalService} from '../../../../shared/services/modal-service/modal.service';
 import {ImageGalleryComponent} from '../../../../shared/components/image-gallery/image-gallery.component';
-import {SnackbarService} from '../../../../shared/services/snackbar/snackbar.service';
 import {environment} from '../../../../../environments/environment';
+import {NgForm} from '@angular/forms';
+import {ModalService} from '../../../../shared/services/modal-service/modal.service';
+import {ProductService} from '../../../../shared/services/product/product.service';
+import {SnackbarService} from '../../../../shared/services/snackbar/snackbar.service';
+import {ProductCategoryModel} from '../../../../shared/services/product/product-category.model';
+import {ProductRatingModel} from '../../../../shared/services/product/product-rating.model';
 
 @Component({
     selector: 'app-admin-products-edit',
@@ -15,6 +19,9 @@ import {environment} from '../../../../../environments/environment';
 export class AdminProductEditComponent implements OnInit {
     product: ProductModel;
 
+    productCategories: ProductCategoryModel[];
+    productRatings: ProductRatingModel[];
+
     imageAPIUrl = `${environment.reviveORAPIUrl}images`;
     displayedImages: string[];
     imageFile: File;
@@ -22,14 +29,42 @@ export class AdminProductEditComponent implements OnInit {
     @ViewChild(ImageGalleryComponent)
     gallery: ImageGalleryComponent;
 
+    @ViewChild('f') form: NgForm;
+
     constructor(private route: ActivatedRoute,
-                private router: Router, private modalService: ModalService, private snackBarService: SnackbarService) {
+                private router: Router,
+                private productService: ProductService,
+                private snackbarService: SnackbarService,
+                private modalService: ModalService) {
     }
 
     ngOnInit() {
         this.product = this.route.snapshot.data['product'];
+        this.productCategories = this.route.snapshot.data['productCategories'];
+        this.productRatings = this.route.snapshot.data['productRatings'];
         this.refreshDisplayedImages();
-        //this.product.category = this.route.snapshot.data['productCategory'];
+    }
+
+    onSaveButtonClicked() {
+        console.log('on save', this.product);
+        if (this.form.valid) {
+            this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
+                if (confirmed) {
+                    this.productService.editProduct(this.product).subscribe((res) => {
+                        this.router.navigate(['/admin/products']);
+                        this.snackbarService.show('Your changes have successfully been saved!');
+                    }, (err) => {
+                        this.snackbarService.show('Something went wrong while saving your changes');
+                    });
+                }
+            });
+        } else {
+            this.snackbarService.show('Please fill out all required fields');
+        }
+    }
+
+    onDeleteButtonClicked() {
+
     }
 
 
@@ -75,7 +110,7 @@ export class AdminProductEditComponent implements OnInit {
     onImageUploadError(event) {
         console.log('image upload error', event);
         this.imageFile = null;
-        this.snackBarService.show('An error occurred during the upload of your file. ' +
+        this.snackbarService.show('An error occurred during the upload of your file. ' +
             'Please make sure the image file size is below the maximum file size of 5MB.', 7500);
     }
 
