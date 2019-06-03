@@ -1,7 +1,7 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {ProductModel} from './product.model';
 
-import {TempApiService} from '../api/temp-api.service';
+import {APIService} from '../api/api.service';
 import {ProductRatingModel} from './product-rating.model';
 import {ProductCategoryModel} from './product-category.model';
 
@@ -10,7 +10,7 @@ import {ProductCategoryModel} from './product-category.model';
 })
 export class ProductService {
 
-    constructor(private api: TempApiService) {}
+    constructor(private api: APIService) {}
 
     public getAllProducts() {
         return this.api.get<ProductModel[]>('products');

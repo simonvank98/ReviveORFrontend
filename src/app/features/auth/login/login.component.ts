@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from '../../authentication.service';
+import {AuthenticationService} from '../../../shared/services/auth/authentication.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
             }
         }, error => {
             this.showWarning = true;
-            this.warning = 'Username or Password is incorrect';
+            this.warning = 'Username or password is incorrect';
         });
     }
 }

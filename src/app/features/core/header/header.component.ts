@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {ShoppingCartService} from '../../shop/cart/cart.service';
 import {Router} from '@angular/router';
-import {AuthenticationService} from '../../../authentication.service';
+import {AuthenticationService} from '../../../shared/services/auth/authentication.service';
 import {environment} from '../../../../environments/environment';
 
 @Component({
@@ -21,8 +21,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     constructor(private cartService: ShoppingCartService, private router: Router, public authenticationService: AuthenticationService) {
         authenticationService.userInfoChanged.subscribe(() => {
-            if (authenticationService.userinfo) {
-                this.user = authenticationService.userinfo['name'];
+            if (authenticationService.userInfo) {
+                this.user = authenticationService.userInfo['name'];
             }
         });
     }
@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         });
         this.cartService.loadCartItemsFromStorage();
         if (this.authenticationService.loggedIn) {
-            this.authenticationService.getUserData();
+            this.authenticationService.loadUserData();
         }
     }
 
