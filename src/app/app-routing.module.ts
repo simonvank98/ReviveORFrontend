@@ -31,6 +31,7 @@ import {AdminProductEditComponent} from './admin/features/products/admin-product
 import {LoginComponent} from './features/login/login.component';
 import {AllProductRatingsResolver} from './shared/services/product/all-product-ratings.resolver';
 import {AllProductCategoriesResolver} from './shared/services/product/all-product-categories.resolver';
+import {AdminProductCreateComponent} from './admin/features/products/admin-product-create/admin-product-create.component';
 
 const routes: Routes = [
 
@@ -69,6 +70,12 @@ const routes: Routes = [
             productCategories: AllProductCategoriesResolver,
             productRatings: AllProductRatingsResolver
       }},
+          {
+            path: 'products/create', component: AdminProductCreateComponent,
+              resolve: {
+                  productCategories: AllProductCategoriesResolver,
+                  productRatings: AllProductRatingsResolver
+              }},
       { path: 'stories', component: AdminStoriesOverviewComponent },
       { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, resolve: { requests: AllTradeInRequestsResolver }},
       { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, resolve: { request: TradeInRequestResolver }},

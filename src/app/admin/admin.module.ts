@@ -16,7 +16,7 @@ import {AdminProductEditComponent} from './features/products/admin-product-edit/
 
 import {TableModule} from 'primeng/table';
 import {DropdownModule, InputTextModule} from 'primeng/primeng';
-
+import {AdminProductCreateComponent} from './features/products/admin-product-create/admin-product-create.component';
 
 @NgModule({
     imports: [
@@ -35,7 +35,8 @@ import {DropdownModule, InputTextModule} from 'primeng/primeng';
     AdminCreditIndicationsOverviewComponent,
     AdminPermissionsOverviewComponent,
     AdminSideNavigationComponent,
-    AdminTradeInRequestEditComponent
+    AdminTradeInRequestEditComponent,
+    AdminProductCreateComponent
   ],
   providers: [
     AllTradeInRequestsResolver,

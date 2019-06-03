@@ -29,13 +29,26 @@
     </div>
 
     <div class="grid-2">
+        <div class="left">
         <div class="custom-inputs">
             <mat-label>Description</mat-label>
             <textarea class="descriptionBox" id="description" name="productDescription"
                       [(ngModel)]="product.description" [value]="product.description" required></textarea>
+        </div>
 
+        <div class="formfieldContainer">
+            <mat-form-field class="materialFormfield">
+                <mat-label>Material</mat-label>
+                <!--<mat-select name="productMaterial" [(ngModel)]="product.material" [value]="product.material" required>-->
+                <mat-select name="material">
+                    <mat-option value="goldPlated">Gold Plated</mat-option>
+                    <mat-option value="silver">Silver</mat-option>
+                    <mat-option value="other">Other</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
 
-
+        <div class="custom-inputs">
             <div class="priceBoxContainer">
                 <mat-label>Price (in €)</mat-label>
                 <div class="priceBox">
@@ -43,6 +56,8 @@
                 </div>
             </div>
         </div>
+    </div>
+
         <div class="right">
             <div class="imageContainer">
                 <mat-label>Images</mat-label>
@@ -63,9 +78,9 @@
         </div>
     </div>
 
-    <!--<div class="ratingWrapper">
+    <div class="ratingWrapper">
         <star-rating starType="icon" rating="1"></star-rating>
-    </div>-->
+    </div>
 
     <div class="custom-inputs">
         <mat-accordion>
