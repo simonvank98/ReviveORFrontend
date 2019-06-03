@@ -32,6 +32,7 @@ import {LoginComponent} from './features/login/login.component';
 import {AllProductRatingsResolver} from './shared/services/product/all-product-ratings.resolver';
 import {AllProductCategoriesResolver} from './shared/services/product/all-product-categories.resolver';
 import {LogoutComponent} from './features/logout/logout.component';
+import {ErrorPageComponent} from './shared/components/error-page/error-page.component';
 
 const routes: Routes = [
 
@@ -63,6 +64,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'me/edit', component: AccountPageComponent },
   { path: 'admin', component: AdminComponent, children: [
+      {path: '', redirectTo: '/admin/products', pathMatch: 'full'},
       {path: 'products', component: AdminProductsOverviewComponent, resolve: {products: AllProductsResolver}},
       {
           path: 'products/edit/:id', component: AdminProductEditComponent,
@@ -76,8 +78,9 @@ const routes: Routes = [
       { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, resolve: { request: TradeInRequestResolver }},
       { path: 'credit-indications', component: AdminCreditIndicationsOverviewComponent },
       { path: 'permissions', component: AdminPermissionsOverviewComponent },
+      { path: '**', redirectTo: '/not-found' },
     ] },
-  // { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
+  { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
   // { path: '**', redirectTo: '/not-found' }
 ];
 
