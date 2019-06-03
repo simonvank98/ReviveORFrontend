@@ -1,14 +1,14 @@
 import {TradeInProcessContainer} from '../../../features/trade-in-requests/trade-in-process-container.model';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {TempApiService} from '../api/temp-api.service';
+import {APIService} from '../api/api.service';
 import {CreditIndication} from './credit-indication.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CreditIndicationService {
-    constructor(private api: TempApiService) {
+    constructor(private api: APIService) {
     }
 
     public getIndication(tradeInProcessContainer: TradeInProcessContainer): Observable<CreditIndication> {

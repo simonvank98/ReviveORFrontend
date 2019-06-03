@@ -2,70 +2,63 @@ import {Injectable} from '@angular/core';
 
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from '../../../../environments/environment';
 
 @Injectable()
-export class ApiService {
-  constructor(private http: HttpClient) {
-
-  }
-
-  private createQueryString(queryParameters: object): string {
-    let queryString = '';
-
-    if (typeof queryParameters === 'object') {
-        Object.keys(queryParameters).forEach(function(key) {
-            const value = queryParameters[key];
-            const prefix = queryString.length === 0 ? '?' : '&';
-            queryString += `${prefix}${key}=${value}`;
-        });
+export class APIService {
+    
+    constructor(private http: HttpClient) {
     }
 
-    return queryString;
-  }
+    public get<T>(path: string, queryParameters?: object): Observable<T> {
+        const uri = this.createURI(path, queryParameters);
+        const headers = this.createRequestHeaders();
 
-  private createURI(path: string, queryParameters: object): string {
-    const queryString = this.createQueryString(queryParameters);
+        return this.http.get<T>(uri, {headers: headers});
+    }
 
-    return `/api/${path}${queryString}`;
-    // return 'http://localhost:8080/api/${path}${queryString}';
-  }
+    public post<T>(path: string, data: Object, queryParameters?: Object): Observable<T> {
+        const uri = this.createURI(path, queryParameters);
+        const headers = this.createRequestHeaders();
 
-  private createRequestHeaders(): HttpHeaders {
-    let headers = new HttpHeaders();
+        return this.http.post<T>(uri, data, {headers: headers});
+    }
 
-    // if (this.authService.hasAuthorization()) {
-    //   headers = headers.set('Authorization', this.authService.createAuthorizationString());
-    // }
+    public put<T>(path: string, data: Object, queryParameters?: Object): Observable<T> {
+        const uri = this.createURI(path, queryParameters);
+        const headers = this.createRequestHeaders();
 
-    return headers;
-  }
+        return this.http.put<T>(uri, data, {headers: headers});
+    }
 
-  public get<T>(path: string, queryParameters?: object): Observable<T> {
-    const uri = this.createURI(path, queryParameters);
-    const headers = this.createRequestHeaders();
+    public delete<T>(path: string, queryParameters?: Object): Observable<T> {
+        const uri = this.createURI(path, queryParameters);
+        const headers = this.createRequestHeaders();
 
-    return this.http.get<T>(uri, { headers: headers });
-  }
+        return this.http.delete<T>(uri, {headers: headers});
+    }
 
-  public post<T>(path: string, data: Object, queryParameters?: Object): Observable<any> {
-    const uri = this.createURI(path, queryParameters);
-    const headers = this.createRequestHeaders();
+    private createURI(path: string, queryParameters: object): string {
+        // const queryString = this.createQueryString(queryParameters);
+        return `${environment.reviveORAPIUrl}${path}`;
+    }
 
-    return this.http.post(uri, data, { headers: headers });
-  }
+    private createRequestHeaders(): HttpHeaders {
+        const headers = new HttpHeaders();
+        return headers;
+    }
 
-  public put<T>(path: string, data: Object, queryParameters?: Object): Observable<any> {
-    const uri = this.createURI(path, queryParameters);
-    const headers = this.createRequestHeaders();
-
-    return this.http.put(uri, data, { headers: headers });
-  }
-
-  public delete<T>(path: string, queryParameters?: Object): Observable<any> {
-    const uri = this.createURI(path, queryParameters);
-    const headers = this.createRequestHeaders();
-
-    return this.http.delete(uri, { headers: headers });
-  }
+    // Deprecated
+    private createQueryString(queryParameters: object): string {
+        let queryString = '';
+        if (typeof queryParameters === 'object') {
+            Object.keys(queryParameters).forEach(function (key) {
+                const value = queryParameters[key];
+                const prefix = queryString.length === 0 ? '?' : '&';
+                queryString += `${prefix}${key}=${value}`;
+            });
+        }
+        return queryString;
+    }
 
 }

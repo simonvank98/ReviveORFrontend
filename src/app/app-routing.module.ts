@@ -28,11 +28,12 @@ import {ShoppingCartComponent} from './features/shop/cart/shopping-cart.componen
 import {ShopListComponent} from './features/shop/shop-list/shop-list.component';
 import {ShopProductDetailsComponent} from './features/shop/shop-detail/shop-product-details.component';
 import {AdminProductEditComponent} from './admin/features/products/admin-product-edit/admin-product-edit.components';
-import {LoginComponent} from './features/login/login.component';
+import {LoginComponent} from './features/auth/login/login.component';
 import {AllProductRatingsResolver} from './shared/services/product/all-product-ratings.resolver';
 import {AllProductCategoriesResolver} from './shared/services/product/all-product-categories.resolver';
-import {LogoutComponent} from './features/logout/logout.component';
+import {LogoutComponent} from './features/auth/logout/logout.component';
 import {ErrorPageComponent} from './shared/components/error-page/error-page.component';
+import {RegisterComponent} from './features/auth/register/register.component';
 
 const routes: Routes = [
 
@@ -60,6 +61,7 @@ const routes: Routes = [
     ]
   },
   { path: 'stories', component: StoryPageComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'me/edit', component: AccountPageComponent },

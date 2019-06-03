@@ -11,6 +11,7 @@ export class AdminTradeInRequestOverviewComponent implements OnInit {
     models = [];
     headers = ['Request #', 'Status', 'Jewelry', 'Estimated credit', 'Request date'];
     attributes = ['id', 'status', 'jewelryName', 'estimatedCredit', 'createdAt'];
+    formatters = [(attr) => attr, (attr) => attr, (attr) => attr, (attr) => attr, (createdAt) => new Date(createdAt).toLocaleDateString()];
 
     constructor(private route: ActivatedRoute,
                 private router: Router) {

@@ -1,7 +1,9 @@
 import {EventEmitter, Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
-import {environment} from '../environments/environment';
+import {environment} from '../../../../environments/environment';
+import {ORUserModel} from '../user/or-user.model';
+import {APIService} from '../api/api.service';
 
 @Injectable({
     providedIn: 'root'
@@ -9,43 +11,42 @@ import {environment} from '../environments/environment';
 export class AuthenticationService {
 
     token: string;
-    userinfo;
+    userInfo: any;
     userInfoChanged: EventEmitter<any> = new EventEmitter();
     showLogoutMessage = false;
 
-    constructor(public httpClient: HttpClient) {
-        console.log(this.userinfo);
+    constructor(private api: APIService) {
+        console.log(this.userInfo);
         if (this.loggedIn) {
             this.token = localStorage.getItem('access_token');
         }
     }
 
+    register(userData: ORUserModel) {
+        return this.api.post(`register`, userData);
+    }
+
     login(email: string, password: string) {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type':  'multipart/form-data;',
-            })
-        };
-        const logindata = {'email' : email, 'password' : password};
-        return this.httpClient.post(`${environment.reviveORAPIUrl}auth\\login`, logindata).pipe(tap(res => {
-            localStorage.setItem('access_token', res['accessToken']);
-            this.token = res['accessToken'];
-            this.getUserData();
+        const loginData = {'email' : email, 'password' : password};
+        return this.api.post(`auth/login`, loginData).pipe(tap(response => {
+            localStorage.setItem('access_token', response['accessToken']);
+            this.token = response['accessToken'];
+            this.loadUserData();
         }));
     }
 
     renew() {
-        return this.httpClient.post(`${environment.reviveORAPIUrl}auth\\refresh`, null).pipe(tap(res => {
-            localStorage.setItem('access_token', res['accessToken']);
-            this.token = res['accessToken'];
-            this.getUserData();
+        return this.api.post(`auth/refresh`, null).pipe(tap(response => {
+            localStorage.setItem('access_token', response['accessToken']);
+            this.token = response['accessToken'];
+            this.loadUserData();
         }, error => {
             this.logout();
         }));
     }
 
     logout() {
-        this.userinfo = null;
+        this.userInfo = null;
         this.userInfoChanged.emit();
         this.showLogoutMessage = true;
         localStorage.removeItem('access_token');
@@ -63,11 +64,11 @@ export class AuthenticationService {
         return false;
     }
 
-    getUserData() {
-        this.httpClient.post(`${environment.reviveORAPIUrl}auth\\me`, null).subscribe(data => {
-            this.userinfo = data;
+    loadUserData() {
+        this.api.post(`auth/me`, null).subscribe(data => {
+            this.userInfo = data;
             this.userInfoChanged.emit();
-            console.log(this.userinfo);
+            console.log('[AuthService] user info: ', this.userInfo);
         });
     }
 }
