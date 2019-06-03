@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { UserModel } from 'src/app/shared/services/user/user.model';
-import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Role } from 'src/app/shared/services/user/role/role.model';
 import { RoleService } from 'src/app/shared/services/user/role/role.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
 
 @Component({
     selector: 'app-admin-permissions-overview',
@@ -24,8 +25,10 @@ export class AdminPermissionsOverviewComponent implements OnInit {
     private rolesLoaded = false;
     private selectedUser: UserModel;
     private selectedRoles: Role[];
+
+    @ViewChild('f') form: NgForm;
     
-    constructor(private userService: UserService, private roleService: RoleService) { }
+    constructor(private userService: UserService, private roleService: RoleService, private snackbarService: SnackbarService) { }
     
     ngOnInit() {
         this.filteredUsers = this.userFormControl.valueChanges.pipe(startWith(''),
@@ -53,7 +56,14 @@ export class AdminPermissionsOverviewComponent implements OnInit {
     }
 
     private onSaveClicked() {
-        console.log(this.selectedUser);
+        if (this.form.valid) {
+            this.roleService.updateroles(this.selectedUser.id, this.selectedRoles).subscribe(data => {
+                this.snackbarService.show('User roles updated.');
+                this.selectedUser.roles = this.selectedRoles;
+            });
+        } else {
+            this.snackbarService.show("Please fill out all required fields.");
+        }
     }
 
     private onRolesChanged(event) {
@@ -62,8 +72,17 @@ export class AdminPermissionsOverviewComponent implements OnInit {
 
     private onUserChanged(event) {
         this.selectedUser = event.option.value;
+        this.selectedRoles = this.selectedUser.roles;
     }
 
+    private onClearInputClicked() {
+        this.selectedUser = {} as UserModel;
+        this.selectedRoles = [];
+    }
+
+    private compareSelection(role1: Role, role2: Role) {
+        return role1 && role2 ? role1.id === role2.id : role1 === role2;
+    }
         
 }
     

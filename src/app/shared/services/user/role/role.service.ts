@@ -16,4 +16,15 @@ export class RoleService {
     public getAll(): Observable<Role[]> {
         return this.api.get<Role[]>('roles');
     }
+
+    public updateroles(userId: number, roles: Role[]) {
+        let roleIds = roles.map(function (role) {
+            return role.id;
+        });
+        return this.api.put<Object>('/users/' + userId + '/roles', { "roles": roleIds });
+    }
+
+    public getFromUser(userId: number) {
+        return this.api.get('/users/' + userId + '/roles');
+    }
 }

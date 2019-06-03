@@ -6,6 +6,16 @@
 .save-button {
     float: right;
 }
+.user-form {
+    position: relative;
+
+    .clear-input {
+        position: absolute;
+        right: 5px;
+        top: 0;
+        cursor: pointer;
+    }
+}
 @media (max-width: 800px) {
     .grid {
         grid-template-columns: 1fr;
