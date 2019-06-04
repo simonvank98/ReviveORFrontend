@@ -14,6 +14,8 @@ export class AuthenticationService {
     userInfo: any;
     userInfoChanged: EventEmitter<any> = new EventEmitter();
     showLogoutMessage = false;
+    permissionLevel = 0;
+
 
     constructor(private api: APIService) {
         console.log(this.userInfo);
@@ -65,10 +67,12 @@ export class AuthenticationService {
     }
 
     loadUserData() {
+        this.permissionLevel = Number(localStorage.getItem('permissionLevel'));
         this.api.post(`auth/me`, null).subscribe(data => {
             this.userInfo = data;
             this.userInfoChanged.emit();
-            console.log('[AuthService] user info: ', this.userInfo);
+            this.permissionLevel = data['roles'][0]['permissionLevel'];
+            localStorage.setItem('permissionLevel', String(this.permissionLevel));
         });
     }
 }

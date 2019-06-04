@@ -34,6 +34,7 @@ import {AllProductCategoriesResolver} from './shared/services/product/all-produc
 import {LogoutComponent} from './features/auth/logout/logout.component';
 import {ErrorPageComponent} from './shared/components/error-page/error-page.component';
 import {RegisterComponent} from './features/auth/register/register.component';
+import {PermissionGuard} from './features/auth/permission.guard';
 
 const routes: Routes = [
 
@@ -65,21 +66,22 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'me/edit', component: AccountPageComponent },
-  { path: 'admin', component: AdminComponent, children: [
-      {path: '', redirectTo: '/admin/products', pathMatch: 'full'},
-      {path: 'products', component: AdminProductsOverviewComponent, resolve: {products: AllProductsResolver}},
+  { path: 'admin', component: AdminComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, children: [
+      {path: '', redirectTo: '/admin/trade-in', pathMatch: 'full'},
+      {path: 'products', component: AdminProductsOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2}, resolve: {products: AllProductsResolver}},
       {
           path: 'products/edit/:id', component: AdminProductEditComponent,
           resolve: {
             product: ProductResolver,
             productCategories: AllProductCategoriesResolver,
-            productRatings: AllProductRatingsResolver
+            productRatings: AllProductRatingsResolver,
+            canActivate: [PermissionGuard], data: { permissionLevel:  2}
       }},
-      { path: 'stories', component: AdminStoriesOverviewComponent },
-      { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, resolve: { requests: AllTradeInRequestsResolver }},
-      { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, resolve: { request: TradeInRequestResolver }},
-      { path: 'credit-indications', component: AdminCreditIndicationsOverviewComponent },
-      { path: 'permissions', component: AdminPermissionsOverviewComponent },
+      { path: 'stories', component: AdminStoriesOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2} },
+      { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { requests: AllTradeInRequestsResolver }},
+      { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { request: TradeInRequestResolver }},
+      { path: 'credit-indications', canActivate: [PermissionGuard], data: { permissionLevel:  2}, component: AdminCreditIndicationsOverviewComponent },
+      { path: 'permissions', canActivate: [PermissionGuard], data: { permissionLevel:  3}, component: AdminPermissionsOverviewComponent },
       { path: '**', redirectTo: '/not-found' },
     ] },
   { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
