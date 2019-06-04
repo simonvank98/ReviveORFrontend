@@ -34,6 +34,10 @@
 
 <hr>
 
+<div class="emptyShop" *ngIf="displayedProducts.length === 0">
+    <p>No products found!</p>
+</div>
+
 <div class="shop-grid">
     <app-shop-item *ngFor="let product of displayedProducts; let i = index"
                    [product]="product"
