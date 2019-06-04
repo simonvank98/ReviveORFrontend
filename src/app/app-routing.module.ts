@@ -35,6 +35,7 @@ import {LogoutComponent} from './features/auth/logout/logout.component';
 import {ErrorPageComponent} from './shared/components/error-page/error-page.component';
 import {RegisterComponent} from './features/auth/register/register.component';
 import {PermissionGuard} from './features/auth/permission.guard';
+import {LoginGuard} from './features/auth/login.guard';
 
 const routes: Routes = [
 
@@ -57,7 +58,7 @@ const routes: Routes = [
         { path: 'condition', component: TradeInRequestJewelryConditionComponent, data: {animation: 'jewelryConditions'}},
         { path: 'indication', component: TradeInRequestCreditIndicationComponent, data: {animation: 'jewelryIndication'}},
         { path: 'overview', component: TradeInRequestOverviewComponent, data: {animation: 'jewelryOverview'}},
-        { path: 'finalize', component: TradeInRequestFinalizationComponent, data: {animation: 'jewelryFinalization'}},
+        { path: 'finalize', component: TradeInRequestFinalizationComponent, data: {animation: 'jewelryFinalization'}, canActivate: [LoginGuard]},
         { path: 'complete', component: TradeInRequestCompletionComponent, data: {animation: 'jewelryCompletion'}},
     ]
   },
