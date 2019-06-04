@@ -95,9 +95,9 @@
         <div class="buttonLeft">
             <button class="mat-button" (click)="back()">Back</button>
         </div>
-        <div class="buttonRight">
+        <div class="buttonRight" *ngIf="model.status !== 'Complete'">
             <button class="mat-button" (click)="onDeny()">Cancel request</button>
-            <button class="mat-button" (click)="onSubmit()">Approve for shipping</button>
+            <button class="mat-button" (click)="onSubmit()">{{ buttonText }}</button>
         </div>
     </div>
 </form>

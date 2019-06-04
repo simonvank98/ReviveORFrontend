@@ -19,6 +19,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
     orProducts: ORProduct[];
     properties: any[];
     @ViewChild('f') form: NgForm;
+    buttonText = '';
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -38,6 +39,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
                 }
             });
         });
+        this.checkButtons();
     }
 
     back() {
@@ -62,13 +64,15 @@ export class AdminTradeInRequestEditComponent implements OnInit {
                     if (this.model.status === 'Awaiting shipping approval') {
                         this.model.status = 'Approved for shipping';
                     }
-                    if (this.model.status === 'New') {
-                        this.model.status = 'Awaiting shipping approval';
-                    }
 
                     this.adminTradeInRequestService.put(this.model).subscribe((res) => {
                         this.router.navigate(['/admin/trade-in']);
-                        this.snackbarService.show('Request approved');
+                        if (this.model.status === 'Approved for shipping') {
+                            this.snackbarService.show('Request approved');
+                        }
+                        if (this.model.status === 'Complete') {
+                            this.snackbarService.show('Trade-in completed');
+                        }
                     }, (err) => {
                         this.snackbarService.show('Something went wrong while approving the request');
                     });
@@ -89,5 +93,14 @@ export class AdminTradeInRequestEditComponent implements OnInit {
                 });
             }
         });
+    }
+
+    checkButtons() {
+        if (this.model.status === 'Awaiting shipping approval') {
+            this.buttonText = 'Approve for shipping';
+        }
+        if (this.model.status === 'Approved for shipping') {
+            this.buttonText = 'Complete trade-in' ;
+        }
     }
 }
