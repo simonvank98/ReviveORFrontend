@@ -64,7 +64,16 @@ export class AdminProductEditComponent implements OnInit {
     }
 
     onDeleteButtonClicked() {
-
+        this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
+            if (confirmed) {
+                this.productService.deleteProduct(this.product).subscribe((res) => {
+                    this.router.navigate(['/admin/products']);
+                    this.snackbarService.show('Product deleted!');
+                }, (err) => {
+                    this.snackbarService.show('Something went wrong while deleting the product');
+                });
+            }
+        });
     }
 
 

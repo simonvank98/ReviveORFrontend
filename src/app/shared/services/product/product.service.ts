@@ -24,6 +24,10 @@ export class ProductService {
         return this.api.put<ProductModel>(`products/${product.id}`, product);
     }
 
+    public deleteProduct(product: ProductModel) {
+        return this.api.delete(`products/${product.id}`);
+    }
+
     public createProduct(product: ProductModel) {
         return this.api.post<ProductModel>('products', product);
     }
