@@ -72,7 +72,6 @@ export class AdminPermissionsOverviewComponent implements OnInit {
 
     private onUserChanged(event) {
         this.selectedUser = event.option.value;
-        console.log(this.selectedUser.roles);
         this.selectedRole = this.selectedUser.roles[0];
     }
 
