@@ -29,9 +29,8 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.authenticationService.login(this.email, this.password).subscribe(data => {
-            console.log(this.redirect);
             if (this.redirect) {
-                this.router.navigate(['/', this.redirect]);
+                this.router.navigate([this.redirect]);
             } else {
                 this.router.navigate(['me', 'edit']);
             }
