@@ -14,9 +14,9 @@ import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.servi
     styleUrls: ['./admin-permissions-overview.component.scss'],
 })
 export class AdminPermissionsOverviewComponent implements OnInit {
-    
+
     private users: UserModel[] = [];
-    private roles: Role[] = []
+    private roles: Role[] = [];
 
     private userFormControl = new FormControl();
     private roleFormControl = new FormControl();
@@ -24,12 +24,12 @@ export class AdminPermissionsOverviewComponent implements OnInit {
     private usersLoaded = false;
     private rolesLoaded = false;
     private selectedUser: UserModel;
-    private selectedRoles: Role[];
+    private selectedRole: Role;
 
     @ViewChild('f') form: NgForm;
-    
+
     constructor(private userService: UserService, private roleService: RoleService, private snackbarService: SnackbarService) { }
-    
+
     ngOnInit() {
         this.filteredUsers = this.userFormControl.valueChanges.pipe(startWith(''),
             map(value => typeof value === 'string' ? value : value.email),
@@ -48,41 +48,41 @@ export class AdminPermissionsOverviewComponent implements OnInit {
     private displayFn(user?: UserModel): string | undefined {
         return user ? user.email : undefined;
     }
-    
+
     private _filter(email: string): UserModel[] {
         const filterValue = email.toLowerCase();
-    
+
         return this.users.filter(user => user.email.toLowerCase().indexOf(filterValue) === 0);
     }
 
     private onSaveClicked() {
         if (this.form.valid) {
-            this.roleService.updateroles(this.selectedUser.id, this.selectedRoles).subscribe(data => {
+            this.roleService.updateroles(this.selectedUser.id, this.selectedRole).subscribe(data => {
                 this.snackbarService.show('User roles updated.');
-                this.selectedUser.roles = this.selectedRoles;
+                this.selectedUser.roles[0] = this.selectedRole;
             });
         } else {
-            this.snackbarService.show("Please fill out all required fields.");
+            this.snackbarService.show('Please fill out all required fields.');
         }
     }
 
     private onRolesChanged(event) {
-        this.selectedRoles = event.value;
+        this.selectedRole = event.value;
     }
 
     private onUserChanged(event) {
         this.selectedUser = event.option.value;
-        this.selectedRoles = this.selectedUser.roles;
+        console.log(this.selectedUser.roles);
+        this.selectedRole = this.selectedUser.roles[0];
     }
 
     private onClearInputClicked() {
         this.selectedUser = {} as UserModel;
-        this.selectedRoles = [];
+        this.selectedRole = null;
     }
 
     private compareSelection(role1: Role, role2: Role) {
         return role1 && role2 ? role1.id === role2.id : role1 === role2;
     }
-        
+
 }
-    

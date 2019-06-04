@@ -10,18 +10,17 @@ import { Role } from './role.model';
     providedIn: 'root'
 })
 export class RoleService {
-    
+
     constructor(private api: APIService) {}
-    
+
     public getAll(): Observable<Role[]> {
         return this.api.get<Role[]>('roles');
     }
 
-    public updateroles(userId: number, roles: Role[]) {
-        let roleIds = roles.map(function (role) {
-            return role.id;
-        });
-        return this.api.put<Object>('/users/' + userId + '/roles', { "roles": roleIds });
+    public updateroles(userId: number, role: Role) {
+        const roles = [];
+        roles.push(role.id);
+        return this.api.put<Object>('/users/' + userId + '/roles', { 'roles': roles });
     }
 
     public getFromUser(userId: number) {
