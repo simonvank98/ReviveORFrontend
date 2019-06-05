@@ -1,0 +1,109 @@
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.nameFormfield {
+    width: 250px;
+}
+
+.categoryFormfield {
+    width: 150px;
+    float: left;
+}
+
+.categoryText {
+    text-transform: capitalize;
+}
+
+.statusFormfield {
+    width: 150px;
+    margin-left: 10px;
+}
+
+.materialFormfield, .propertyFormfield {
+    width: 300px;
+    padding-left: 10px;
+}
+
+
+.priceBoxContainer {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.descriptionBox {
+    height: 150px;
+    padding: 10px 10px 10px 10px;
+}
+
+.conditionLabel {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.productImg {
+    max-height: 300px;
+}
+
+.ratingWrapper {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.storyAcc {
+    display: block;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #ccc;
+}
+
+.deleteButton {
+    margin-left: 20px;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+.small-images-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.imageContainer {
+    max-width: 300px;
+    margin-left: 20px;
+}
+
+.formfieldContainer {
+    margin-left: 20px;
+}
+
+.priceBox {
+    width: 300px;
+    margin-left: 5px;
+}
+
+input, textarea {
+    margin-bottom: 20px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.saveButton {
+    margin-left: 20px;
+    color: white;
+    background-color: #2749b6;
+}
+star-rating {
+    color: #2749b6;
+}
+
