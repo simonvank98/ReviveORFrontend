@@ -3,7 +3,7 @@ import {TradeInProcessContainer} from './trade-in-process-container.model';
 import {ORProduct} from 'src/app/shared/services/or-product/or-product.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {TradeInRequestModel} from '../../admin/features/trade-in-requests/models/trade-in-request.model';
+import {TradeInRequestModel} from '../../shared/services/trade-in/models/trade-in-request.model';
 
 @Injectable({
     providedIn: 'root'

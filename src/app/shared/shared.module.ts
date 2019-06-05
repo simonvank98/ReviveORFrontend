@@ -22,6 +22,9 @@ import {AllProductCategoriesResolver} from './services/product/all-product-categ
 import {SliderModule} from 'primeng/slider';
 import {Ng5SliderModule} from 'ng5-slider';
 import {StarRatingConfigService, StarRatingModule} from 'angular-star-rating';
+import {TradeInRequestResolver} from './services/trade-in/resolvers/trade-in-request.resolver';
+import {AllTradeInRequestsResolver} from './services/trade-in/resolvers/all-trade-in-requests.resolver';
+import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-trade-in-requests.resolver';
 
 @NgModule({
     declarations: [
@@ -77,7 +80,10 @@ import {StarRatingConfigService, StarRatingModule} from 'angular-star-rating';
         {provide: MAT_DATE_LOCALE, useValue: 'nl-NL'},
         AllProductRatingsResolver,
         AllProductCategoriesResolver,
-        StarRatingConfigService
+        StarRatingConfigService,
+        TradeInRequestResolver,
+        AllTradeInRequestsResolver,
+        UserTradeInRequestsResolver
     ]
 })
 export class SharedModule {

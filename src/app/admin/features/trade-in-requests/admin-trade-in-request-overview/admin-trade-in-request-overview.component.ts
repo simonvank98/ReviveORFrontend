@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AdminTradeInRequestService} from '../admin-trade-in-request.service';
+import {TradeInRequestService} from '../../../../shared/services/trade-in/trade-in-request.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
