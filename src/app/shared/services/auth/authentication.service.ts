@@ -21,7 +21,7 @@ export class AuthenticationService {
         console.log(this.userInfo);
         if (this.loggedIn) {
             this.token = localStorage.getItem('access_token');
-            this.loadUserData();
+            //this.loadUserData();
         }
     }
 
