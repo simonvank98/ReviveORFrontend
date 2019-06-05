@@ -1,5 +1,5 @@
 import {ORProduct} from 'src/app/shared/services/or-product/or-product.model';
-import {TradeInRequestImageModel} from '../../admin/features/trade-in-requests/models/trade-in-request-image.model';
+import {TradeInRequestImageModel} from '../../shared/services/trade-in/models/trade-in-request-image.model';
 
 export interface TradeInProcessContainer {
     currentStep: number;

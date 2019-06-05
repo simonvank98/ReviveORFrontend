@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TradeInProcessService} from '../trade-in-process.service';
 import {Router} from '@angular/router';
 import {environment} from '../../../../environments/environment';
-import {TradeInRequestImageModel} from '../../../admin/features/trade-in-requests/models/trade-in-request-image.model';
+import {TradeInRequestImageModel} from '../../../shared/services/trade-in/models/trade-in-request-image.model';
 import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
 import {FileUploaderEvent} from '../../../shared/components/mass-file-uploader/file-uploader.event';
 

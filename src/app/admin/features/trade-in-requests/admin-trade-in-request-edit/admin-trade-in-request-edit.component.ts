@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TradeInRequestModel} from '../models/trade-in-request.model';
+import {TradeInRequestModel} from '../../../../shared/services/trade-in/models/trade-in-request.model';
 import {ORProductService} from '../../../../shared/services/or-product/or-product.service';
 import {ORProduct} from '../../../../shared/services/or-product/or-product.model';
 import {NgForm} from '@angular/forms';
-import {AdminTradeInRequestService} from '../admin-trade-in-request.service';
+import {TradeInRequestService} from '../../../../shared/services/trade-in/trade-in-request.service';
 import {SnackbarService} from '../../../../shared/services/snackbar/snackbar.service';
 import {ModalService} from '../../../../shared/services/modal-service/modal.service';
 
@@ -24,7 +24,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
     constructor(private route: ActivatedRoute,
                 private router: Router,
                 private orProductService: ORProductService,
-                private adminTradeInRequestService: AdminTradeInRequestService,
+                private adminTradeInRequestService: TradeInRequestService,
                 private snackbarService: SnackbarService,
                 private modalService: ModalService) {
     }
