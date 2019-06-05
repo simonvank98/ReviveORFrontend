@@ -5,9 +5,7 @@ import {environment} from '../../../../environments/environment';
 import {ORUserModel} from '../user/or-user.model';
 import {APIService} from '../api/api.service';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class AuthenticationService {
 
     token: string;
@@ -21,7 +19,6 @@ export class AuthenticationService {
         console.log(this.userInfo);
         if (this.loggedIn) {
             this.token = localStorage.getItem('access_token');
-            this.loadUserData();
         }
     }
 

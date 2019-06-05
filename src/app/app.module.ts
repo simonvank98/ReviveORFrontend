@@ -23,6 +23,7 @@ import {AuthInterceptor} from './features/auth/auth.interceptor';
 import {LogoutComponent} from './features/auth/logout/logout.component';
 import {RegisterComponent} from './features/auth/register/register.component';
 import {TradeInRequestsModule} from './features/trade-in-requests/trade-in-requests.module';
+import {AuthenticationService} from './shared/services/auth/authentication.service';
 
 @NgModule({
     declarations: [
@@ -48,6 +49,7 @@ import {TradeInRequestsModule} from './features/trade-in-requests/trade-in-reque
     providers: [
         ORApiService,
         APIService,
+        AuthenticationService,
         {provide: HTTP_INTERCEPTORS, useClass: JSONCasingInterceptor, multi: true},
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
     ],
