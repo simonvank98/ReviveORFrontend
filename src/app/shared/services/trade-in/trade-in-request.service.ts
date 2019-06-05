@@ -1,17 +1,21 @@
 import {Injectable} from '@angular/core';
 import {TradeInRequestModel} from './models/trade-in-request.model';
-import {APIService} from '../../../shared/services/api/api.service';
+import {APIService} from '../api/api.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AdminTradeInRequestService {
+export class TradeInRequestService {
 
     constructor(private api: APIService) {
     }
 
     public getAll() {
         return this.api.get<TradeInRequestModel[]>('tradeinrequests');
+    }
+
+    public getAllForSelf() {
+        return this.api.get<TradeInRequestModel[]>('tradeinrequests/me');
     }
 
     public get(id) {

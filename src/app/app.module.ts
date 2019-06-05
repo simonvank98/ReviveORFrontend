@@ -1,5 +1,3 @@
-import {CountUpModule} from 'countup.js-angular2';
-import {ControlButtonsComponent} from './features/trade-in-requests/control-buttons/control-buttons.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
@@ -8,7 +6,6 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './features/core/header/header.component';
 import {FooterComponent} from './features/core/footer/footer.component';
 import {HomeComponent} from './features/core/home/home.component';
-import {AccountPageComponent} from './features/accounts/account-page.component';
 import {ErrorPageComponent} from './shared/components/error-page/error-page.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
@@ -23,6 +20,7 @@ import {AuthInterceptor} from './features/auth/auth.interceptor';
 import {LogoutComponent} from './features/auth/logout/logout.component';
 import {RegisterComponent} from './features/auth/register/register.component';
 import {TradeInRequestsModule} from './features/trade-in-requests/trade-in-requests.module';
+import {AccountModule} from './features/account/account.module';
 
 @NgModule({
     declarations: [
@@ -30,11 +28,11 @@ import {TradeInRequestsModule} from './features/trade-in-requests/trade-in-reque
         HeaderComponent,
         FooterComponent,
         HomeComponent,
-        AccountPageComponent,
         ErrorPageComponent,
         LoginComponent,
         LogoutComponent,
         RegisterComponent,
+
     ],
     imports: [
         BrowserModule,
@@ -42,6 +40,7 @@ import {TradeInRequestsModule} from './features/trade-in-requests/trade-in-reque
         SharedModule,
         AppRoutingModule,
         AdminModule,
+        AccountModule,
         ShopModule,
         TradeInRequestsModule,
     ],
