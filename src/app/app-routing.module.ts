@@ -86,23 +86,24 @@ const routes: Routes = [
       {
           path: 'products/edit/:id', component: AdminProductEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2},
           resolve: {
-            product: ProductResolver,
-            productCategories: AllProductCategoriesResolver,
-            productRatings: AllProductRatingsResolver,
-      }, {
+              product: ProductResolver,
+              productCategories: AllProductCategoriesResolver,
+              productRatings: AllProductRatingsResolver,
+          }
+      },{
             path: 'products/create', component: AdminProductCreateComponent,
             resolve: {
                 productCategories: AllProductCategoriesResolver,
                 productRatings: AllProductRatingsResolver
             }
-      }},
+      },
       { path: 'stories', component: AdminStoriesOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2} },
       { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { requests: AllTradeInRequestsResolver }},
       { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { request: TradeInRequestResolver }},
       { path: 'credit-indications', canActivate: [PermissionGuard], data: { permissionLevel:  2}, component: AdminCreditIndicationsOverviewComponent },
       { path: 'permissions', canActivate: [PermissionGuard], data: { permissionLevel:  3}, component: AdminPermissionsOverviewComponent },
       { path: '**', redirectTo: '/not-found' },
-    ] },
+    ]},
   { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
   // { path: '**', redirectTo: '/not-found' }
 ];
