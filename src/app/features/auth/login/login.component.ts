@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
             this.redirect = params['redirectTo'];
         });
         if (this.authenticationService.loggedIn) {
-            this.router.navigate(['me', 'edit']);
+            this.router.navigate(['account']);
         }
     }
 
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
             if (this.redirect) {
                 this.router.navigate([this.redirect]);
             } else {
-                this.router.navigate(['me', 'edit']);
+                this.router.navigate(['account']);
             }
         }, error => {
             this.showWarning = true;
