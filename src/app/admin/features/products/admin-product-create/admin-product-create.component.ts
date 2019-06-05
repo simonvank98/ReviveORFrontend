@@ -12,11 +12,11 @@ import {ProductCategoryModel} from '../../../../shared/services/product/product-
 import {ProductRatingModel} from '../../../../shared/services/product/product-rating.model';
 
 @Component({
-    selector: 'app-admin-products-edit',
-    templateUrl: './admin-product-edit.component.html',
-    styleUrls: ['./admin-product-edit.component.scss']
+    selector: 'app-admin-products-create',
+    templateUrl: './admin-product-create.component.html',
+    styleUrls: ['./admin-product-create.component.scss']
 })
-export class AdminProductEditComponent implements OnInit {
+export class AdminProductCreateComponent implements OnInit {
     product: ProductModel;
 
     productCategories: ProductCategoryModel[];
@@ -25,6 +25,7 @@ export class AdminProductEditComponent implements OnInit {
     imageAPIUrl = `${environment.reviveORAPIUrl}images`;
     displayedImages: string[];
     imageFile: File;
+
 
     @ViewChild(ImageGalleryComponent)
     gallery: ImageGalleryComponent;
@@ -39,7 +40,18 @@ export class AdminProductEditComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.product = this.route.snapshot.data['product'];
+        this.product = {
+            categoryId: 0,
+            conditionId: 0,
+            ratingId: 1,
+            name: '',
+            description: '',
+            status: '',
+            images: [],
+            material: '',
+            price: 0,
+            property: ''
+        } as ProductModel;
         this.productCategories = this.route.snapshot.data['productCategories'];
         this.productRatings = this.route.snapshot.data['productRatings'];
         this.refreshDisplayedImages();
@@ -50,7 +62,7 @@ export class AdminProductEditComponent implements OnInit {
         if (this.form.valid) {
             this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
                 if (confirmed) {
-                    this.productService.editProduct(this.product).subscribe((res) => {
+                    this.productService.createProduct(this.product).subscribe((res) => {
                         this.router.navigate(['/admin/products']);
                         this.snackbarService.show('Your changes have successfully been saved!');
                     }, (err) => {
@@ -63,15 +75,12 @@ export class AdminProductEditComponent implements OnInit {
         }
     }
 
-    onDeleteButtonClicked() {
-        this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
+    onCancelButtonClicked() {
+        this.modalService.confirm('Are you sure you want to cancel all pending changes?').subscribe((confirmed) => {
             if (confirmed) {
-                this.productService.deleteProduct(this.product).subscribe((res) => {
-                    this.router.navigate(['/admin/products']);
-                    this.snackbarService.show('Product deleted!');
-                }, (err) => {
-                    this.snackbarService.show('Something went wrong while deleting the product');
-                });
+                this.router.navigate(['/admin/products']);
+                this.snackbarService.show('Your changes have successfully been canceled!');
+
             }
         });
     }

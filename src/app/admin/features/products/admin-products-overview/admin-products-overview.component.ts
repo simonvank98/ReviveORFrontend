@@ -21,6 +21,11 @@ export class AdminProductsOverviewComponent implements OnInit {
     }
 
     toEditRequest(event) {
-        this.router.navigate(['/admin/products/edit', +event.model.id]);
+        this.router.navigate(['/admin/products/edit/' + event.model.id]);
     }
+
+    toCreateRequest() {
+        this.router.navigate(['admin/products/create']);
+    }
+
 }

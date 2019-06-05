@@ -13,6 +13,7 @@ export interface ProductModel {
     property: string;
     conditionId: number;
     categoryId: number;
+    ratingId: number;
 
     images: ProductImageModel[];
     category: ProductCategoryModel;
