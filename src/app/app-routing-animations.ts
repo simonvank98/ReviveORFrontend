@@ -1,4 +1,4 @@
-import { transition, trigger, query, style, animate, group } from '@angular/animations';
+import {animate, group, query, style, transition, trigger} from '@angular/animations';
 
 const styles = {transform: 'translateX(0)', position: 'absolute', top: 0, right: 0, width: '100%', opacity: '1'};
 const animateBack = [

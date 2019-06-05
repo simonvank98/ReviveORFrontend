@@ -1,15 +1,15 @@
 import {CreditIndicationModifier} from './credit-indication-modifier';
-import {TempApiService} from '../../api/temp-api.service';
+import {APIService} from '../../api/api.service';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CreditIndicationModifierService {
 
-    constructor(private api: TempApiService) {
+    constructor(private api: APIService) {
     }
 
     public getAll(): Observable<CreditIndicationModifier[]> {

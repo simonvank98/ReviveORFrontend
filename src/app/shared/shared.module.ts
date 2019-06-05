@@ -13,8 +13,18 @@ import {TableComponent} from './components/table/table.component';
 import {MassFileUploaderComponent} from './components/mass-file-uploader/mass-file-uploader.component';
 import {FileSelectionComponent} from './components/file-selection/file-selection.component';
 import {FileDragAndDropDirective} from './components/mass-file-uploader/fileDragAndDrop.directive';
-import { FileUploadControlBarComponent } from './components/file-upload-control-bar/file-upload-control-bar.component';
-import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component';
+import {FileUploadControlBarComponent} from './components/file-upload-control-bar/file-upload-control-bar.component';
+import {FileDropzoneComponent} from './components/file-dropzone/file-dropzone.component';
+import {ImageGalleryComponent} from './components/image-gallery/image-gallery.component';
+import {NgxGalleryModule} from 'ngx-gallery';
+import {AllProductRatingsResolver} from './services/product/all-product-ratings.resolver';
+import {AllProductCategoriesResolver} from './services/product/all-product-categories.resolver';
+import {SliderModule} from 'primeng/slider';
+import {Ng5SliderModule} from 'ng5-slider';
+import {StarRatingConfigService, StarRatingModule} from 'angular-star-rating';
+import {TradeInRequestResolver} from './services/trade-in/resolvers/trade-in-request.resolver';
+import {AllTradeInRequestsResolver} from './services/trade-in/resolvers/all-trade-in-requests.resolver';
+import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-trade-in-requests.resolver';
 
 @NgModule({
     declarations: [
@@ -27,7 +37,8 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
         MassFileUploaderComponent,
         FileSelectionComponent,
         FileUploadControlBarComponent,
-        FileDropzoneComponent
+        FileDropzoneComponent,
+        ImageGalleryComponent
     ],
     imports: [
         CommonModule,
@@ -37,7 +48,11 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
         ReactiveFormsModule,
         MaterialModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        NgxGalleryModule,
+        SliderModule,
+        Ng5SliderModule,
+        StarRatingModule
     ],
     exports: [
         MaterialModule,
@@ -46,18 +61,29 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
         TruncatePipe,
         ReactiveFormsModule,
         FormsModule,
+        StarRatingModule,
+        SliderModule,
+        Ng5SliderModule,
         ModalComponent,
         PriceFormatDirective,
         FileDragAndDropDirective,
         TableComponent,
-        MassFileUploaderComponent
+        MassFileUploaderComponent,
+        FileSelectionComponent,
+        ImageGalleryComponent,
+        FileUploadControlBarComponent
     ],
     entryComponents: [
         ModalComponent
     ],
     providers: [
         {provide: MAT_DATE_LOCALE, useValue: 'nl-NL'},
-
+        AllProductRatingsResolver,
+        AllProductCategoriesResolver,
+        StarRatingConfigService,
+        TradeInRequestResolver,
+        AllTradeInRequestsResolver,
+        UserTradeInRequestsResolver
     ]
 })
 export class SharedModule {

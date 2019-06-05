@@ -1,9 +1,7 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TradeInRequestJewelryTypeComponent } from './trade-in-request-jewelry-type.component';
+import {TradeInRequestJewelryTypeComponent} from './trade-in-request-jewelry-type.component';
 
 describe('TradeInRequestJewelryTypeComponent', () => {
   let component: TradeInRequestJewelryTypeComponent;

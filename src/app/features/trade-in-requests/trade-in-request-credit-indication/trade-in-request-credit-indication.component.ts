@@ -1,8 +1,8 @@
-import { CreditIndicationService } from './../../../shared/services/credit-indication/credit-indication.service';
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TradeInProcessService } from '../trade-in-process.service';
-import { CountUp } from 'countup.js';
+import {CreditIndicationService} from './../../../shared/services/credit-indication/credit-indication.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {TradeInProcessService} from '../trade-in-process.service';
+import {CountUp} from 'countup.js';
 
 @Component({
     selector: 'app-trade-in-request-credit-indication',

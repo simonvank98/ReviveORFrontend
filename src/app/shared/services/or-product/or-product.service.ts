@@ -1,15 +1,15 @@
-import { TempApiService } from 'src/app/shared/services/api/temp-api.service';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, filter, tap } from 'rxjs/operators';
-import { ORProduct } from './or-product.model';
+import {APIService} from 'src/app/shared/services/api/api.service';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {ORProduct} from './or-product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ORProductService {
 
-    constructor(private api: TempApiService) { }
+    constructor(private api: APIService) { }
 
     public getAll(): Observable<ORProduct[]> {
         return this.api.get<ORProduct[]>('orproducts');

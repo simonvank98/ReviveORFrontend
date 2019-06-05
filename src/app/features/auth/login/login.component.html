@@ -1,0 +1,19 @@
+<form (ngSubmit)="onSubmit()" class="mat-elevation-z3" #form="ngForm" id="form">
+    <mat-card-header>
+        <mat-card-title>Login with your Ocean Republic account</mat-card-title>
+    </mat-card-header>
+    <div *ngIf="showWarning">
+        <p>{{warning}}</p>
+    </div>
+    <mat-form-field>
+        <input matInput type="text" placeholder="E-mail address" [(ngModel)]="email" name="email" required ngModel [email]="true">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required ngModel minlength="4">
+    </mat-form-field>
+    <div class="button-wrapper">
+        <button mat-raised-button color="primary" class="mat-elevation-z3" [disabled]="!form.valid">Log in</button>
+    </div>
+    <a href="https://theoceanrepublic.com/password/remind" title="forgotten password?">Forgotten password? Click here.</a> <br>
+    <a routerLink="/register" [preserveQueryParams]="true" title="forgotten password?">Don't have an account? Click here.</a>
+</form>

@@ -27,14 +27,12 @@ export class TradeInRequestOverviewComponent implements OnInit {
 
     onNextClicked() {
         const tradeInRequest = this.createTradeInRequestModel();
-        console.log('tradeinrequest', tradeInRequest);
 
         this.tradeInProcessService.submitRequest(tradeInRequest).subscribe(() => {
             this.router.navigate(['/trade-in/complete']);
             this.tradeInProcessService.reset();
         }, (err) => {
             this.snackbarService.show('Something went wrong while sending your trade-in request. Please try again later!');
-            console.log('trade-in request error', err);
         });
     }
 

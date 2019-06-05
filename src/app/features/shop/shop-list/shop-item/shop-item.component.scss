@@ -3,13 +3,10 @@ img {
     height: 350px;
 }
 
-.mat-card {
-    width: 30%;
-    display: inline-block;
-    margin: 20px;
-    padding: 0;
-}
-
 .mat-card:hover {
     cursor: pointer;
+}
+
+.mat-card-footer {
+    margin: 0;
 }

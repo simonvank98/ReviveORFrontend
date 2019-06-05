@@ -1,3 +1,14 @@
-<p>
-  admin-products-overview works!
-</p>
+<div class="button-wrapper">
+    <button mat-raised-button color="primary">Add new product</button>
+</div>
+
+<app-table
+    [models]="products"
+    [headers]="headers"
+    [attributes]="attributes"
+    [formatters]="formatters"
+    [widths]="[15, 40, 30, 15]"
+    (clickEvent)="toEditRequest($event)">
+</app-table>
+
+<button mat-button class="addProductButton" (click)="toCreateRequest()">Add Product</button>

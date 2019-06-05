@@ -1,5 +1,5 @@
 import {ModalService} from '../../../shared/services/modal-service/modal.service';
-import {Component, EventEmitter, OnInit, Output, Input} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TradeInProcessService} from 'src/app/features/trade-in-requests/trade-in-process.service';
 import {Router} from '@angular/router';
 

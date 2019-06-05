@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AdminCreditIndicationsOverviewComponent } from './admin-credit-indications-overview.component';
+import {AdminCreditIndicationsOverviewComponent} from './admin-credit-indications-overview.component';
 
 describe('AdminCreditIndicationsOverviewComponent', () => {
   let component: AdminCreditIndicationsOverviewComponent;

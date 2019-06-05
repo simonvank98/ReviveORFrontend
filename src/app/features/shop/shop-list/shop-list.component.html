@@ -1,0 +1,46 @@
+<div class="optionWrapper">
+    <mat-label class="label">Jewelry category</mat-label>
+    <div class="jewelryCategoryWrapper">
+        <mat-button-toggle-group multiple (change)="filterCategory($event)">
+            <mat-button-toggle checked value="rings">Ring</mat-button-toggle>
+            <mat-button-toggle checked value="bracelets">Bracelet</mat-button-toggle>
+            <mat-button-toggle checked value="necklaces">Necklace</mat-button-toggle>
+            <mat-button-toggle checked value="earrings">Earrings</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <mat-label class="label">Material</mat-label>
+    <div class="jewelryMaterialWrapper">
+        <mat-button-toggle-group multiple (change)="filterMaterial($event)">
+            <mat-button-toggle checked value="gold">Gold</mat-button-toggle>
+            <mat-button-toggle checked value="silver">Silver</mat-button-toggle>
+            <mat-button-toggle checked value="other">Other</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div class="priceWrapper custom-slider">
+        <ng5-slider  [(value)]="value" [(highValue)]="highValue" [options]="priceOptions" (userChangeEnd)="filterPrice($event)"></ng5-slider>
+    </div>
+    <div class="ratingWrapper">
+        <star-rating starType="icon" rating="1" (starClickChange)="filterRating($event)"></star-rating>
+    </div>
+    <div class="sortWrapper">
+        <mat-select [(value)]="sortSelect" (selectionChange)="sortProducts($event)">
+            <mat-option value="newest">Newest</mat-option>
+            <mat-option value="oldest">Oldest</mat-option>
+            <mat-option value="highestPrice">Highest price</mat-option>
+            <mat-option value="lowestPrice">Lowest price</mat-option>
+        </mat-select>
+    </div>
+</div>
+
+<hr>
+
+<div class="emptyShop" *ngIf="displayedProducts.length === 0">
+    <p>No products found!</p>
+</div>
+
+<div class="shop-grid">
+    <app-shop-item *ngFor="let product of displayedProducts; let i = index"
+                   [product]="product"
+                   [index]="i">
+    </app-shop-item>
+</div>

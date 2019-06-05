@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TradeInProcessService} from '../trade-in-process.service';
 
 @Component({

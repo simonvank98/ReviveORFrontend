@@ -3,7 +3,6 @@ import {TradeInProcessContainer} from './trade-in-process-container.model';
 import {ORProduct} from 'src/app/shared/services/or-product/or-product.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {TradeInRequestModel} from '../../admin/features/trade-in-requests/models/trade-in-request.model';
 
 @Injectable({
     providedIn: 'root'
@@ -41,7 +40,6 @@ export class TradeInProcessService {
     }
 
     submitRequest(fullTradeInRequest) {
-        console.log(this.appendTradeInRequestModel(fullTradeInRequest));
         return this.http.post(`${environment.reviveORAPIUrl}tradeinrequests`, this.appendTradeInRequestModel(fullTradeInRequest));
     }
 
