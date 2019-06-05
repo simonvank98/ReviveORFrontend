@@ -15,5 +15,5 @@
         <button mat-raised-button color="primary" class="mat-elevation-z3" [disabled]="!form.valid">Log in</button>
     </div>
     <a href="https://theoceanrepublic.com/password/remind" title="forgotten password?">Forgotten password? Click here.</a> <br>
-    <a routerLink="/register" title="forgotten password?">Don't have an account? Click here.</a>
+    <a routerLink="/register" [preserveQueryParams]="true" title="forgotten password?">Don't have an account? Click here.</a>
 </form>
