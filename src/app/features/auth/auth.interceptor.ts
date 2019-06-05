@@ -1,10 +1,7 @@
 import {Injectable} from '@angular/core';
-import {
-    HttpEvent, HttpInterceptor, HttpHandler,
-    HttpRequest, HttpErrorResponse
-} from '@angular/common/http';
-import {throwError, Observable, BehaviorSubject, of} from 'rxjs';
-import {catchError, filter, take, switchMap, finalize} from 'rxjs/operators';
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
+import {catchError, filter, finalize, switchMap, take} from 'rxjs/operators';
 import {AuthenticationService} from '../../shared/services/auth/authentication.service';
 
 @Injectable()

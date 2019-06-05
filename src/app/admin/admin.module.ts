@@ -23,18 +23,19 @@ import {AdminProductCreateComponent} from './features/products/admin-product-cre
         DropdownModule,
         InputTextModule
     ],
-  declarations: [
-    AdminComponent,
-    AdminTradeInRequestOverviewComponent,
-    AdminProductsOverviewComponent,
-    AdminProductEditComponent,
-    AdminStoriesOverviewComponent,
-    AdminCreditIndicationsOverviewComponent,
-    AdminPermissionsOverviewComponent,
-    AdminSideNavigationComponent,
-    AdminTradeInRequestEditComponent,
-      AdminProductCreateComponent,
-  ],
-  providers: [],
+    declarations: [
+        AdminComponent,
+        AdminTradeInRequestOverviewComponent,
+        AdminProductsOverviewComponent,
+        AdminProductEditComponent,
+        AdminStoriesOverviewComponent,
+        AdminCreditIndicationsOverviewComponent,
+        AdminPermissionsOverviewComponent,
+        AdminSideNavigationComponent,
+        AdminTradeInRequestEditComponent,
+        AdminProductCreateComponent,
+    ],
+    providers: [],
 })
-export class AdminModule { }
+export class AdminModule {
+}

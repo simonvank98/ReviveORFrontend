@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AdminProductCreateComponent } from './admin-product-create.component';
+import {AdminProductCreateComponent} from './admin-product-create.component';
 
 describe('AdminProductCreateComponent', () => {
   let component: AdminProductCreateComponent;

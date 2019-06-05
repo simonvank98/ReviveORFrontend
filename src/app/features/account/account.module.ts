@@ -8,7 +8,7 @@ import {OrderHistoryEditComponent} from './features/order-history/order-history-
 import {TradeInHistoryOverviewComponent} from './features/trade-in-history/trade-in-history-overview/trade-in-history-overview.component';
 import {TradeInHistoryEditComponent} from './features/trade-in-history/trade-in-history-edit/trade-in-history-edit.component';
 import {AccountPageComponent} from './account-page.component';
-import { AccountInfoComponent } from './features/account-info/account-info/account-info.component';
+import {AccountInfoComponent} from './features/account-info/account-info/account-info.component';
 
 @NgModule({
     imports: [

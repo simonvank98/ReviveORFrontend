@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpHeaders, HttpParams} from '@angular/common/http';
 import {FileUploader} from './file-uploader';
 import {FileUploaderEvent} from './file-uploader.event';
@@ -71,8 +71,6 @@ export class MassFileUploaderComponent implements OnInit, FileUploader {
 
 
     onFileUploadSuccess(fileIndex, response) {
-/*        console.log('fileIndex: ', fileIndex);
-        console.log('response: ', response);*/
         if (this.removeUploadFromQueueOnSuccess) {
             this.removeFileFromQueue(fileIndex);
         }

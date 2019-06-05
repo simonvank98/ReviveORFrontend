@@ -23,8 +23,6 @@ export class JSONCasingInterceptor implements HttpInterceptor {
         return next.handle(req).pipe(map((event) => {
             if (event instanceof HttpResponse) {
                 if (event.headers.get('content-type').includes('application/json')) {
-/*                    console.log('raw body: ', event.body);
-                    console.log('camelized keys: ', humps.camelizeKeys(event.body));*/
                     event = event.clone({body: humps.camelizeKeys(event.body)});
                 }
             }

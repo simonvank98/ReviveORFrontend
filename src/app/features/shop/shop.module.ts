@@ -8,7 +8,7 @@ import {ShopProductDetailsComponent} from './shop-detail/shop-product-details.co
 import {ShopComponent} from './shop.component';
 import {ProductResolver} from './product.resolver';
 import {ShoppingCartComponent} from './cart/shopping-cart.component';
-import { ShoppingCartItemComponent } from './cart/shopping-cart-item/shopping-cart-item.component';
+import {ShoppingCartItemComponent} from './cart/shopping-cart-item/shopping-cart-item.component';
 
 @NgModule({
     imports: [

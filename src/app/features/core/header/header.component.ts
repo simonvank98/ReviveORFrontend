@@ -3,7 +3,6 @@ import {Subscription} from 'rxjs';
 import {ShoppingCartService} from '../../shop/cart/cart.service';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../../shared/services/auth/authentication.service';
-import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-header',

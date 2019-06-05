@@ -1,8 +1,7 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, Optional, Inject, forwardRef} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpEventType, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {HttpClient, HttpErrorResponse, HttpEventType, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Subscription} from 'rxjs';
 import {FileUploader} from '../mass-file-uploader/file-uploader';
-import {FileUploaderEvent} from '../mass-file-uploader/file-uploader.event';
 
 @Component({
     selector: 'app-file-upload-control-bar',

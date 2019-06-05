@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { CreditIndicationModifierService } from './credit-indication-modifier.service';
+import {CreditIndicationModifierService} from './credit-indication-modifier.service';
 
 describe('CreditIndicationModifierService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

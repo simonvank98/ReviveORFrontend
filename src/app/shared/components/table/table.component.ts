@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, AfterViewInit, ViewChild, Output, EventEmitter, ViewChildren, QueryList } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
-import * as moment from 'moment';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-table',

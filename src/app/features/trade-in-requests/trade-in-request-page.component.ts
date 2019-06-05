@@ -1,7 +1,7 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {TradeInProcessService} from './trade-in-process.service';
-import { RouterOutlet, Router } from '@angular/router';
-import { slideInAnimation } from 'src/app/app-routing-animations';
+import {Router, RouterOutlet} from '@angular/router';
+import {slideInAnimation} from 'src/app/app-routing-animations';
 
 @Component({
   selector: 'app-trade-in-request-page',

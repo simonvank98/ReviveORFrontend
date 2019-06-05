@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ProductModel} from './product.model';
 
 import {APIService} from '../api/api.service';

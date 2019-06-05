@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from 'selenium-webdriver/http';
-import { environment } from 'src/environments/environment';
-import { APIService } from '../api/api.service';
-import { Observable } from 'rxjs';
-import { UserModel } from './user.model';
+import {Injectable} from '@angular/core';
+import {APIService} from '../api/api.service';
+import {Observable} from 'rxjs';
+import {UserModel} from './user.model';
 
 @Injectable({
     providedIn: 'root'

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TradeInRequestFinalizationComponent } from './trade-in-request-finalization.component';
+import {TradeInRequestFinalizationComponent} from './trade-in-request-finalization.component';
 
 describe('TradeInRequestFinalizationComponent', () => {
   let component: TradeInRequestFinalizationComponent;

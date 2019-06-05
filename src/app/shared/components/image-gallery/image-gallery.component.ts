@@ -5,7 +5,7 @@ import {
     NgxGalleryComponent,
     NgxGalleryImage,
     NgxGalleryImageSize,
-    NgxGalleryOptions, NgxGalleryPreviewComponent
+    NgxGalleryOptions
 } from 'ngx-gallery';
 
 @Component({

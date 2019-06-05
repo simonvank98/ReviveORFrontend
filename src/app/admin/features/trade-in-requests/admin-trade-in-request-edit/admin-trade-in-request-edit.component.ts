@@ -57,7 +57,6 @@ export class AdminTradeInRequestEditComponent implements OnInit {
 
     onSubmit() {
         if (this.form.valid) {
-            console.log('message to customer', this.model.messageToCustomer);
             this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
                 if (confirmed) {
                     if (this.model.status === 'Approved for shipping') {

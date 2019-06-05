@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TradeInRequestOverviewComponent } from './trade-in-request-overview.component';
+import {TradeInRequestOverviewComponent} from './trade-in-request-overview.component';
 
 describe('TradeInRequestOverviewComponent', () => {
   let component: TradeInRequestOverviewComponent;
