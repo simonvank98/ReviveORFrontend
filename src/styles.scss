@@ -35,6 +35,11 @@ p {
     margin: 16px 0;
 }
 
+.rating {
+    display: flex;
+    justify-content: left;
+}
+
 .mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
     transform: none !important;
 }
@@ -150,6 +155,10 @@ p {
         padding-bottom: calc(100% / (var(--aspect-ratio)));
     }
 }
+star-rating .rating.color-negative .star-container .star i {
+    color: #2749b6 !important;
+}
+
 @media (max-width: 1000px) {
     .trade-in-grid {
         grid-template-columns: 1fr 1fr 1fr !important;

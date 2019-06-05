@@ -121,4 +121,8 @@ export class AdminProductEditComponent implements OnInit {
             this.displayedImages.push(image.url);
         }
     }
+
+    onRatingStarsClicked(event) {
+        this.product.ratingId = event.rating;
+    }
 }

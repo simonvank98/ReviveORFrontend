@@ -28,4 +28,5 @@ export class AdminProductsOverviewComponent implements OnInit {
     toCreateRequest() {
         this.router.navigate(['admin/products/create']);
     }
+
 }

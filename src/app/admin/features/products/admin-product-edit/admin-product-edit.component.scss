@@ -12,14 +12,20 @@
     float: left;
 }
 
+.categoryText {
+    text-transform: capitalize;
+}
+
 .statusFormfield {
     width: 150px;
     margin-left: 10px;
 }
 
-.materialFormfield {
+.materialFormfield, .propertyFormfield {
     width: 300px;
+    padding-left: 10px;
 }
+
 
 .priceBoxContainer {
     margin-top: 20px;
@@ -38,6 +44,16 @@
 
 .productImg {
     max-height: 300px;
+}
+
+.ratingWrapper {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.storyAcc {
+    display: block;
+    margin-bottom: 20px;
 }
 
 button {
@@ -68,5 +84,26 @@ img {
 }
 
 .priceBox {
-    width: 75px;
+    width: 300px;
+    margin-left: 5px;
 }
+
+input, textarea {
+    margin-bottom: 20px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.saveButton {
+    margin-left: 20px;
+    color: white;
+    background-color: #2749b6;
+}
+star-rating {
+    color: #2749b6;
+}
+

@@ -1,14 +1,14 @@
 <form #f="ngForm">
     <div class="grid-2">
         <div class="custom-inputs">
-            <label class="name">Name</label>
+            <mat-label class="label">Name</mat-label>
             <input name="productName" [(ngModel)]="product.name" [value]="product.name" required>
         </div>
 
         <div class="formfieldContainer">
             <mat-form-field class="categoryFormfield">
                 <mat-label>Category</mat-label>
-                <mat-select name="productCategory" [(ngModel)]="product.categoryId" [value]="product.categoryId"
+                <mat-select name="productCategory" class="categoryText" [(ngModel)]="product.categoryId" [value]="product.categoryId"
                             required>
                     <mat-option *ngFor="let category of productCategories" [value]="category.id">
                         {{ category.name }}
@@ -30,37 +30,53 @@
 
     <div class="grid-2">
         <div class="left">
-        <div class="custom-inputs">
-            <mat-label>Description</mat-label>
-            <textarea class="descriptionBox" id="description" name="productDescription"
-                      [(ngModel)]="product.description" [value]="product.description" required></textarea>
-        </div>
+            <div class="custom-inputs">
+                <mat-label class="label">Description</mat-label>
+                <textarea class="descriptionBox" id="description" name="productDescription"
+                          [(ngModel)]="product.description" [value]="product.description" required></textarea>
+            </div>
 
-        <div class="formfieldContainer">
-            <mat-form-field class="materialFormfield">
-                <mat-label>Material</mat-label>
-                <!--<mat-select name="productMaterial" [(ngModel)]="product.material" [value]="product.material" required>-->
-                <mat-select name="material">
-                    <mat-option value="goldPlated">Gold Plated</mat-option>
-                    <mat-option value="silver">Silver</mat-option>
-                    <mat-option value="other">Other</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+            <div class="formfieldContainerBottom">
+                <mat-form-field class="materialFormfield">
+                    <mat-label>Material</mat-label>
+                    <mat-select name="productMaterial" [(ngModel)]="product.material" [value]="product.material"
+                                required>
+                        <mat-option value="goldPlated">Gold Plated</mat-option>
+                        <mat-option value="silver">Silver</mat-option>
+                        <mat-option value="other">Other</mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-        <div class="custom-inputs">
-            <div class="priceBoxContainer">
-                <mat-label>Price (in €)</mat-label>
-                <div class="priceBox">
-                    <input name="productPrice" [(ngModel)]="product.price" [value]="product.price" required>
+                <mat-form-field class="propertyFormfield">
+                    <mat-label>Property</mat-label>
+                    <mat-select name="productProperty" [(ngModel)]="product.property" [value]="product.property"
+                                required>
+                        <mat-option value="small">S</mat-option>
+                        <mat-option value="medium">M</mat-option>
+                        <mat-option value="large">L</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="custom-inputs">
+                <div class="priceBoxContainer">
+                    <mat-label class="label">Price (in €)</mat-label>
+                    <div class="priceBox">
+                        <input name="productPrice" [(ngModel)]="product.price" [value]="product.price" required>
+                    </div>
                 </div>
             </div>
+
+            <div class="ratingWrapper">
+                <mat-label class="label">Rating</mat-label>
+                <star-rating starType="icon" staticColor="negative" [rating]="product.ratingId"
+                             (starClickChange)="onRatingStarsClicked($event)"></star-rating>
+            </div>
         </div>
-    </div>
 
         <div class="right">
             <div class="imageContainer">
-                <mat-label>Images</mat-label>
+                <mat-label class="label">Images</mat-label>
                 <app-image-gallery [imageURLs]="displayedImages"
                                    [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
                                    [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
@@ -78,12 +94,9 @@
         </div>
     </div>
 
-    <div class="ratingWrapper">
-        <star-rating starType="icon" rating="1"></star-rating>
-    </div>
 
     <div class="custom-inputs">
-        <mat-accordion>
+        <mat-accordion class="storyAcc">
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
