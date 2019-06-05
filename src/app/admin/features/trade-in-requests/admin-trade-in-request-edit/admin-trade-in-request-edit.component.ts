@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TradeInRequestModel} from '../models/trade-in-request.model';
+import {TradeInRequestModel} from '../../../../shared/services/trade-in/models/trade-in-request.model';
 import {ORProductService} from '../../../../shared/services/or-product/or-product.service';
 import {ORProduct} from '../../../../shared/services/or-product/or-product.model';
 import {NgForm} from '@angular/forms';
-import {AdminTradeInRequestService} from '../admin-trade-in-request.service';
+import {TradeInRequestService} from '../../../../shared/services/trade-in/trade-in-request.service';
 import {SnackbarService} from '../../../../shared/services/snackbar/snackbar.service';
 import {ModalService} from '../../../../shared/services/modal-service/modal.service';
 
@@ -19,17 +19,19 @@ export class AdminTradeInRequestEditComponent implements OnInit {
     orProducts: ORProduct[];
     properties: any[];
     @ViewChild('f') form: NgForm;
+    buttonText = '';
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
                 private orProductService: ORProductService,
-                private adminTradeInRequestService: AdminTradeInRequestService,
+                private adminTradeInRequestService: TradeInRequestService,
                 private snackbarService: SnackbarService,
                 private modalService: ModalService) {
     }
 
     ngOnInit() {
         this.model = this.route.snapshot.data['request'];
+        this.model.messageToCustomer = '';
         this.orProductService.getAll().subscribe((data: ORProduct[]) => {
             this.orProducts = data;
             this.orProducts.forEach(orProduct => {
@@ -38,6 +40,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
                 }
             });
         });
+        this.checkButtons();
     }
 
     back() {
@@ -54,6 +57,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
 
     onSubmit() {
         if (this.form.valid) {
+            console.log('message to customer', this.model.messageToCustomer);
             this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
                 if (confirmed) {
                     if (this.model.status === 'Approved for shipping') {
@@ -62,13 +66,15 @@ export class AdminTradeInRequestEditComponent implements OnInit {
                     if (this.model.status === 'Awaiting shipping approval') {
                         this.model.status = 'Approved for shipping';
                     }
-                    if (this.model.status === 'New') {
-                        this.model.status = 'Awaiting shipping approval';
-                    }
 
                     this.adminTradeInRequestService.put(this.model).subscribe((res) => {
                         this.router.navigate(['/admin/trade-in']);
-                        this.snackbarService.show('Request approved');
+                        if (this.model.status === 'Approved for shipping') {
+                            this.snackbarService.show('Request approved');
+                        }
+                        if (this.model.status === 'Complete') {
+                            this.snackbarService.show('Trade-in completed');
+                        }
                     }, (err) => {
                         this.snackbarService.show('Something went wrong while approving the request');
                     });
@@ -89,5 +95,14 @@ export class AdminTradeInRequestEditComponent implements OnInit {
                 });
             }
         });
+    }
+
+    checkButtons() {
+        if (this.model.status === 'Awaiting shipping approval') {
+            this.buttonText = 'Approve for shipping';
+        }
+        if (this.model.status === 'Approved for shipping') {
+            this.buttonText = 'Complete trade-in' ;
+        }
     }
 }

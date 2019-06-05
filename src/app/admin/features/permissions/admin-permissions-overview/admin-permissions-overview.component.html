@@ -1,23 +1,40 @@
-<div class="grid">
-    <form class="example-form" *ngIf="usersLoaded">
+<form class="grid" #f="ngForm">
+    <div class="user-form" *ngIf="usersLoaded">
         <mat-form-field class="example-full-width">
-            <input type="text" placeholder="User" aria-label="User" matInput [formControl]="userFormControl" [matAutocomplete]="auto">
-            <mat-autocomplete (optionSelected)="onUserChanged($event)" #auto="matAutocomplete" [displayWith]="displayFn">
+            <input 
+                type="text" 
+                (click)="$event.target.select()" 
+                id="userSelection" 
+                [(ngModel)]="selectedUser" 
+                placeholder="User" 
+                aria-label="User" 
+                matInput 
+                [formControl]="userFormControl" 
+                [matAutocomplete]="auto" 
+                required>
+            <mat-icon class="clear-input" (click)="onClearInputClicked()">close</mat-icon>
+            <mat-autocomplete required (optionSelected)="onUserChanged($event)" #auto="matAutocomplete" [displayWith]="displayFn">
                 <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
                     {{ user.email }}
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-    </form>
-    <form class="example-form" *ngIf="usersLoaded">
+        
+    </div>
+    <div class="roles-form" *ngIf="usersLoaded">
         <mat-form-field>
-            <mat-select (selectionChange)="onRolesChanged($event)" placeholder="Roles" [formControl]="roleFormControl" multiple>
+            <mat-select 
+                [compareWith]="compareSelection" 
+                (selectionChange)="onRolesChanged($event)" 
+                [(ngModel)]="selectedRole"
+                placeholder="Roles" 
+                [formControl]="roleFormControl">
                 <mat-option *ngFor="let role of roles" [value]="role"> 
                     {{role.name}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-    </form>
-</div>
+    </div>
+</form>
 
 <button mat-button [color]="primary" class="save-button mat-elevation-z3" (click)="onSaveClicked()">Save</button>

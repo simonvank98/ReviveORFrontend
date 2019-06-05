@@ -15,12 +15,12 @@ export const NonRequiredPasswordValidation = [
 
 export class RepeatPasswordErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return (control && control.parent.get('password').value !== control.parent.get('confirmPassword').value && control.dirty);
+    return (control && control.parent.get('password').value !== control.parent.get('passwordConfirmation').value && control.dirty);
   }
 }
 export function RepeatPasswordValidator(group: FormGroup) {
   const password = group.controls.password.value;
-  const passwordConfirmation = group.controls.confirmPassword.value;
+  const passwordConfirmation = group.controls.passwordConfirmation.value;
 
   return password === passwordConfirmation ? null : { passwordsNotEqual: true };
 }

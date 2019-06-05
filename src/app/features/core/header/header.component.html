@@ -15,11 +15,11 @@
         </a>
         <div class="account">
             <mat-menu #accountMenu="matMenu" class="account-dropdown">
-                <ng-container *ngIf="true; then loggedIn; else loggedOut"></ng-container>
+                <ng-container *ngIf="authenticationService.loggedIn; then loggedIn; else loggedOut"></ng-container>
                 
                 <ng-template #loggedIn>
-                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/me', 'edit']">Account info</button>
-                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/admin']" *ngIf="true">Admin dashboard</button>
+                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/account']">Account dashboard</button>
+                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/admin']" *ngIf="authenticationService.permissionLevel > 0">Admin dashboard</button>
                     <button mat-menu-item (click)="navOpen = false" [routerLink]="['/logout']">Logout</button>
                 </ng-template>
                 
@@ -32,8 +32,8 @@
             
             <button [matMenuTriggerFor]="accountMenu">
                 <mat-icon>account_circle</mat-icon>
-                {{ "Sophie" !== null ?
-                "Sophie" + "'s" : 'Mijn' }} account
+                {{ authenticationService.loggedIn ?
+                user + "'s" : 'My' }} account
                 <mat-icon>arrow_drop_down</mat-icon>
             </button>
         </div>

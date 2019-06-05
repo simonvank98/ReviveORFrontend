@@ -1,7 +1,8 @@
 <app-table
-  [models]="models"
-  [headers]="headers"
-  [attributes]="attributes"
-  [widths]="[15, 15, 20, 10, 40]"
-  (clickEvent)="toEditRequest($event)">
+    [formatters]="formatters"
+    [models]="models"
+    [headers]="headers"
+    [attributes]="attributes"
+    [widths]="[15, 25, 30, 15, 15]"
+    (clickEvent)="toEditRequest($event)">
 </app-table>

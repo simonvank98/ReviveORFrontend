@@ -1,6 +1,6 @@
 import {TradeInRequestJewelryConditionModel} from './trade-in-request-jewelry-condition.model';
 import {TradeInRequestImageModel} from './trade-in-request-image.model';
-import {UserModel} from '../../../../shared/services/user/user.model';
+import {UserModel} from '../../user/user.model';
 
 export interface TradeInRequestModel {
     id: number;
@@ -14,6 +14,7 @@ export interface TradeInRequestModel {
     storyContent: string;
     images: TradeInRequestImageModel[];
     jewelryCondition: TradeInRequestJewelryConditionModel;
+    messageToCustomer?: string;
     createdAt?: Date;
     updatedAt?: Date;
     user?: UserModel;

@@ -44,6 +44,14 @@ p {
     transform: none !important;
 }
 
+
+.ng5-slider  {
+    .ng5-slider-selection, .ng5-slider-pointer, .ng5-slider-active:focus + .ng5-slider-active:after {
+        background-color: #303030 !important;
+    }
+}
+
+
 .cdk-overlay-container {
     z-index: 10000;
 }

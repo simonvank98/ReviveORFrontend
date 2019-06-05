@@ -1,0 +1,142 @@
+<form [formGroup]="userForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Register a new Ocean Republic account</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="First name" formControlName="firstname" autocomplete="name">
+                        <mat-error *ngIf="userForm.controls['firstname'].hasError('required')">
+                            First name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Last name" formControlName="lastname">
+                        <mat-error *ngIf="userForm.controls['lastname'].hasError('required')">
+                            Last name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Email address" type="email" formControlName="email"
+                               autocomplete="email">
+                        <mat-error *ngIf="userForm.controls['email'].hasError('required')">
+                            Email address is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userForm.controls['email'].hasError('email')">
+                            This is not a valid email address
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput type="password" placeholder="Password" autocomplete="current-password"
+                               formControlName="password" required>
+                        <mat-error *ngIf="userForm.controls['password'].hasError('required')">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userForm.controls['password'].hasError('minlength')">
+                            Password must have at least six characters
+                        </mat-error>
+                        <mat-error *ngIf="userForm.controls['password'].hasError('maxlength')">
+                            Password length may not exceed 254 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput type="password" autocomplete="off" placeholder="Password confirmation"
+                               formControlName="passwordConfirmation" [errorStateMatcher]="formMatcher">
+                        <mat-error *ngIf="userForm.hasError('passwordsNotEqual')">
+                            The provided passwords do not match
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Address line 1" formControlName="address1"
+                               autocomplete="address-line1">
+                        <mat-error *ngIf="userForm.controls['address1'].hasError('required')">
+                            Address line 1 is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Address line 2 (optional)" formControlName="address2"
+                               autocomplete="address-line2">
+                        <mat-error *ngIf="userForm.controls['address2'].hasError('required')">
+                            Address line 2 is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Zipcode" formControlName="zipcode" autocomplete="postal-code">
+                        <mat-error *ngIf="userForm.controls['zipcode'].hasError('required')">
+                            Zipcode is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="City" formControlName="city" autocomplete="city">
+                        <mat-error *ngIf="userForm.controls['city'].hasError('required')">
+                            City is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Country" formControlName="country" autocomplete="country">
+                        <mat-error *ngIf="userForm.controls['country'].hasError('required')">
+                            Country is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Province" formControlName="province" autocomplete="address-level1">
+                        <mat-error *ngIf="userForm.controls['province'].hasError('required')">
+                            Province is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <a routerLink="/login">Already have an account? Click here.</a>
+            <div class="align-right">
+                <button class="align-right" mat-raised-button color="primary" type="submit"
+                        [disabled]="!userForm.valid">
+                    Register
+                </button>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+</form>
