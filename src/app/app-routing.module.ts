@@ -71,12 +71,11 @@ const routes: Routes = [
       {path: '', redirectTo: '/admin/trade-in', pathMatch: 'full'},
       {path: 'products', component: AdminProductsOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2}, resolve: {products: AllProductsResolver}},
       {
-          path: 'products/edit/:id', component: AdminProductEditComponent,
+          path: 'products/edit/:id', component: AdminProductEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2},
           resolve: {
             product: ProductResolver,
             productCategories: AllProductCategoriesResolver,
             productRatings: AllProductRatingsResolver,
-            canActivate: [PermissionGuard], data: { permissionLevel:  2}
       }},
       { path: 'stories', component: AdminStoriesOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2} },
       { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { requests: AllTradeInRequestsResolver }},

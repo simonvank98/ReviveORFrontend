@@ -31,6 +31,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
 
     ngOnInit() {
         this.model = this.route.snapshot.data['request'];
+        this.model.messageToCustomer = '';
         this.orProductService.getAll().subscribe((data: ORProduct[]) => {
             this.orProducts = data;
             this.orProducts.forEach(orProduct => {
@@ -56,6 +57,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
 
     onSubmit() {
         if (this.form.valid) {
+            console.log('message to customer', this.model.messageToCustomer);
             this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
                 if (confirmed) {
                     if (this.model.status === 'Approved for shipping') {

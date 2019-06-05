@@ -14,6 +14,7 @@ export interface TradeInRequestModel {
     storyContent: string;
     images: TradeInRequestImageModel[];
     jewelryCondition: TradeInRequestJewelryConditionModel;
+    messageToCustomer?: string;
     createdAt?: Date;
     updatedAt?: Date;
     user?: UserModel;

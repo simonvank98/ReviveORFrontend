@@ -72,15 +72,15 @@
             <div class="noteBorder">
                 <mat-card-content><p>{{ model.additionalNotes }}</p></mat-card-content>
             </div>
-            <mat-label>Notes for customer</mat-label>
-            <textarea cols="30" rows="10" ></textarea>
+            <mat-label>Message to customer</mat-label>
+            <textarea cols="30" rows="10" name="messageToCustomer" [(ngModel)]="model.messageToCustomer" ></textarea>
         </div>
     </div>
 
     <div class="storyWrapper">
         <mat-label>Story: {{ model.storyTitle }}</mat-label>
         <div class="story">
-            <textarea   cols="30" rows="10"  name="storyContent" [(ngModel)]="model.storyContent" id="storyContent" >{{ model.storyContent }}</textarea>
+            <textarea cols="30" rows="10"  name="storyContent" [(ngModel)]="model.storyContent" id="storyContent" >{{ model.storyContent }}</textarea>
         </div>
     </div>
 
