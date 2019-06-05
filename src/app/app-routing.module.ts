@@ -37,9 +37,7 @@ import {RegisterComponent} from './features/auth/register/register.component';
 import {PermissionGuard} from './features/auth/permission.guard';
 import {AccountInfoComponent} from './features/account/features/account-info/account-info/account-info.component';
 import {OrderHistoryOverviewComponent} from './features/account/features/order-history/order-history-overview/order-history-overview.component';
-import {OrderHistoryEditComponent} from './features/account/features/order-history/order-history-edit/order-history-edit.component';
 import {TradeInHistoryOverviewComponent} from './features/account/features/trade-in-history/trade-in-history-overview/trade-in-history-overview.component';
-import {TradeInHistoryEditComponent} from './features/account/features/trade-in-history/trade-in-history-edit/trade-in-history-edit.component';
 import {UserTradeInRequestsResolver} from './shared/services/trade-in/resolvers/user-trade-in-requests.resolver';
 import {LoginGuard} from './features/auth/login.guard';
 import {AdminProductCreateComponent} from './admin/features/products/admin-product-create/admin-product-create.component';
@@ -90,7 +88,7 @@ const routes: Routes = [
               productCategories: AllProductCategoriesResolver,
               productRatings: AllProductRatingsResolver,
           }
-      },{
+      }, {
             path: 'products/create', component: AdminProductCreateComponent,
             resolve: {
                 productCategories: AllProductCategoriesResolver,
