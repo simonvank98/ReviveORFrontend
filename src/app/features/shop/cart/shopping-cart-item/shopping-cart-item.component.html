@@ -8,7 +8,10 @@
     <a class="product-description" [routerLink]="['/shop', 'product', cartItem.product.id]">
         <p>Item: {{ cartItem.product.name }}</p>
         <p>ID: #{{ cartItem.product.id }}</p>
-        <p>Rating: {{ cartItem.product.rating.name}} stars</p>
+        <div class="product-rating">
+            <span>Condition:</span>
+            <star-rating [readOnly]="true" starType="icon" staticColor="negative" [rating]="cartItem.product.rating.id"></star-rating>
+        </div>
     </a>
 
     <div>

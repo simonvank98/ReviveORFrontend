@@ -15,6 +15,7 @@ export interface TradeInRequestModel {
     images: TradeInRequestImageModel[];
     jewelryCondition: TradeInRequestJewelryConditionModel;
     messageToCustomer?: string;
+    finalCredit?: number;
     createdAt?: Date;
     updatedAt?: Date;
     user?: UserModel;

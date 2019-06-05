@@ -25,10 +25,12 @@ import {StarRatingConfigService, StarRatingModule} from 'angular-star-rating';
 import {TradeInRequestResolver} from './services/trade-in/resolvers/trade-in-request.resolver';
 import {AllTradeInRequestsResolver} from './services/trade-in/resolvers/all-trade-in-requests.resolver';
 import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-trade-in-requests.resolver';
+import {YesnoPipe} from './pipes/yesno.pipe';
 
 @NgModule({
     declarations: [
         SafePipe,
+        YesnoPipe,
         PriceFormatDirective,
         FileDragAndDropDirective,
         ModalComponent,
@@ -59,6 +61,7 @@ import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-tr
         AppRoutingModule,
         SafePipe,
         TruncatePipe,
+        YesnoPipe,
         ReactiveFormsModule,
         FormsModule,
         StarRatingModule,

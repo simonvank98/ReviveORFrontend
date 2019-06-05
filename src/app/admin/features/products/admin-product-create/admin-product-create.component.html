@@ -8,7 +8,8 @@
         <div class="formfieldContainer">
             <mat-form-field class="categoryFormfield">
                 <mat-label>Category</mat-label>
-                <mat-select name="productCategory" class="categoryText" [(ngModel)]="product.categoryId" [value]="product.categoryId"
+                <mat-select name="productCategory" class="categoryText" [(ngModel)]="product.categoryId"
+                            [value]="product.categoryId"
                             required>
                     <mat-option *ngFor="let category of productCategories" [value]="category.id">
                         {{ category.name }}
@@ -77,18 +78,20 @@
         <div class="right">
             <div class="imageContainer">
                 <mat-label class="label">Images</mat-label>
-                <app-image-gallery [imageURLs]="displayedImages"
-                                   [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
-                                   [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
-                </app-image-gallery>
-                <app-file-upload-control-bar
-                    *ngIf="imageFile"
-                    [file]="imageFile"
-                    [httpUrl]="imageAPIUrl"
-                    (uploadCancelled)="onImageUploadCancelled()"
-                    (uploadErrors)="onImageUploadError($event)"
-                    (uploadSuccess)="onImageUploadSuccess($event)">
-                </app-file-upload-control-bar>
+                <ng-container *ngIf="product.images.length > 0">
+                    <app-image-gallery [imageURLs]="displayedImages"
+                                       [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
+                                       [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
+                    </app-image-gallery>
+                </ng-container>
+                    <app-file-upload-control-bar
+                        *ngIf="imageFile"
+                        [file]="imageFile"
+                        [httpUrl]="imageAPIUrl"
+                        (uploadCancelled)="onImageUploadCancelled()"
+                        (uploadErrors)="onImageUploadError($event)"
+                        (uploadSuccess)="onImageUploadSuccess($event)">
+                    </app-file-upload-control-bar>
                 <app-file-selection (filesSelected)="onFileSelected($event)"></app-file-selection>
             </div>
         </div>

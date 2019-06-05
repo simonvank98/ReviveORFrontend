@@ -1,5 +1,5 @@
 <div class="button-wrapper">
-    <button mat-raised-button color="primary">Add new product</button>
+    <button mat-raised-button color="primary" (click)="toCreateRequest()">Add new product</button>
 </div>
 
 <app-table
@@ -10,5 +10,3 @@
     [widths]="[15, 40, 30, 15]"
     (clickEvent)="toEditRequest($event)">
 </app-table>
-
-<button mat-button class="addProductButton" (click)="toCreateRequest()">Add Product</button>

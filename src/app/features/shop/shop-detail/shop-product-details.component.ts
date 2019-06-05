@@ -14,6 +14,7 @@ import {SnackbarService} from '../../../shared/services/snackbar/snackbar.servic
 export class ShopProductDetailsComponent implements OnInit {
 
     product: ProductModel;
+    displayedImages: string[];
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -25,6 +26,7 @@ export class ShopProductDetailsComponent implements OnInit {
 
     ngOnInit() {
         this.product = this.route.snapshot.data.product;
+        this.displayedImages = this.product.images.map(image => image.url);
     }
 
 

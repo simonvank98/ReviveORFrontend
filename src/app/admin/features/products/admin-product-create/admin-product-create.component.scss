@@ -75,7 +75,7 @@ img {
 }
 
 .imageContainer {
-    max-width: 300px;
+    /*max-width: 300px;*/
     margin-left: 20px;
 }
 
@@ -90,6 +90,7 @@ img {
 
 input, textarea {
     margin-bottom: 20px;
+    resize: vertical;
 }
 
 .label {

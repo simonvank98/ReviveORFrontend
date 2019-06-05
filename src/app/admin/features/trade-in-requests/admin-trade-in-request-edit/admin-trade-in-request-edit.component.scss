@@ -1,61 +1,80 @@
 .grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-.right {
-  text-align: right;
+.left, .right {
+    padding-bottom: 30px;
 }
 
 mat-form-field {
-  display: block;
+    display: block;
 }
 
-.imageDiv {
-  display: inline-block;
+.gallery {
+    width: 400px;
 }
 
-img {
-  width: 200px;
+.notesFromCustomer {
+    border: 1px rgba(0, 0, 0, 0.42) solid;
+    margin-bottom: 20px;
+
+    p {
+        margin: 8px 2px;
+    }
 }
 
-.noteBorder {
-  border: 1px black solid;
-}
+/*
 
 .story {
-  border: 1px black solid;
+  border: 1px #303030 solid;
   height: 100%;
 }
+*/
 
 .indicationFormfield {
-  max-width: 100px;
-  margin: 0 auto;
+    max-width: 100px;
+    margin: 0 auto;
 }
 
 .indicationWrapper label {
-  width: 100%;
-  display: block;
-  text-align: center;
+    width: 100%;
+    display: block;
+    text-align: center;
 }
 
 .buttonWrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 button {
-  background-color: #ccc;
+    background-color: #ccc;
 }
 
 .buttonLeft {
-  text-align: left;
+    text-align: left;
 }
 
 .buttonRight {
-  text-align: right;
+    text-align: right;
+    button {
+        margin-left: 10px;
+    }
 }
 
 textarea {
     width: 100%;
+    resize: vertical;
+}
+
+
+.storyAcc {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.confirmButton {
+    color: white;
+    background-color: #2749b6;
 }

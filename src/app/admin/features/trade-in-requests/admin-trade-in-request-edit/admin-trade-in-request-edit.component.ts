@@ -20,6 +20,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
     properties: any[];
     @ViewChild('f') form: NgForm;
     buttonText = '';
+    displayedImages: string[];
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -32,6 +33,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
     ngOnInit() {
         this.model = this.route.snapshot.data['request'];
         this.model.messageToCustomer = '';
+        this.displayedImages = this.model.images.map(image => image.url);
         this.orProductService.getAll().subscribe((data: ORProduct[]) => {
             this.orProducts = data;
             this.orProducts.forEach(orProduct => {
@@ -40,7 +42,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
                 }
             });
         });
-        this.checkButtons();
+        this.formatButtonsText();
     }
 
     back() {
@@ -57,7 +59,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
 
     onSubmit() {
         if (this.form.valid) {
-            this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
+            this.modalService.confirm('Are you sure you wish to approve this trade-in request for the next phase? This action can not be undone.').subscribe((confirmed) => {
                 if (confirmed) {
                     if (this.model.status === 'Approved for shipping') {
                         this.model.status = 'Complete';
@@ -85,7 +87,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
     }
 
     onDeny() {
-        this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
+        this.modalService.confirm('Are you sure you wish to cancel this trade-in request? This action can not be undone.').subscribe((confirmed) => {
             if (confirmed) {
                 this.model.status = 'Denied';
                 this.adminTradeInRequestService.put(this.model).subscribe((res) => {
@@ -96,7 +98,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
         });
     }
 
-    checkButtons() {
+    private formatButtonsText() {
         if (this.model.status === 'Awaiting shipping approval') {
             this.buttonText = 'Approve for shipping';
         }

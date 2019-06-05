@@ -4,20 +4,19 @@
     grid-gap: 10%;
 }
 
-.right {
-    text-align: right;
-}
-
-img {
-    width: 400px;
-    height: 400px;
-}
-
 .storyWrapper {
-    border: 1px black solid;
+    border: 1px rgba(0, 0, 0, 0.42) solid;
+    margin-bottom: 20px;
+
+    p {
+        margin: 8px 4px;
+    }
 }
 
-.imageDiv img {
-    width: 200px;
-    height: 200px;
+.gallery {
+    width: 400px;
 }
+
+.right {
+}
+

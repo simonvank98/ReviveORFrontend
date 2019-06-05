@@ -1,12 +1,27 @@
 <button class="mat-raised-button" routerLink="/shop">Back</button>
+<br/>
 
 <div class="grid">
-    <div class="left-wrapper">
-        <div class="product-images">
-            <img [src]="product.images[0].url" alt="">
+    <div>
+        <div class="gallery">
+            <app-image-gallery [imageURLs]="displayedImages"></app-image-gallery>
         </div>
         <br/>
         <br/>
+
+        <!--Uncomment this block when stories are implemented-->
+        <!--        <ng-container *ngIf="product.story?.storyTitle !== null && product.story?.storyContent !== null">
+                    <mat-label><h3>The unique story of this piece</h3></mat-label>
+                    <div class="storyWrapper">
+                        <mat-card-content>
+                            <p><b>{{ product.story?.storyTitle}}</b></p>
+                            <p><i>{{ product.story?.author}}</i></p>
+                            <hr>
+                            <p>{{ product.story?.storyContent}}</p>
+                        </mat-card-content>
+                    </div>
+                </ng-container>-->
+
         <mat-label><h3>The unique story of this piece</h3></mat-label>
         <div class="storyWrapper">
             <mat-card-content>
@@ -14,7 +29,8 @@
                 <p><i>Story author</i></p>
                 <hr>
                 <p>
-                    I've had this piece for two years now. I worn it during my honeymoon to Venice. After my honeymoon it
+                    I've had this piece for two years now. I worn it during my honeymoon to Venice. After my
+                    honeymoon it
                     just stayed in my jewelry box.
                     I hope I can make someone else happy with this amazing piece!
                 </p>
@@ -22,11 +38,16 @@
         </div>
     </div>
 
-    <div class="right-wrapper">
+    <div class="right">
         <div class="product-info">
             <mat-card-title><h2>{{ product.name }}</h2></mat-card-title>
             <mat-card-subtitle>
-                <p>Rating: {{ product.rating.name }} stars</p>
+                <div class="product-rating">
+                    <p>Condition
+                    <star-rating [readOnly]="true" starType="icon" staticColor="negative" [rating]="product.rating.id"></star-rating>
+                    </p>
+                </div>
+
                 <h4>€ {{ product.price }}</h4>
             </mat-card-subtitle>
             <br/>
@@ -36,16 +57,8 @@
         </div>
         <br/>
         <br/>
-        <button mat-button color="primary" (click)="onAddToShoppingCartButtonClicked()" class="mat-raised-button full-width">Add to shopping cart</button>
-        <br/>
-        <br/>
-        <br/>
-        <div class="same-model-wrapper">
-            <mat-label><h3>Same model, different story</h3></mat-label>
-            <hr>
-            <div class="imageDiv" *ngFor="let image of product.images">
-                <img [src]="image.url" alt="">
-            </div>
-        </div>
+        <button mat-button color="primary" (click)="onAddToShoppingCartButtonClicked()"
+                class="mat-raised-button full-width">Add to shopping cart
+        </button>
     </div>
 </div>
