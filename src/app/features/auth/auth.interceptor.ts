@@ -49,7 +49,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     private addAuthenticationToken(request: HttpRequest<any>): HttpRequest<any> {
-        if (!this.authenticationService.token) {
+        if (!localStorage.getItem('access_token')) {
             return request;
         }
         // TODO
@@ -58,7 +58,7 @@ export class AuthInterceptor implements HttpInterceptor {
           return request;
         }*/
         return request.clone({
-            headers: request.headers.set(this.AUTH_HEADER, 'Bearer ' + this.authenticationService.token),
+            headers: request.headers.set(this.AUTH_HEADER, 'Bearer ' + localStorage.getItem('access_token')),
         });
     }
 }
