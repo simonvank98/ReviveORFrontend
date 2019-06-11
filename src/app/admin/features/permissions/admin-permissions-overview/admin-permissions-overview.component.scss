@@ -3,8 +3,8 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
 }
-.save-button {
-    float: right;
+.buttons {
+    text-align: right;
 }
 .user-form {
     position: relative;
@@ -16,8 +16,22 @@
         cursor: pointer;
     }
 }
+.role-descriptions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 15px;
+}
 @media (max-width: 800px) {
     .grid {
+        grid-template-columns: 1fr;
+    }
+    .role-descriptions {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+}
+@media (max-width: 450px) {
+    .role-descriptions {
         grid-template-columns: 1fr;
     }
 }
