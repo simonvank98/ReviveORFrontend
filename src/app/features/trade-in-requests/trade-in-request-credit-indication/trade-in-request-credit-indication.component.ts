@@ -21,7 +21,7 @@ export class TradeInRequestCreditIndicationComponent implements OnInit {
 
     private countUpOptions = { decimalPlaces: 2, duration: 1.5, decimal: ',', separator: '.' };
 
-    constructor(private tradeInProcessService: TradeInProcessService,
+    constructor(public tradeInProcessService: TradeInProcessService,
                 private creditIndicationService: CreditIndicationService,
                 private router: Router) { }
 
