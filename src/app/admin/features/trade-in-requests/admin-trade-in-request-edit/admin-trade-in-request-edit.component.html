@@ -23,7 +23,7 @@
                 <mat-select name="jewelryName" [(ngModel)]="model.jewelryName" [value]="model.jewelryName"
                             (selectionChange)="onORProductSelected($event)" required>
                     <mat-option *ngFor="let orProduct of orProducts" [value]="orProduct.name">
-                        {{ orProduct.name }}
+                        {{ orProduct.name | titlecase }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
