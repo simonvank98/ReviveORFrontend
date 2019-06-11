@@ -41,13 +41,14 @@ import {TradeInHistoryOverviewComponent} from './features/account/features/trade
 import {UserTradeInRequestsResolver} from './shared/services/trade-in/resolvers/user-trade-in-requests.resolver';
 import {LoginGuard} from './features/auth/login.guard';
 import {AdminProductCreateComponent} from './admin/features/products/admin-product-create/admin-product-create.component';
+import {AvailableProductsResolver} from './features/shop/available-products.resolver';
 
 const routes: Routes = [
 
   { path: '', component: HomeComponent },
   { path: 'shop',
       component: ShopComponent,
-      resolve: { products: AllProductsResolver },
+      resolve: { products: AvailableProductsResolver },
       children: [
         { path: '', component: ShopListComponent },
         { path: 'product/:id', component: ShopProductDetailsComponent, resolve: { product: ProductResolver }},
