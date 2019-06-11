@@ -1,7 +1,7 @@
 import {ProductImageModel} from './product-image.model';
 import {ProductCategoryModel} from './product-category.model';
 import {ProductRatingModel} from './product-rating.model';
-import {StoryModel} from '../../../admin/features/stories/models/story.model';
+import {StoryModel} from '../stories/story.model';
 
 export interface ProductModel {
     id: number;
