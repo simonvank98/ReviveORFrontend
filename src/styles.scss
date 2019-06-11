@@ -182,6 +182,29 @@ star-rating .rating.color-negative .star-container .star i {
     color: #2749b6 !important;
 }
 
+.mat-pseudo-checkbox-checked {
+    background: #2749b6 !important;
+}
+.mat-selection-list {
+    outline: none !important;
+    padding: 0 !important;
+}
+.unmat.mat-select {
+    border-radius: 5px;
+
+    .mat-select-trigger {
+        padding: 10px 16px !important;
+    }
+}
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+    height: 26px !important;
+}
+.mat-list-item-content {
+    padding: 0px 5px !important;
+}
+.mat-select-trigger {
+    width: 100% !important;
+}
 @media (max-width: 1000px) {
     .trade-in-grid {
         grid-template-columns: 1fr 1fr 1fr !important;

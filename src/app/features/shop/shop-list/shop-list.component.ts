@@ -11,8 +11,8 @@ import {LabelType, Options} from 'ng5-slider';
 export class ShopListComponent implements OnInit {
     products: ProductModel[];
     displayedProducts: ProductModel[];
-    categoryFilter = ['rings', 'necklaces', 'earrings', 'bracelets'];
-    materialFilter = ['gold', 'silver', 'other'];
+    categories = ['rings', 'necklaces', 'earrings', 'bracelets'];
+    materials = ['gold', 'silver', 'other'];
     lowPrice = 0;
     highPrice = 300;
     rating = 1;
@@ -25,14 +25,15 @@ export class ShopListComponent implements OnInit {
         floor: 0,
         ceil: 300,
         translate: (value: number, label: LabelType): string => {
-            switch (label) {
-                case LabelType.Low:
-                    return 'Min price: €' + value;
-                case LabelType.High:
-                    return 'Max price: €' + value;
-                default:
-                    return '€' + value;
-            }
+            return '€' + value;
+            // switch (label) {
+            //     case LabelType.Low:
+            //         return 'Min: €' + value;
+            //     case LabelType.High:
+            //         return 'Max: €' + value;
+            //     default:
+            //         return '€' + value;
+            // }
         }
     };
 
@@ -42,16 +43,6 @@ export class ShopListComponent implements OnInit {
         this.products = this.route.snapshot.data['products'];
         this.displayedProducts = this.products;
         this.sortByNewest();
-    }
-
-    filterCategory(event) {
-        this.categoryFilter = event.value;
-        this.filter();
-    }
-
-    filterMaterial(event) {
-        this.materialFilter = event.value;
-        this.filter();
     }
 
     filterPrice(event) {
@@ -67,8 +58,8 @@ export class ShopListComponent implements OnInit {
 
     filter() {
         this.displayedProducts = this.products.filter(product => {
-            return this.categoryFilter.includes(product.category.name.toLocaleLowerCase()) &&
-                this.materialFilter.includes(product.material.toLocaleLowerCase()) &&
+            return this.categories.includes(product.category.name.toLocaleLowerCase()) &&
+                this.materials.includes(product.material.toLocaleLowerCase()) &&
                 product.price >= this.lowPrice && product.price <= this.highPrice &&
                 +product.rating.name >= this.rating;
         });
