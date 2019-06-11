@@ -21,9 +21,9 @@ import {TradeInRequestFinalizationComponent} from './features/trade-in-requests/
 import {TradeInRequestJewelryConditionComponent} from './features/trade-in-requests/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
 import {TradeInRequestCreditIndicationComponent} from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
 import {TradeInRequestOverviewComponent} from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
-import {AllProductsResolver} from './features/shop/all-products.resolver';
+import {AllProductsResolver} from './shared/services/product/all-products.resolver';
 import {TradeInRequestCompletionComponent} from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
-import {ProductResolver} from './features/shop/product.resolver';
+import {ProductResolver} from './shared/services/product/product.resolver';
 import {ShoppingCartComponent} from './features/shop/cart/shopping-cart.component';
 import {ShopListComponent} from './features/shop/shop-list/shop-list.component';
 import {ShopProductDetailsComponent} from './features/shop/shop-detail/shop-product-details.component';
@@ -41,6 +41,9 @@ import {TradeInHistoryOverviewComponent} from './features/account/features/trade
 import {UserTradeInRequestsResolver} from './shared/services/trade-in/resolvers/user-trade-in-requests.resolver';
 import {LoginGuard} from './features/auth/login.guard';
 import {AdminProductCreateComponent} from './admin/features/products/admin-product-create/admin-product-create.component';
+import {AdminStoriesEditComponent} from './admin/features/stories/admin-stories-edit/admin-stories-edit.component';
+import {AllStoriesResolver} from './shared/services/stories/all-stories.resolver';
+import {StoryResolver} from './shared/services/stories/story.resolver';
 
 const routes: Routes = [
 
@@ -95,7 +98,8 @@ const routes: Routes = [
                 productRatings: AllProductRatingsResolver
             }
       },
-      { path: 'stories', component: AdminStoriesOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2} },
+      { path: 'stories', component: AdminStoriesOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2}, resolve: {stories: AllStoriesResolver}  },
+      { path: 'stories/edit/:id', component: AdminStoriesEditComponent, canActivate: [PermissionGuard], data: { permissionLevel: 2 }, resolve: { story: StoryResolver } },
       { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { requests: AllTradeInRequestsResolver }},
       { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { request: TradeInRequestResolver }},
       { path: 'credit-indications', canActivate: [PermissionGuard], data: { permissionLevel:  2}, component: AdminCreditIndicationsOverviewComponent },
