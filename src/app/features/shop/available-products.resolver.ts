@@ -5,12 +5,12 @@ import {ProductService} from '../../shared/services/product/product.service';
 import {Observable} from 'rxjs';
 
 @Injectable()
-export class AllProductsResolver implements Resolve <ProductModel[]> {
+export class AvailableProductsResolver implements Resolve <ProductModel[]> {
     constructor(private productService: ProductService) {}
 
     resolve(route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot
     ): Observable<any>|Promise<any> {
-        return this.productService.getAllProducts();
+        return this.productService.getAllAvailableProducts();
     }
 }

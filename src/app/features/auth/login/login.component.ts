@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../../shared/services/auth/authentication.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
 
 @Component({
     selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
     warning = '';
     private redirect;
 
-    constructor(public authenticationService: AuthenticationService, private router: Router, public route: ActivatedRoute) {
+    constructor(public authenticationService: AuthenticationService, private router: Router, public route: ActivatedRoute, public snackbarService: SnackbarService) {
     }
 
     ngOnInit() {
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
             } else {
                 this.router.navigate(['account']);
             }
+            this.snackbarService.show('You have successfully logged in');
         }, error => {
             this.showWarning = true;
             this.warning = 'Username or password is incorrect';

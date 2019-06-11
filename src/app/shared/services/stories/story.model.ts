@@ -1,6 +1,15 @@
+import {StoryImageModel} from './story-image.model';
+import {UserModel} from '../user/user.model';
+
 export interface StoryModel {
     id: number;
-    author: string;
     storyTitle: string;
     storyContent: string;
+    status: string;
+
+    images: StoryImageModel;
+    user: UserModel;
+
+    createdAt?: Date;
+    updatedAt?: Date;
 }
