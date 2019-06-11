@@ -1,3 +1,8 @@
-<app-table>
+<app-table
+    [models]="stories"
+    [headers]="headers"
+    [attributes]="attributes"
+    [formatters]="formatters"
+    [widths]="[15, 40, 30, 15]"
+    (clickEvent)="toEditStories($event)">
 </app-table>
-
