@@ -9,6 +9,7 @@ import {ShopComponent} from './shop.component';
 import {ProductResolver} from '../../shared/services/product/product.resolver';
 import {ShoppingCartComponent} from './cart/shopping-cart.component';
 import {ShoppingCartItemComponent} from './cart/shopping-cart-item/shopping-cart-item.component';
+import {AvailableProductsResolver} from './available-products.resolver';
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import {ShoppingCartItemComponent} from './cart/shopping-cart-item/shopping-cart
     ],
     providers: [
         AllProductsResolver,
+        AvailableProductsResolver,
         ProductResolver,
         CurrencyPipe
     ]

@@ -21,6 +21,7 @@ export class AdminTradeInRequestEditComponent implements OnInit {
     @ViewChild('f') form: NgForm;
     buttonText = '';
     displayedImages: string[];
+    disabled = true;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -101,9 +102,11 @@ export class AdminTradeInRequestEditComponent implements OnInit {
     private formatButtonsText() {
         if (this.model.status === 'Awaiting shipping approval') {
             this.buttonText = 'Approve for shipping';
+            this.disabled = false;
         }
         if (this.model.status === 'Approved for shipping') {
             this.buttonText = 'Complete trade-in' ;
+            this.disabled = false;
         }
     }
 }

@@ -57,7 +57,7 @@ export class AdminCreditIndicationsOverviewComponent implements OnInit {
         this.isDisabled = true;
     }
 
-    private checkboxChanged(event) {
+    checkboxChanged(event) {
         this.jewelryConditions[event.target.id] = !this.jewelryConditions[event.target.id];
         this.updatePrice();
     }

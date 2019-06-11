@@ -21,7 +21,7 @@ export class AdminPermissionsOverviewComponent implements OnInit {
     private userFormControl = new FormControl();
     private roleFormControl = new FormControl();
     private filteredUsers: Observable<UserModel[]>;
-    private usersLoaded = false;
+    usersLoaded = false;
     private rolesLoaded = false;
     private selectedUser: UserModel;
     private selectedRole: Role;
@@ -55,7 +55,7 @@ export class AdminPermissionsOverviewComponent implements OnInit {
         return this.users.filter(user => user.email.toLowerCase().indexOf(filterValue) === 0);
     }
 
-    private onSaveClicked() {
+    onSaveClicked() {
         if (this.form.valid) {
             this.roleService.updateroles(this.selectedUser.id, this.selectedRole).subscribe(data => {
                 this.snackbarService.show('User roles updated.');

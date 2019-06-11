@@ -44,13 +44,14 @@ import {AdminProductCreateComponent} from './admin/features/products/admin-produ
 import {AdminStoriesEditComponent} from './admin/features/stories/admin-stories-edit/admin-stories-edit.component';
 import {AllStoriesResolver} from './shared/services/stories/all-stories.resolver';
 import {StoryResolver} from './shared/services/stories/story.resolver';
+import {AvailableProductsResolver} from './features/shop/available-products.resolver';
 
 const routes: Routes = [
 
   { path: '', component: HomeComponent },
   { path: 'shop',
       component: ShopComponent,
-      resolve: { products: AllProductsResolver },
+      resolve: { products: AvailableProductsResolver },
       children: [
         { path: '', component: ShopListComponent },
         { path: 'product/:id', component: ShopProductDetailsComponent, resolve: { product: ProductResolver }},

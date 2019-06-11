@@ -12,6 +12,10 @@ export class ProductService {
 
     constructor(private api: APIService) {}
 
+    public getAllAvailableProducts() {
+        return this.api.get<ProductModel[]>('products/available');
+    }
+
     public getAllProducts() {
         return this.api.get<ProductModel[]>('products');
     }
