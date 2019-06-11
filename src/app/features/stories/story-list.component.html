@@ -1,0 +1,20 @@
+<div class="topText">
+    <h1>Stories</h1>
+
+    <h3>
+        Continue the memories you created with your once loved pieces by sharing them with the new owner. Jewelry is more than just something we wear.
+        A piece of jewelry can help pinpoint a moment in time, it can stimulate fond memories.
+    </h3>
+</div>
+
+<div class="emptyShop" *ngIf="displayedStories.length === 0">
+    <p>No products found!</p>
+</div>
+
+<div class="story-grid">
+    <app-story-item *ngFor="let story of displayedStories; let i = index"
+                   [story]="story"
+                   [index]="i">
+    </app-story-item>
+</div>
+

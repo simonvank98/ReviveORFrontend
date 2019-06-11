@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './features/core/home/home.component';
 import {ShopComponent} from './features/shop/shop.component';
 import {AccountPageComponent} from './features/account/account-page.component';
-import {StoryPageComponent} from './features/stories/story-page.component';
+import {StoryListComponent} from './features/stories/story-list.component';
 import {TradeInRequestPageComponent} from './features/trade-in-requests/trade-in-request-page.component';
 import {TradeInRequestJewelryTypeComponent} from './features/trade-in-requests/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
 import {TradeInRequestJewelryMaterialComponent} from './features/trade-in-requests/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
@@ -67,7 +67,7 @@ const routes: Routes = [
         { path: 'complete', component: TradeInRequestCompletionComponent, data: {animation: 'jewelryCompletion'}},
     ]
   },
-  { path: 'stories', component: StoryPageComponent },
+  { path: 'stories', component: StoryListComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
