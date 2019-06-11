@@ -22,7 +22,7 @@
                 <mat-label>Product</mat-label>
                 <mat-select name="jewelryName" [(ngModel)]="model.jewelryName" [value]="model.jewelryName"
                             (selectionChange)="onORProductSelected($event)" required>
-                    <mat-option *ngFor="let orProduct of orProducts" [value]="orProduct.name">
+                    <mat-option *ngFor="let orProduct of orProducts" [value]="orProduct.name" disabled="disabled">
                         {{ orProduct.name | titlecase }}
                     </mat-option>
                 </mat-select>
@@ -32,7 +32,7 @@
                 <mat-label>Property</mat-label>
                 <mat-select name="selectedProperty" [(ngModel)]="model.selectedProperty"
                             value="{{ model.selectedProperty }}">
-                    <mat-option *ngFor="let property of properties" [value]="property.value">
+                    <mat-option *ngFor="let property of properties" [value]="property.value" disabled="disabled">
                         {{ property.value }}
                     </mat-option>
                 </mat-select>
