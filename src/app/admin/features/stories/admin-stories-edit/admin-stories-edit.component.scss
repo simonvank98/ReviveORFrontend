@@ -24,7 +24,7 @@ input, textarea {
     resize: vertical;
 }
 
-.authorInput {
+.storyUser {
     width: 220px;
 }
 
@@ -33,9 +33,32 @@ input, textarea {
 }
 
 .storyContentTextarea {
-    height: 400px;
+    height: 450px;
 }
 
-.userEmailInput {
+.storyUserEmail {
     width: 300px;
+}
+
+.storyImageGallery{
+    width: 95%;
+}
+
+button {
+    background-color: #ccc;
+    margin-left: 20px;
+}
+
+.saveButton {
+    color: white;
+    background-color: #2749b6;
+}
+
+.userDetails {
+    border: 1px rgba(0, 0, 0, 0.42) solid;
+    margin-bottom: 20px;
+
+    p {
+        margin: 8px 2px;
+    }
 }
