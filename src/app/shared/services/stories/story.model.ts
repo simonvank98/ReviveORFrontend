@@ -7,7 +7,7 @@ export interface StoryModel {
     storyContent: string;
     status: string;
 
-    images: StoryImageModel;
+    images: StoryImageModel[];
     user: UserModel;
 
     createdAt?: Date;

@@ -1,5 +1,5 @@
 export interface StoryImageModel {
     id: number;
-    productId: number;
+    storyId: number;
     url: string;
 }

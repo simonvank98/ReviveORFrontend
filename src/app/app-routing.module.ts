@@ -71,7 +71,7 @@ const routes: Routes = [
         { path: 'complete', component: TradeInRequestCompletionComponent, data: {animation: 'jewelryCompletion'}},
     ]
   },
-  { path: 'stories', component: StoryListComponent },
+  { path: 'stories', component: StoryListComponent, resolve: {stories: AllStoriesResolver} },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
