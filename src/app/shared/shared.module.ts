@@ -28,6 +28,7 @@ import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-tr
 import {YesnoPipe} from './pipes/yesno.pipe';
 import {AllStoriesResolver} from './services/stories/all-stories.resolver';
 import {StoryResolver} from './services/stories/story.resolver';
+import {AllPublishedStoriesResolver} from './services/stories/all-published-stories.resolver';
 
 @NgModule({
     declarations: [
@@ -90,7 +91,8 @@ import {StoryResolver} from './services/stories/story.resolver';
         AllTradeInRequestsResolver,
         UserTradeInRequestsResolver,
         AllStoriesResolver,
-        StoryResolver
+        StoryResolver,
+        AllPublishedStoriesResolver
     ]
 })
 export class SharedModule {

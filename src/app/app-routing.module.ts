@@ -45,6 +45,7 @@ import {AdminStoriesEditComponent} from './admin/features/stories/admin-stories-
 import {AllStoriesResolver} from './shared/services/stories/all-stories.resolver';
 import {StoryResolver} from './shared/services/stories/story.resolver';
 import {AvailableProductsResolver} from './features/shop/available-products.resolver';
+import {AllPublishedStoriesResolver} from './shared/services/stories/all-published-stories.resolver';
 
 const routes: Routes = [
 
@@ -71,8 +72,8 @@ const routes: Routes = [
         { path: 'complete', component: TradeInRequestCompletionComponent, data: {animation: 'jewelryCompletion'}},
     ]
   },
-  { path: 'stories', component: StoryListComponent, resolve: {stories: AllStoriesResolver} },
-  { path: 'register', component: RegisterComponent },
+  { path: 'stories', component: StoryListComponent, resolve: {stories: AllPublishedStoriesResolver} },
+    { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountPageComponent, children: [

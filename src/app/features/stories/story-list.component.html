@@ -7,12 +7,12 @@
     </h3>
 </div>
 
-<div class="emptyShop" *ngIf="displayedStories.length === 0">
-    <p>No products found!</p>
+<div class="emptyShop" *ngIf="stories.length === 0">
+    <p>No stories available!</p>
 </div>
 
 <div class="story-grid">
-    <app-story-item *ngFor="let story of displayedStories; let i = index"
+    <app-story-item *ngFor="let story of stories; let i = index"
                    [story]="story"
                    [index]="i">
     </app-story-item>

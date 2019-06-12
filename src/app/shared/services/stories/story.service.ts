@@ -13,6 +13,10 @@ export class StoryService {
         return this.api.get<StoryModel[]>('stories');
     }
 
+    public getAllPublishedStories() {
+        return this.api.get<StoryModel[]>('stories/published');
+    }
+
     public getStory(id: number) {
         return this.api.get<StoryModel>(`stories/${id}`);
     }

@@ -3,6 +3,7 @@ import {UserModel} from '../user/user.model';
 
 export interface StoryModel {
     id: number;
+    productId: number;
     storyTitle: string;
     storyContent: string;
     status: string;
