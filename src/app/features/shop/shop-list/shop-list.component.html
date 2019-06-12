@@ -22,7 +22,7 @@
     <div class="price-filter">
         <h3>Price range</h3>
         <div class="priceWrapper custom-slider">
-            <ng5-slider  [(value)]="value" [(highValue)]="highValue" [options]="priceOptions" (userChangeEnd)="filterPrice($event)"></ng5-slider>
+            <ng5-slider *ngIf="optionsLoaded" [(value)]="value" [(highValue)]="highValue" [options]="priceOptions" (userChangeEnd)="filterPrice($event)"></ng5-slider>
         </div>
     </div>
 

@@ -7,7 +7,7 @@
 
         <div class="formfieldContainer">
             <mat-form-field class="categoryFormfield">
-                <mat-label class="label">Category</mat-label>
+                <mat-label>Category</mat-label>
                 <mat-select name="productCategory" class="categoryText" [(ngModel)]="product.categoryId"
                             [value]="product.categoryId"
                             required>
@@ -18,7 +18,7 @@
             </mat-form-field>
 
             <mat-form-field class="statusFormfield">
-                <mat-label class="label">Status</mat-label>
+                <mat-label>Status</mat-label>
                 <mat-select name="productStatus" [(ngModel)]="product.status" [value]="product.status" required>
                     <mat-option value="Draft">Draft</mat-option>
                     <mat-option value="Available">Available</mat-option>
@@ -42,7 +42,7 @@
                     <mat-label>Material</mat-label>
                     <mat-select name="productMaterial" [(ngModel)]="product.material" [value]="product.material"
                                 required>
-                        <mat-option value="goldPlated">Gold Plated</mat-option>
+                        <mat-option value="gold">Gold Plated</mat-option>
                         <mat-option value="silver">Silver</mat-option>
                         <mat-option value="other">Other</mat-option>
                     </mat-select>
