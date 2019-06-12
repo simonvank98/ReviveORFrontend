@@ -18,6 +18,13 @@ export class AdminPermissionsOverviewComponent implements OnInit {
     private users: UserModel[] = [];
     private roles: Role[] = [];
 
+    public roleDescriptions = {
+        'Manager': 'Has all permissions.',
+        'Employee': 'Has all permissions except for the management of permissions. (this screen)',
+        'Appraiser': 'Has permissions required for managing credit indications and trade-in requests.',
+        'User': 'A normal user. Does not have access to the admin panel.'
+    };
+
     private userFormControl = new FormControl();
     private roleFormControl = new FormControl();
     private filteredUsers: Observable<UserModel[]>;

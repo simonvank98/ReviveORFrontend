@@ -1,12 +1,19 @@
-<mat-card [routerLink]="['/shop/product', product.id]">
+<div class="shop-item" [routerLink]="['/shop/product', product.id]">
     <img src="{{ product.images[0].url }}" alt="">
     <mat-card-footer>
-        <mat-card-title>{{ product.name }}</mat-card-title>
-        <p class="product-rating">
-            <star-rating [readOnly]="true" starType="icon" staticColor="negative" [rating]="product.rating.id"></star-rating>
-        </p>
-        <!--<mat-card-title>{{ product.material }} star rating: {{ product.rating.name }} {{ product.category.name }} {{ product.id }}</mat-card-title>-->
-        <mat-card-subtitle>€ {{ product.price }}</mat-card-subtitle>
+        <mat-card-title class="product-name">{{ product.name }}</mat-card-title>
+        <div class="card-bottom">
+            <div class="product-rating">
+                <star-rating [readOnly]="true" starType="icon" staticColor="negative" [rating]="product.rating.id"></star-rating>
+            </div>
+            <!--<mat-card-title>{{ product.material }} star rating: {{ product.rating.name }} {{ product.category.name }} {{ product.id }}</mat-card-title>-->
+            <mat-card-subtitle class="product-price">€ {{ product.price }}</mat-card-subtitle>
+        </div>
+        <div class="product-description">
+            <p>
+                {{ product.description }}
+            </p>
+        </div>
     </mat-card-footer>
-</mat-card>
+</div>
 

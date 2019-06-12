@@ -7,7 +7,7 @@
 
         <div class="formfieldContainer">
             <mat-form-field class="categoryFormfield">
-                <mat-label>Category</mat-label>
+                <mat-label class="label">Category</mat-label>
                 <mat-select name="productCategory" class="categoryText" [(ngModel)]="product.categoryId"
                             [value]="product.categoryId"
                             required>
@@ -18,7 +18,7 @@
             </mat-form-field>
 
             <mat-form-field class="statusFormfield">
-                <mat-label>Status</mat-label>
+                <mat-label class="label">Status</mat-label>
                 <mat-select name="productStatus" [(ngModel)]="product.status" [value]="product.status" required>
                     <mat-option value="Draft">Draft</mat-option>
                     <mat-option value="Available">Available</mat-option>
@@ -48,15 +48,10 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field class="propertyFormfield">
-                    <mat-label>Property</mat-label>
-                    <mat-select name="productProperty" [(ngModel)]="product.property" [value]="product.property"
-                                required>
-                        <mat-option value="small">S</mat-option>
-                        <mat-option value="medium">M</mat-option>
-                        <mat-option value="large">L</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <div class="custom-inputs">
+                    <mat-label class="label">Property</mat-label>
+                    <input type="text" name="property" [(ngModel)]="product.property">
+                </div>
             </div>
 
             <div class="custom-inputs">
@@ -126,7 +121,7 @@
     </div>
 
     <div class="align-right">
-        <button mat-button class="deleteButton" (click)="onCancelButtonClicked()">Cancel</button>
-        <button mat-button class="saveButton" (click)="onSaveButtonClicked()">Save</button>
+        <button mat-button class="deleteButton mat-elevation-z3" (click)="onCancelButtonClicked()">Cancel</button>
+        <button mat-button class="saveButton mat-elevation-z3" (click)="onSaveButtonClicked()">Save</button>
     </div>
 </form>

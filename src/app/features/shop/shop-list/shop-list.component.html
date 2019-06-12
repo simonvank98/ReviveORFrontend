@@ -1,38 +1,50 @@
-<div class="optionWrapper">
-    <mat-label class="label">Jewelry category</mat-label>
-    <div class="jewelryCategoryWrapper">
-        <mat-button-toggle-group multiple (change)="filterCategory($event)">
-            <mat-button-toggle checked value="rings">Ring</mat-button-toggle>
-            <mat-button-toggle checked value="bracelets">Bracelet</mat-button-toggle>
-            <mat-button-toggle checked value="necklaces">Necklace</mat-button-toggle>
-            <mat-button-toggle checked value="earrings">Earrings</mat-button-toggle>
-        </mat-button-toggle-group>
+<div class="option-wrapper">
+
+    <div class="category-filter">
+        <h3>Category</h3>
+        <mat-selection-list [(ngModel)]="categories" (selectionChange)="filter()" [disableRipple]="true">
+            <mat-list-option value="rings"     [checkboxPosition]="'before'">Rings</mat-list-option>
+            <mat-list-option value="bracelets" [checkboxPosition]="'before'">Bracelets</mat-list-option>
+            <mat-list-option value="necklaces" [checkboxPosition]="'before'">Necklaces</mat-list-option>
+            <mat-list-option value="earrings"  [checkboxPosition]="'before'">Earrings</mat-list-option>
+        </mat-selection-list>
     </div>
-    <mat-label class="label">Material</mat-label>
-    <div class="jewelryMaterialWrapper">
-        <mat-button-toggle-group multiple (change)="filterMaterial($event)">
-            <mat-button-toggle checked value="gold">Gold</mat-button-toggle>
-            <mat-button-toggle checked value="silver">Silver</mat-button-toggle>
-            <mat-button-toggle checked value="other">Other</mat-button-toggle>
-        </mat-button-toggle-group>
+
+    <div class="material-filter">
+        <h3>Material</h3>
+        <mat-selection-list [(ngModel)]="materials" (selectionChange)="filter()" [disableRipple]="true">
+            <mat-list-option value="gold"   [checkboxPosition]="'before'">Gold plated</mat-list-option>
+            <mat-list-option value="silver" [checkboxPosition]="'before'">Silver</mat-list-option>
+            <mat-list-option value="other"  [checkboxPosition]="'before'">Other</mat-list-option>
+        </mat-selection-list>
     </div>
-    <div class="priceWrapper custom-slider">
-        <ng5-slider  [(value)]="value" [(highValue)]="highValue" [options]="priceOptions" (userChangeEnd)="filterPrice($event)"></ng5-slider>
+
+    <div class="price-filter">
+        <h3>Price range</h3>
+        <div class="priceWrapper custom-slider">
+            <ng5-slider  [(value)]="value" [(highValue)]="highValue" [options]="priceOptions" (userChangeEnd)="filterPrice($event)"></ng5-slider>
+        </div>
     </div>
-    <div class="ratingWrapper">
-        <star-rating starType="icon" rating="1" (starClickChange)="filterRating($event)"></star-rating>
+
+    <div class="rating-filter">
+        <h3>Rating</h3>
+        <div class="ratingWrapper">
+            <star-rating starType="icon" rating="1" (starClickChange)="filterRating($event)"></star-rating>
+        </div>
     </div>
-    <div class="sortWrapper">
-        <mat-select [(value)]="sortSelect" (selectionChange)="sortProducts($event)">
-            <mat-option value="newest">Newest</mat-option>
-            <mat-option value="oldest">Oldest</mat-option>
-            <mat-option value="highestPrice">Highest price</mat-option>
-            <mat-option value="lowestPrice">Lowest price</mat-option>
-        </mat-select>
+
+    <div class="sort-filter">
+        <h3>Sort by</h3>
+        <div class="sortWrapper">
+            <mat-select mat-input [(value)]="sortSelect" (selectionChange)="sortProducts($event)" class="unmat mat-elevation-z3">
+                <mat-option value="newest">Newest</mat-option>
+                <mat-option value="oldest">Oldest</mat-option>
+                <mat-option value="highestPrice">Highest price</mat-option>
+                <mat-option value="lowestPrice">Lowest price</mat-option>
+            </mat-select>
+        </div>
     </div>
 </div>
-
-<hr>
 
 <div class="emptyShop" *ngIf="displayedProducts.length === 0">
     <p>No products found!</p>

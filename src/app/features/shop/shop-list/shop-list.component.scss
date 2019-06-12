@@ -3,21 +3,30 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
+    padding: 20px 0px;
 }
 
 .shop-grid > * {
     --aspect-ratio: 1/1;
 }
 
-.optionWrapper {
-    > *:not(.label) {
-        display: inline-block;
+.option-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+
+    > * h3 {
+        margin-bottom: 8px;
+    }
+}
+.category-filters {
+    > * {
+        display: block;
     }
 }
 
 ng5-slider {
-    margin: 20px 20px 0px 20px;
-    width: 200px;
+    width: 100%;
 }
 
 ::ng-deep {
@@ -65,11 +74,6 @@ ng5-slider {
         background: darkblue;
     }
 }
-
-.sortWrapper {
-    width: 120px;
-}
-
 .emptyShop{
     text-align: center;
 }
@@ -79,10 +83,19 @@ ng5-slider {
         grid-template-columns: 1fr 1fr !important;
     }
 }
-
+@media (max-widtH: 700px) {
+    .option-wrapper {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
 @media (max-width: 600px) {
     .shop-grid {
         grid-template-columns: 1fr !important;
+    }
+}
+@media (max-width: 400px) {
+    .option-wrapper {
+        grid-template-columns: 1fr 1fr;
     }
 }
 

@@ -1,5 +1,5 @@
 <div class="button-wrapper">
-    <button mat-raised-button color="primary" (click)="toCreateRequest()">Add new product</button>
+    <button mat-flat-button color="primary" class="mat-elevation-z3" (click)="toCreateRequest()">Add new product</button>
 </div>
 
 <app-table
@@ -8,5 +8,6 @@
     [attributes]="attributes"
     [formatters]="formatters"
     [widths]="[15, 40, 30, 15]"
+    [shadows]="false"
     (clickEvent)="toEditRequest($event)">
 </app-table>
