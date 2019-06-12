@@ -7,6 +7,7 @@ import {NgForm} from '@angular/forms';
 import {TradeInRequestService} from '../../../../shared/services/trade-in/trade-in-request.service';
 import {SnackbarService} from '../../../../shared/services/snackbar/snackbar.service';
 import {ModalService} from '../../../../shared/services/modal-service/modal.service';
+import {CreditIndicationService} from '../../../../shared/services/credit-indication/credit-indication.service';
 
 @Component({
     selector: 'app-admin-trade-in-request-edit',
@@ -28,7 +29,8 @@ export class AdminTradeInRequestEditComponent implements OnInit {
                 private orProductService: ORProductService,
                 private adminTradeInRequestService: TradeInRequestService,
                 private snackbarService: SnackbarService,
-                private modalService: ModalService) {
+                private modalService: ModalService,
+                public  creditIndicationService: CreditIndicationService) {
     }
 
     ngOnInit() {
@@ -108,5 +110,17 @@ export class AdminTradeInRequestEditComponent implements OnInit {
             this.buttonText = 'Complete trade-in' ;
             this.disabled = false;
         }
+    }
+
+    recalculate() {
+        const selectedProduct = this.orProducts.find((product) => {
+            return product.name === this.model.jewelryName;
+        });
+        this.creditIndicationService.getExampleIndication(
+            {jewelryCondition: this.model.jewelryCondition,
+                jewelryType: 'rings', orProductId: selectedProduct.id, selectedProperty: this.model.selectedProperty ? this.model.selectedProperty : 's'})
+            .subscribe( data => {
+                this.model.estimatedCredit = data.indication;
+            });
     }
 }

@@ -21,8 +21,8 @@
             <mat-form-field>
                 <mat-label>Product</mat-label>
                 <mat-select name="jewelryName" [(ngModel)]="model.jewelryName" [value]="model.jewelryName"
-                            (selectionChange)="onORProductSelected($event)" required disabled="disabled">
-                    <mat-option *ngFor="let orProduct of orProducts" [value]="orProduct.name">
+                            (selectionChange)="onORProductSelected($event)" required>
+                    <mat-option *ngFor="let orProduct of orProducts" [value]="orProduct.name" [disabled]="disabled">
                         {{ orProduct.name | titlecase }}
                     </mat-option>
                 </mat-select>
@@ -31,8 +31,8 @@
             <mat-form-field *ngIf="properties !== undefined && properties.length > 1">
                 <mat-label>Property</mat-label>
                 <mat-select name="selectedProperty" [(ngModel)]="model.selectedProperty"
-                            value="{{ model.selectedProperty }}" disabled="disabled">
-                    <mat-option *ngFor="let property of properties" [value]="property.value">
+                            value="{{ model.selectedProperty }}">
+                    <mat-option *ngFor="let property of properties" [value]="property.value" [disabled]="disabled">
                         {{ property.value }}
                     </mat-option>
                 </mat-select>
@@ -123,6 +123,7 @@
             <button mat-button (click)="back()">Back</button>
         </div>
         <div class="buttonRight" *ngIf="model.status !== 'Complete'">
+            <button mat-button (click)="recalculate()" [disabled]="disabled">Recalculate</button>
             <button mat-button color="warn" (click)="onDeny()" [disabled]="disabled">Cancel request</button>
             <button mat-button color="primary" class="confirmButton" (click)="onSubmit()" [disabled]="disabled">{{ buttonText }}</button>
         </div>

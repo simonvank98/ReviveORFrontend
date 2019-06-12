@@ -1,0 +1,11 @@
+<mat-card>
+    <!--<img src="{{ story.images[0].url }}" alt="">-->
+    <ng-container *ngIf="story.images.length > 0">
+        <app-image-gallery [imageURLs]="displayedImages">
+        </app-image-gallery>
+    </ng-container>
+    <mat-card-footer>
+        <mat-card-title>{{ story.storyTitle }}</mat-card-title>
+        <mat-card-subtitle>€ {{ story.storyContent }}</mat-card-subtitle>
+    </mat-card-footer>
+</mat-card>
