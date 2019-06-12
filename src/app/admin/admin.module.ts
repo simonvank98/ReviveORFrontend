@@ -15,8 +15,6 @@ import {TableModule} from 'primeng/table';
 import {DropdownModule, InputTextModule} from 'primeng/primeng';
 import {AdminProductCreateComponent} from './features/products/admin-product-create/admin-product-create.component';
 import { AdminStoriesEditComponent } from './features/stories/admin-stories-edit/admin-stories-edit.component';
-import {AllStoriesResolver} from '../shared/services/stories/all-stories.resolver';
-import {StoryResolver} from '../shared/services/stories/story.resolver';
 
 @NgModule({
     imports: [
@@ -40,8 +38,6 @@ import {StoryResolver} from '../shared/services/stories/story.resolver';
         AdminStoriesEditComponent,
     ],
     providers: [
-        AllStoriesResolver,
-        StoryResolver
     ],
 })
 export class AdminModule {

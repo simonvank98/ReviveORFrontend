@@ -22,7 +22,6 @@ import {RegisterComponent} from './features/auth/register/register.component';
 import {TradeInRequestsModule} from './features/trade-in-requests/trade-in-requests.module';
 import {AccountModule} from './features/account/account.module';
 import {AuthenticationService} from './shared/services/auth/authentication.service';
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -33,7 +32,6 @@ import {AuthenticationService} from './shared/services/auth/authentication.servi
         LoginComponent,
         LogoutComponent,
         RegisterComponent,
-
     ],
     imports: [
         BrowserModule,
