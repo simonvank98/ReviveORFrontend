@@ -45,6 +45,10 @@ export class AdminProductEditComponent implements OnInit {
         this.refreshDisplayedImages();
     }
 
+    onBackClicked() {
+        this.router.navigate(['/admin/products']);
+    }
+
     onSaveButtonClicked() {
         if (this.form.valid) {
             this.modalService.confirm('Are you sure?').subscribe((confirmed) => {

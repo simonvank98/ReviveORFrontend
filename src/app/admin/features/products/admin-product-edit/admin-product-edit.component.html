@@ -124,8 +124,8 @@
             <input matInput id="storyAuthor" value=" {{ product.stories?.author }}">
         </div>-->
     </div>
-
     <div class="align-right">
+        <button mat-button class="backButton" (click)="onBackClicked()">Back</button>
         <button mat-button class="deleteButton" (click)="onDeleteButtonClicked()">Delete</button>
         <button mat-button class="saveButton" (click)="onSaveButtonClicked()">Save</button>
     </div>

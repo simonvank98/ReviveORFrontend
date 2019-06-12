@@ -16,4 +16,12 @@ export class StoryService {
     public getStory(id: number) {
         return this.api.get<StoryModel>(`stories/${id}`);
     }
+
+    public deleteStory(story: StoryModel) {
+        return this.api.delete(`stories/${story.id}`);
+    }
+
+    public editStory(story: StoryModel) {
+        return this.api.put<StoryModel>(`stories/${story.id}`, story);
+    }
 }
