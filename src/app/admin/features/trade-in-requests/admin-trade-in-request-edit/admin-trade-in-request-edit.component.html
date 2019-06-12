@@ -49,19 +49,19 @@
                 </tr>
                 <tr>
                     <td>Scratches</td>
-                    <td>{{ model.jewelryCondition.scratched | yesno }}</td>
+                    <mat-checkbox [(ngModel)]="model.jewelryCondition.scratched" name="scratched" color="primary"></mat-checkbox>
                 </tr>
                 <tr>
                     <td>Bent</td>
-                    <td>{{ model.jewelryCondition.bent | yesno }}</td>
+                    <mat-checkbox [(ngModel)]="model.jewelryCondition.bent" name="bent" color="primary"></mat-checkbox>
                 </tr>
                 <tr>
                     <td>Broken</td>
-                    <td>{{ model.jewelryCondition.broken | yesno }}</td>
+                    <mat-checkbox [(ngModel)]="model.jewelryCondition.broken" name="broken" color="primary"></mat-checkbox>
                 </tr>
                 <tr>
                     <td>Missing piece</td>
-                    <td>{{ model.jewelryCondition.missingPiece | yesno }}</td>
+                    <mat-checkbox [(ngModel)]="model.jewelryCondition.missingPiece" name="missingPiece" color="primary"></mat-checkbox>
                 </tr>
             </table>
         </div>
