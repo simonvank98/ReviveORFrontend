@@ -1,0 +1,26 @@
+<mat-radio-group class="address-options"
+                 [ngModel]="useAddressForm" (ngModelChange)="onAddressOptionChanged($event)">
+    <mat-radio-button [value]="false">
+        Use your own address
+    </mat-radio-button>
+
+    <mat-radio-button [value]="true">
+        Use a new address
+    </mat-radio-button>
+
+</mat-radio-group>
+
+<ng-container >
+    <app-delivery-address [hidden]="!useAddressForm" class="address-form" (changes)="onAddressFormChanged()"></app-delivery-address>
+</ng-container>
+
+<div class="address-info">
+    <p>{{ checkoutService.shippingAddress.firstname }} {{ checkoutService.shippingAddress.lastname}}</p>
+    <p>{{ checkoutService.shippingAddress.address1 }}</p>
+    <p>{{ checkoutService.shippingAddress.address2 }}</p>
+    <p>{{ checkoutService.shippingAddress.zipcode }} {{ checkoutService.shippingAddress.city }}</p>
+    <p>{{ checkoutService.shippingAddress.province }}</p>
+    <p>{{ checkoutService.shippingAddress.country }}</p>
+</div>
+
+<button mat-raised-button color="primary" [routerLink]="['shop', 'checkout', 'payment']">Continue to payment</button>

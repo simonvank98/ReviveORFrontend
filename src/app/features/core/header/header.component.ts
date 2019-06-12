@@ -32,9 +32,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
             this.cartItemsCount = products.length;
         });
         this.cartService.loadCartItemsFromStorage();
-        if (this.authenticationService.loggedIn) {
-            this.authenticationService.loadUserData();
-        }
     }
 
     ngOnDestroy() {

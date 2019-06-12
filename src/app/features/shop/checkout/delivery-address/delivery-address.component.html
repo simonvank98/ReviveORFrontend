@@ -1,0 +1,76 @@
+<form [formGroup]="addressForm">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Delivery details</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="First name" formControlName="firstname" autocomplete="name">
+                    <mat-error *ngIf="addressForm.controls['firstname'].hasError('required')">
+                        First name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Last name" formControlName="lastname">
+                    <mat-error *ngIf="addressForm.controls['lastname'].hasError('required')">
+                        Last name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Address line 1" formControlName="address1"
+                           autocomplete="address-line1">
+                    <mat-error *ngIf="addressForm.controls['address1'].hasError('required')">
+                        Address line 1 is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Address line 2 (optional)" formControlName="address2"
+                           autocomplete="address-line2">
+                    <mat-error *ngIf="addressForm.controls['address2'].hasError('required')">
+                        Address line 2 is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Zipcode" formControlName="zipcode" autocomplete="postal-code">
+                    <mat-error *ngIf="addressForm.controls['zipcode'].hasError('required')">
+                        Zipcode is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="City" formControlName="city" autocomplete="city">
+                    <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
+                        City is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Country" formControlName="country" autocomplete="country">
+                    <mat-error *ngIf="addressForm.controls['country'].hasError('required')">
+                        Country is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Province" formControlName="province" autocomplete="address-level1">
+                    <mat-error *ngIf="addressForm.controls['province'].hasError('required')">
+                        Province is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</form>

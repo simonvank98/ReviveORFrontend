@@ -9,6 +9,9 @@ import {ShopComponent} from './shop.component';
 import {ProductResolver} from './product.resolver';
 import {ShoppingCartComponent} from './cart/shopping-cart.component';
 import {ShoppingCartItemComponent} from './cart/shopping-cart-item/shopping-cart-item.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { DeliveryAddressComponent } from './checkout/delivery-address/delivery-address.component';
+import { PaymentComponent } from './checkout/payment/payment.component';
 
 @NgModule({
     imports: [
@@ -22,6 +25,9 @@ import {ShoppingCartItemComponent} from './cart/shopping-cart-item/shopping-cart
         ShopComponent,
         ShoppingCartComponent,
         ShoppingCartItemComponent,
+        CheckoutComponent,
+        DeliveryAddressComponent,
+        PaymentComponent,
     ],
     providers: [
         AllProductsResolver,

@@ -26,6 +26,7 @@ import {TradeInRequestResolver} from './services/trade-in/resolvers/trade-in-req
 import {AllTradeInRequestsResolver} from './services/trade-in/resolvers/all-trade-in-requests.resolver';
 import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-trade-in-requests.resolver';
 import {YesnoPipe} from './pipes/yesno.pipe';
+import {UserDataResolver} from './services/auth/user-data-resolver.service';
 
 @NgModule({
     declarations: [
@@ -86,7 +87,8 @@ import {YesnoPipe} from './pipes/yesno.pipe';
         StarRatingConfigService,
         TradeInRequestResolver,
         AllTradeInRequestsResolver,
-        UserTradeInRequestsResolver
+        UserTradeInRequestsResolver,
+        UserDataResolver,
     ]
 })
 export class SharedModule {

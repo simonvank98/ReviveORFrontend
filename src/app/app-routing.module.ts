@@ -41,70 +41,122 @@ import {TradeInHistoryOverviewComponent} from './features/account/features/trade
 import {UserTradeInRequestsResolver} from './shared/services/trade-in/resolvers/user-trade-in-requests.resolver';
 import {LoginGuard} from './features/auth/login.guard';
 import {AdminProductCreateComponent} from './admin/features/products/admin-product-create/admin-product-create.component';
+import {CheckoutComponent} from './features/shop/checkout/checkout.component';
+import {UserDataResolver} from './shared/services/auth/user-data-resolver.service';
 
 const routes: Routes = [
-
-  { path: '', component: HomeComponent },
-  { path: 'shop',
-      component: ShopComponent,
-      resolve: { products: AllProductsResolver },
-      children: [
-        { path: '', component: ShopListComponent },
-        { path: 'product/:id', component: ShopProductDetailsComponent, resolve: { product: ProductResolver }},
-        { path: 'cart', component: ShoppingCartComponent},
-  ]},
-  { path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full' },
-  { path: 'trade-in',
-    component: TradeInRequestPageComponent,
-    children: [
-        { path: 'type', component: TradeInRequestJewelryTypeComponent, data: {animation: 'jewelryType'}},
-        { path: 'material', component: TradeInRequestJewelryMaterialComponent, data: {animation: 'jewelryMaterial'}},
-        { path: 'piece', component: TradeInRequestJewelrySelectionComponent, data: {animation: 'jewelryPiece'}},
-        { path: 'condition', component: TradeInRequestJewelryConditionComponent, data: {animation: 'jewelryConditions'}},
-        { path: 'indication', component: TradeInRequestCreditIndicationComponent, data: {animation: 'jewelryIndication'}},
-        { path: 'overview', component: TradeInRequestOverviewComponent, data: {animation: 'jewelryOverview'}},
-        { path: 'finalize', component: TradeInRequestFinalizationComponent, data: {animation: 'jewelryFinalization'}, canActivate: [LoginGuard]},
-        { path: 'complete', component: TradeInRequestCompletionComponent, data: {animation: 'jewelryCompletion'}},
-    ]
-  },
-  { path: 'stories', component: StoryPageComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent },
-  { path: 'account', component: AccountPageComponent, children: [
-          { path: 'info', component: AccountInfoComponent },
-          { path: 'order-history', component: OrderHistoryOverviewComponent },
-          // { path: 'order-history/:id', component: OrderHistoryEditComponent },
-          { path: 'trade-in-history', component: TradeInHistoryOverviewComponent, resolve: { requests: UserTradeInRequestsResolver } },
-          // { path: 'trade-in-history/:id', component: TradeInHistoryEditComponent }
-      ]},
-  { path: 'admin', component: AdminComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, children: [
-      {path: '', redirectTo: '/admin/trade-in', pathMatch: 'full'},
-      {path: 'products', component: AdminProductsOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2}, resolve: {products: AllProductsResolver}},
-      {
-          path: 'products/edit/:id', component: AdminProductEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2},
-          resolve: {
-              product: ProductResolver,
-              productCategories: AllProductCategoriesResolver,
-              productRatings: AllProductRatingsResolver,
-          }
-      }, {
-            path: 'products/create', component: AdminProductCreateComponent,
-            resolve: {
-                productCategories: AllProductCategoriesResolver,
-                productRatings: AllProductRatingsResolver
-            }
-      },
-      { path: 'stories', component: AdminStoriesOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2} },
-      { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { requests: AllTradeInRequestsResolver }},
-      { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { request: TradeInRequestResolver }},
-      { path: 'credit-indications', canActivate: [PermissionGuard], data: { permissionLevel:  2}, component: AdminCreditIndicationsOverviewComponent },
-      { path: 'permissions', canActivate: [PermissionGuard], data: { permissionLevel:  3}, component: AdminPermissionsOverviewComponent },
-      { path: '**', redirectTo: '/not-found' },
-    ]},
-  { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
-  // { path: '**', redirectTo: '/not-found' }
-];
+    {
+        path: '', resolve: { userData: UserDataResolver},
+        children: [
+            { path: '', component: HomeComponent},
+            {
+                path: 'shop',
+                component: ShopComponent,
+                children: [
+                    {path: '', component: ShopListComponent, resolve: {products: AllProductsResolver}},
+                    {path: 'product/:id', component: ShopProductDetailsComponent, resolve: {product: ProductResolver}},
+                    {path: 'cart', component: ShoppingCartComponent},
+                    {path: 'checkout', component: CheckoutComponent},
+                ]
+            },
+            {path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full'},
+            {
+                path: 'trade-in',
+                component: TradeInRequestPageComponent,
+                children: [
+                    {path: 'type', component: TradeInRequestJewelryTypeComponent, data: {animation: 'jewelryType'}},
+                    {path: 'material', component: TradeInRequestJewelryMaterialComponent, data: {animation: 'jewelryMaterial'}},
+                    {path: 'piece', component: TradeInRequestJewelrySelectionComponent, data: {animation: 'jewelryPiece'}},
+                    {path: 'condition', component: TradeInRequestJewelryConditionComponent, data: {animation: 'jewelryConditions'}},
+                    {path: 'indication', component: TradeInRequestCreditIndicationComponent, data: {animation: 'jewelryIndication'}},
+                    {path: 'overview', component: TradeInRequestOverviewComponent, data: {animation: 'jewelryOverview'}},
+                    {
+                        path: 'finalize',
+                        component: TradeInRequestFinalizationComponent,
+                        data: {animation: 'jewelryFinalization'},
+                        canActivate: [LoginGuard]
+                    },
+                    {path: 'complete', component: TradeInRequestCompletionComponent, data: {animation: 'jewelryCompletion'}},
+                ]
+            },
+            {path: 'stories', component: StoryPageComponent},
+            {path: 'register', component: RegisterComponent},
+            {path: 'login', component: LoginComponent},
+            {path: 'logout', component: LogoutComponent},
+            {
+                path: 'account', component: AccountPageComponent, children: [
+                    {path: 'info', component: AccountInfoComponent},
+                    {path: 'order-history', component: OrderHistoryOverviewComponent},
+                    // { path: 'order-history/:id', component: OrderHistoryEditComponent },
+                    {
+                        path: 'trade-in-history',
+                        component: TradeInHistoryOverviewComponent,
+                        resolve: {requests: UserTradeInRequestsResolver}
+                    },
+                    // { path: 'trade-in-history/:id', component: TradeInHistoryEditComponent }
+                ]
+            },
+            {
+                path: 'admin', component: AdminComponent, canActivate: [PermissionGuard], data: {permissionLevel: 1}, children: [
+                    {path: '', redirectTo: '/admin/trade-in', pathMatch: 'full'},
+                    {
+                        path: 'products',
+                        component: AdminProductsOverviewComponent,
+                        canActivate: [PermissionGuard],
+                        data: {permissionLevel: 2},
+                        resolve: {products: AllProductsResolver}
+                    },
+                    {
+                        path: 'products/edit/:id',
+                        component: AdminProductEditComponent,
+                        canActivate: [PermissionGuard],
+                        data: {permissionLevel: 2},
+                        resolve: {
+                            product: ProductResolver,
+                            productCategories: AllProductCategoriesResolver,
+                            productRatings: AllProductRatingsResolver,
+                        }
+                    }, {
+                        path: 'products/create', component: AdminProductCreateComponent,
+                        resolve: {
+                            productCategories: AllProductCategoriesResolver,
+                            productRatings: AllProductRatingsResolver
+                        }
+                    },
+                    {path: 'stories', component: AdminStoriesOverviewComponent, canActivate: [PermissionGuard], data: {permissionLevel: 2}},
+                    {
+                        path: 'trade-in',
+                        component: AdminTradeInRequestOverviewComponent,
+                        canActivate: [PermissionGuard],
+                        data: {permissionLevel: 1},
+                        resolve: {requests: AllTradeInRequestsResolver}
+                    },
+                    {
+                        path: 'trade-in/edit/:id',
+                        component: AdminTradeInRequestEditComponent,
+                        canActivate: [PermissionGuard],
+                        data: {permissionLevel: 1},
+                        resolve: {request: TradeInRequestResolver}
+                    },
+                    {
+                        path: 'credit-indications',
+                        canActivate: [PermissionGuard],
+                        data: {permissionLevel: 2},
+                        component: AdminCreditIndicationsOverviewComponent
+                    },
+                    {
+                        path: 'permissions',
+                        canActivate: [PermissionGuard],
+                        data: {permissionLevel: 3},
+                        component: AdminPermissionsOverviewComponent
+                    },
+                    {path: '**', redirectTo: '/not-found'},
+                ]
+            },
+            // { path: '**', redirectTo: '/not-found' }
+            { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'}}
+        ]
+    }];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
