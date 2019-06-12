@@ -1,0 +1,41 @@
+.upperGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.lowerGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+mat-label {
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.statusFormfield {
+    width: 150px;
+    float: right;
+}
+
+input, textarea {
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+.authorInput {
+    width: 220px;
+}
+
+.storyTitleInput {
+    width: 300px;
+}
+
+.storyContentTextarea {
+    height: 400px;
+}
+
+.userEmailInput {
+    width: 300px;
+}
