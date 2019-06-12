@@ -178,8 +178,10 @@ star-rating .rating {
     outline: none;
     cursor: pointer;
 }
-star-rating .rating.color-negative .star-container .star i {
-    color: #2749b6 !important;
+star-rating .rating.color-negative .star-container .star i,
+star-rating .rating.color-positive .star-container .star i,
+star-rating .rating.color-ok .star-container .star i{
+    color: #5e646b !important;
 }
 
 .mat-pseudo-checkbox-checked {
