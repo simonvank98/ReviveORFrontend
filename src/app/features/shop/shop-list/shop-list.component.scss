@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
+    padding: 20px 0px;
 }
 
 .shop-grid > * {
@@ -82,10 +83,19 @@ ng5-slider {
         grid-template-columns: 1fr 1fr !important;
     }
 }
-
+@media (max-widtH: 700px) {
+    .option-wrapper {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
 @media (max-width: 600px) {
     .shop-grid {
         grid-template-columns: 1fr !important;
+    }
+}
+@media (max-width: 400px) {
+    .option-wrapper {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
