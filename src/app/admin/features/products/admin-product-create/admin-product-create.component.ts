@@ -43,6 +43,7 @@ export class AdminProductCreateComponent implements OnInit {
         this.product = {
             categoryId: 0,
             conditionId: 0,
+            storyId: 0,
             ratingId: 1,
             name: '',
             description: '',
