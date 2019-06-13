@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './features/core/home/home.component';
 import {ShopComponent} from './features/shop/shop.component';
 import {AccountPageComponent} from './features/account/account-page.component';
-import {StoryListComponent} from './features/stories/story-list.component';
+import {StoryListComponent} from './features/stories/story-list/story-list.component';
 import {TradeInRequestPageComponent} from './features/trade-in-requests/trade-in-request-page.component';
 import {TradeInRequestJewelryTypeComponent} from './features/trade-in-requests/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
 import {TradeInRequestJewelryMaterialComponent} from './features/trade-in-requests/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
@@ -46,6 +46,8 @@ import {AllStoriesResolver} from './shared/services/stories/all-stories.resolver
 import {StoryResolver} from './shared/services/stories/story.resolver';
 import {AvailableProductsResolver} from './features/shop/available-products.resolver';
 import {AllPublishedStoriesResolver} from './shared/services/stories/all-published-stories.resolver';
+import {NewStoryComponent} from './features/stories/new-story/new-story.component';
+import {StoriesComponent} from './features/stories/stories.component';
 
 const routes: Routes = [
 
@@ -72,7 +74,10 @@ const routes: Routes = [
         { path: 'complete', component: TradeInRequestCompletionComponent, data: {animation: 'jewelryCompletion'}},
     ]
   },
-  { path: 'stories', component: StoryListComponent, resolve: {stories: AllPublishedStoriesResolver} },
+  { path: 'stories', component: StoriesComponent, children: [
+          { path: '', component: StoryListComponent, resolve: {stories: AllPublishedStoriesResolver}, },
+          { path: 'new', component: NewStoryComponent },
+      ] },
     { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
