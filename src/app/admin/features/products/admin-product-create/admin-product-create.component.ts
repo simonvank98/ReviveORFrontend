@@ -41,7 +41,7 @@ export class AdminProductCreateComponent implements OnInit {
 
     ngOnInit() {
         this.product = {
-            categoryId: 0,
+            categoryId: null,
             conditionId: 0,
             storyId: 0,
             ratingId: 1,
@@ -59,6 +59,7 @@ export class AdminProductCreateComponent implements OnInit {
     }
 
     onSaveButtonClicked() {
+        document.getElementById('submitform').classList.add('submitted');
         if (this.form.valid) {
             this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
                 if (confirmed) {

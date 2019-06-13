@@ -50,6 +50,7 @@ export class AdminProductEditComponent implements OnInit {
     }
 
     onSaveButtonClicked() {
+        document.getElementById('submitform').classList.add('submitted');
         if (this.form.valid) {
             this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
                 if (confirmed) {
