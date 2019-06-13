@@ -44,7 +44,9 @@ export class TradeInRequestOverviewComponent implements OnInit {
         const processContainer = this.tradeInProcessService.tradeInProcessContainer;
         const tradeInRequest = {
             ...processContainer,
-            jewelryName: processContainer.jewelryPiece.name
+            jewelryName: processContainer.jewelryPiece.name,
+            material: processContainer.jewelryMaterial,
+            categoryId: processContainer.jewelryPiece.category.id,
         };
         return tradeInRequest as TradeInProcessContainer;
     }
