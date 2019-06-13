@@ -89,7 +89,7 @@ const routes: Routes = [
           // { path: 'trade-in-history/:id', component: TradeInHistoryEditComponent }
       ]},
   { path: 'admin', component: AdminComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, children: [
-      {path: '', redirectTo: '/admin/trade-in', pathMatch: 'full'},
+      {path: '', redirectTo: '/admin/products', pathMatch: 'full'},
       {path: 'products', component: AdminProductsOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2}, resolve: {products: AllProductsResolver}},
       {
           path: 'products/edit/:id', component: AdminProductEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2},
