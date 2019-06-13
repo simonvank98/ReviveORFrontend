@@ -76,7 +76,7 @@ const routes: Routes = [
   },
   { path: 'stories', component: StoriesComponent, children: [
           { path: '', component: StoryListComponent, resolve: {stories: AllPublishedStoriesResolver}, },
-          { path: 'new', component: NewStoryComponent },
+          { path: 'new', component: NewStoryComponent, canActivate: [LoginGuard] },
       ] },
     { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
