@@ -102,6 +102,9 @@ export class ShopListComponent implements OnInit {
     }
 
     private getHighestPrice() {
+        if (this.products.length === 0) {
+            return 0;
+        }
         return Math.max.apply(Math, this.displayedProducts.map(function(o) { return o.price; }));
     }
 
