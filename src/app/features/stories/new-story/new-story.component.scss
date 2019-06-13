@@ -1,0 +1,66 @@
+.topText {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+}
+
+.storyForm {
+    width: 95%;
+}
+
+.buttonWrapper {
+    text-align: right;
+}
+
+.storyContentTextarea {
+    height: 300px;
+}
+
+.storyContentWrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.shareButton {
+    margin-left: 10px;
+    color: white;
+    background-color: #2749b6;
+}
+
+.images-wrapper {
+    padding-top: 20px;
+
+    .imageDiv {
+        padding: 20px;
+        display: inline-block;
+
+        img {
+            width: 100px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+form.submitted {
+    input.ng-invalid, textarea.ng-invalid {
+        border: 1px solid red;
+        color: red;
+    }
+}
+input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
+    border: 1px solid red;
+    color: red;
+}
