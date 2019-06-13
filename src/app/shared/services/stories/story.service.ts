@@ -28,4 +28,8 @@ export class StoryService {
     public editStory(story: StoryModel) {
         return this.api.put<StoryModel>(`stories/${story.id}`, story);
     }
+
+    public postStory(story: StoryModel) {
+        return this.api.post<StoryModel>('stories', story);
+    }
 }

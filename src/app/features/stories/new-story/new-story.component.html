@@ -1,3 +1,48 @@
-<p>
-  new-story works!
-</p>
+<form #f="ngForm" id="submitform">
+    <div class="topText">
+        <h1>Share your story</h1>
+        <p>
+            Continue the memories you created with your once loved pieces by sharing them with the new owner.
+            Jewelry is more than just something we wear. An article of a piece can help to pinpoint a moment in time,
+            it can stimulate fond memories , it is with us trough blood, sweat, tears, laughter,
+            and it is certainly there for our near disasters and our proudest triumphs in life.
+            Every piece carries their own story... so, let's hear them!
+        </p>
+    </div>
+
+    <div class="grid">
+        <div class="storyForm custom-inputs">
+            <div class="storyTitleWrapper">
+                <mat-label>Story title</mat-label>
+                <input name="storyTitle" class="storyTitleInput" placeholder="Story title" required [(ngModel)]="story.storyTitle">
+            </div>
+            <div class="storyContentWrapper">
+                <label>Story Content</label>
+                <textarea matInput class="storyContentTextarea" name="storyContent" placeholder="Story content" required [(ngModel)]="story.storyContent"></textarea>
+            </div>
+        </div>
+        <div class="storyImage">
+            <h4>Upload some images of the jewelry</h4>
+            <app-mass-file-uploader
+                maxFiles=2
+                [allowedExtensions]="allowedImageExtensions"
+                [httpUrl]="imageAPIUrl"
+                (fileUploaded)="onImageUploaded($event)"
+                (fileUploadError)="onImageUploadError($event)">
+            </app-mass-file-uploader>
+
+            <div class="images-wrapper">
+                <div class="label">Your images</div>
+                <div class="imageCollectionWrapper">
+                    <div class="imageDiv" *ngFor="let image of story.images">
+                        <img [src]="image.url" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttonWrapper">
+        <button mat-button class="shareButton mat-elevation-z3" (click)="onShareButtonClicked()">Share your story</button>
+    </div>
+</form>
