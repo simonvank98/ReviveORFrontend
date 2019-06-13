@@ -14,7 +14,7 @@ export class ShopListComponent implements OnInit {
     categories = ['rings', 'necklaces', 'earrings', 'bracelets'];
     materials = ['gold', 'silver', 'other'];
     lowPrice = 0;
-    highPrice = 300;
+    highPrice = 0;
     rating = 1;
     sortSelect = 'newest';
 
@@ -37,8 +37,10 @@ export class ShopListComponent implements OnInit {
         this.displayedProducts = this.products;
         this.priceOptions.ceil = this.getHighestPrice();
         this.highValue = this.priceOptions.ceil;
+        this.highPrice = this.priceOptions.ceil;
         this.optionsLoaded = true;
         this.sortByNewest();
+        this.filter();
     }
 
     filterPrice(event) {
