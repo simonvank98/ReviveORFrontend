@@ -1,16 +1,14 @@
-<form #f="ngForm">
+<form #f="ngForm" id="submitform">
     <div class="grid-2">
         <div class="custom-inputs">
             <mat-label class="label">Name</mat-label>
-            <input name="productName" [(ngModel)]="product.name" [value]="product.name" required>
+            <input name="productName" [(ngModel)]="product.name" [value]="product.name" required minlength="1">
         </div>
 
         <div class="formfieldContainer">
             <mat-form-field class="categoryFormfield">
                 <mat-label>Category</mat-label>
-                <mat-select name="productCategory" class="categoryText" [(ngModel)]="product.categoryId"
-                            [value]="product.categoryId"
-                            required>
+                <mat-select name="productCategory" class="categoryText" [(ngModel)]="product.categoryId" required>
                     <mat-option *ngFor="let category of productCategories" [value]="category.id">
                         {{ category.name }}
                     </mat-option>
@@ -19,7 +17,7 @@
 
             <mat-form-field class="statusFormfield">
                 <mat-label>Status</mat-label>
-                <mat-select name="productStatus" [(ngModel)]="product.status" [value]="product.status" required>
+                <mat-select name="productStatus" [(ngModel)]="product.status" required>
                     <mat-option value="Draft">Draft</mat-option>
                     <mat-option value="Available">Available</mat-option>
                     <mat-option value="Unavailable">Unavailable</mat-option>
@@ -34,14 +32,13 @@
             <div class="custom-inputs">
                 <mat-label class="label">Description</mat-label>
                 <textarea class="descriptionBox" id="description" name="productDescription"
-                          [(ngModel)]="product.description" [value]="product.description" required></textarea>
+                          [(ngModel)]="product.description" [value]="product.description" required minlength="1"></textarea>
             </div>
 
             <div class="formfieldContainerBottom">
                 <mat-form-field class="materialFormfield">
                     <mat-label>Material</mat-label>
-                    <mat-select name="productMaterial" [(ngModel)]="product.material" [value]="product.material"
-                                required>
+                    <mat-select name="productMaterial" [(ngModel)]="product.material" [value]="product.material" required minlength="1">
                         <mat-option value="gold">Gold Plated</mat-option>
                         <mat-option value="silver">Silver</mat-option>
                         <mat-option value="other">Other</mat-option>

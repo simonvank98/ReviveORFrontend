@@ -81,3 +81,14 @@ star-rating {
     color: #2749b6;
 }
 
+form.submitted {
+    input.ng-invalid, textarea.ng-invalid {
+        border: 1px solid red;
+        color: red;
+    }
+}
+input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
+    border: 1px solid red;
+    color: red;
+}
+
