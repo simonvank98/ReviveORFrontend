@@ -21,7 +21,6 @@ export class TradeInProcessService {
         storyContent: '',
         images: [],
         additionalNotes: '',
-
         jewelryCondition: {
             missingPiece: false,
             scratched: false,
@@ -40,19 +39,7 @@ export class TradeInProcessService {
     }
 
     submitRequest(fullTradeInRequest) {
-        return this.http.post(`${environment.reviveORAPIUrl}tradeinrequests`, this.appendTradeInRequestModel(fullTradeInRequest));
-    }
-
-    private appendTradeInRequestModel(tradeInRequest) {
-        const processContainer = this.tradeInProcessContainer;
-        const appendedTradeInRequest = {
-            ...tradeInRequest,
-            jewelryType: processContainer.jewelryType,
-            jewelryMaterial: processContainer.jewelryMaterial,
-            property: processContainer.selectedProperty
-
-        };
-        return appendedTradeInRequest;
+        return this.http.post(`${environment.reviveORAPIUrl}tradeinrequests`, fullTradeInRequest);
     }
 
     setCurrentStep(step) {

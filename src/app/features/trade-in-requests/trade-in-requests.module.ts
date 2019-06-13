@@ -5,7 +5,6 @@ import {TradeInRequestJewelryTypeComponent} from './trade-in-request-jewelry-typ
 import {TradeInRequestJewelryMaterialComponent} from './trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
 import {TradeInRequestJewelrySelectionComponent} from './trade-in-request-jewelry-selection/trade-in-request-jewelry-selection.component';
 import {SelectionButtonComponent} from './selection-button/selection-button.component';
-import {StoryListComponent} from '../stories/story-list.component';
 import {StepperComponent} from '../../shared/components/stepper/stepper.component';
 import {ControlButtonsComponent} from './control-buttons/control-buttons.component';
 import {TradeInRequestJewelryConditionComponent} from './trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
@@ -15,7 +14,6 @@ import {TradeInRequestFinalizationComponent} from './trade-in-request-finalizati
 import {TradeInRequestCompletionComponent} from './trade-in-request-completion/trade-in-request-completion.component';
 import {CountUpModule} from 'countup.js-angular2';
 import {SharedModule} from '../../shared/shared.module';
-import {StoryItemComponent} from '../stories/story-item/story-item.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +22,6 @@ import {StoryItemComponent} from '../stories/story-item/story-item.component';
         TradeInRequestJewelryMaterialComponent,
         TradeInRequestJewelrySelectionComponent,
         SelectionButtonComponent,
-        StoryListComponent,
         StepperComponent,
         ControlButtonsComponent,
         TradeInRequestJewelryConditionComponent,
@@ -32,7 +29,6 @@ import {StoryItemComponent} from '../stories/story-item/story-item.component';
         TradeInRequestOverviewComponent,
         TradeInRequestFinalizationComponent,
         TradeInRequestCompletionComponent,
-        StoryItemComponent,
     ],
     imports: [
         CommonModule,

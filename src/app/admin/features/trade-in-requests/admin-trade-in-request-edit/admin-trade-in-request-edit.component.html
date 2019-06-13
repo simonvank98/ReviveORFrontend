@@ -116,6 +116,10 @@
             <label for="finalCredit">Final credit sent to customer €</label>
             <input matInput id="finalCredit" name="finalCredit" [(ngModel)]="model.finalCredit" required type="number" [disabled]="disabled">
         </mat-form-field>
+        <section class="addToProductsSection">
+            <mat-checkbox id="addToProducts" color="primary" name="addToProducts" [(ngModel)]="model.addToProducts"></mat-checkbox>
+            <label class="addToProductsLabel" for="addToProducts">Add jewelry to products</label>
+        </section>
     </div>
 
     <div class="buttonWrapper">
