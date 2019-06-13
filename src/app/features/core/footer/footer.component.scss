@@ -8,10 +8,51 @@ footer {
     color: #5e646b;
     text-align: center;
 
-    .content {
+    .footer-inner {
         display: grid;
+
+        height: 125px;
         grid-template-columns: 1fr 1fr 1fr;
-        padding: 20px 0px;
+        padding: 0px 20px;
+
+        .or-logo {
+            background-image: url("../../../../assets/or-logo-dark.png");
+            height: 75px;
+            width: 100px;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+        }
+
+        .or-logo, .social-links, .copyright {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .copyright {
+            left: 20px;
+        }
+
+
+        .left, .center, .right {
+            position: relative;
+        }
+
+        .left {
+            text-align: left;
+        }
+        .right {
+            text-align: right;
+        }
     }
 
 }
@@ -22,16 +63,60 @@ footer {
     display: block;
     line-height: 75px;
     text-decoration: none;
-    font-size: 26px;
+    font-size: 24px;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
-}
 
+    &:hover {
+        color: #2749b6;
+    }
+}
+.social-links {
+    > h3 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    > a {
+        height: 20px;
+        width: 20px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: inline-block;
+        margin: 0px 10px;
+        opacity: 0.7;
+        transition: 0.4s opacity;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+    .facebook { background-image: url("../../../../assets/facebook-icon.gif"); }
+    .twitter { background-image: url("../../../../assets/twitter-icon.gif"); }
+    .instagram { background-image: url("../../../../assets/instagram-icon.gif"); }
+    .tumblr { background-image: url("../../../../assets/tumblr-icon.gif"); }
+    .pinterest { background-image: url("../../../../assets/pinterest-icon.gif"); }
+}
 @media(max-width: 800px) {
     footer {
-        grid-template-columns: 1fr;
+        height: unset;
+
+        .back-to-or {
+            position: initial;
+        }
+
+        .footer-inner {
+            grid-template-columns: 1fr;
+            height: unset;
+
+            .or-logo, .social-links, .copyright {
+                position: initial;
+                margin: 0px auto;
+                text-align: center;
+                padding: 15px 0px;
+            }
+        }
     }
 }
