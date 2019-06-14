@@ -17,9 +17,13 @@ img {
     min-width: 100px;
 }
 
+.removeButtonColumn {
+    grid-template-columns: 2fr 2fr 1fr;
+}
+
 @media (max-width: 720px) {
     .shopping-cart-alignment-wrapper {
         grid-gap: 0px;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
 }

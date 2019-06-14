@@ -1,4 +1,4 @@
-<div class="shopping-cart-alignment-wrapper vertical-align">
+<div class="shopping-cart-alignment-wrapper vertical-align" [ngClass]="{removeButtonColumn: !addButton}">
     <div class="product-image">
         <a class="product-description" [routerLink]="['/shop', 'product', cartItem.product.id]">
             <img src="{{cartItem.product.images[0].url}}" alt="Product">
@@ -18,7 +18,7 @@
         <p>{{ (cartItem.product.price * cartItem.quantity) | currency: '€' }}</p>
     </div>
 
-    <div>
+    <div *ngIf="addButton">
         <button mat-raised-button color="primary" (click)="onRemoveCartItemButtonClicked(cartItem)">
             <mat-icon>remove_shopping_cart</mat-icon>
             Remove
