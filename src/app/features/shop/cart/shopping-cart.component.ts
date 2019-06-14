@@ -17,7 +17,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     cartTotal: number;
     shippingCost = 5;
     @Input()
-    addButton = false;
+    addButton = true;
 
     private cartSubscription: Subscription;
 

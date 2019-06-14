@@ -17,7 +17,6 @@
     <div>
         <p>{{ (cartItem.product.price * cartItem.quantity) | currency: '€' }}</p>
     </div>
-
     <div *ngIf="addButton">
         <button mat-raised-button color="primary" (click)="onRemoveCartItemButtonClicked(cartItem)">
             <mat-icon>remove_shopping_cart</mat-icon>
