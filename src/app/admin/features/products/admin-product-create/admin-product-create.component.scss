@@ -86,9 +86,13 @@ form.submitted {
         border: 1px solid red;
         color: red;
     }
-    mat-label.image {
+
+    .error {
         color: red;
     }
+}
+#imagesSize {
+    display: none;
 }
 input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
     border: 1px solid red;

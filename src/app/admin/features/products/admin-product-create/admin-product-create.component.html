@@ -69,7 +69,10 @@
 
         <div class="right">
             <div class="imageContainer">
-                <mat-label class="label image">Images</mat-label>
+                <label for="imagesSize" class="imagesSize" [ngClass]="{error: product.images.length < 1}">
+                    <mat-label class="label image">Images</mat-label>
+                </label>
+                <input type="text" id="imagesSize" name="imagesSize" [(ngModel)]="product.images.length" required minlength="1">
                 <ng-container *ngIf="product.images.length > 0">
                     <app-image-gallery [imageURLs]="displayedImages"
                                        [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
