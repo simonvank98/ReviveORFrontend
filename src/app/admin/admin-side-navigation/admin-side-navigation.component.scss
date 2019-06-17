@@ -1,5 +1,6 @@
 ul {
     list-style: none;
+    background-color: #f5f5f5;
     button {
         letter-spacing: 0.5px;
         font-size: 16px;
@@ -21,7 +22,6 @@ ul {
 }
 @media (max-width: 800px) {
     li {
-        display: inline-block;
 
         button {
             padding: 5px 10px;
