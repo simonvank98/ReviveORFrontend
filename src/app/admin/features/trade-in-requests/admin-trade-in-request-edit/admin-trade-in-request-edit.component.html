@@ -73,13 +73,13 @@
                 <app-image-gallery [imageURLs]="displayedImages"></app-image-gallery>
             </div>
         </div>
-        <div class="right">
+        <div class="right custom-inputs">
             <mat-label>Notes from customer</mat-label>
             <div class="notesFromCustomer">
-                <mat-card-content><p>{{ model.additionalNotes }}</p></mat-card-content>
+                <textarea rows="5" value="{{ model.additionalNotes }}" disabled></textarea>
             </div>
             <mat-label [hidden]="disabled">Message to customer</mat-label>
-            <textarea cols="30" rows="10" name="messageToCustomer" [(ngModel)]="model.messageToCustomer" [hidden]="disabled"></textarea>
+            <textarea cols="30" rows="5" name="messageToCustomer" [(ngModel)]="model.messageToCustomer" [hidden]="disabled"></textarea>
         </div>
     </div>
 
@@ -105,7 +105,7 @@
 
     <div class="indicationWrapper">
         <mat-form-field class="indicationFormfield">
-            <label for="creditIndication">Estimated maximum credit €</label>
+            <label for="creditIndication">Estimated maximum credit</label>
             <input matInput id="creditIndication" name="creditIndication" [(ngModel)]="model.estimatedCredit" required
                    type="number" [disabled]="disabled">
         </mat-form-field>
@@ -113,7 +113,7 @@
 
     <div class="indicationWrapper" *ngIf="model.status === 'Approved for shipping'">
         <mat-form-field class="indicationFormfield">
-            <label for="finalCredit">Final credit sent to customer €</label>
+            <label for="finalCredit">Final credit sent to customer</label>
             <input matInput id="finalCredit" name="finalCredit" [(ngModel)]="model.finalCredit" required type="number" [disabled]="disabled">
         </mat-form-field>
         <section class="addToProductsSection">

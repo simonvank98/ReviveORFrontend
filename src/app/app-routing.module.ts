@@ -82,6 +82,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountPageComponent, children: [
+          { path: '', redirectTo: '/account/info', pathMatch: 'full'},
           { path: 'info', component: AccountInfoComponent },
           { path: 'order-history', component: OrderHistoryOverviewComponent },
           // { path: 'order-history/:id', component: OrderHistoryEditComponent },

@@ -2,6 +2,10 @@
     display: grid;
     grid-template-columns: 1fr;
 }
+mat-table {
+    border-radius: 5px;
+    overflow: hidden;
+}
 
 mat-table.hoverable mat-row:hover {
     background-color: #ccc;
@@ -36,6 +40,11 @@ mat-row {
 @media (max-width: 800px) {
     .wrapper {
         box-shadow: none !important;
+    }
+
+    mat-table {
+        border-radius: 0px;
+        overflow: initial;
     }
 
     mat-header-row {
