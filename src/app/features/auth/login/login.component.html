@@ -1,16 +1,16 @@
-<form (ngSubmit)="onSubmit()" class="mat-elevation-z3" #form="ngForm" id="form">
+<form (ngSubmit)="onSubmit()" class=" custom-inputs mat-elevation-z3" #form="ngForm" id="form">
     <mat-card-header>
         <mat-card-title>Login with your Ocean Republic account</mat-card-title>
     </mat-card-header>
     <div *ngIf="showWarning">
         <p>{{warning}}</p>
     </div>
-    <mat-form-field>
-        <input matInput type="text" placeholder="E-mail address" [(ngModel)]="email" name="email" required ngModel [email]="true">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required ngModel minlength="4">
-    </mat-form-field>
+    <div class="input-wrapper">
+        <mat-label>E-mail address</mat-label>
+        <input type="text" [(ngModel)]="email" name="email" required ngModel [email]="true">
+        <mat-label>Password</mat-label>
+        <input type="password" [(ngModel)]="password" name="password" required ngModel minlength="6">
+    </div>
     <div class="button-wrapper">
         <button mat-raised-button color="primary" class="mat-elevation-z3" [disabled]="!form.valid">Log in</button>
     </div>
