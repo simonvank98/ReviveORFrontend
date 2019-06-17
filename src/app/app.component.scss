@@ -5,3 +5,9 @@
     padding: 0px 20px;
     min-height: calc(100vh - 300px);
 }
+
+@media (max-width: 800px) {
+    .container {
+        padding: 0px 5px;
+    }
+}

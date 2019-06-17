@@ -12,12 +12,14 @@
 
             <mat-header-cell *matHeaderCellDef [disabled]="!sortable" mat-sort-header="{{attribute}}">{{ headers[attributes.indexOf(attribute)] }}</mat-header-cell>
 
-            <mat-cell *matCellDef="let model" attr.data-header="{{ headers[attributes.indexOf(attribute)] }}">{{ renderContent(model, attribute) | truncate:[40] }}</mat-cell>
+            <mat-cell *matCellDef="let model" attr.data-header="{{ headers[attributes.indexOf(attribute)] }}">
+                        {{ renderContent(model, attribute) | truncate:[40] }}
+            </mat-cell>
 
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="attributes"></mat-header-row>
-        <mat-row *matRowDef="let model; columns: attributes;" (click)="onRowClicked(model)"></mat-row>
+        <mat-row [ngStyle]="{'border-left-color': getRowColor(model) }" *matRowDef="let model; columns: attributes;" (click)="onRowClicked(model)"></mat-row>
 
     </mat-table>
 
