@@ -26,7 +26,7 @@ export class TradeInRequestJewelryMaterialComponent implements OnInit {
     if (this.tradeInProcessService.hasMaterial()) {
       this.router.navigate(['/trade-in/piece']);
     } else {
-        this.snackBarService.show('Please choose your jewelry material type.');
+        this.snackBarService.show('Please choose your jewellery material type.');
     }
   }
 

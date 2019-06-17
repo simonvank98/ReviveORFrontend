@@ -8,7 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class TradeInHistoryOverviewComponent implements OnInit {
     models = [];
-    headers = ['Status', 'Jewelry', 'Estimated credit', 'Request date', 'Last update'];
+    headers = ['Status', 'Jewellery', 'Estimated credit', 'Request date', 'Last update'];
     attributes = ['status', 'jewelryName', 'estimatedCredit', 'createdAt', 'updatedAt'];
     formatters = [(attr) => attr, (attr) => attr, (attr) => attr, (createdAt) => new Date(createdAt).toLocaleDateString(),
         (updatedAt) => new Date(updatedAt).toLocaleDateString()];

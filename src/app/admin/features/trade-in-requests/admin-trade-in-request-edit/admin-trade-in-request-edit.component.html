@@ -1,6 +1,6 @@
 <form #f="ngForm">
 
-    <mat-card-title><h3>Credit Request #{{ model.id }}</h3></mat-card-title>
+    <mat-card-title><h3>Trade-in Request #{{ model.id }}</h3></mat-card-title>
     <div class="grid">
         <div class="left">
             <mat-card-content>
@@ -40,7 +40,7 @@
         </div>
         <div class="right align-right">
             <p>
-                <mat-label>Customer reported jewelry conditions</mat-label>
+                <mat-label>Customer reported jewellery conditions</mat-label>
             </p>
             <table>
                 <tr>
@@ -118,7 +118,7 @@
         </mat-form-field>
         <section class="addToProductsSection">
             <mat-checkbox id="addToProducts" color="primary" name="addToProducts" [(ngModel)]="model.addToProducts"></mat-checkbox>
-            <label class="addToProductsLabel" for="addToProducts">Add jewelry to products</label>
+            <label class="addToProductsLabel" for="addToProducts">Add jewellery to products</label>
         </section>
     </div>
 
