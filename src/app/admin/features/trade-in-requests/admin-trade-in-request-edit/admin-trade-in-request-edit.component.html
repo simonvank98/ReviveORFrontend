@@ -124,12 +124,12 @@
 
     <div class="buttonWrapper">
         <div class="buttonLeft">
-            <button mat-button (click)="back()">Back</button>
+            <button mat-button class="mat-elevation-z3" (click)="back()">Back</button>
         </div>
         <div class="buttonRight" *ngIf="model.status !== 'Complete'">
-            <button mat-button (click)="recalculate()" [disabled]="disabled">Recalculate</button>
-            <button mat-button color="warn" (click)="onDeny()" [disabled]="disabled">Cancel request</button>
-            <button mat-button color="primary" class="confirmButton" (click)="onSubmit()" [disabled]="disabled">{{ buttonText }}</button>
+            <button mat-button class="mat-elevation-z3" (click)="recalculate()" [disabled]="disabled">Recalculate</button>
+            <button mat-button class="mat-elevation-z3" (click)="onDeny()" [disabled]="disabled">Cancel request</button>
+            <button mat-button color="primary" class="confirmButton mat-elevation-z3" (click)="onSubmit()" [disabled]="disabled">{{ buttonText }}</button>
         </div>
     </div>
 </form>
