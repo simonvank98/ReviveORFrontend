@@ -40,7 +40,9 @@ export class TableComponent implements OnInit, AfterViewInit {
   // Toggles the shadows.
   @Input() shadows = true;
   // Sort the table by this column
-  @Input() sortBy;
+  @Input() sortBy = 'id';
+  // Sort the table by this direction
+  @Input() sortDirection = 'asc';
   // Array of strings to match colors to
   @Input() rowColorText = {};
   // Attribute to retrieve color text from

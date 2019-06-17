@@ -5,6 +5,8 @@
     [attributes]="attributes"
     [widths]="[15, 25, 30, 15, 15]"
     [shadows]="false"
+    [sortBy]="'updatedAt'"
+    [sortDirection]="'desc'"
     [rowColorAttribute]="'status'"
     [rowColorText]="{'Complete': 'success', 'Approved for shipping': 'warn', 'Denied': 'problem', 'Awaiting shipping approval': 'error'}"
     (clickEvent)="toEditRequest($event)">
