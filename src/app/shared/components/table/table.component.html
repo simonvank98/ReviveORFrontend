@@ -6,7 +6,7 @@
         </mat-form-field>
     </div>
 
-    <mat-table matSort matSortActive="id" #table [dataSource]="dataSource" [ngClass]="{'hoverable': hoverable}">
+    <mat-table *ngIf="models.length > 0" matSort matSortActive="id" #table [dataSource]="dataSource" [ngClass]="{'hoverable': hoverable}">
 
         <ng-container *ngFor="let attribute of attributes" matColumnDef="{{attribute}}">
 
@@ -22,6 +22,10 @@
         <mat-row [ngStyle]="{'border-left-color': getRowColor(model) }" *matRowDef="let model; columns: attributes;" (click)="onRowClicked(model)"></mat-row>
 
     </mat-table>
+
+    <div *ngIf="models.length === 0">
+        <div class="no-items">No items to show.</div>
+    </div>
 
     <mat-paginator *ngIf="pagination" [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
 

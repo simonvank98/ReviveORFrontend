@@ -18,6 +18,9 @@ mat-row {
 //     flex: none;
 //     width: 20%;
 // }
+.no-items {
+    text-align: center;
+}
 @media (max-width: 800px) {
     .wrapper {
         box-shadow: none !important;
