@@ -9,6 +9,7 @@ import {ModalService} from '../../../../shared/services/modal-service/modal.serv
 import {NgForm} from '@angular/forms';
 import {StoryService} from '../../../../shared/services/stories/story.service';
 import {ProductModel} from '../../../../shared/services/product/product.model';
+import {ProductService} from '../../../../shared/services/product/product.service';
 
 @Component({
   selector: 'app-admin-stories-edit',
@@ -32,11 +33,17 @@ export class AdminStoriesEditComponent implements OnInit {
                 private snackbarService: SnackbarService,
                 private modalService: ModalService,
                 private router: Router,
-                private storyService: StoryService) { }
+                private storyService: StoryService,
+                private productService: ProductService) { }
 
   ngOnInit() {
       this.story = this.route.snapshot.data['story'];
       this.productsWithoutStories = this.route.snapshot.data['products'];
+      if (this.story.productId) {
+          this.productService.getProduct(this.story.productId).subscribe((product) => {
+              this.productsWithoutStories = [product, ...this.productsWithoutStories];
+          });
+      }
       this.refreshDisplayedImages();
   }
 
