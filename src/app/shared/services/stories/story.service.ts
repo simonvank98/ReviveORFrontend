@@ -32,4 +32,8 @@ export class StoryService {
     public postStory(story: StoryModel) {
         return this.api.post<StoryModel>('stories', story);
     }
+
+    getAllStoriesWithoutProduct() {
+        return this.api.get<StoryModel[]>('stories/withoutproduct');
+    }
 }

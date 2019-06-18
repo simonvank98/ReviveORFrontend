@@ -29,6 +29,7 @@ import {YesnoPipe} from './pipes/yesno.pipe';
 import {AllStoriesResolver} from './services/stories/all-stories.resolver';
 import {StoryResolver} from './services/stories/story.resolver';
 import {AllPublishedStoriesResolver} from './services/stories/all-published-stories.resolver';
+import {WithoutProductsStoriesResolver} from './services/stories/without-products-stories.resolver';
 
 @NgModule({
     declarations: [
@@ -92,7 +93,8 @@ import {AllPublishedStoriesResolver} from './services/stories/all-published-stor
         UserTradeInRequestsResolver,
         AllStoriesResolver,
         StoryResolver,
-        AllPublishedStoriesResolver
+        AllPublishedStoriesResolver,
+        WithoutProductsStoriesResolver,
     ]
 })
 export class SharedModule {
