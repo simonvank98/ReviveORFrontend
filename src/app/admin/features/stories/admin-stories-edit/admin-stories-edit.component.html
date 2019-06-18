@@ -23,6 +23,7 @@
                 <mat-form-field class="storyBinder">
                     <mat-label>Bind story to product</mat-label>
                     <mat-select name="storyBinder" [(ngModel)]="story.productId" (selectionChange)="bindStoryToProduct()">
+                        <mat-option [value]="0"></mat-option>
                         <mat-option *ngFor="let product of productsWithoutStories" [value]="product.id">{{ product.name }}</mat-option>
                     </mat-select>
                 </mat-form-field>

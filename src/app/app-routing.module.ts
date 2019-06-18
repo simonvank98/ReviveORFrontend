@@ -49,6 +49,7 @@ import {AllPublishedStoriesResolver} from './shared/services/stories/all-publish
 import {NewStoryComponent} from './features/stories/new-story/new-story.component';
 import {StoriesComponent} from './features/stories/stories.component';
 import {AllProductWithoutStoryResolver} from './shared/services/product/all-product-without-story.resolver';
+import {WithoutProductsStoriesResolver} from './shared/services/stories/without-products-stories.resolver';
 
 const routes: Routes = [
 
@@ -99,6 +100,8 @@ const routes: Routes = [
               product: ProductResolver,
               productCategories: AllProductCategoriesResolver,
               productRatings: AllProductRatingsResolver,
+              stories: WithoutProductsStoriesResolver,
+
           }
       }, {
             path: 'products/create', component: AdminProductCreateComponent,

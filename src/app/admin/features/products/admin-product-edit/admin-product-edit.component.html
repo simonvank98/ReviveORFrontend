@@ -94,33 +94,17 @@
             </div>
         </div>
     </div>
-
-
-    <div class="custom-inputs" *ngIf="product.story">
-        <mat-accordion class="storyAcc">
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Story information
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <label>Story Author</label>
-                <mat-form-field>
-                    <input matInput name="storyAuthor" placeholder="Story Author" disabled [(ngModel)]="product.story.user.name" value="product.property">
-                </mat-form-field>
-                <label>Story Title</label>
-                <mat-form-field>
-                    <input matInput name="storyTitle" placeholder="Story Title" [(ngModel)]="product.story.storyTitle" value="product.property">
-                </mat-form-field>
-                <label>Story Content</label>
-                <mat-form-field>
-                    <textarea matInput name="storyContent" placeholder="Story Content" [(ngModel)]="product.story.storyContent" value="product.property"></textarea>
-                </mat-form-field>
-            </mat-expansion-panel>
-        </mat-accordion>
-        <!--<div class="storyAuthorBox">
-            <input matInput id="storyAuthor" value=" {{ product.story-list?.author }}">
-        </div>-->
+    <div class="grid-2">
+        <mat-form-field class="categoryFormfield">
+            <mat-label>Stories</mat-label>
+            <mat-select name="story" class="categoryText" [(ngModel)]="product.story"
+                        [(value)]="product.story">
+                <mat-option value="null">None</mat-option>
+                <mat-option *ngFor="let story of stories" [value]="story">
+                    {{story.storyTitle}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
     <div class="align-right">
         <button mat-button class="deleteButton mat-elevation-z3" (click)="onDeleteButtonClicked()">Delete</button>
