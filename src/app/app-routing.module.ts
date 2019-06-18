@@ -49,11 +49,12 @@ import {NewStoryComponent} from './features/stories/new-story/new-story.componen
 import {StoriesComponent} from './features/stories/stories.component';
 import {AllProductWithoutStoryResolver} from './shared/services/product/all-product-without-story.resolver';
 import {WithoutProductsStoriesResolver} from './shared/services/stories/without-products-stories.resolver';
-import {UserDataResolver} from './shared/services/auth/user-data-resolver.service';
+import {UserDataResolverGuard} from './shared/services/auth/user-data-resolver.service';
+import {TradeInProcessStateGuard} from './features/trade-in-requests/trade-in-process-state-guard.service';
 
 const routes: Routes = [
     {
-        path: '', resolve: {userData: UserDataResolver},
+        path: '', canActivate: [UserDataResolverGuard],
         children: [
             {path: '', component: HomeComponent},
             {
@@ -70,6 +71,7 @@ const routes: Routes = [
             {
                 path: 'trade-in',
                 component: TradeInRequestPageComponent,
+                canActivate: [TradeInProcessStateGuard],
                 children: [
                     {path: 'type', component: TradeInRequestJewelryTypeComponent, data: {animation: 'jewelryType'}},
                     {path: 'material', component: TradeInRequestJewelryMaterialComponent, data: {animation: 'jewelryMaterial'}},
@@ -175,11 +177,10 @@ const routes: Routes = [
                         data: {permissionLevel: 3},
                         component: AdminPermissionsOverviewComponent
                     },
-                    {path: '**', redirectTo: '/not-found'},
                 ]
             },
-            {path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'}},
-            // { path: '**', redirectTo: '/not-found' }
+            { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'}},
+            { path: '**', redirectTo: '/not-found' }
         ]
     }
 ];

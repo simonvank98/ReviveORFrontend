@@ -22,7 +22,6 @@ import {RegisterComponent} from './features/auth/register/register.component';
 import {TradeInRequestsModule} from './features/trade-in-requests/trade-in-requests.module';
 import {AccountModule} from './features/account/account.module';
 import {AuthenticationService} from './shared/services/auth/authentication.service';
-import {UserDataResolver} from './shared/services/auth/user-data-resolver.service';
 
 import {StoryModule} from './features/stories/story.module';
 @NgModule({

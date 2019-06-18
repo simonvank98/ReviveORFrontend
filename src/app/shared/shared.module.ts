@@ -31,7 +31,7 @@ import {StoryResolver} from './services/stories/story.resolver';
 import {AllPublishedStoriesResolver} from './services/stories/all-published-stories.resolver';
 import {WithoutProductsStoriesResolver} from './services/stories/without-products-stories.resolver';
 import {AllProductWithoutStoryResolver} from './services/product/all-product-without-story.resolver';
-import {UserDataResolver} from './services/auth/user-data-resolver.service';
+import {UserDataResolverGuard} from './services/auth/user-data-resolver.service';
 
 @NgModule({
     declarations: [
@@ -94,7 +94,7 @@ import {UserDataResolver} from './services/auth/user-data-resolver.service';
         TradeInRequestResolver,
         AllTradeInRequestsResolver,
         UserTradeInRequestsResolver,
-        UserDataResolver,
+        UserDataResolverGuard,
         UserTradeInRequestsResolver,
         AllStoriesResolver,
         StoryResolver,
