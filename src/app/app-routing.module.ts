@@ -35,7 +35,6 @@ import {LogoutComponent} from './features/auth/logout/logout.component';
 import {ErrorPageComponent} from './shared/components/error-page/error-page.component';
 import {RegisterComponent} from './features/auth/register/register.component';
 import {PermissionGuard} from './features/auth/permission.guard';
-import {AccountInfoComponent} from './features/account/features/account-info/account-info/account-info.component';
 import {OrderHistoryOverviewComponent} from './features/account/features/order-history/order-history-overview/order-history-overview.component';
 import {TradeInHistoryOverviewComponent} from './features/account/features/trade-in-history/trade-in-history-overview/trade-in-history-overview.component';
 import {UserTradeInRequestsResolver} from './shared/services/trade-in/resolvers/user-trade-in-requests.resolver';
@@ -84,8 +83,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountPageComponent, children: [
-          { path: '', redirectTo: '/account/info', pathMatch: 'full'},
-          { path: 'info', component: AccountInfoComponent },
+          { path: '', redirectTo: '/account/order-history', pathMatch: 'full'},
           { path: 'order-history', component: OrderHistoryOverviewComponent },
           // { path: 'order-history/:id', component: OrderHistoryEditComponent },
           { path: 'trade-in-history', component: TradeInHistoryOverviewComponent, resolve: { requests: UserTradeInRequestsResolver } },
