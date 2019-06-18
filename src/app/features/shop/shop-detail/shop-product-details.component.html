@@ -5,27 +5,26 @@
         </div>
 
         <!--Uncomment this block when story-list are implemented-->
-        <ng-container *ngIf="product.story?.storyTitle !== null && product.story?.storyContent !== null">
+        <div class="story-wrapper" *ngIf="product.story?.storyTitle !== null && product.story?.storyContent !== null">
             <mat-label><h3>The unique story of this piece</h3></mat-label>
-            <div class="story-wrapper">
-                <mat-card-content>
-                    <p class="story-title">{{ product.story?.storyTitle}}</p>
-                    <p class="story-content">{{ product.story?.storyContent}}</p>
-                    <p class="story-author" *ngIf="product.story?.author !== null"><i> - {{ product.story?.author}}</i></p>
+            <mat-card-content>
+                <p class="story-title">{{ product.story?.storyTitle}}</p>
+                <p class="story-content">{{ product.story?.storyContent}}</p>
+                <p class="story-author" *ngIf="product.story?.author !== null"><i> - {{ product.story?.author}}</i></p>
 
-                </mat-card-content>
-            </div>
-        </ng-container>
+            </mat-card-content>
+        </div>
 
     </div>
 
-    <div class="right">
+    <div>
         <div class="product-info">
             <mat-card-title><h2>{{ product.name }}</h2></mat-card-title>
             <mat-card-subtitle>
                 <div class="product-rating">
                     <p>Condition
-                    <star-rating [readOnly]="true" starType="icon" staticColor="negative" [rating]="product.rating.id"></star-rating>
+                        <star-rating [readOnly]="true" starType="icon" staticColor="negative"
+                                     [rating]="product.rating.id"></star-rating>
                     </p>
                 </div>
 
@@ -35,10 +34,8 @@
                 <p>{{ product.description }}</p>
             </mat-card-content>
         </div>
-        <div class="button-wrapper">
-            <button mat-button (click)="onAddToShoppingCartButtonClicked()"
-                    class="add-to-cart mat-elevation-z3 full-width">Add to shopping cart
-            </button>
-        </div>
+        <button mat-button (click)="onAddToShoppingCartButtonClicked()"
+                class="add-to-cart mat-elevation-z3 full-width">Add to shopping cart
+        </button>
     </div>
 </div>
