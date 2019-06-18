@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <div class="custom-inputs" *ngIf="!disabled">
+    <div class="custom-inputs">
         <mat-accordion class="storyAcc">
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -93,11 +93,11 @@
                 </mat-expansion-panel-header>
                 <label>Story Title</label>
                 <mat-form-field>
-                    <input matInput name="storyTitle" [(ngModel)]="model.storyTitle">
+                    <input matInput name="storyTitle" [disabled]="disabled" [(ngModel)]="model.storyTitle">
                 </mat-form-field>
                 <label>Story Content</label>
                 <mat-form-field>
-                    <textarea matInput cols="30" rows="10" name="storyContent" [(ngModel)]="model.storyContent">{{ model.storyContent }}</textarea>
+                    <textarea matInput cols="30" rows="10" name="storyContent" [disabled]="disabled"  [(ngModel)]="model.storyContent">{{ model.storyContent }}</textarea>
                 </mat-form-field>
             </mat-expansion-panel>
         </mat-accordion>

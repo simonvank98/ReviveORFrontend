@@ -28,7 +28,7 @@
                     [compareWith]="compareSelection"
                     (selectionChange)="onRolesChanged($event)"
                     [(ngModel)]="selectedRole"
-                    placeholder="Roles"
+                    placeholder="Role"
                     [formControl]="roleFormControl">
                     <mat-option *ngFor="let role of roles" [value]="role">
                         {{role.name}}
