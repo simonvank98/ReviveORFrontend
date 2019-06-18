@@ -1,18 +1,31 @@
 .address-options {
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
+    //margin-bottom: 30px;
 }
 .address-options mat-radio-button {
     margin: 5px 0;
 }
 
 .address-info {
-    background-color: #ccc;
+    background-color: #ddd;
     padding: 10px;
     margin: 15px 0;
 }
 
 .address-form {
     margin: 15px 0;
+}
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
+}
+
+@media (max-width: 500px) {
+    .checkout-container {
+        grid-gap: 0px;
+        grid-template-columns: 1fr;
+    }
 }

@@ -12,7 +12,8 @@ import {ShoppingCartItemComponent} from './cart/shopping-cart-item/shopping-cart
 import {AvailableProductsResolver} from './available-products.resolver';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { DeliveryAddressComponent } from './checkout/delivery-address/delivery-address.component';
-import { PaymentComponent } from './checkout/payment/payment.component';
+import {CheckoutOverviewComponent} from './checkout/checkout-overview/checkout-overview.component';
+import {CheckoutCompletionComponent} from './checkout/completion/checkout-completion.component';
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { PaymentComponent } from './checkout/payment/payment.component';
         ShoppingCartItemComponent,
         CheckoutComponent,
         DeliveryAddressComponent,
-        PaymentComponent,
+        CheckoutOverviewComponent,
+        CheckoutCompletionComponent,
     ],
     providers: [
         AllProductsResolver,

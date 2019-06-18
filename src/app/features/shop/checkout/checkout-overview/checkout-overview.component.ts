@@ -1,15 +1,14 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {ShoppingCartService} from './cart.service';
-import {CartItem} from './cart-product.model';
 import {Subscription} from 'rxjs';
-import {Router} from '@angular/router';
+import {CartItem} from '../../cart/cart-product.model';
+import {ShoppingCartService} from '../../cart/cart.service';
 
 @Component({
-    selector: 'app-shopping-cart',
-    templateUrl: './shopping-cart.component.html',
-    styleUrls: ['./shopping-cart.component.scss']
+    selector: 'app-checkout-overview',
+    templateUrl: './checkout-overview.component.html',
+    styleUrls: ['./checkout-overview.component.scss']
 })
-export class ShoppingCartComponent implements OnInit, OnDestroy {
+export class CheckoutOverviewComponent implements OnInit, OnDestroy {
 
     shippingCost = 5;
 

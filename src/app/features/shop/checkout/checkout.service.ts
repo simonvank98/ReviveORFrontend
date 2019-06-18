@@ -5,15 +5,14 @@ import {APIService} from '../../../shared/services/api/api.service';
 import {ShoppingCartService} from '../cart/cart.service';
 import {CartItem} from '../cart/cart-product.model';
 import {first, switchMap, tap} from 'rxjs/operators';
+import {Router, UrlSerializer} from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CheckoutService {
 
-
     useAddressForm = false;
-
     shippingAddress: ShippingAddressModel = {
         firstname: '',
         lastname: '',
@@ -25,8 +24,7 @@ export class CheckoutService {
         province: ''
     };
 
-    constructor(private apiService: APIService, private cartService: ShoppingCartService) {
-
+    constructor(private apiService: APIService, private cartService: ShoppingCartService, private router: Router, private urlSerializer: UrlSerializer) {
     }
 
 
@@ -36,13 +34,8 @@ export class CheckoutService {
         );
     }
 
-    checkPaymentStatus() {
-
-    }
-
     private submitOrder(cartItems: CartItem[]) {
         const order: Object = this.createOrder(cartItems);
-        console.log('Submitting order', order);
         return this.apiService.post('checkout', order);
     }
 
@@ -52,9 +45,15 @@ export class CheckoutService {
             productIds.push({id: cartItem.product.id});
         }
         return {
+            redirectUrl: this.createRedirectURL(),
             useNewAddress: this.useAddressForm,
             shipping: this.shippingAddress,
             products: productIds
         };
+    }
+
+    private createRedirectURL() {
+        const path = this.urlSerializer.serialize(this.router.createUrlTree(['/shop', 'checkout', 'complete']));
+        return window.location.origin + path;
     }
 }

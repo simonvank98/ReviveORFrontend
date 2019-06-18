@@ -51,6 +51,8 @@ import {AllProductWithoutStoryResolver} from './shared/services/product/all-prod
 import {WithoutProductsStoriesResolver} from './shared/services/stories/without-products-stories.resolver';
 import {UserDataResolverGuard} from './shared/services/auth/user-data-resolver.service';
 import {TradeInProcessStateGuard} from './features/trade-in-requests/trade-in-process-state-guard.service';
+import {CheckoutComponent} from './features/shop/checkout/checkout.component';
+import {CheckoutCompletionComponent} from './features/shop/checkout/completion/checkout-completion.component';
 
 const routes: Routes = [
     {
@@ -65,6 +67,8 @@ const routes: Routes = [
                     {path: '', component: ShopListComponent},
                     {path: 'product/:id', component: ShopProductDetailsComponent, resolve: {product: ProductResolver}},
                     {path: 'cart', component: ShoppingCartComponent},
+                    {path: 'checkout', component: CheckoutComponent},
+                    {path: 'checkout/complete', component: CheckoutCompletionComponent},
                 ]
             },
             {path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full'},
@@ -180,7 +184,7 @@ const routes: Routes = [
                 ]
             },
             { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'}},
-            { path: '**', redirectTo: '/not-found' }
+/*            { path: '**', redirectTo: '/not-found' }*/
         ]
     }
 ];
