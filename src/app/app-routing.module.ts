@@ -48,6 +48,7 @@ import {AvailableProductsResolver} from './features/shop/available-products.reso
 import {AllPublishedStoriesResolver} from './shared/services/stories/all-published-stories.resolver';
 import {NewStoryComponent} from './features/stories/new-story/new-story.component';
 import {StoriesComponent} from './features/stories/stories.component';
+import {AllProductWithoutStoryResolver} from './shared/services/product/all-product-without-story.resolver';
 import {WithoutProductsStoriesResolver} from './shared/services/stories/without-products-stories.resolver';
 
 const routes: Routes = [
@@ -110,7 +111,7 @@ const routes: Routes = [
             }
       },
       { path: 'stories', component: AdminStoriesOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2}, resolve: {stories: AllStoriesResolver}  },
-      { path: 'stories/edit/:id', component: AdminStoriesEditComponent, canActivate: [PermissionGuard], data: { permissionLevel: 2 }, resolve: { story: StoryResolver } },
+      { path: 'stories/edit/:id', component: AdminStoriesEditComponent, canActivate: [PermissionGuard], data: { permissionLevel: 2 }, resolve: { story: StoryResolver, products: AllProductWithoutStoryResolver} },
       { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { requests: AllTradeInRequestsResolver }},
       { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { request: TradeInRequestResolver }},
       { path: 'credit-indications', canActivate: [PermissionGuard], data: { permissionLevel:  2}, component: AdminCreditIndicationsOverviewComponent },
