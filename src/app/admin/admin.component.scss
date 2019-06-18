@@ -9,14 +9,14 @@
 }
 .container {
   padding: 20px;
-    overflow-x:scroll;
 }
 @media (max-width: 800px) {
   .wrapper {
     grid-template-columns: 1fr;
     padding: 0px 10px;
   }
-    .container {
-        padding: 10px;
-    }
+  .container {
+      padding: 10px;
+      overflow-x:scroll;
+  }
 }

@@ -40,7 +40,9 @@ export class TableComponent implements OnInit, AfterViewInit {
   // Toggles the shadows.
   @Input() shadows = true;
   // Sort the table by this column
-  @Input() sortBy;
+  @Input() sortBy = 'id';
+  // Sort the table by this direction
+  @Input() sortDirection = 'asc';
   // Array of strings to match colors to
   @Input() rowColorText = {};
   // Attribute to retrieve color text from
@@ -48,10 +50,10 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   // Array of colors for rows
   private rowColors = {
-    success: '#96ffab',
-    warn: '#ffc896',
-    problem: '#ff9696',
-    error: '#b53f3f'
+    success: '#28a745',
+    warn: '#ffc107',
+    problem: '#dc3545',
+    error: '#791a23'
   };
 
   // Datasource the table will use. Will be filled with model data.

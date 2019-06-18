@@ -1,11 +1,13 @@
 .upperGrid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
 }
 
 .lowerGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
 }
 
 mat-label {
@@ -15,7 +17,7 @@ mat-label {
 }
 
 .statusFormfield {
-    width: 150px;
+    width: 100%;
     float: right;
 }
 
@@ -25,11 +27,11 @@ input, textarea {
 }
 
 .storyUser {
-    width: 220px;
+    width: 100%;
 }
 
 .storyTitleInput {
-    width: 300px;
+    width: 100%;
 }
 
 .storyContentTextarea {
@@ -37,7 +39,11 @@ input, textarea {
 }
 
 .storyUserEmail {
-    width: 300px;
+    width: 100%;
+}
+
+input {
+    width: 100%;
 }
 
 .storyImageGallery{
@@ -45,8 +51,7 @@ input, textarea {
 }
 
 button {
-    background-color: #ccc;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .saveButton {
@@ -55,10 +60,17 @@ button {
 }
 
 .userDetails {
-    border: 1px rgba(0, 0, 0, 0.42) solid;
     margin-bottom: 20px;
 
     p {
         margin: 8px 2px;
     }
+}
+
+.storyProductBinder {
+    margin-top: 20px;
+}
+
+.storyButtons {
+    margin-top: 15px;
 }

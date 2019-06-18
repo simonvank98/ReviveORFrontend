@@ -21,6 +21,10 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 15px;
 }
+.save-button {
+    background-color: #2749b6;
+    color: white;
+}
 @media (max-width: 800px) {
     .grid {
         grid-template-columns: 1fr;

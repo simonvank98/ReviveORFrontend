@@ -3,13 +3,14 @@
         <div class="upperLeft custom-inputs">
             <mat-label>Author</mat-label>
             <div class="userDetails storyUser">
-                <mat-card-content><p>{{ story.user.name }}</p></mat-card-content>
+                <input name="name" value="{{ story.user.name }}" disabled>
             </div>
         </div>
         <div class="upperCenter custom-inputs">
             <mat-label>Story title</mat-label>
             <input name="storyTitle" class="storyTitleInput" [(ngModel)]="story.storyTitle" [value]="story.storyTitle" required>
         </div>
+
         <div class="upperRight">
             <mat-form-field class="statusFormfield">
                 <mat-label>Status</mat-label>
@@ -18,6 +19,15 @@
                     <mat-option value="Published">Published</mat-option>
                 </mat-select>
             </mat-form-field>
+            <div class="storyProductBinder">
+                <mat-form-field class="storyBinder">
+                    <mat-label>Bind story to product</mat-label>
+                    <mat-select name="storyBinder" [(ngModel)]="story.productId" (selectionChange)="bindStoryToProduct()">
+                        <mat-option [value]="0"></mat-option>
+                        <mat-option *ngFor="let product of productsWithoutStories" [value]="product.id">{{ product.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </div>
     </div>
 
@@ -26,7 +36,7 @@
             <div class="userEmailInput custom-inputs">
                 <mat-label>User email</mat-label>
                 <div class="userDetails storyUserEmail">
-                    <mat-card-content><p>{{ story.user.email }}</p></mat-card-content>
+                    <input name="name" value="{{ story.user.email }}" disabled>
                 </div>
             </div>
             <div class="storyImageGallery">
@@ -56,8 +66,8 @@
                 </mat-form-field>
             </div>
             <div class="storyButtons align-right">
-                <button mat-button class="deleteButton" (click)="onDeleteButtonClicked()">Delete</button>
-                <button mat-button class="saveButton" (click)="onSaveButtonClicked()">Save</button>
+                <button mat-button class="deleteButton mat-elevation-z3" (click)="onDeleteButtonClicked()">Delete</button>
+                <button mat-button class="saveButton mat-elevation-z3" (click)="onSaveButtonClicked()">Save</button>
             </div>
         </div>
     </div>

@@ -35,7 +35,6 @@ import {LogoutComponent} from './features/auth/logout/logout.component';
 import {ErrorPageComponent} from './shared/components/error-page/error-page.component';
 import {RegisterComponent} from './features/auth/register/register.component';
 import {PermissionGuard} from './features/auth/permission.guard';
-import {AccountInfoComponent} from './features/account/features/account-info/account-info/account-info.component';
 import {OrderHistoryOverviewComponent} from './features/account/features/order-history/order-history-overview/order-history-overview.component';
 import {TradeInHistoryOverviewComponent} from './features/account/features/trade-in-history/trade-in-history-overview/trade-in-history-overview.component';
 import {UserTradeInRequestsResolver} from './shared/services/trade-in/resolvers/user-trade-in-requests.resolver';
@@ -48,6 +47,8 @@ import {AvailableProductsResolver} from './features/shop/available-products.reso
 import {AllPublishedStoriesResolver} from './shared/services/stories/all-published-stories.resolver';
 import {NewStoryComponent} from './features/stories/new-story/new-story.component';
 import {StoriesComponent} from './features/stories/stories.component';
+import {AllProductWithoutStoryResolver} from './shared/services/product/all-product-without-story.resolver';
+import {WithoutProductsStoriesResolver} from './shared/services/stories/without-products-stories.resolver';
 
 const routes: Routes = [
 
@@ -82,7 +83,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountPageComponent, children: [
-          { path: 'info', component: AccountInfoComponent },
+          { path: '', redirectTo: '/account/order-history', pathMatch: 'full'},
           { path: 'order-history', component: OrderHistoryOverviewComponent },
           // { path: 'order-history/:id', component: OrderHistoryEditComponent },
           { path: 'trade-in-history', component: TradeInHistoryOverviewComponent, resolve: { requests: UserTradeInRequestsResolver } },
@@ -97,6 +98,8 @@ const routes: Routes = [
               product: ProductResolver,
               productCategories: AllProductCategoriesResolver,
               productRatings: AllProductRatingsResolver,
+              stories: WithoutProductsStoriesResolver,
+
           }
       }, {
             path: 'products/create', component: AdminProductCreateComponent,
@@ -106,7 +109,7 @@ const routes: Routes = [
             }
       },
       { path: 'stories', component: AdminStoriesOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2}, resolve: {stories: AllStoriesResolver}  },
-      { path: 'stories/edit/:id', component: AdminStoriesEditComponent, canActivate: [PermissionGuard], data: { permissionLevel: 2 }, resolve: { story: StoryResolver } },
+      { path: 'stories/edit/:id', component: AdminStoriesEditComponent, canActivate: [PermissionGuard], data: { permissionLevel: 2 }, resolve: { story: StoryResolver, products: AllProductWithoutStoryResolver} },
       { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { requests: AllTradeInRequestsResolver }},
       { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { request: TradeInRequestResolver }},
       { path: 'credit-indications', canActivate: [PermissionGuard], data: { permissionLevel:  2}, component: AdminCreditIndicationsOverviewComponent },

@@ -5,5 +5,9 @@
     [formatters]="formatters"
     [widths]="[15, 40, 30, 15]"
     [shadows]="false"
+    [sortBy]="'updatedAt'"
+    [sortDirection]="'desc'"
+    [rowColorAttribute]="'status'"
+    [rowColorText]="{'Published': 'success', 'Draft': 'warn'}"
     (clickEvent)="toEditStories($event)">
 </app-table>

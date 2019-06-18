@@ -9,9 +9,9 @@ import {StoryService} from '../../../../shared/services/stories/story.service';
 })
 export class AdminStoriesOverviewComponent implements OnInit {
     stories = [];
-    headers = ['Story no.', 'Story title', 'Date created', 'Status'];
-    attributes = ['id', 'storyTitle', 'createdAt', 'status'];
-    formatters = [(attr) => attr, (attr) => attr, (createdAt) => new Date(createdAt).toLocaleDateString(),  (attr) => attr];
+    headers = ['Story no.', 'Story title', 'Status', 'Updated'];
+    attributes = ['id', 'storyTitle', 'status', 'updatedAt'];
+    formatters = [(attr) => attr, (attr) => attr,  (attr) => attr, (createdAt) => new Date(createdAt).toLocaleDateString()];
 
   constructor(private router: Router,
               private route: ActivatedRoute,

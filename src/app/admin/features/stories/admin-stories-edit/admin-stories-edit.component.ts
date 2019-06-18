@@ -8,6 +8,8 @@ import {NgxGalleryAction} from 'ngx-gallery';
 import {ModalService} from '../../../../shared/services/modal-service/modal.service';
 import {NgForm} from '@angular/forms';
 import {StoryService} from '../../../../shared/services/stories/story.service';
+import {ProductModel} from '../../../../shared/services/product/product.model';
+import {ProductService} from '../../../../shared/services/product/product.service';
 
 @Component({
   selector: 'app-admin-stories-edit',
@@ -15,7 +17,8 @@ import {StoryService} from '../../../../shared/services/stories/story.service';
   styleUrls: ['./admin-stories-edit.component.scss']
 })
 export class AdminStoriesEditComponent implements OnInit {
-  story: StoryModel;
+    story: StoryModel;
+    productsWithoutStories: ProductModel[];
 
     imageAPIUrl = `${environment.reviveORAPIUrl}images`;
     displayedImages: string[];
@@ -30,10 +33,17 @@ export class AdminStoriesEditComponent implements OnInit {
                 private snackbarService: SnackbarService,
                 private modalService: ModalService,
                 private router: Router,
-                private storyService: StoryService) { }
+                private storyService: StoryService,
+                private productService: ProductService) { }
 
   ngOnInit() {
       this.story = this.route.snapshot.data['story'];
+      this.productsWithoutStories = this.route.snapshot.data['products'];
+      if (this.story.productId) {
+          this.productService.getProduct(this.story.productId).subscribe((product) => {
+              this.productsWithoutStories = [product, ...this.productsWithoutStories];
+          });
+      }
       this.refreshDisplayedImages();
   }
 
@@ -69,6 +79,10 @@ export class AdminStoriesEditComponent implements OnInit {
         } else {
             this.snackbarService.show('Please fill out all required fields');
         }
+    }
+
+    bindStoryToProduct() {
+        console.log(this.story);
     }
 
     onFileSelected($event: FileList) {
