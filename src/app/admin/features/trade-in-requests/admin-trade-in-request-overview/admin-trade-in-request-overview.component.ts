@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {TradeInRequestService} from '../../../../shared/services/trade-in/trade-in-request.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -9,8 +8,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class AdminTradeInRequestOverviewComponent implements OnInit {
     models = [];
-    headers = ['Request #', 'Status', 'Jewelry', 'Estimated credit', 'Request date'];
-    attributes = ['id', 'status', 'jewelryName', 'estimatedCredit', 'createdAt'];
+    headers = ['Request no.', 'Status', 'Jewelry', 'Estimated credit', 'Updated'];
+    attributes = ['id', 'status', 'jewelryName', 'estimatedCredit', 'updatedAt'];
     formatters = [(attr) => attr, (attr) => attr, (attr) => attr, (attr) => attr, (createdAt) => new Date(createdAt).toLocaleDateString()];
 
     constructor(private route: ActivatedRoute,

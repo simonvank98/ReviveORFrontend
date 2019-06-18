@@ -6,15 +6,20 @@ export interface TradeInRequestModel {
     id: number;
     userId: number;
     status: string;
-    estimatedCredit: number;
     jewelryName: string;
+    jewelryType: string;
+    material: String;
     selectedProperty: string;
-    additionalNotes: string;
     storyTitle: string;
     storyContent: string;
     images: TradeInRequestImageModel[];
     jewelryCondition: TradeInRequestJewelryConditionModel;
+    estimatedCredit: number;
+    additionalNotes: string;
+    messageToCustomer?: string;
+    finalCredit?: number;
     createdAt?: Date;
     updatedAt?: Date;
     user?: UserModel;
+    addToProducts?: boolean;
 }

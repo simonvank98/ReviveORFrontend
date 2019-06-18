@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './features/core/home/home.component';
 import {ShopComponent} from './features/shop/shop.component';
 import {AccountPageComponent} from './features/account/account-page.component';
-import {StoryPageComponent} from './features/stories/story-page.component';
+import {StoryListComponent} from './features/stories/story-list/story-list.component';
 import {TradeInRequestPageComponent} from './features/trade-in-requests/trade-in-request-page.component';
 import {TradeInRequestJewelryTypeComponent} from './features/trade-in-requests/trade-in-request-jewelry-type/trade-in-request-jewelry-type.component';
 import {TradeInRequestJewelryMaterialComponent} from './features/trade-in-requests/trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
@@ -21,9 +21,9 @@ import {TradeInRequestFinalizationComponent} from './features/trade-in-requests/
 import {TradeInRequestJewelryConditionComponent} from './features/trade-in-requests/trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
 import {TradeInRequestCreditIndicationComponent} from './features/trade-in-requests/trade-in-request-credit-indication/trade-in-request-credit-indication.component';
 import {TradeInRequestOverviewComponent} from './features/trade-in-requests/trade-in-request-overview/trade-in-request-overview.component';
-import {AllProductsResolver} from './features/shop/all-products.resolver';
+import {AllProductsResolver} from './shared/services/product/all-products.resolver';
 import {TradeInRequestCompletionComponent} from './features/trade-in-requests/trade-in-request-completion/trade-in-request-completion.component';
-import {ProductResolver} from './features/shop/product.resolver';
+import {ProductResolver} from './shared/services/product/product.resolver';
 import {ShoppingCartComponent} from './features/shop/cart/shopping-cart.component';
 import {ShopListComponent} from './features/shop/shop-list/shop-list.component';
 import {ShopProductDetailsComponent} from './features/shop/shop-detail/shop-product-details.component';
@@ -37,17 +37,25 @@ import {RegisterComponent} from './features/auth/register/register.component';
 import {PermissionGuard} from './features/auth/permission.guard';
 import {AccountInfoComponent} from './features/account/features/account-info/account-info/account-info.component';
 import {OrderHistoryOverviewComponent} from './features/account/features/order-history/order-history-overview/order-history-overview.component';
-import {OrderHistoryEditComponent} from './features/account/features/order-history/order-history-edit/order-history-edit.component';
 import {TradeInHistoryOverviewComponent} from './features/account/features/trade-in-history/trade-in-history-overview/trade-in-history-overview.component';
-import {TradeInHistoryEditComponent} from './features/account/features/trade-in-history/trade-in-history-edit/trade-in-history-edit.component';
 import {UserTradeInRequestsResolver} from './shared/services/trade-in/resolvers/user-trade-in-requests.resolver';
+import {LoginGuard} from './features/auth/login.guard';
+import {AdminProductCreateComponent} from './admin/features/products/admin-product-create/admin-product-create.component';
+import {AdminStoriesEditComponent} from './admin/features/stories/admin-stories-edit/admin-stories-edit.component';
+import {AllStoriesResolver} from './shared/services/stories/all-stories.resolver';
+import {StoryResolver} from './shared/services/stories/story.resolver';
+import {AvailableProductsResolver} from './features/shop/available-products.resolver';
+import {AllPublishedStoriesResolver} from './shared/services/stories/all-published-stories.resolver';
+import {NewStoryComponent} from './features/stories/new-story/new-story.component';
+import {StoriesComponent} from './features/stories/stories.component';
+import {AllProductWithoutStoryResolver} from './shared/services/product/all-product-without-story.resolver';
 
 const routes: Routes = [
 
   { path: '', component: HomeComponent },
   { path: 'shop',
       component: ShopComponent,
-      resolve: { products: AllProductsResolver },
+      resolve: { products: AvailableProductsResolver },
       children: [
         { path: '', component: ShopListComponent },
         { path: 'product/:id', component: ShopProductDetailsComponent, resolve: { product: ProductResolver }},
@@ -63,15 +71,19 @@ const routes: Routes = [
         { path: 'condition', component: TradeInRequestJewelryConditionComponent, data: {animation: 'jewelryConditions'}},
         { path: 'indication', component: TradeInRequestCreditIndicationComponent, data: {animation: 'jewelryIndication'}},
         { path: 'overview', component: TradeInRequestOverviewComponent, data: {animation: 'jewelryOverview'}},
-        { path: 'finalize', component: TradeInRequestFinalizationComponent, data: {animation: 'jewelryFinalization'}},
+        { path: 'finalize', component: TradeInRequestFinalizationComponent, data: {animation: 'jewelryFinalization'}, canActivate: [LoginGuard]},
         { path: 'complete', component: TradeInRequestCompletionComponent, data: {animation: 'jewelryCompletion'}},
     ]
   },
-  { path: 'stories', component: StoryPageComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'stories', component: StoriesComponent, children: [
+          { path: '', component: StoryListComponent, resolve: {stories: AllPublishedStoriesResolver}, },
+          { path: 'new', component: NewStoryComponent, canActivate: [LoginGuard] },
+      ] },
+    { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountPageComponent, children: [
+          { path: '', redirectTo: '/account/info', pathMatch: 'full'},
           { path: 'info', component: AccountInfoComponent },
           { path: 'order-history', component: OrderHistoryOverviewComponent },
           // { path: 'order-history/:id', component: OrderHistoryEditComponent },
@@ -82,20 +94,27 @@ const routes: Routes = [
       {path: '', redirectTo: '/admin/trade-in', pathMatch: 'full'},
       {path: 'products', component: AdminProductsOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2}, resolve: {products: AllProductsResolver}},
       {
-          path: 'products/edit/:id', component: AdminProductEditComponent,
+          path: 'products/edit/:id', component: AdminProductEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2},
           resolve: {
-            product: ProductResolver,
-            productCategories: AllProductCategoriesResolver,
-            productRatings: AllProductRatingsResolver,
-            canActivate: [PermissionGuard], data: { permissionLevel:  2}
-      }},
-      { path: 'stories', component: AdminStoriesOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2} },
+              product: ProductResolver,
+              productCategories: AllProductCategoriesResolver,
+              productRatings: AllProductRatingsResolver,
+          }
+      }, {
+            path: 'products/create', component: AdminProductCreateComponent,
+            resolve: {
+                productCategories: AllProductCategoriesResolver,
+                productRatings: AllProductRatingsResolver
+            }
+      },
+      { path: 'stories', component: AdminStoriesOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  2}, resolve: {stories: AllStoriesResolver}  },
+      { path: 'stories/edit/:id', component: AdminStoriesEditComponent, canActivate: [PermissionGuard], data: { permissionLevel: 2 }, resolve: { story: StoryResolver, products: AllProductWithoutStoryResolver} },
       { path: 'trade-in', component: AdminTradeInRequestOverviewComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { requests: AllTradeInRequestsResolver }},
       { path: 'trade-in/edit/:id', component: AdminTradeInRequestEditComponent, canActivate: [PermissionGuard], data: { permissionLevel:  1}, resolve: { request: TradeInRequestResolver }},
       { path: 'credit-indications', canActivate: [PermissionGuard], data: { permissionLevel:  2}, component: AdminCreditIndicationsOverviewComponent },
       { path: 'permissions', canActivate: [PermissionGuard], data: { permissionLevel:  3}, component: AdminPermissionsOverviewComponent },
       { path: '**', redirectTo: '/not-found' },
-    ] },
+    ]},
   { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
   // { path: '**', redirectTo: '/not-found' }
 ];

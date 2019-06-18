@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FileDropzoneComponent } from './file-dropzone.component';
+import {FileDropzoneComponent} from './file-dropzone.component';
 
 describe('FileDropzoneComponent', () => {
   let component: FileDropzoneComponent;

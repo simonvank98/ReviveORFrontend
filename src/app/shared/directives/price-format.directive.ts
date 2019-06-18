@@ -22,7 +22,6 @@ export class PriceFormatDirective implements AfterViewInit {
 
     if (!currentValue.match(this.regex) && currentValue) {
       this._renderer.setProperty(this.el.nativeElement, 'value', this.previousValue);
-      // console.log('Updated value: ' + this.el.nativeElement.value);
     }
 
     this.previousValue = this.el.nativeElement.value;

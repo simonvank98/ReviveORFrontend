@@ -1,6 +1,6 @@
 <nav class="nav-toolbar">      
     <a class="brand" routerLink="/">
-        ReviveOR
+        <img src="../../../../assets/logo-navbar.png" alt="Ocean Republic logo">
     </a>
     
     <div class="links" [ngClass]="navOpen ? 'open' : ''" >
@@ -18,8 +18,8 @@
                 <ng-container *ngIf="authenticationService.loggedIn; then loggedIn; else loggedOut"></ng-container>
                 
                 <ng-template #loggedIn>
-                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/me', 'edit']">Account info</button>
-                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/admin']" *ngIf="true">Admin dashboard</button>
+                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/account']">Account dashboard</button>
+                    <button mat-menu-item (click)="navOpen = false" [routerLink]="['/admin']" *ngIf="authenticationService.permissionLevel > 0">Admin dashboard</button>
                     <button mat-menu-item (click)="navOpen = false" [routerLink]="['/logout']">Logout</button>
                 </ng-template>
                 

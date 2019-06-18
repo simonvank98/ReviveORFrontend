@@ -3,7 +3,6 @@ import {TradeInProcessContainer} from './trade-in-process-container.model';
 import {ORProduct} from 'src/app/shared/services/or-product/or-product.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {TradeInRequestModel} from '../../shared/services/trade-in/models/trade-in-request.model';
 
 @Injectable({
     providedIn: 'root'
@@ -22,7 +21,6 @@ export class TradeInProcessService {
         storyContent: '',
         images: [],
         additionalNotes: '',
-
         jewelryCondition: {
             missingPiece: false,
             scratched: false,
@@ -41,20 +39,7 @@ export class TradeInProcessService {
     }
 
     submitRequest(fullTradeInRequest) {
-        console.log(this.appendTradeInRequestModel(fullTradeInRequest));
-        return this.http.post(`${environment.reviveORAPIUrl}tradeinrequests`, this.appendTradeInRequestModel(fullTradeInRequest));
-    }
-
-    private appendTradeInRequestModel(tradeInRequest) {
-        const processContainer = this.tradeInProcessContainer;
-        const appendedTradeInRequest = {
-            ...tradeInRequest,
-            jewelryType: processContainer.jewelryType,
-            jewelryMaterial: processContainer.jewelryMaterial,
-            property: processContainer.selectedProperty
-
-        };
-        return appendedTradeInRequest;
+        return this.http.post(`${environment.reviveORAPIUrl}tradeinrequests`, fullTradeInRequest);
     }
 
     setCurrentStep(step) {

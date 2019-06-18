@@ -11,28 +11,22 @@ import {LabelType, Options} from 'ng5-slider';
 export class ShopListComponent implements OnInit {
     products: ProductModel[];
     displayedProducts: ProductModel[];
-    categoryFilter = ['rings', 'necklaces', 'earrings', 'bracelets'];
-    materialFilter = ['gold', 'silver', 'other'];
+    categories = ['rings', 'necklaces', 'earrings', 'bracelets'];
+    materials = ['gold', 'silver', 'other'];
     lowPrice = 0;
-    highPrice = 300;
+    highPrice = 0;
     rating = 1;
     sortSelect = 'newest';
 
     // slider settings
-    value = 0;
-    highValue = 300;
-    priceOptions: Options = {
+    private value = 0;
+    private highValue = 0;
+    public optionsLoaded = false;
+    public priceOptions: Options = {
         floor: 0,
         ceil: 300,
         translate: (value: number, label: LabelType): string => {
-            switch (label) {
-                case LabelType.Low:
-                    return 'Min price: €' + value;
-                case LabelType.High:
-                    return 'Max price: €' + value;
-                default:
-                    return '€' + value;
-            }
+            return '€' + value;
         }
     };
 
@@ -41,16 +35,11 @@ export class ShopListComponent implements OnInit {
     ngOnInit() {
         this.products = this.route.snapshot.data['products'];
         this.displayedProducts = this.products;
+        this.priceOptions.ceil = this.getHighestPrice();
+        this.highValue = this.priceOptions.ceil;
+        this.highPrice = this.priceOptions.ceil;
+        this.optionsLoaded = true;
         this.sortByNewest();
-    }
-
-    filterCategory(event) {
-        this.categoryFilter = event.value;
-        this.filter();
-    }
-
-    filterMaterial(event) {
-        this.materialFilter = event.value;
         this.filter();
     }
 
@@ -67,8 +56,8 @@ export class ShopListComponent implements OnInit {
 
     filter() {
         this.displayedProducts = this.products.filter(product => {
-            return this.categoryFilter.includes(product.category.name.toLocaleLowerCase()) &&
-                this.materialFilter.includes(product.material.toLocaleLowerCase()) &&
+            return this.categories.includes(product.category.name.toLocaleLowerCase()) &&
+                this.materials.includes(product.material.toLocaleLowerCase()) &&
                 product.price >= this.lowPrice && product.price <= this.highPrice &&
                 +product.rating.name >= this.rating;
         });
@@ -95,24 +84,28 @@ export class ShopListComponent implements OnInit {
         this.displayedProducts.sort(function(a, b) {
             const date1 = new Date(a.createdAt).getTime();
             const date2 = new Date(b.createdAt).getTime();
-            return date1 - date2;
+            return date2 - date1;
         });
     }
 
     sortByOldest() {
-        this.displayedProducts.sort(function(a, b) {
-            const date1 = new Date(a.createdAt).getTime();
-            const date2 = new Date(b.createdAt).getTime();
-            return date2 - date1;
-        });
+        this.sortByNewest();
+        this.displayedProducts.reverse();
     }
 
     sortByHighestPrice() {
         this.displayedProducts.sort(function(a, b) {return b.price - a.price; });
     }
-    
+
     sortByLowestPrice() {
         this.displayedProducts.sort(function(a, b) {return a.price - b.price; });
+    }
+
+    private getHighestPrice() {
+        if (this.products.length === 0) {
+            return 0;
+        }
+        return Math.max.apply(Math, this.displayedProducts.map(function(o) { return o.price; }));
     }
 
 

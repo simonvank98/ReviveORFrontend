@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AccountSideNavigationComponent } from './account-side-navigation.component';
+import {AccountSideNavigationComponent} from './account-side-navigation.component';
 
 describe('AccountSideNavigationComponent', () => {
   let component: AccountSideNavigationComponent;

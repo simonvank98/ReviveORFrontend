@@ -1,0 +1,73 @@
+<form #f="ngForm">
+    <div class="upperGrid">
+        <div class="upperLeft custom-inputs">
+            <mat-label>Author</mat-label>
+            <div class="userDetails storyUser">
+                <input name="name" value="{{ story.user.name }}" disabled>
+            </div>
+        </div>
+        <div class="upperCenter custom-inputs">
+            <mat-label>Story title</mat-label>
+            <input name="storyTitle" class="storyTitleInput" [(ngModel)]="story.storyTitle" [value]="story.storyTitle" required>
+        </div>
+
+        <div class="upperRight">
+            <mat-form-field class="statusFormfield">
+                <mat-label>Status</mat-label>
+                <mat-select name="status" class="statusSelect" [(ngModel)]="story.status" [(value)]="story.status" required>
+                    <mat-option value="Draft">Draft</mat-option>
+                    <mat-option value="Published">Published</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="storyProductBinder">
+                <mat-form-field class="storyBinder">
+                    <mat-label>Bind story to product</mat-label>
+                    <mat-select name="storyBinder" [(ngModel)]="story.productId" (selectionChange)="bindStoryToProduct()">
+                        <mat-option *ngFor="let product of productsWithoutStories" [value]="product.id">{{ product.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <div class="lowerGrid">
+        <div class="lowerLeft">
+            <div class="userEmailInput custom-inputs">
+                <mat-label>User email</mat-label>
+                <div class="userDetails storyUserEmail">
+                    <input name="name" value="{{ story.user.email }}" disabled>
+                </div>
+            </div>
+            <div class="storyImageGallery">
+                <mat-label class="label">Images</mat-label>
+                <ng-container *ngIf="story.images.length > 0">
+                    <app-image-gallery [imageURLs]="displayedImages"
+                                       [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
+                                       [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
+                    </app-image-gallery>
+                </ng-container>
+                <app-file-upload-control-bar
+                    *ngIf="imageFile"
+                    [file]="imageFile"
+                    [httpUrl]="imageAPIUrl"
+                    (uploadCancelled)="onImageUploadCancelled()"
+                    (uploadErrors)="onImageUploadError($event)"
+                    (uploadSuccess)="onImageUploadSuccess($event)">
+                </app-file-upload-control-bar>
+                <app-file-selection (filesSelected)="onFileSelected($event)"></app-file-selection>
+            </div>
+        </div>
+        <div class="lowerRight">
+            <div class="custom-inputs">
+                <label>Story Content</label>
+                <mat-form-field>
+                    <textarea matInput class="storyContentTextarea" name="storyContent" [(ngModel)]="story.storyContent">{{ story.storyContent }}</textarea>
+                </mat-form-field>
+            </div>
+            <div class="storyButtons align-right">
+                <button mat-button class="deleteButton mat-elevation-z3" (click)="onDeleteButtonClicked()">Delete</button>
+                <button mat-button class="saveButton mat-elevation-z3" (click)="onSaveButtonClicked()">Save</button>
+            </div>
+        </div>
+    </div>
+</form>

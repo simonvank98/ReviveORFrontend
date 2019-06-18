@@ -1,24 +1,26 @@
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
 }
 
 .nameFormfield {
     width: 250px;
 }
 
-.categoryFormfield {
-    width: 150px;
-    float: left;
+.formfieldContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 15px;
 }
 
-.statusFormfield {
-    width: 150px;
-    margin-left: 10px;
+.categoryText {
+    text-transform: capitalize;
 }
+
 
 .priceBoxContainer {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
@@ -36,12 +38,14 @@
     max-height: 300px;
 }
 
-button {
-    background-color: #ccc;
+.ratingWrapper {
+    display: block;
+    margin-bottom: 30px;
 }
 
-.deleteButton {
-    margin-left: 20px;
+.storyAcc {
+    display: block;
+    margin-bottom: 20px;
 }
 
 
@@ -54,15 +58,45 @@ img {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.imageContainer {
-    max-width: 300px;
+input, textarea {
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+.label {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.saveButton {
+    margin-left: 10px;
+    color: white;
+    background-color: #2749b6;
+}
+
+.backButton {
     margin-left: 20px;
 }
 
-.formfieldContainer {
-    margin-left: 20px;
+star-rating {
+    color: #2749b6;
+}
+form.submitted {
+    input.ng-invalid, textarea.ng-invalid {
+        border: 1px solid red;
+        color: red;
+    }
+    .error {
+        color: red;
+    }
 }
 
-.priceBox {
-    width: 75px;
+#imagesSize {
+    display: none;
 }
+
+input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
+    border: 1px solid red;
+    color: red;
+}
+

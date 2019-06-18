@@ -11,12 +11,12 @@
 
     <div class="products">
         <div class="row" *ngFor="let cartItem of cartItems">
-            <app-shopping-cart-item [cartItem]="cartItem"></app-shopping-cart-item>
+            <app-shopping-cart-item [cartItem]="cartItem" [addButton]="addButton"></app-shopping-cart-item>
         </div>
     </div>
 </mat-card>
 
-<mat-card *ngIf="cartItemsCount > 0">
+<mat-card *ngIf="cartItemsCount > 0" class="checkout-card">
 
     <div class="checkout">
         <div class="row">
@@ -32,6 +32,17 @@
 
         <div class="row">
             <div class="col-md-9">
+                <h5>Shipping Cost:</h5>
+            </div>
+            <div class="col-md-3">
+                <h4>{{ shippingCost | currency: '€' }}</h4>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-9">
                 <h3>Total:</h3>
             </div>
             <div class="col-md-3">
@@ -39,7 +50,7 @@
             </div>
         </div>
 
-        <div class="align-right">
+        <div class="align-right" *ngIf="addButton">
             <button mat-raised-button color="primary" [routerLink]="['/shop', 'checkout']">
                 <mat-icon>payment</mat-icon>
                 Continue to checkout

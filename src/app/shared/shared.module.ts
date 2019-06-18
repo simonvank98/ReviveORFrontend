@@ -13,9 +13,9 @@ import {TableComponent} from './components/table/table.component';
 import {MassFileUploaderComponent} from './components/mass-file-uploader/mass-file-uploader.component';
 import {FileSelectionComponent} from './components/file-selection/file-selection.component';
 import {FileDragAndDropDirective} from './components/mass-file-uploader/fileDragAndDrop.directive';
-import { FileUploadControlBarComponent } from './components/file-upload-control-bar/file-upload-control-bar.component';
-import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component';
-import { ImageGalleryComponent } from './components/image-gallery/image-gallery.component';
+import {FileUploadControlBarComponent} from './components/file-upload-control-bar/file-upload-control-bar.component';
+import {FileDropzoneComponent} from './components/file-dropzone/file-dropzone.component';
+import {ImageGalleryComponent} from './components/image-gallery/image-gallery.component';
 import {NgxGalleryModule} from 'ngx-gallery';
 import {AllProductRatingsResolver} from './services/product/all-product-ratings.resolver';
 import {AllProductCategoriesResolver} from './services/product/all-product-categories.resolver';
@@ -25,10 +25,16 @@ import {StarRatingConfigService, StarRatingModule} from 'angular-star-rating';
 import {TradeInRequestResolver} from './services/trade-in/resolvers/trade-in-request.resolver';
 import {AllTradeInRequestsResolver} from './services/trade-in/resolvers/all-trade-in-requests.resolver';
 import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-trade-in-requests.resolver';
+import {YesnoPipe} from './pipes/yesno.pipe';
+import {AllStoriesResolver} from './services/stories/all-stories.resolver';
+import {StoryResolver} from './services/stories/story.resolver';
+import {AllPublishedStoriesResolver} from './services/stories/all-published-stories.resolver';
+import {AllProductWithoutStoryResolver} from './services/product/all-product-without-story.resolver';
 
 @NgModule({
     declarations: [
         SafePipe,
+        YesnoPipe,
         PriceFormatDirective,
         FileDragAndDropDirective,
         ModalComponent,
@@ -59,6 +65,7 @@ import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-tr
         AppRoutingModule,
         SafePipe,
         TruncatePipe,
+        YesnoPipe,
         ReactiveFormsModule,
         FormsModule,
         StarRatingModule,
@@ -80,10 +87,14 @@ import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-tr
         {provide: MAT_DATE_LOCALE, useValue: 'nl-NL'},
         AllProductRatingsResolver,
         AllProductCategoriesResolver,
+        AllProductWithoutStoryResolver,
         StarRatingConfigService,
         TradeInRequestResolver,
         AllTradeInRequestsResolver,
-        UserTradeInRequestsResolver
+        UserTradeInRequestsResolver,
+        AllStoriesResolver,
+        StoryResolver,
+        AllPublishedStoriesResolver
     ]
 })
 export class SharedModule {

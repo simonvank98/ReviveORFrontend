@@ -1,8 +1,8 @@
-import { CreditIndicationService } from './../../../shared/services/credit-indication/credit-indication.service';
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TradeInProcessService } from '../trade-in-process.service';
-import { CountUp } from 'countup.js';
+import {CreditIndicationService} from './../../../shared/services/credit-indication/credit-indication.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {TradeInProcessService} from '../trade-in-process.service';
+import {CountUp} from 'countup.js';
 
 @Component({
     selector: 'app-trade-in-request-credit-indication',
@@ -21,7 +21,7 @@ export class TradeInRequestCreditIndicationComponent implements OnInit {
 
     private countUpOptions = { decimalPlaces: 2, duration: 1.5, decimal: ',', separator: '.' };
 
-    constructor(private tradeInProcessService: TradeInProcessService,
+    constructor(public tradeInProcessService: TradeInProcessService,
                 private creditIndicationService: CreditIndicationService,
                 private router: Router) { }
 

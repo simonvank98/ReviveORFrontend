@@ -1,5 +1,5 @@
 <div class="button-wrapper">
-    <button mat-raised-button color="primary">Add new product</button>
+    <button mat-flat-button color="primary" class="mat-elevation-z3" (click)="toCreateRequest()">Add new product</button>
 </div>
 
 <app-table
@@ -7,7 +7,11 @@
     [headers]="headers"
     [attributes]="attributes"
     [formatters]="formatters"
-    [widths]="[15, 40, 30, 15]"
+    [widths]="[15, 20, 20, 15, 15, 15]"
+    [shadows]="false"
+    [sortBy]="'updatedAt'"
+    [sortDirection]="'desc'"
+    [rowColorAttribute]="'status'"
+    [rowColorText]="{'Available': 'success', 'Draft': 'warn', 'Unavailable': 'problem', 'Sold': 'error'}"
     (clickEvent)="toEditRequest($event)">
 </app-table>
-

@@ -1,0 +1,127 @@
+<form #f="ngForm" id="submitform">
+    <div class="grid-2">
+        <div class="custom-inputs">
+            <mat-label class="label">Name</mat-label>
+            <input name="productName" [(ngModel)]="product.name" [value]="product.name" required minlength="1">
+        </div>
+
+        <div class="formfieldContainer">
+            <mat-form-field class="categoryFormfield">
+                <mat-label>Category</mat-label>
+                <mat-select name="productCategory" class="categoryText" [(ngModel)]="product.categoryId" required>
+                    <mat-option *ngFor="let category of productCategories" [value]="category.id">
+                        {{ category.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="statusFormfield">
+                <mat-label>Status</mat-label>
+                <mat-select name="productStatus" [(ngModel)]="product.status" required>
+                    <mat-option value="Draft">Draft</mat-option>
+                    <mat-option value="Available">Available</mat-option>
+                    <mat-option value="Unavailable">Unavailable</mat-option>
+                    <mat-option value="Sold">Sold</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="left">
+            <div class="custom-inputs">
+                <mat-label class="label">Description</mat-label>
+                <textarea class="descriptionBox" id="description" name="productDescription"
+                          [(ngModel)]="product.description" [value]="product.description" required minlength="1"></textarea>
+            </div>
+
+            <div class="formfieldContainerBottom">
+                <mat-form-field class="materialFormfield">
+                    <mat-label>Material</mat-label>
+                    <mat-select name="productMaterial" [(ngModel)]="product.material" [value]="product.material" required minlength="1">
+                        <mat-option value="gold">Gold Plated</mat-option>
+                        <mat-option value="silver">Silver</mat-option>
+                        <mat-option value="other">Other</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="custom-inputs">
+                    <mat-label class="label">Property</mat-label>
+                    <input type="text" name="property" [(ngModel)]="product.property">
+                </div>
+            </div>
+
+            <div class="custom-inputs">
+                <div class="priceBoxContainer">
+                    <mat-label class="label">Price (in €)</mat-label>
+                    <div class="priceBox">
+                        <input name="productPrice" [(ngModel)]="product.price" [value]="product.price" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ratingWrapper">
+                <mat-label class="label">Rating</mat-label>
+                <star-rating starType="icon" staticColor="negative" [rating]="product.ratingId"
+                             (starClickChange)="onRatingStarsClicked($event)"></star-rating>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="imageContainer">
+                <label for="imagesSize" class="imagesSize" [ngClass]="{error: product.images.length < 1}">
+                    <mat-label class="label image">Images</mat-label>
+                </label>
+                <input type="text" id="imagesSize" name="imagesSize" [(ngModel)]="product.images.length" required minlength="1">
+                <ng-container *ngIf="product.images.length > 0">
+                    <app-image-gallery [imageURLs]="displayedImages"
+                                       [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
+                                       [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
+                    </app-image-gallery>
+                </ng-container>
+                    <app-file-upload-control-bar
+                        *ngIf="imageFile"
+                        [file]="imageFile"
+                        [httpUrl]="imageAPIUrl"
+                        (uploadCancelled)="onImageUploadCancelled()"
+                        (uploadErrors)="onImageUploadError($event)"
+                        (uploadSuccess)="onImageUploadSuccess($event)">
+                    </app-file-upload-control-bar>
+                <app-file-selection (filesSelected)="onFileSelected($event)"></app-file-selection>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="custom-inputs">
+        <mat-accordion class="storyAcc">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Story information
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <label>Story Author</label>
+                <mat-form-field>
+                    <input matInput placeholder="Story Author">
+                </mat-form-field>
+                <label>Story Title</label>
+                <mat-form-field>
+                    <input matInput placeholder="Story Title">
+                </mat-form-field>
+                <label>Story Content</label>
+                <mat-form-field>
+                    <textarea matInput placeholder="Story Content"></textarea>
+                </mat-form-field>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <!--<div class="storyAuthorBox">
+            <input matInput id="storyAuthor" value=" {{ product.story-list?.author }}">
+        </div>-->
+    </div>
+
+    <div class="align-right">
+        <button mat-button class="deleteButton mat-elevation-z3" (click)="onCancelButtonClicked()">Cancel</button>
+        <button mat-button class="saveButton mat-elevation-z3" (click)="onSaveButtonClicked()">Save</button>
+    </div>
+</form>

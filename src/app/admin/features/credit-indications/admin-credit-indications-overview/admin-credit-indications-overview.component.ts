@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CreditIndicationModifierService} from '../../../../shared/services/credit-indication/credit-indication-modifier/credit-indication-modifier.service';
 import {ModifierType} from './modifier-type';
 import {CreditIndicationModifier} from '../../../../shared/services/credit-indication/credit-indication-modifier/credit-indication-modifier';
@@ -57,9 +57,8 @@ export class AdminCreditIndicationsOverviewComponent implements OnInit {
         this.isDisabled = true;
     }
 
-    private checkboxChanged(event) {
+    checkboxChanged(event) {
         this.jewelryConditions[event.target.id] = !this.jewelryConditions[event.target.id];
-        console.log(this.jewelryConditions);
         this.updatePrice();
     }
     private updatePrice() {

@@ -1,51 +1,44 @@
-<button class="mat-raised-button" routerLink="/shop">Back</button>
-
 <div class="grid">
-    <div class="left-wrapper">
-        <div class="product-images">
-            <img [src]="product.images[0].url" alt="">
+    <div>
+        <div class="gallery">
+            <app-image-gallery [imageURLs]="displayedImages"></app-image-gallery>
         </div>
-        <br/>
-        <br/>
-        <mat-label><h3>The unique story of this piece</h3></mat-label>
-        <div class="storyWrapper">
-            <mat-card-content>
-                <p><b>Story title</b></p>
-                <p><i>Story author</i></p>
-                <hr>
-                <p>
-                    I've had this piece for two years now. I worn it during my honeymoon to Venice. After my honeymoon it
-                    just stayed in my jewelry box.
-                    I hope I can make someone else happy with this amazing piece!
-                </p>
-            </mat-card-content>
-        </div>
+
+        <!--Uncomment this block when story-list are implemented-->
+        <ng-container *ngIf="product.story?.storyTitle !== null && product.story?.storyContent !== null">
+            <mat-label><h3>The unique story of this piece</h3></mat-label>
+            <div class="story-wrapper">
+                <mat-card-content>
+                    <p class="story-title">{{ product.story?.storyTitle}}</p>
+                    <p class="story-content">{{ product.story?.storyContent}}</p>
+                    <p class="story-author" *ngIf="product.story?.author !== null"><i> - {{ product.story?.author}}</i></p>
+
+                </mat-card-content>
+            </div>
+        </ng-container>
+
     </div>
 
-    <div class="right-wrapper">
+    <div class="right">
         <div class="product-info">
             <mat-card-title><h2>{{ product.name }}</h2></mat-card-title>
             <mat-card-subtitle>
-                <p>Rating: {{ product.rating.name }} stars</p>
+                <div class="product-rating">
+                    <p>Condition
+                    <star-rating [readOnly]="true" starType="icon" staticColor="negative" [rating]="product.rating.id"></star-rating>
+                    </p>
+                </div>
+
                 <h4>€ {{ product.price }}</h4>
             </mat-card-subtitle>
-            <br/>
             <mat-card-content>
                 <p>{{ product.description }}</p>
             </mat-card-content>
         </div>
-        <br/>
-        <br/>
-        <button mat-button color="primary" (click)="onAddToShoppingCartButtonClicked()" class="mat-raised-button full-width">Add to shopping cart</button>
-        <br/>
-        <br/>
-        <br/>
-        <div class="same-model-wrapper">
-            <mat-label><h3>Same model, different story</h3></mat-label>
-            <hr>
-            <div class="imageDiv" *ngFor="let image of product.images">
-                <img [src]="image.url" alt="">
-            </div>
+        <div class="button-wrapper">
+            <button mat-button (click)="onAddToShoppingCartButtonClicked()"
+                    class="add-to-cart mat-elevation-z3 full-width">Add to shopping cart
+            </button>
         </div>
     </div>
 </div>

@@ -45,8 +45,12 @@ export class AdminProductEditComponent implements OnInit {
         this.refreshDisplayedImages();
     }
 
+    onBackClicked() {
+        this.router.navigate(['/admin/products']);
+    }
+
     onSaveButtonClicked() {
-        console.log('on save', this.product);
+        document.getElementById('submitform').classList.add('submitted');
         if (this.form.valid) {
             this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
                 if (confirmed) {
@@ -64,7 +68,16 @@ export class AdminProductEditComponent implements OnInit {
     }
 
     onDeleteButtonClicked() {
-
+        this.modalService.confirm('Are you sure?').subscribe((confirmed) => {
+            if (confirmed) {
+                this.productService.deleteProduct(this.product).subscribe((res) => {
+                    this.router.navigate(['/admin/products']);
+                    this.snackbarService.show('Product deleted!');
+                }, (err) => {
+                    this.snackbarService.show('Something went wrong while deleting the product');
+                });
+            }
+        });
     }
 
 
@@ -108,7 +121,6 @@ export class AdminProductEditComponent implements OnInit {
     }
 
     onImageUploadError(event) {
-        console.log('image upload error', event);
         this.imageFile = null;
         this.snackbarService.show('An error occurred during the upload of your file. ' +
             'Please make sure the image file size is below the maximum file size of 5MB.', 7500);
@@ -120,5 +132,9 @@ export class AdminProductEditComponent implements OnInit {
         for (const image of this.product.images) {
             this.displayedImages.push(image.url);
         }
+    }
+
+    onRatingStarsClicked(event) {
+        this.product.ratingId = event.rating;
     }
 }

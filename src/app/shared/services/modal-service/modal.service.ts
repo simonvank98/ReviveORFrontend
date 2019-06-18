@@ -11,14 +11,6 @@ export interface ModalDialogData {
   buttons: DialogButton[];
 }
 
-/**
- * Sample usage
- * let dialog = this.modalService.createDialog("Hallo", "Weet u het zeker?");
-   dialog.addButton("Nee echt niet", () => { console.log("Jammer!")});
-   dialog.addButton("Ja hoor", () => { console.log("Mooi!")});
-   this.modalService.showDialog(dialog);
- */
-
 @Injectable({
   providedIn: 'root'
 })

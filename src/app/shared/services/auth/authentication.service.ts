@@ -1,13 +1,9 @@
-import {EventEmitter, Injectable, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {EventEmitter, Injectable} from '@angular/core';
 import {tap} from 'rxjs/operators';
-import {environment} from '../../../../environments/environment';
 import {ORUserModel} from '../user/or-user.model';
 import {APIService} from '../api/api.service';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class AuthenticationService {
 
     token: string;
@@ -18,7 +14,6 @@ export class AuthenticationService {
 
 
     constructor(private api: APIService) {
-        console.log(this.userInfo);
         if (this.loggedIn) {
             this.token = localStorage.getItem('access_token');
         }

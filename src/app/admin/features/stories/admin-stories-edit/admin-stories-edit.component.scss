@@ -1,0 +1,76 @@
+.upperGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.lowerGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+mat-label {
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.statusFormfield {
+    width: 100%;
+    float: right;
+}
+
+input, textarea {
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+.storyUser {
+    width: 100%;
+}
+
+.storyTitleInput {
+    width: 100%;
+}
+
+.storyContentTextarea {
+    height: 450px;
+}
+
+.storyUserEmail {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+}
+
+.storyImageGallery{
+    width: 95%;
+}
+
+button {
+    margin-left: 10px;
+}
+
+.saveButton {
+    color: white;
+    background-color: #2749b6;
+}
+
+.userDetails {
+    margin-bottom: 20px;
+
+    p {
+        margin: 8px 2px;
+    }
+}
+
+.storyProductBinder {
+    margin-top: 20px;
+}
+
+.storyButtons {
+    margin-top: 15px;
+}

@@ -12,6 +12,8 @@ export class ShoppingCartItemComponent implements OnInit {
 
     @Input()
     cartItem: CartItem;
+    @Input()
+    addButton = true;
 
     constructor(private cartService: ShoppingCartService, private snackBarService: SnackbarService) {
     }

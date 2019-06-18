@@ -1,0 +1,101 @@
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+}
+
+.nameFormfield {
+    width: 250px;
+}
+
+.formfieldContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 15px;
+}
+
+.categoryText {
+    text-transform: capitalize;
+}
+
+
+.priceBoxContainer {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.descriptionBox {
+    height: 150px;
+    padding: 10px 10px 10px 10px;
+}
+
+.conditionLabel {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.productImg {
+    max-height: 300px;
+}
+
+.ratingWrapper {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.storyAcc {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.deleteButton {
+    margin-left: 20px;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+.small-images-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+input, textarea {
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+.label {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.saveButton {
+    margin-left: 10px;
+    background-color: #2749b6;
+    color: white;
+}
+star-rating {
+    color: #2749b6;
+}
+
+form.submitted {
+    input.ng-invalid, textarea.ng-invalid {
+        border: 1px solid red;
+        color: red;
+    }
+
+    .error {
+        color: red;
+    }
+}
+#imagesSize {
+    display: none;
+}
+input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
+    border: 1px solid red;
+    color: red;
+}
+

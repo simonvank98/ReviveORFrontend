@@ -21,7 +21,8 @@ import {LogoutComponent} from './features/auth/logout/logout.component';
 import {RegisterComponent} from './features/auth/register/register.component';
 import {TradeInRequestsModule} from './features/trade-in-requests/trade-in-requests.module';
 import {AccountModule} from './features/account/account.module';
-
+import {AuthenticationService} from './shared/services/auth/authentication.service';
+import {StoryModule} from './features/stories/story.module';
 @NgModule({
     declarations: [
         AppComponent,
@@ -32,7 +33,6 @@ import {AccountModule} from './features/account/account.module';
         LoginComponent,
         LogoutComponent,
         RegisterComponent,
-
     ],
     imports: [
         BrowserModule,
@@ -42,11 +42,13 @@ import {AccountModule} from './features/account/account.module';
         AdminModule,
         AccountModule,
         ShopModule,
+        StoryModule,
         TradeInRequestsModule,
     ],
     providers: [
         ORApiService,
         APIService,
+        AuthenticationService,
         {provide: HTTP_INTERCEPTORS, useClass: JSONCasingInterceptor, multi: true},
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
     ],

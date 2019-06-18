@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserService } from 'src/app/shared/services/user/user.service';
-import { UserModel } from 'src/app/shared/services/user/user.model';
-import { FormControl, NgForm } from '@angular/forms';
-import { startWith, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { Role } from 'src/app/shared/services/user/role/role.model';
-import { RoleService } from 'src/app/shared/services/user/role/role.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {UserService} from 'src/app/shared/services/user/user.service';
+import {UserModel} from 'src/app/shared/services/user/user.model';
+import {FormControl, NgForm} from '@angular/forms';
+import {map, startWith} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {Role} from 'src/app/shared/services/user/role/role.model';
+import {RoleService} from 'src/app/shared/services/user/role/role.service';
+import {SnackbarService} from 'src/app/shared/services/snackbar/snackbar.service';
 
 @Component({
     selector: 'app-admin-permissions-overview',
@@ -18,10 +18,17 @@ export class AdminPermissionsOverviewComponent implements OnInit {
     private users: UserModel[] = [];
     private roles: Role[] = [];
 
+    public roleDescriptions = {
+        'Manager': 'Has all permissions.',
+        'Employee': 'Has all permissions except for the management of permissions. (this screen)',
+        'Appraiser': 'Has permissions required for managing credit indications and trade-in requests.',
+        'User': 'A normal user. Does not have access to the admin panel.'
+    };
+
     private userFormControl = new FormControl();
     private roleFormControl = new FormControl();
     private filteredUsers: Observable<UserModel[]>;
-    private usersLoaded = false;
+    usersLoaded = false;
     private rolesLoaded = false;
     private selectedUser: UserModel;
     private selectedRole: Role;
@@ -55,7 +62,7 @@ export class AdminPermissionsOverviewComponent implements OnInit {
         return this.users.filter(user => user.email.toLowerCase().indexOf(filterValue) === 0);
     }
 
-    private onSaveClicked() {
+    onSaveClicked() {
         if (this.form.valid) {
             this.roleService.updateroles(this.selectedUser.id, this.selectedRole).subscribe(data => {
                 this.snackbarService.show('User roles updated.');

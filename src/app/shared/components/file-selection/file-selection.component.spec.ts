@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FileSelectionComponent } from './browse-files-button.component';
+import {FileSelectionComponent} from './browse-files-button.component';
 
 describe('BrowseFilesButtonComponent', () => {
   let component: FileSelectionComponent;

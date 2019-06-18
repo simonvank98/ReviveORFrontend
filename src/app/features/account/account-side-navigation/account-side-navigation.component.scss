@@ -1,3 +1,7 @@
+.wrapper {
+    border-radius: 5px;
+    overflow: hidden;
+}
 ul {
     list-style: none;
     button {
@@ -10,7 +14,8 @@ ul {
         text-align: left;
         border-radius: 0px;
         &.active {
-            background-color: #ccc;
+            background-color: #2749b6;
+            color: white;
         }
     }
     a {
@@ -20,7 +25,6 @@ ul {
 }
 @media (max-width: 800px) {
     li {
-        display: inline-block;
 
         button {
             padding: 5px 10px;

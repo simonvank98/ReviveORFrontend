@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ShoppingCartService} from './cart.service';
 import {CartItem} from './cart-product.model';
 import {Subscription} from 'rxjs';
@@ -15,6 +15,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
     cartSubTotal: number;
     cartTotal: number;
+    shippingCost = 5;
+    @Input()
+    addButton = true;
 
     private cartSubscription: Subscription;
 
@@ -24,8 +27,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.cartSubscription = this.cartService.cartItemsSubject.subscribe((products) => {
             this.loadCartItems(products);
-            this.cartTotal = this.cartService.getCartValue();
-            this.cartSubTotal = this.cartTotal;
+            this.cartSubTotal = this.cartService.getCartValue();
+            this.cartTotal = this.cartSubTotal + this.shippingCost;
         });
         this.cartService.loadCartItemsFromStorage();
     }

@@ -1,14 +1,15 @@
-<form #f="ngForm">
+<form #f="ngForm" id="submitform">
     <div class="grid-2">
         <div class="custom-inputs">
-            <label class="name">Name</label>
+            <mat-label class="label">Name</mat-label>
             <input name="productName" [(ngModel)]="product.name" [value]="product.name" required>
         </div>
 
         <div class="formfieldContainer">
             <mat-form-field class="categoryFormfield">
                 <mat-label>Category</mat-label>
-                <mat-select name="productCategory" [(ngModel)]="product.categoryId" [value]="product.categoryId"
+                <mat-select name="productCategory" class="categoryText" [(ngModel)]="product.categoryId"
+                            [value]="product.categoryId"
                             required>
                     <mat-option *ngFor="let category of productCategories" [value]="category.id">
                         {{ category.name }}
@@ -29,27 +30,58 @@
     </div>
 
     <div class="grid-2">
-        <div class="custom-inputs">
-            <mat-label>Description</mat-label>
-            <textarea class="descriptionBox" id="description" name="productDescription"
-                      [(ngModel)]="product.description" [value]="product.description" required></textarea>
+        <div class="left">
+            <div class="custom-inputs">
+                <mat-label class="label">Description</mat-label>
+                <textarea class="descriptionBox" id="description" name="productDescription"
+                          [(ngModel)]="product.description" [value]="product.description" required></textarea>
+            </div>
 
+            <div class="formfieldContainerBottom">
+                <mat-form-field class="materialFormfield">
+                    <mat-label>Material</mat-label>
+                    <mat-select name="productMaterial" [(ngModel)]="product.material" [value]="product.material"
+                                required>
+                        <mat-option value="gold">Gold Plated</mat-option>
+                        <mat-option value="silver">Silver</mat-option>
+                        <mat-option value="other">Other</mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-
-            <div class="priceBoxContainer">
-                <mat-label>Price (in €)</mat-label>
-                <div class="priceBox">
-                    <input name="productPrice" [(ngModel)]="product.price" [value]="product.price" required>
+                <div class="custom-inputs">
+                    <mat-label class="label">Property</mat-label>
+                    <input type="text" name="property" [(ngModel)]="product.property" value="product.property">
                 </div>
             </div>
+
+            <div class="custom-inputs">
+                <div class="priceBoxContainer">
+                    <mat-label class="label">Price (in €)</mat-label>
+                    <div class="priceBox">
+                        <input name="productPrice" [(ngModel)]="product.price" [value]="product.price" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ratingWrapper">
+                <mat-label class="label">Rating</mat-label>
+                <star-rating starType="icon" staticColor="negative" [rating]="product.ratingId"
+                             (starClickChange)="onRatingStarsClicked($event)"></star-rating>
+            </div>
         </div>
+
         <div class="right">
             <div class="imageContainer">
-                <mat-label>Images</mat-label>
-                <app-image-gallery [imageURLs]="displayedImages"
-                                   [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
-                                   [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
-                </app-image-gallery>
+                <label for="imagesSize" class="imagesSize" [ngClass]="{error: product.images.length < 1}">
+                    <mat-label class="label image">Images</mat-label>
+                </label>
+                <input type="text" id="imagesSize" name="imagesSize" [(ngModel)]="product.images.length" required minlength="1">
+                <ng-container *ngIf="product.images.length > 0">
+                    <app-image-gallery [imageURLs]="displayedImages"
+                                       [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
+                                       [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
+                    </app-image-gallery>
+                </ng-container>
                 <app-file-upload-control-bar
                     *ngIf="imageFile"
                     [file]="imageFile"
@@ -58,17 +90,14 @@
                     (uploadErrors)="onImageUploadError($event)"
                     (uploadSuccess)="onImageUploadSuccess($event)">
                 </app-file-upload-control-bar>
-                <app-file-selection (filesSelected)="onFileSelected($event)"></app-file-selection>
+                <app-file-selection [allowMultipleSelection]="false" (filesSelected)="onFileSelected($event)"></app-file-selection>
             </div>
         </div>
     </div>
 
-    <!--<div class="ratingWrapper">
-        <star-rating starType="icon" rating="1"></star-rating>
-    </div>-->
 
-    <div class="custom-inputs">
-        <mat-accordion>
+    <div class="custom-inputs" *ngIf="product.story">
+        <mat-accordion class="storyAcc">
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -77,25 +106,24 @@
                 </mat-expansion-panel-header>
                 <label>Story Author</label>
                 <mat-form-field>
-                    <input matInput placeholder="Story Author">
+                    <input matInput name="storyAuthor" placeholder="Story Author" disabled [(ngModel)]="product.story.user.name" value="product.property">
                 </mat-form-field>
                 <label>Story Title</label>
                 <mat-form-field>
-                    <input matInput placeholder="Story Title">
+                    <input matInput name="storyTitle" placeholder="Story Title" [(ngModel)]="product.story.storyTitle" value="product.property">
                 </mat-form-field>
                 <label>Story Content</label>
                 <mat-form-field>
-                    <textarea matInput placeholder="Story Content"></textarea>
+                    <textarea matInput name="storyContent" placeholder="Story Content" [(ngModel)]="product.story.storyContent" value="product.property"></textarea>
                 </mat-form-field>
             </mat-expansion-panel>
         </mat-accordion>
         <!--<div class="storyAuthorBox">
-            <input matInput id="storyAuthor" value=" {{ product.story?.author }}">
+            <input matInput id="storyAuthor" value=" {{ product.story-list?.author }}">
         </div>-->
     </div>
-
     <div class="align-right">
-        <button mat-button class="deleteButton" (click)="onDeleteButtonClicked()">Delete</button>
-        <button mat-button class="saveButton" (click)="onSaveButtonClicked()">Save</button>
+        <button mat-button class="deleteButton mat-elevation-z3" (click)="onDeleteButtonClicked()">Delete</button>
+        <button mat-button class="saveButton mat-elevation-z3" (click)="onSaveButtonClicked()">Save</button>
     </div>
 </form>

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MassFileUploaderComponent } from './mass-file-uploader.component';
+import {MassFileUploaderComponent} from './mass-file-uploader.component';
 
 describe('MassFileUploaderComponent', () => {
   let component: MassFileUploaderComponent;

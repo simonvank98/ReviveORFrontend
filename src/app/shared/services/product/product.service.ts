@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ProductModel} from './product.model';
 
 import {APIService} from '../api/api.service';
@@ -12,6 +12,14 @@ export class ProductService {
 
     constructor(private api: APIService) {}
 
+    public getAllAvailableProducts() {
+        return this.api.get<ProductModel[]>('products/available');
+    }
+
+    public getAllProductsWithoutStory() {
+        return this.api.get<ProductModel[]>('products/withoutstory');
+    }
+
     public getAllProducts() {
         return this.api.get<ProductModel[]>('products');
     }
@@ -22,6 +30,10 @@ export class ProductService {
 
     public editProduct(product: ProductModel) {
         return this.api.put<ProductModel>(`products/${product.id}`, product);
+    }
+
+    public deleteProduct(product: ProductModel) {
+        return this.api.delete(`products/${product.id}`);
     }
 
     public createProduct(product: ProductModel) {

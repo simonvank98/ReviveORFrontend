@@ -27,14 +27,12 @@ export class TradeInRequestOverviewComponent implements OnInit {
 
     onNextClicked() {
         const tradeInRequest = this.createTradeInRequestModel();
-        console.log('tradeinrequest', tradeInRequest);
 
         this.tradeInProcessService.submitRequest(tradeInRequest).subscribe(() => {
             this.router.navigate(['/trade-in/complete']);
             this.tradeInProcessService.reset();
         }, (err) => {
             this.snackbarService.show('Something went wrong while sending your trade-in request. Please try again later!');
-            console.log('trade-in request error', err);
         });
     }
 
@@ -46,7 +44,9 @@ export class TradeInRequestOverviewComponent implements OnInit {
         const processContainer = this.tradeInProcessService.tradeInProcessContainer;
         const tradeInRequest = {
             ...processContainer,
-            jewelryName: processContainer.jewelryPiece.name
+            jewelryName: processContainer.jewelryPiece.name,
+            material: processContainer.jewelryMaterial,
+            categoryId: processContainer.jewelryPiece.category.id,
         };
         return tradeInRequest as TradeInProcessContainer;
     }

@@ -1,8 +1,8 @@
-import { APIService } from 'src/app/shared/services/api/api.service';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, filter, tap } from 'rxjs/operators';
-import { ORProduct } from './or-product.model';
+import {APIService} from 'src/app/shared/services/api/api.service';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {ORProduct} from './or-product.model';
 
 @Injectable({
   providedIn: 'root'
