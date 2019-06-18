@@ -10,6 +10,7 @@
             <mat-label>Story title</mat-label>
             <input name="storyTitle" class="storyTitleInput" [(ngModel)]="story.storyTitle" [value]="story.storyTitle" required>
         </div>
+
         <div class="upperRight">
             <mat-form-field class="statusFormfield">
                 <mat-label>Status</mat-label>
@@ -18,6 +19,14 @@
                     <mat-option value="Published">Published</mat-option>
                 </mat-select>
             </mat-form-field>
+            <div class="storyProductBinder">
+                <mat-form-field class="storyBinder">
+                    <mat-label>Bind story to product</mat-label>
+                    <mat-select name="storyBinder" [(ngModel)]="story.productId" (selectionChange)="bindStoryToProduct()">
+                        <mat-option *ngFor="let product of productsWithoutStories" [value]="product.id">{{ product.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </div>
     </div>
 

@@ -96,7 +96,7 @@
     </div>
 
 
-    <div class="custom-inputs">
+    <div class="custom-inputs" *ngIf="product.story">
         <mat-accordion class="storyAcc">
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -106,15 +106,15 @@
                 </mat-expansion-panel-header>
                 <label>Story Author</label>
                 <mat-form-field>
-                    <input matInput placeholder="Story Author">
+                    <input matInput name="storyAuthor" placeholder="Story Author" disabled [(ngModel)]="product.story.user.name" value="product.property">
                 </mat-form-field>
                 <label>Story Title</label>
                 <mat-form-field>
-                    <input matInput placeholder="Story Title">
+                    <input matInput name="storyTitle" placeholder="Story Title" [(ngModel)]="product.story.storyTitle" value="product.property">
                 </mat-form-field>
                 <label>Story Content</label>
                 <mat-form-field>
-                    <textarea matInput placeholder="Story Content"></textarea>
+                    <textarea matInput name="storyContent" placeholder="Story Content" [(ngModel)]="product.story.storyContent" value="product.property"></textarea>
                 </mat-form-field>
             </mat-expansion-panel>
         </mat-accordion>

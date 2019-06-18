@@ -16,6 +16,10 @@ export class ProductService {
         return this.api.get<ProductModel[]>('products/available');
     }
 
+    public getAllProductsWithoutStory() {
+        return this.api.get<ProductModel[]>('products/withoutstory');
+    }
+
     public getAllProducts() {
         return this.api.get<ProductModel[]>('products');
     }
