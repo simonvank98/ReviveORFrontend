@@ -27,7 +27,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
             this.cartTotal = this.cartService.getCartValue();
             this.cartSubTotal = this.cartTotal;
         });
-        this.cartService.loadCartItemsFromStorage();
+        // this.cartService.loadCartItemsFromStorage();
     }
 
     ngOnDestroy() {

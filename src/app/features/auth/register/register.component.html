@@ -56,7 +56,6 @@
                     </mat-form-field>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col">
                     <mat-form-field class="full-width">
@@ -68,65 +67,70 @@
                     </mat-form-field>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col">
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Address line 1" formControlName="address1"
-                               autocomplete="address-line1">
-                        <mat-error *ngIf="userForm.controls['address1'].hasError('required')">
-                            Address line 1 is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
+            <div formGroupName="address">
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Address line 1" formControlName="address1"
+                                   autocomplete="address-line1">
+                            <mat-error *ngIf="userForm.get('address.address1').hasError('required')">
+                                Address line 1 is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Address line 2 (optional)" formControlName="address2"
-                               autocomplete="address-line2">
-                        <mat-error *ngIf="userForm.controls['address2'].hasError('required')">
-                            Address line 2 is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Address line 2 (optional)" formControlName="address2"
+                                   autocomplete="address-line2">
+                            <mat-error *ngIf="userForm.get('address.address2').hasError('required')">
+                                Address line 2 is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Zipcode" formControlName="zipcode" autocomplete="postal-code">
-                        <mat-error *ngIf="userForm.controls['zipcode'].hasError('required')">
-                            Zipcode is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Zipcode" formControlName="zipcode" autocomplete="postal-code">
+                            <mat-error *ngIf="userForm.get('address.zipcode').hasError('required')">
+                                Zipcode is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="City" formControlName="city" autocomplete="city">
-                        <mat-error *ngIf="userForm.controls['city'].hasError('required')">
-                            City is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="City" formControlName="city" autocomplete="city">
+                            <mat-error *ngIf="userForm.get('address.city').hasError('required')">
+                                City is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <mat-select formControlName="country">
+                                <mat-option *ngFor="let country of countriesService.countries | keyvalue" [value]="country.value">
+                                    {{ country.key }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="userForm.get('address.country').hasError('required')">
+                                Country is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Province" formControlName="province"
+                                   autocomplete="address-level1">
+                            <mat-error *ngIf="userForm.get('address.province').hasError('required')">
+                                Province is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="col">
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Country" formControlName="country" autocomplete="country">
-                        <mat-error *ngIf="userForm.controls['country'].hasError('required')">
-                            Country is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="col">
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Province" formControlName="province" autocomplete="address-level1">
-                        <mat-error *ngIf="userForm.controls['province'].hasError('required')">
-                            Province is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
             </div>
         </mat-card-content>
         <mat-card-actions>

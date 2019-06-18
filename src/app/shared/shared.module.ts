@@ -41,7 +41,7 @@ import {UserDataResolver} from './services/auth/user-data-resolver.service';
         FileSelectionComponent,
         FileUploadControlBarComponent,
         FileDropzoneComponent,
-        ImageGalleryComponent
+        ImageGalleryComponent,
     ],
     imports: [
         CommonModule,

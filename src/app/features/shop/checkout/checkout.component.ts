@@ -3,6 +3,9 @@ import {AuthenticationService} from '../../../shared/services/auth/authenticatio
 import {DeliveryAddressComponent} from './delivery-address/delivery-address.component';
 import {ShippingAddressModel} from '../../../shared/services/address/shippingAddressModel';
 import {CheckoutService} from './checkout.service';
+import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
+import {Router} from '@angular/router';
+import {ShoppingCartService} from '../cart/cart.service';
 
 @Component({
     selector: 'app-checkout',
@@ -11,12 +14,15 @@ import {CheckoutService} from './checkout.service';
 })
 export class CheckoutComponent implements OnInit {
 
-    useAddressForm = false;
 
     @ViewChild(DeliveryAddressComponent)
     deliveryAddressForm: DeliveryAddressComponent;
 
-    constructor(private authService: AuthenticationService, public checkoutService: CheckoutService) {
+    constructor(public authService: AuthenticationService,
+                private router: Router,
+                private cartService: ShoppingCartService,
+                private snackBarService: SnackbarService,
+                public checkoutService: CheckoutService) {
     }
 
     ngOnInit() {
@@ -25,9 +31,9 @@ export class CheckoutComponent implements OnInit {
 
 
     onAddressOptionChanged(useNewAddress: boolean) {
-        this.useAddressForm = useNewAddress;
+        this.checkoutService.useAddressForm = useNewAddress;
 
-        if (this.useAddressForm) {
+        if (this.checkoutService.useAddressForm) {
             this.loadNewAddress();
         } else {
             this.loadUserAddress();
@@ -35,7 +41,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     onAddressFormChanged() {
-        if (this.useAddressForm) {
+        if (this.checkoutService.useAddressForm) {
             this.loadNewAddress();
         }
     }
@@ -48,4 +54,17 @@ export class CheckoutComponent implements OnInit {
         this.checkoutService.shippingAddress = this.deliveryAddressForm.getAddressInfo();
     }
 
+    onCheckoutButtonClicked() {
+        this.checkoutService.getCheckoutUrl().subscribe(
+            (response) => {
+                console.log('checkout response: ', response);
+                window.open(response.checkoutUrl, '_self');
+                //this.router.navigate(['/shop', 'checkout', 'payment']);
+            },
+            (err) => {
+                this.snackBarService.show('Something went wrong while attempting to go to the payment area.');
+            }
+        );
+        //this.cartService.loadCartItemsFromStorage();
+    }
 }

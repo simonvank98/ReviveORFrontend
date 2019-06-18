@@ -43,6 +43,7 @@ import {LoginGuard} from './features/auth/login.guard';
 import {AdminProductCreateComponent} from './admin/features/products/admin-product-create/admin-product-create.component';
 import {CheckoutComponent} from './features/shop/checkout/checkout.component';
 import {UserDataResolver} from './shared/services/auth/user-data-resolver.service';
+import {PaymentComponent} from './features/shop/checkout/payment/payment.component';
 
 const routes: Routes = [
     {
@@ -57,6 +58,7 @@ const routes: Routes = [
                     {path: 'product/:id', component: ShopProductDetailsComponent, resolve: {product: ProductResolver}},
                     {path: 'cart', component: ShoppingCartComponent},
                     {path: 'checkout', component: CheckoutComponent},
+                    {path: 'checkout/payment', component: PaymentComponent},
                 ]
             },
             {path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full'},
