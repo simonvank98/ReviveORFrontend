@@ -30,7 +30,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
             this.cartSubTotal = this.cartService.getCartValue();
             this.cartTotal = this.cartSubTotal + this.shippingCost;
         });
-        this.cartService.loadCartItemsFromStorage();
+        // this.cartService.loadCartItemsFromStorage();
     }
 
     ngOnDestroy() {

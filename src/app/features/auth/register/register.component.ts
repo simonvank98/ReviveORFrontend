@@ -11,6 +11,7 @@ import {Subscription} from 'rxjs';
 import {AuthenticationService} from '../../../shared/services/auth/authentication.service';
 import {ORUserModel} from '../../../shared/services/user/or-user.model';
 import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
+import {CountriesService} from '../../../shared/services/countries/countries.service';
 
 @Component({
     selector: 'app-register',
@@ -30,16 +31,19 @@ export class RegisterComponent implements OnInit {
         passwordConfirmation: [''],
         firstname: ['', Validators.required],
         lastname: ['', Validators.required],
-        address1: ['', Validators.required],
-        address2: [''],
-        city: ['', Validators.required],
-        zipcode: ['', Validators.required],
-        province: ['', Validators.required],
-        country: ['', Validators.required]
+        address: this.fb.group({
+            address1: ['', Validators.required],
+            address2: [''],
+            city: ['', Validators.required],
+            zipcode: ['', Validators.required],
+            province: ['', Validators.required],
+            country: ['', Validators.required]
+        })
     }, {validator: RepeatPasswordValidator});
 
 
-    constructor(private fb: FormBuilder, private authService: AuthenticationService, private snackbarService: SnackbarService, private route: ActivatedRoute, private router: Router) {
+    constructor(private fb: FormBuilder, private authService: AuthenticationService,
+                public countriesService: CountriesService, private snackbarService: SnackbarService, private route: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit() {
@@ -61,7 +65,7 @@ export class RegisterComponent implements OnInit {
                     },
                     (err) => {
                         this.snackbarService.show(`You've successfully registered a new account, please login.`, 5000);
-                        this.router.navigate(['/login'],  { queryParamsHandling: 'preserve' });
+                        this.router.navigate(['/login'], {queryParamsHandling: 'preserve'});
                     });
             },
             (err2) => {
@@ -70,4 +74,12 @@ export class RegisterComponent implements OnInit {
         );
     }
 
+    get country() {
+        return this.userForm.get('address.country');
+    }
+
+    changeCountry(event: Event) {
+        console.log('crap', event);
+        this.country.setValue(event.target, {onlySelf: true});
+    }
 }

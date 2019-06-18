@@ -1,0 +1,18 @@
+.address-options {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+.address-options mat-radio-button {
+    margin: 5px 0;
+}
+
+.address-info {
+    background-color: #ccc;
+    padding: 10px;
+    margin: 15px 0;
+}
+
+.address-form {
+    margin: 15px 0;
+}
