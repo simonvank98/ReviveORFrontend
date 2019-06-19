@@ -48,7 +48,7 @@ export class ProductService {
         return this.api.get<ProductRatingModel[]>('products/ratings');
     }
 
-    getEditProduct(id: any) {
+    public getEditProduct(id: number) {
         return this.api.get<ProductModel>(`products/edit/${id}`);
     }
 }

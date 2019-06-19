@@ -40,7 +40,7 @@ export class AdminStoriesEditComponent implements OnInit {
       this.story = this.route.snapshot.data['story'];
       this.productsWithoutStories = this.route.snapshot.data['products'];
       if (this.story.productId) {
-          this.productService.getProduct(this.story.productId).subscribe((product) => {
+          this.productService.getEditProduct(this.story.productId).subscribe((product) => {
               this.productsWithoutStories = [product, ...this.productsWithoutStories];
           });
       }

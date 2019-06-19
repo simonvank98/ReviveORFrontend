@@ -189,7 +189,7 @@ const routes: Routes = [
                 ]
             },
             { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'}},
-/*            { path: '**', redirectTo: '/not-found' }*/
+            { path: '**', redirectTo: '/not-found' }
         ]
     }
 ];
