@@ -1,8 +1,6 @@
 <form [formGroup]="userForm" novalidate (ngSubmit)="onSubmit()">
     <mat-card>
-        <mat-card-header>
-            <mat-card-title>Register a new Ocean Republic account</mat-card-title>
-        </mat-card-header>
+        <h3>Register a new Ocean Republic account</h3>
 
         <mat-card-content>
             <div class="row">
@@ -12,6 +10,9 @@
                         <mat-error *ngIf="userForm.controls['firstname'].hasError('required')">
                             First name is <strong>required</strong>
                         </mat-error>
+                        <mat-error *ngIf="userForm.controls['firstname'].hasError('minlength')">
+                            First name must be at least 2 characters.
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
@@ -19,6 +20,9 @@
                         <input matInput placeholder="Last name" formControlName="lastname">
                         <mat-error *ngIf="userForm.controls['lastname'].hasError('required')">
                             Last name is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="userForm.controls['lastname'].hasError('minlength')">
+                            Last name must be at least 3 characters.
                         </mat-error>
                     </mat-form-field>
                 </div>
@@ -76,6 +80,9 @@
                             <mat-error *ngIf="userForm.get('address.address1').hasError('required')">
                                 Address line 1 is <strong>required</strong>
                             </mat-error>
+                            <mat-error *ngIf="userForm.get('address.address1').hasError('minlength')">
+                                Address line 1 must be at least 5 characters.
+                            </mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -97,6 +104,9 @@
                             <mat-error *ngIf="userForm.get('address.zipcode').hasError('required')">
                                 Zipcode is <strong>required</strong>
                             </mat-error>
+                            <mat-error *ngIf="userForm.get('address.zipcode').hasError('minlength')">
+                                Zipcode must be at least 4 characters.
+                            </mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -107,12 +117,16 @@
                             <mat-error *ngIf="userForm.get('address.city').hasError('required')">
                                 City is <strong>required</strong>
                             </mat-error>
+                            <mat-error *ngIf="userForm.get('address.city').hasError('minlength')">
+                                City must be at least 4 characters.
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col">
                         <mat-form-field class="full-width">
-                            <mat-select formControlName="country">
-                                <mat-option *ngFor="let country of countriesService.countries | keyvalue" [value]="country.value">
+                            <mat-select formControlName="country" placeholder="Country">
+                                <mat-option *ngFor="let country of countriesService.countries | keyvalue"
+                                            [value]="country.value">
                                     {{ country.key }}
                                 </mat-option>
                             </mat-select>
@@ -127,6 +141,9 @@
                                    autocomplete="address-level1">
                             <mat-error *ngIf="userForm.get('address.province').hasError('required')">
                                 Province is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="userForm.get('address.province').hasError('minlength')">
+                                Province must be at least 4 characters.
                             </mat-error>
                         </mat-form-field>
                     </div>

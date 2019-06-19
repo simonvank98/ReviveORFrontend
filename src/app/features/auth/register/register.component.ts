@@ -29,14 +29,14 @@ export class RegisterComponent implements OnInit {
         email: ['', EmailValidation],
         password: ['', PasswordValidation],
         passwordConfirmation: [''],
-        firstname: ['', Validators.required],
-        lastname: ['', Validators.required],
+        firstname: ['', [Validators.required, Validators.min(2)]],
+        lastname: ['', [Validators.required, Validators.min(3)]],
         address: this.fb.group({
-            address1: ['', Validators.required],
+            address1: ['', [Validators.required, Validators.min(5)]],
             address2: [''],
-            city: ['', Validators.required],
-            zipcode: ['', Validators.required],
-            province: ['', Validators.required],
+            city: ['', [Validators.required, Validators.min(4)]],
+            zipcode: ['', [Validators.required, Validators.min(4)]],
+            province: ['', [Validators.required, Validators.min(4)]],
             country: ['', Validators.required]
         })
     }, {validator: RepeatPasswordValidator});
@@ -69,7 +69,11 @@ export class RegisterComponent implements OnInit {
                     });
             },
             (err2) => {
-                this.snackbarService.show(`Something went wrong while registering your account. Please try again later.`, 5000);
+                if (err2.statusCode === 422) {
+                    this.snackbarService.show(`This email address has already been taken. Please choose another or use the 'forgot my password' option.`, 5000);
+                } else {
+                    this.snackbarService.show(`Something went wrong while registering your account. Please try again later.`, 5000);
+                }
             }
         );
     }
