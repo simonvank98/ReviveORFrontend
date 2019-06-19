@@ -1,9 +1,11 @@
 <app-table
     [formatters]="formatters"
-    [models]="models"
+    [models]="orders"
     [headers]="headers"
     [attributes]="attributes"
-    [widths]="[30, 25, 15, 15, 15]"
+    [widths]="[30, 25, 15]"
     [shadows]="false"
-    [hoverable]="false">
+    [hoverable]="false"
+    sortDirection="desc"
+    sortBy="createdAt">
 </app-table>

@@ -53,6 +53,7 @@ import {UserDataResolverGuard} from './shared/services/auth/user-data-resolver.s
 import {TradeInProcessStateGuard} from './features/trade-in-requests/trade-in-process-state-guard.service';
 import {CheckoutComponent} from './features/shop/checkout/checkout.component';
 import {CheckoutCompletionComponent} from './features/shop/checkout/completion/checkout-completion.component';
+import {InvoiceResolver} from './shared/services/invoices/invoice.resolver';
 
 const routes: Routes = [
     {
@@ -104,7 +105,10 @@ const routes: Routes = [
             {
                 path: 'account', component: AccountPageComponent, children: [
                     {path: '', redirectTo: '/account/order-history', pathMatch: 'full'},
-                    {path: 'order-history', component: OrderHistoryOverviewComponent},
+                    {
+                        path: 'order-history',
+                        component: OrderHistoryOverviewComponent,
+                        resolve: {orders: InvoiceResolver}},
                     {
                         path: 'trade-in-history',
                         component: TradeInHistoryOverviewComponent,
