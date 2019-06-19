@@ -26,6 +26,9 @@ export class ShopProductDetailsComponent implements OnInit {
 
     ngOnInit() {
         this.product = this.route.snapshot.data.product;
+        if (!this.product) {
+            this.router.navigate(['not-found']);
+        }
         this.displayedImages = this.product.images.map(image => image.url);
     }
 
