@@ -22,7 +22,7 @@ export class CreditIndicationService {
 
     private createIndicationModel(tradeInProcessContainer: TradeInProcessContainer) {
         const selectedProperty = tradeInProcessContainer.selectedProperty === '' ?
-            tradeInProcessContainer.jewelryPiece.properties[0] : tradeInProcessContainer.selectedProperty;
+            tradeInProcessContainer.jewelryPiece.properties[0].value : tradeInProcessContainer.selectedProperty;
         return {
             orProductId: tradeInProcessContainer.jewelryPiece.id,
             selectedProperty: selectedProperty,
