@@ -32,6 +32,8 @@ import {AllPublishedStoriesResolver} from './services/stories/all-published-stor
 import {WithoutProductsStoriesResolver} from './services/stories/without-products-stories.resolver';
 import {AllProductWithoutStoryResolver} from './services/product/all-product-without-story.resolver';
 import {UserDataResolverGuard} from './services/auth/user-data-resolver.service';
+import {InvoiceResolver} from './services/invoices/invoice.resolver';
+import {InvoiceService} from './services/invoices/invoice.service';
 import {ProductEditResolver} from './services/product/product.edit.resolver';
 
 @NgModule({
@@ -101,6 +103,8 @@ import {ProductEditResolver} from './services/product/product.edit.resolver';
         StoryResolver,
         AllPublishedStoriesResolver,
         WithoutProductsStoriesResolver,
+        InvoiceResolver,
+        InvoiceService,
         ProductEditResolver
     ]
 })
