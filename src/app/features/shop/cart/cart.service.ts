@@ -1,5 +1,5 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {Subject, Subscription} from 'rxjs';
+import {BehaviorSubject, Subject, Subscription} from 'rxjs';
 import {CartItem} from './cart-product.model';
 import {ProductModel} from '../../../shared/services/product/product.model';
 
@@ -9,7 +9,7 @@ import {ProductModel} from '../../../shared/services/product/product.model';
 export class ShoppingCartService implements OnDestroy {
     private storageKey = 'cartItems';
 
-    public cartItemsSubject: Subject<CartItem[]> = new Subject();
+    public cartItemsSubject: BehaviorSubject<CartItem[]> = new BehaviorSubject([]);
 
     private cartValue: number;
     private cartItemsSubscription: Subscription;
@@ -18,6 +18,7 @@ export class ShoppingCartService implements OnDestroy {
         this.cartItemsSubscription = this.cartItemsSubject.subscribe((cartItems) => {
             this.updateCartValue(cartItems);
         });
+        this.loadCartItemsFromStorage();
     }
 
     ngOnDestroy(): void {

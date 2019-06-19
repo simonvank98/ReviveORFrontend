@@ -118,8 +118,12 @@ export class AdminTradeInRequestEditComponent implements OnInit {
     recalculate() {
         const selectedProduct = this.getJewelry();
         this.creditIndicationService.getExampleIndication(
-            {jewelryCondition: this.model.jewelryCondition,
-                jewelryType: 'rings', orProductId: selectedProduct.id, selectedProperty: this.model.selectedProperty ? this.model.selectedProperty : 's'})
+            {
+                jewelryCondition: this.model.jewelryCondition,
+                jewelryType: this.model.jewelryType,
+                orProductId: selectedProduct.id,
+                selectedProperty: this.model.selectedProperty
+            })
             .subscribe( data => {
                 this.model.estimatedCredit = data.indication;
             });

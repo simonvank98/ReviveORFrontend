@@ -1,6 +1,6 @@
 <form #f="ngForm">
 
-    <mat-card-title><h3>Credit Request #{{ model.id }}</h3></mat-card-title>
+    <mat-card-title><h3>Trade-in Request #{{ model.id }}</h3></mat-card-title>
     <div class="grid">
         <div class="left">
             <mat-card-content>
@@ -40,7 +40,7 @@
         </div>
         <div class="right align-right">
             <p>
-                <mat-label>Customer reported jewelry conditions</mat-label>
+                <mat-label>Jewellery conditions</mat-label>
             </p>
             <table>
                 <tr>
@@ -49,19 +49,19 @@
                 </tr>
                 <tr>
                     <td>Scratches</td>
-                    <mat-checkbox [(ngModel)]="model.jewelryCondition.scratched" name="scratched" color="primary"></mat-checkbox>
+                    <mat-checkbox [disabled]="disabled" [(ngModel)]="model.jewelryCondition.scratched" name="scratched" color="primary"></mat-checkbox>
                 </tr>
                 <tr>
                     <td>Bent</td>
-                    <mat-checkbox [(ngModel)]="model.jewelryCondition.bent" name="bent" color="primary"></mat-checkbox>
+                    <mat-checkbox [disabled]="disabled" [(ngModel)]="model.jewelryCondition.bent" name="bent" color="primary"></mat-checkbox>
                 </tr>
                 <tr>
                     <td>Broken</td>
-                    <mat-checkbox [(ngModel)]="model.jewelryCondition.broken" name="broken" color="primary"></mat-checkbox>
+                    <mat-checkbox [disabled]="disabled" [(ngModel)]="model.jewelryCondition.broken" name="broken" color="primary"></mat-checkbox>
                 </tr>
                 <tr>
                     <td>Missing piece</td>
-                    <mat-checkbox [(ngModel)]="model.jewelryCondition.missingPiece" name="missingPiece" color="primary"></mat-checkbox>
+                    <mat-checkbox  [disabled]="disabled" [(ngModel)]="model.jewelryCondition.missingPiece" name="missingPiece" color="primary"></mat-checkbox>
                 </tr>
             </table>
         </div>
@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <div class="custom-inputs" *ngIf="!disabled">
+    <div class="custom-inputs">
         <mat-accordion class="storyAcc">
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -93,11 +93,11 @@
                 </mat-expansion-panel-header>
                 <label>Story Title</label>
                 <mat-form-field>
-                    <input matInput name="storyTitle" [(ngModel)]="model.storyTitle">
+                    <input matInput name="storyTitle" [disabled]="disabled" [(ngModel)]="model.storyTitle">
                 </mat-form-field>
                 <label>Story Content</label>
                 <mat-form-field>
-                    <textarea matInput cols="30" rows="10" name="storyContent" [(ngModel)]="model.storyContent">{{ model.storyContent }}</textarea>
+                    <textarea matInput cols="30" rows="10" name="storyContent" [disabled]="disabled"  [(ngModel)]="model.storyContent">{{ model.storyContent }}</textarea>
                 </mat-form-field>
             </mat-expansion-panel>
         </mat-accordion>
@@ -111,14 +111,14 @@
         </mat-form-field>
     </div>
 
-    <div class="indicationWrapper" *ngIf="model.status === 'Approved for shipping'">
+    <div class="indicationWrapper" *ngIf="['Approved for shipping', 'Complete'].includes(model.status)">
         <mat-form-field class="indicationFormfield">
             <label for="finalCredit">Final credit sent to customer</label>
             <input matInput id="finalCredit" name="finalCredit" [(ngModel)]="model.finalCredit" required type="number" [disabled]="disabled">
         </mat-form-field>
-        <section class="addToProductsSection">
+        <section class="addToProductsSection" *ngIf="model.status === 'Approved for shipping'">
             <mat-checkbox id="addToProducts" color="primary" name="addToProducts" [(ngModel)]="model.addToProducts"></mat-checkbox>
-            <label class="addToProductsLabel" for="addToProducts">Add jewelry to products</label>
+            <label class="addToProductsLabel" for="addToProducts">Add jewellery to products</label>
         </section>
     </div>
 

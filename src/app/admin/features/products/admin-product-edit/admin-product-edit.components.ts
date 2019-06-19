@@ -10,6 +10,7 @@ import {ProductService} from '../../../../shared/services/product/product.servic
 import {SnackbarService} from '../../../../shared/services/snackbar/snackbar.service';
 import {ProductCategoryModel} from '../../../../shared/services/product/product-category.model';
 import {ProductRatingModel} from '../../../../shared/services/product/product-rating.model';
+import {StoryModel} from '../../../../shared/services/stories/story.model';
 
 @Component({
     selector: 'app-admin-products-edit',
@@ -21,6 +22,7 @@ export class AdminProductEditComponent implements OnInit {
 
     productCategories: ProductCategoryModel[];
     productRatings: ProductRatingModel[];
+    stories: StoryModel[];
 
     imageAPIUrl = `${environment.reviveORAPIUrl}images`;
     displayedImages: string[];
@@ -42,6 +44,10 @@ export class AdminProductEditComponent implements OnInit {
         this.product = this.route.snapshot.data['product'];
         this.productCategories = this.route.snapshot.data['productCategories'];
         this.productRatings = this.route.snapshot.data['productRatings'];
+        this.stories = this.route.snapshot.data['stories'];
+        if (this.product.story) {
+            this.stories = [this.product.story, ...this.stories];
+        }
         this.refreshDisplayedImages();
     }
 

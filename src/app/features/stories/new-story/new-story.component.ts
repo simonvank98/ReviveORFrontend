@@ -54,7 +54,7 @@ export class NewStoryComponent implements OnInit {
                 if (confirmed) {
                     this.storyService.postStory(this.story).subscribe((res) => {
                         this.router.navigate(['/stories']);
-                        this.snackbarService.show('Your story has been send succesfully');
+                        this.snackbarService.show('Your story has been submitted succesfully. After approval it will be visible on this platform!');
                     }, (err) => {
                         this.snackbarService.show('Something went wrong while saving your changes');
                     });

@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
         }, error => {
             this.showWarning = true;
             this.warning = 'Username or password is incorrect';
+            this.snackbarService.show('Username or password is incorrect');
         });
     }
 }

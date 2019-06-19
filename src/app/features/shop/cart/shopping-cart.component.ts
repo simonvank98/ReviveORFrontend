@@ -2,6 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ShoppingCartService} from './cart.service';
 import {CartItem} from './cart-product.model';
 import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-shopping-cart',
@@ -10,12 +11,13 @@ import {Subscription} from 'rxjs';
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
 
+    shippingCost = 5;
+
     cartItems: CartItem[];
     cartItemsCount = 0;
-
     cartSubTotal: number;
     cartTotal: number;
-    shippingCost = 5;
+
     @Input()
     addButton = true;
 
@@ -30,7 +32,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
             this.cartSubTotal = this.cartService.getCartValue();
             this.cartTotal = this.cartSubTotal + this.shippingCost;
         });
-        this.cartService.loadCartItemsFromStorage();
     }
 
     ngOnDestroy() {

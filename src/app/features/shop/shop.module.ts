@@ -10,6 +10,10 @@ import {ProductResolver} from '../../shared/services/product/product.resolver';
 import {ShoppingCartComponent} from './cart/shopping-cart.component';
 import {ShoppingCartItemComponent} from './cart/shopping-cart-item/shopping-cart-item.component';
 import {AvailableProductsResolver} from './available-products.resolver';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { DeliveryAddressComponent } from './checkout/delivery-address/delivery-address.component';
+import {CheckoutOverviewComponent} from './checkout/checkout-overview/checkout-overview.component';
+import {CheckoutCompletionComponent} from './checkout/completion/checkout-completion.component';
 
 @NgModule({
     imports: [
@@ -23,6 +27,10 @@ import {AvailableProductsResolver} from './available-products.resolver';
         ShopComponent,
         ShoppingCartComponent,
         ShoppingCartItemComponent,
+        CheckoutComponent,
+        DeliveryAddressComponent,
+        CheckoutOverviewComponent,
+        CheckoutCompletionComponent,
     ],
     providers: [
         AllProductsResolver,

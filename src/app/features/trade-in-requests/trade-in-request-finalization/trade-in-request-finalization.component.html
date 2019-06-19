@@ -1,17 +1,17 @@
-<h3>Each piece of jewelry has a unique story, share yours!</h3>
+<h3>Each piece of jewellery has a unique story, share yours!</h3>
 
 <form class="form-wrapper">
 
     <div>
         <div class="story-wrapper">
-            <span>Story Title (optional)</span>
+            <span>Your story's title (optional)</span>
             <mat-form-field>
                 <input matInput placeholder=""
                        [(ngModel)]="tradeInProcessService.tradeInProcessContainer.storyTitle"
                        name="storyTitle">
             </mat-form-field>
 
-            <span>Story (optional)</span>
+            <span>Your story (optional)</span>
             <mat-form-field>
             <textarea matInput matTextareaAutosize matAutosizeMinRows=5 placeholder=""
                       [(ngModel)]="tradeInProcessService.tradeInProcessContainer.storyContent"
@@ -22,21 +22,21 @@
         <span>Any questions or notes regarding this trade-in request? If not, leave this field blank.</span>
         <mat-form-field>
             <textarea matInput
-                      placeholder="Perhaps a description of special damages to the jewelry piece."
+                      placeholder="Perhaps a description of special damages to the jewellery piece."
                       [(ngModel)]="tradeInProcessService.tradeInProcessContainer.additionalNotes"
                       name="additionalNotes"></textarea>
         </mat-form-field>
     </div>
 
     <div>
-        <h4>Upload two detailed images of your jewelry
+        <h4>Upload two detailed images of your jewellery
             <mat-icon matTooltipPosition="right"
-                      matTooltip="These images will help make sure that we can give you a more accurate credit indication for your jewelry.">
+                      matTooltip="These images will help make sure that we can give you a more accurate credit indication for your jewellery.">
                 help_outline
             </mat-icon>
         </h4>
 
-        <app-mass-file-uploader
+        <app-mass-file-uploader *ngIf="images.length < requiredAmountOfImages"
             maxFiles=2
             [allowedExtensions]="allowedImageExtensions"
             [httpUrl]="imageAPIUrl"

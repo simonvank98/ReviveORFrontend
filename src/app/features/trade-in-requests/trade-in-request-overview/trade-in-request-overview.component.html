@@ -1,10 +1,10 @@
 <h3>Trade-in overview</h3>
 <div class="grid">
     <div>
-        <div class="label" *ngIf="tradeInProcessService.hasPiece()">Jewelry piece name</div>
+        <div class="label" *ngIf="tradeInProcessService.hasPiece()">Jewellery piece name</div>
         <div class="value">{{ tradeInProcessService.getPiece().name | titlecase }}</div>
 
-        <div class="label">Jewelry material</div>
+        <div class="label">Jewellery material</div>
         <div class="value">{{ tradeInProcessService.getMaterial() | titlecase }}</div>
 
         <ng-container *ngIf="tradeInProcessService.hasProperty()">
@@ -35,7 +35,7 @@
             <div class="value">{{ tradeInProcessService.tradeInProcessContainer.additionalNotes }}</div>
         </ng-container>
 
-        <div class="label">Jewelry images</div>
+        <div class="label">Jewellery images</div>
         <div class="imageCollectionWrapper">
             <div class="imageDiv" *ngFor="let image of tradeInProcessService.tradeInProcessContainer.images">
                 <img [src]="image.url" alt="">

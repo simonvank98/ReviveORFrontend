@@ -39,7 +39,15 @@ export class ControlButtonsComponent implements OnInit {
     dialog.addButton('Yes', () => {
         this.tradeInProcessService.reset();
         this.router.navigate(['/trade-in']);
+        this.clearButtonSelections();
     });
     this.modalService.showDialog(dialog);
+  }
+
+  private clearButtonSelections() {
+      const buttons = document.getElementsByClassName('trade-in-process-selection-button');
+      for (const button of Object.keys(buttons)) {
+          buttons[button].classList.remove('selected');
+      }
   }
 }

@@ -7,6 +7,6 @@
     <mat-card-title>{{ story.storyTitle }}</mat-card-title>
     <mat-card-subtitle>{{ story.storyContent }}</mat-card-subtitle>
     <ng-container *ngIf="story.productId">
-        <button  mat-button class="productButton" [routerLink]="['/shop/product', story.productId]">Buy This Piece</button>
+        <button mat-button class="mat-elevation-z3 buy-button" [routerLink]="['/shop/product', story.productId]">Buy This Piece</button>
     </ng-container>
 </mat-card>
