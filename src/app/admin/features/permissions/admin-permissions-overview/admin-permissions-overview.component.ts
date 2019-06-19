@@ -16,7 +16,7 @@ import {SnackbarService} from 'src/app/shared/services/snackbar/snackbar.service
 export class AdminPermissionsOverviewComponent implements OnInit {
 
     private users: UserModel[] = [];
-    private roles: Role[] = [];
+    public roles: Role[] = [];
 
     public roleDescriptions = {
         'Manager': 'Has all permissions.',

@@ -45,8 +45,7 @@ export class TradeInRequestOverviewComponent implements OnInit {
         const tradeInRequest = {
             ...processContainer,
             jewelryName: processContainer.jewelryPiece.name,
-            material: processContainer.jewelryMaterial,
-            categoryId: processContainer.jewelryPiece.category.id,
+            material: processContainer.jewelryMaterial
         };
         return tradeInRequest as TradeInProcessContainer;
     }
@@ -57,4 +56,5 @@ export class TradeInRequestOverviewComponent implements OnInit {
             this.conditionModels.push({'name': key, 'value': conditions[key]});
         });
     }
+
 }

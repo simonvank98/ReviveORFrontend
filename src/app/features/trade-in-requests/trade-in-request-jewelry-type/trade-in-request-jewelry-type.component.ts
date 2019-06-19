@@ -16,6 +16,7 @@ export class TradeInRequestJewelryTypeComponent implements OnInit {
 
     ngOnInit() {
         this.tradeInProcessService.setCurrentStep(0);
+        this.tradeInProcessService.reset();
     }
 
     onJewelryTypeButtonClicked(event) {

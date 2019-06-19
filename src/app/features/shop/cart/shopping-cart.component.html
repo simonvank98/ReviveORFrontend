@@ -1,4 +1,4 @@
-<mat-card>
+<div>
     <mat-card-title>Shopping cart</mat-card-title>
 
     <div class="shopping-cart-alignment-wrapper table-header">
@@ -14,9 +14,9 @@
             <app-shopping-cart-item [cartItem]="cartItem" [addButton]="addButton"></app-shopping-cart-item>
         </div>
     </div>
-</mat-card>
+</div>
 
-<mat-card *ngIf="cartItemsCount > 0" class="checkout-card">
+<div *ngIf="cartItemsCount > 0" class="checkout-card">
 
     <div class="checkout">
         <div class="row">
@@ -57,4 +57,4 @@
             </button>
         </div>
     </div>
-</mat-card>
+</div>
