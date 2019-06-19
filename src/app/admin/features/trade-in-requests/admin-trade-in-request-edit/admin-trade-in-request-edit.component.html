@@ -78,8 +78,10 @@
             <div class="notesFromCustomer">
                 <textarea rows="5" value="{{ model.additionalNotes }}" disabled></textarea>
             </div>
-            <mat-label [hidden]="disabled">Message to customer</mat-label>
-            <textarea cols="30" rows="5" name="messageToCustomer" [(ngModel)]="model.messageToCustomer" [hidden]="disabled"></textarea>
+            <ng-container *ngIf="!disabled">
+            <mat-label>Message to customer</mat-label>
+            <textarea cols="30" rows="5" name="messageToCustomer" [(ngModel)]="model.messageToCustomer" [disabled]="disabled"></textarea>
+            </ng-container>
         </div>
     </div>
 
