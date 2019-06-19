@@ -21,25 +21,35 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     @Input()
     addButton = true;
 
-    private cartSubscription: Subscription;
+    private cartItemsSubscription: Subscription;
+    private cartValueSubscription: Subscription;
 
     constructor(private cartService: ShoppingCartService) {
     }
 
     ngOnInit() {
-        this.cartSubscription = this.cartService.cartItemsSubject.subscribe((products) => {
+        this.cartValueSubscription = this.cartService.cartValueSubject.subscribe((value) => {
+            this.loadCartValue();
+        });
+        this.cartItemsSubscription = this.cartService.cartItemsSubject.subscribe((products) => {
             this.loadCartItems(products);
-            this.cartSubTotal = this.cartService.getCartValue();
-            this.cartTotal = this.cartSubTotal + this.shippingCost;
+            this.loadCartValue();
+            console.log('cart in shopping Value', this.cartSubTotal);
         });
     }
 
     ngOnDestroy() {
-        this.cartSubscription.unsubscribe();
+        this.cartItemsSubscription.unsubscribe();
+        this.cartValueSubscription.unsubscribe();
     }
 
     private loadCartItems(cartProducts: CartItem[]) {
         this.cartItems = cartProducts;
         this.cartItemsCount = this.cartItems.length;
+    }
+
+    private loadCartValue() {
+        this.cartSubTotal = this.cartService.getCartValue();
+        this.cartTotal = this.cartSubTotal + this.shippingCost;
     }
 }

@@ -5,6 +5,7 @@ import {ShoppingCartService} from '../cart/cart.service';
 import {ModalService} from '../../../shared/services/modal-service/modal.service';
 import {CurrencyPipe} from '@angular/common';
 import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
+import {first, take} from 'rxjs/operators';
 
 @Component({
     selector: 'app-shop-detail',
@@ -36,7 +37,7 @@ export class ShopProductDetailsComponent implements OnInit {
     onAddToShoppingCartButtonClicked() {
         try {
             this.cartService.addProductToCart(this.product);
-            this.showAddedToCartDialog();
+            this.cartService.cartValueSubject.pipe(first()).subscribe(() => this.showAddedToCartDialog());
         } catch (e) {
             this.snackBarService.show('This item is already in your shopping cart.');
         }

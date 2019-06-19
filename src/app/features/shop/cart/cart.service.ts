@@ -1,8 +1,9 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {BehaviorSubject, Subject, Subscription} from 'rxjs';
+import {BehaviorSubject, forkJoin, Subject, Subscription} from 'rxjs';
 import {CartItem} from './cart-product.model';
 import {ProductModel} from '../../../shared/services/product/product.model';
 import {ProductService} from '../../../shared/services/product/product.service';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +12,7 @@ export class ShoppingCartService implements OnDestroy {
     private storageKey = 'cartItems';
 
     public cartItemsSubject: BehaviorSubject<CartItem[]> = new BehaviorSubject([]);
+    public cartValueSubject: Subject<number> = new Subject();
 
     private cartValue: number;
     private cartItemsSubscription: Subscription;
@@ -98,13 +100,20 @@ export class ShoppingCartService implements OnDestroy {
 
     private updateCartValue(cartItems: CartItem[]) {
         this.cartValue = 0;
+        const observables = [];
         for (const cartItem of cartItems) {
-            this.productService.getProduct(cartItem.productId).subscribe((product) => {
+            observables.push(this.productService.getProduct(cartItem.productId).pipe(tap((product) => {
                 this.cartValue += (product.price * cartItem.quantity);
                 cartItem.product = product;
             }, (error) => {
                 this.removeItemFromCart(cartItem);
-            });
+            })));
         }
+        forkJoin(observables).subscribe(
+            () => {
+                console.log('Done assessing cart value, value: ', this.cartValue);
+                this.cartValueSubject.next(this.cartValue);
+            }
+        );
     }
 }
