@@ -53,6 +53,7 @@ import {UserDataResolverGuard} from './shared/services/auth/user-data-resolver.s
 import {TradeInProcessStateGuard} from './features/trade-in-requests/trade-in-process-state-guard.service';
 import {CheckoutComponent} from './features/shop/checkout/checkout.component';
 import {CheckoutCompletionComponent} from './features/shop/checkout/completion/checkout-completion.component';
+import {ProductEditResolver} from './shared/services/product/product.edit.resolver';
 
 const routes: Routes = [
     {
@@ -128,7 +129,7 @@ const routes: Routes = [
                         canActivate: [PermissionGuard],
                         data: {permissionLevel: 2},
                         resolve: {
-                            product: ProductResolver,
+                            product: ProductEditResolver,
                             productCategories: AllProductCategoriesResolver,
                             productRatings: AllProductRatingsResolver,
                             stories: WithoutProductsStoriesResolver,

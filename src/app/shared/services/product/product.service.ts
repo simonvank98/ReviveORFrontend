@@ -47,4 +47,8 @@ export class ProductService {
     public getAllRatings() {
         return this.api.get<ProductRatingModel[]>('products/ratings');
     }
+
+    getEditProduct(id: any) {
+        return this.api.get<ProductModel>(`products/edit/${id}`);
+    }
 }

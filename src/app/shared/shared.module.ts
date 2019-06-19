@@ -32,6 +32,7 @@ import {AllPublishedStoriesResolver} from './services/stories/all-published-stor
 import {WithoutProductsStoriesResolver} from './services/stories/without-products-stories.resolver';
 import {AllProductWithoutStoryResolver} from './services/product/all-product-without-story.resolver';
 import {UserDataResolverGuard} from './services/auth/user-data-resolver.service';
+import {ProductEditResolver} from './services/product/product.edit.resolver';
 
 @NgModule({
     declarations: [
@@ -100,6 +101,7 @@ import {UserDataResolverGuard} from './services/auth/user-data-resolver.service'
         StoryResolver,
         AllPublishedStoriesResolver,
         WithoutProductsStoriesResolver,
+        ProductEditResolver
     ]
 })
 export class SharedModule {
