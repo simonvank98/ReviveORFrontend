@@ -92,34 +92,6 @@
         </div>
     </div>
 
-
-    <div class="custom-inputs">
-        <mat-accordion class="storyAcc">
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Story information
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <label>Story Author</label>
-                <mat-form-field>
-                    <input matInput placeholder="Story Author">
-                </mat-form-field>
-                <label>Story Title</label>
-                <mat-form-field>
-                    <input matInput placeholder="Story Title">
-                </mat-form-field>
-                <label>Story Content</label>
-                <mat-form-field>
-                    <textarea matInput placeholder="Story Content"></textarea>
-                </mat-form-field>
-            </mat-expansion-panel>
-        </mat-accordion>
-        <!--<div class="storyAuthorBox">
-            <input matInput id="storyAuthor" value=" {{ product.story-list?.author }}">
-        </div>-->
-    </div>
-
     <div class="align-right">
         <button mat-button class="deleteButton mat-elevation-z3" (click)="onCancelButtonClicked()">Cancel</button>
         <button mat-button class="saveButton mat-elevation-z3" (click)="onSaveButtonClicked()">Save</button>
