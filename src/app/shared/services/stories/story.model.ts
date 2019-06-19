@@ -7,10 +7,11 @@ export interface StoryModel {
     storyTitle: string;
     storyContent: string;
     status: string;
-
     images: StoryImageModel[];
-    user: UserModel;
 
+    user: UserModel;
     createdAt?: Date;
+
     updatedAt?: Date;
+    hasBuyableProduct?: boolean;
 }

@@ -2,6 +2,7 @@ import {Injectable, OnDestroy} from '@angular/core';
 import {BehaviorSubject, Subject, Subscription} from 'rxjs';
 import {CartItem} from './cart-product.model';
 import {ProductModel} from '../../../shared/services/product/product.model';
+import {ProductService} from '../../../shared/services/product/product.service';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +15,7 @@ export class ShoppingCartService implements OnDestroy {
     private cartValue: number;
     private cartItemsSubscription: Subscription;
 
-    constructor() {
+    constructor(private productService: ProductService) {
         this.cartItemsSubscription = this.cartItemsSubject.subscribe((cartItems) => {
             this.updateCartValue(cartItems);
         });
@@ -33,7 +34,7 @@ export class ShoppingCartService implements OnDestroy {
         const cartItems = this.retrieveAllItemsFromStorage();
         let found = false;
         for (const cartItem of cartItems) {
-            if (cartItem.product.id === productToAdd.id) {
+            if (cartItem.productId === productToAdd.id) {
                 found = true;
                 break;
             }
@@ -41,13 +42,13 @@ export class ShoppingCartService implements OnDestroy {
         if (found) {
             throw new Error('Item already exists in cart');
         }
-        cartItems.push({product: productToAdd, quantity: quantity});
+        cartItems.push({productId: productToAdd.id, quantity: quantity, product: productToAdd});
         this.storeAllItems(cartItems);
         this.notifyObservers(cartItems);
     }
 
     public removeItemFromCart(cartItem: CartItem) {
-        const cartItems = this.retrieveAllItemsFromStorage().filter(item => !(item.product.id === cartItem.product.id));
+        const cartItems = this.retrieveAllItemsFromStorage().filter(item => !(item.productId === cartItem.productId));
         this.storeAllItems(cartItems);
         this.notifyObservers(cartItems);
     }
@@ -55,7 +56,7 @@ export class ShoppingCartService implements OnDestroy {
     public setCartItemQuantity(cartItem: CartItem, quantity: number) {
         const cartItems = this.retrieveAllItemsFromStorage();
         for (const item of cartItems) {
-            if (item.product.id === cartItem.product.id) {
+            if (item.productId === cartItem.productId) {
                 item.quantity = quantity;
                 break;
             }
@@ -98,7 +99,12 @@ export class ShoppingCartService implements OnDestroy {
     private updateCartValue(cartItems: CartItem[]) {
         this.cartValue = 0;
         for (const cartItem of cartItems) {
-            this.cartValue += (cartItem.product.price * cartItem.quantity);
+            this.productService.getProduct(cartItem.productId).subscribe((product) => {
+                this.cartValue += (product.price * cartItem.quantity);
+                cartItem.product = product;
+            }, (error) => {
+                this.removeItemFromCart(cartItem);
+            });
         }
     }
 }

@@ -42,7 +42,7 @@ export class CheckoutService {
     private createOrder(cartItems: CartItem[]): Object {
         const productIds = [];
         for (const cartItem of cartItems) {
-            productIds.push({id: cartItem.product.id});
+            productIds.push({id: cartItem.productId});
         }
         return {
             redirectUrl: this.createRedirectURL(),
