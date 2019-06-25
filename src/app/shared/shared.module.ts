@@ -25,10 +25,21 @@ import {StarRatingConfigService, StarRatingModule} from 'angular-star-rating';
 import {TradeInRequestResolver} from './services/trade-in/resolvers/trade-in-request.resolver';
 import {AllTradeInRequestsResolver} from './services/trade-in/resolvers/all-trade-in-requests.resolver';
 import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-trade-in-requests.resolver';
+import {YesnoPipe} from './pipes/yesno.pipe';
+import {AllStoriesResolver} from './services/stories/all-stories.resolver';
+import {StoryResolver} from './services/stories/story.resolver';
+import {AllPublishedStoriesResolver} from './services/stories/all-published-stories.resolver';
+import {WithoutProductsStoriesResolver} from './services/stories/without-products-stories.resolver';
+import {AllProductWithoutStoryResolver} from './services/product/all-product-without-story.resolver';
+import {UserDataResolverGuard} from './services/auth/user-data-resolver.service';
+import {InvoiceResolver} from './services/invoices/invoice.resolver';
+import {InvoiceService} from './services/invoices/invoice.service';
+import {ProductEditResolver} from './services/product/product.edit.resolver';
 
 @NgModule({
     declarations: [
         SafePipe,
+        YesnoPipe,
         PriceFormatDirective,
         FileDragAndDropDirective,
         ModalComponent,
@@ -59,6 +70,7 @@ import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-tr
         AppRoutingModule,
         SafePipe,
         TruncatePipe,
+        YesnoPipe,
         ReactiveFormsModule,
         FormsModule,
         StarRatingModule,
@@ -80,10 +92,20 @@ import {UserTradeInRequestsResolver} from './services/trade-in/resolvers/user-tr
         {provide: MAT_DATE_LOCALE, useValue: 'nl-NL'},
         AllProductRatingsResolver,
         AllProductCategoriesResolver,
+        AllProductWithoutStoryResolver,
         StarRatingConfigService,
         TradeInRequestResolver,
         AllTradeInRequestsResolver,
-        UserTradeInRequestsResolver
+        UserTradeInRequestsResolver,
+        UserDataResolverGuard,
+        UserTradeInRequestsResolver,
+        AllStoriesResolver,
+        StoryResolver,
+        AllPublishedStoriesResolver,
+        WithoutProductsStoriesResolver,
+        InvoiceResolver,
+        InvoiceService,
+        ProductEditResolver
     ]
 })
 export class SharedModule {

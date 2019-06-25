@@ -1,8 +1,88 @@
-<h1>Home</h1>
-<p *ngIf="showLogout">
-    You have been logged out!
-</p>
+<header class="landing-page-section">
+    <img src="../../../../assets/logo-navbar.png" alt="Ocean Republic logo" class="heading-logo">
+    <h1 class="heading-text">Bring Your Jewellery Back to Life</h1>
+    <div class="heading-subtext">Trade in your old jewellery and get a discount on your next purchase.</div>
 
-<h3>
-    Welcome to ReviveOR
-</h3>
+    <div class="cta-buttons">
+        <button mat-button class="shop-used-button mat-elevation-z3" routerLink="/shop">Shop Used Jewellery</button>
+        <button mat-button class="trade-in-button mat-elevation-z3" routerLink="/trade-in">Trade In Jewellery</button>
+    </div>
+</header>
+
+<section class="first landing-page-section">
+    <h2 class="sub-heading">What is ReviveOR?</h2>
+    <ul class="what-is-reviveor-grid">
+        <li>
+            <i class="grid-item-icon fa fa-exchange"></i>
+            <div class="grid-item-title">Trade-In</div>
+            <p class="grid-item-text">
+                Purchasing an Ocean Republic jewellery piece is part of a process. After you have enjoyed your jewellery piece for some time, you may want to buy something new. With ReviveOR, you can trade your piece for credit. This credit can be used to purchase a new jewellery piece on the
+                <a href="https://theoceanrepublic.com/" target="_blank">Ocean Republic</a> website.
+            </p>
+        </li>
+        <li>
+            <i class="grid-item-icon fa fa-shopping-cart"></i>
+            <div class="grid-item-title">Shop Used</div>
+            <p class="grid-item-text">
+                ReviveOR sells previously owned jewellery pieces in the store. All of these pieces have been checked thoroughly and have been refurbished where necessary. Each piece has a unique story that you could be a part of.
+                <a routerLink="/shop">Visit the shop</a> to find something to your liking.
+            </p>
+        </li>
+        <li>
+            <i class="grid-item-icon fa fa-comments"></i>
+            <div class="grid-item-title">Stories</div>
+            <p class="grid-item-text">
+                Every piece of jewellery has a unique story. They are with you through the good and bad times. Every location you've been, every person you've met, your jewellery piece is right there with you. ReviveOR allows people to share these stories.
+                <a routerLink="/stories">Have a look!</a>
+            </p>
+        </li>
+    </ul>
+</section>
+
+<section class="landing-page-section">
+    <h2 class="sub-heading">How does it work?</h2>
+    <p class="how-does-it-work-text">
+        The trade-in process can be started by going to the <a routerLink="/trade-in">Trade-In</a> page. From there you will have to identify your jewellery piece for us. You can also tell us the condition your jewellery piece is in. Based on what you tell us, you will instantly receive an indication of how much credit you could expect to receive for your jewellery piece. You can then decide if you wish to trade your piece in for this amount.
+    </p>
+    <div class="how-does-it-work-grid">
+        <div class="arrow arrow-top-left">
+            <img src="../../../../assets/arrow.svg">
+        </div>
+
+        <div class="purchase-jewellery">
+            <i class="grid-item-icon fa fa-shopping-bag"></i>
+            <div class="grid-item-title">Purchase Ocean Republic Jewellery</div>
+        </div>
+
+        <div class="arrow arrow-top-right">
+            <img src="../../../../assets/arrow.svg">
+        </div>
+
+        <div class="receive-credit">
+            <i class="grid-item-icon fa fa-credit-card"></i>
+            <div class="grid-item-title">Receive Credit Voucher</div>
+        </div>
+
+        <div class="empty">
+
+        </div>
+
+        <div class="use-jewellery">
+            <i class="grid-item-icon fa fa-smile-o"></i>
+            <div class="grid-item-title">Use Your Jewellery</div>
+        </div>
+
+        <div class="arrow arrow-bottom-left">
+            <img src="../../../../assets/arrow.svg">
+        </div>
+
+        <div class="tradein-jewellery">
+            <i class="grid-item-icon fa fa-exchange"></i>
+            <div class="grid-item-title">Trade In your Jewellery</div>
+        </div>
+
+        <div class="arrow arrow-bottom-right">
+            <img src="../../../../assets/arrow.svg">
+        </div>
+    </div>
+</section>

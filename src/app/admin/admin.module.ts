@@ -14,6 +14,7 @@ import {AdminProductEditComponent} from './features/products/admin-product-edit/
 import {TableModule} from 'primeng/table';
 import {DropdownModule, InputTextModule} from 'primeng/primeng';
 import {AdminProductCreateComponent} from './features/products/admin-product-create/admin-product-create.component';
+import { AdminStoriesEditComponent } from './features/stories/admin-stories-edit/admin-stories-edit.component';
 
 @NgModule({
     imports: [
@@ -34,8 +35,10 @@ import {AdminProductCreateComponent} from './features/products/admin-product-cre
         AdminSideNavigationComponent,
         AdminTradeInRequestEditComponent,
         AdminProductCreateComponent,
+        AdminStoriesEditComponent,
     ],
-    providers: [],
+    providers: [
+    ],
 })
 export class AdminModule {
 }

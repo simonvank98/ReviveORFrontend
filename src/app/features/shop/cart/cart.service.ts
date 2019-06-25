@@ -1,7 +1,9 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {Subject, Subscription} from 'rxjs';
+import {BehaviorSubject, forkJoin, Subject, Subscription} from 'rxjs';
 import {CartItem} from './cart-product.model';
 import {ProductModel} from '../../../shared/services/product/product.model';
+import {ProductService} from '../../../shared/services/product/product.service';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -9,15 +11,17 @@ import {ProductModel} from '../../../shared/services/product/product.model';
 export class ShoppingCartService implements OnDestroy {
     private storageKey = 'cartItems';
 
-    public cartItemsSubject: Subject<CartItem[]> = new Subject();
+    public cartItemsSubject: BehaviorSubject<CartItem[]> = new BehaviorSubject([]);
+    public cartValueSubject: Subject<number> = new Subject();
 
     private cartValue: number;
     private cartItemsSubscription: Subscription;
 
-    constructor() {
+    constructor(private productService: ProductService) {
         this.cartItemsSubscription = this.cartItemsSubject.subscribe((cartItems) => {
             this.updateCartValue(cartItems);
         });
+        this.loadCartItemsFromStorage();
     }
 
     ngOnDestroy(): void {
@@ -32,7 +36,7 @@ export class ShoppingCartService implements OnDestroy {
         const cartItems = this.retrieveAllItemsFromStorage();
         let found = false;
         for (const cartItem of cartItems) {
-            if (cartItem.product.id === productToAdd.id) {
+            if (cartItem.productId === productToAdd.id) {
                 found = true;
                 break;
             }
@@ -40,13 +44,13 @@ export class ShoppingCartService implements OnDestroy {
         if (found) {
             throw new Error('Item already exists in cart');
         }
-        cartItems.push({product: productToAdd, quantity: quantity});
+        cartItems.push({productId: productToAdd.id, quantity: quantity, product: productToAdd});
         this.storeAllItems(cartItems);
         this.notifyObservers(cartItems);
     }
 
     public removeItemFromCart(cartItem: CartItem) {
-        const cartItems = this.retrieveAllItemsFromStorage().filter(item => !(item.product.id === cartItem.product.id));
+        const cartItems = this.retrieveAllItemsFromStorage().filter(item => !(item.productId === cartItem.productId));
         this.storeAllItems(cartItems);
         this.notifyObservers(cartItems);
     }
@@ -54,7 +58,7 @@ export class ShoppingCartService implements OnDestroy {
     public setCartItemQuantity(cartItem: CartItem, quantity: number) {
         const cartItems = this.retrieveAllItemsFromStorage();
         for (const item of cartItems) {
-            if (item.product.id === cartItem.product.id) {
+            if (item.productId === cartItem.productId) {
                 item.quantity = quantity;
                 break;
             }
@@ -96,8 +100,20 @@ export class ShoppingCartService implements OnDestroy {
 
     private updateCartValue(cartItems: CartItem[]) {
         this.cartValue = 0;
+        const observables = [];
         for (const cartItem of cartItems) {
-            this.cartValue += (cartItem.product.price * cartItem.quantity);
+            observables.push(this.productService.getProduct(cartItem.productId).pipe(tap((product) => {
+                this.cartValue += (product.price * cartItem.quantity);
+                cartItem.product = product;
+            }, (error) => {
+                this.removeItemFromCart(cartItem);
+            })));
         }
+        forkJoin(observables).subscribe(
+            () => {
+                console.log('Done assessing cart value, value: ', this.cartValue);
+                this.cartValueSubject.next(this.cartValue);
+            }
+        );
     }
 }

@@ -1,4 +1,4 @@
-<form #f="ngForm">
+<form #f="ngForm" id="submitform">
     <div class="grid-2">
         <div class="custom-inputs">
             <mat-label class="label">Name</mat-label>
@@ -8,7 +8,8 @@
         <div class="formfieldContainer">
             <mat-form-field class="categoryFormfield">
                 <mat-label>Category</mat-label>
-                <mat-select name="productCategory" class="categoryText" [(ngModel)]="product.categoryId" [value]="product.categoryId"
+                <mat-select name="productCategory" class="categoryText" [(ngModel)]="product.categoryId"
+                            [value]="product.categoryId"
                             required>
                     <mat-option *ngFor="let category of productCategories" [value]="category.id">
                         {{ category.name }}
@@ -41,21 +42,16 @@
                     <mat-label>Material</mat-label>
                     <mat-select name="productMaterial" [(ngModel)]="product.material" [value]="product.material"
                                 required>
-                        <mat-option value="goldPlated">Gold Plated</mat-option>
+                        <mat-option value="gold">Gold Plated</mat-option>
                         <mat-option value="silver">Silver</mat-option>
                         <mat-option value="other">Other</mat-option>
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field class="propertyFormfield">
-                    <mat-label>Property</mat-label>
-                    <mat-select name="productProperty" [(ngModel)]="product.property" [value]="product.property"
-                                required>
-                        <mat-option value="small">S</mat-option>
-                        <mat-option value="medium">M</mat-option>
-                        <mat-option value="large">L</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <div class="custom-inputs">
+                    <mat-label class="label">Property</mat-label>
+                    <input type="text" name="property" [(ngModel)]="product.property" value="product.property" required>
+                </div>
             </div>
 
             <div class="custom-inputs">
@@ -76,11 +72,16 @@
 
         <div class="right">
             <div class="imageContainer">
-                <mat-label class="label">Images</mat-label>
-                <app-image-gallery [imageURLs]="displayedImages"
-                                   [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
-                                   [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
-                </app-image-gallery>
+                <label for="imagesSize" class="imagesSize" [ngClass]="{error: product.images.length < 1}">
+                    <mat-label class="label image">Images</mat-label>
+                </label>
+                <input type="text" id="imagesSize" name="imagesSize" [(ngModel)]="product.images.length" required minlength="1">
+                <ng-container *ngIf="product.images.length > 0">
+                    <app-image-gallery [imageURLs]="displayedImages"
+                                       [extraGalleryThumbnailActions]="[galleryDeleteImageAction(true)]"
+                                       [extraGalleryPreviewActions]="[galleryDeleteImageAction(false)]">
+                    </app-image-gallery>
+                </ng-container>
                 <app-file-upload-control-bar
                     *ngIf="imageFile"
                     [file]="imageFile"
@@ -89,41 +90,24 @@
                     (uploadErrors)="onImageUploadError($event)"
                     (uploadSuccess)="onImageUploadSuccess($event)">
                 </app-file-upload-control-bar>
-                <app-file-selection (filesSelected)="onFileSelected($event)"></app-file-selection>
+                <app-file-selection [allowMultipleSelection]="false" (filesSelected)="onFileSelected($event)"></app-file-selection>
             </div>
         </div>
     </div>
-
-
-    <div class="custom-inputs">
-        <mat-accordion class="storyAcc">
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Story information
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <label>Story Author</label>
-                <mat-form-field>
-                    <input matInput placeholder="Story Author">
-                </mat-form-field>
-                <label>Story Title</label>
-                <mat-form-field>
-                    <input matInput placeholder="Story Title">
-                </mat-form-field>
-                <label>Story Content</label>
-                <mat-form-field>
-                    <textarea matInput placeholder="Story Content"></textarea>
-                </mat-form-field>
-            </mat-expansion-panel>
-        </mat-accordion>
-        <!--<div class="storyAuthorBox">
-            <input matInput id="storyAuthor" value=" {{ product.story?.author }}">
-        </div>-->
+    <div class="grid-2">
+        <mat-form-field class="categoryFormfield">
+            <mat-label>Stories</mat-label>
+            <mat-select name="story" class="categoryText" [(ngModel)]="product.story"
+                        [(value)]="product.story">
+                <mat-option value="null">None</mat-option>
+                <mat-option *ngFor="let story of stories" [value]="story">
+                    {{story.storyTitle}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
-
     <div class="align-right">
-        <button mat-button class="deleteButton" (click)="onDeleteButtonClicked()">Delete</button>
-        <button mat-button class="saveButton" (click)="onSaveButtonClicked()">Save</button>
+        <button mat-button class="deleteButton mat-elevation-z3" (click)="onDeleteButtonClicked()">Delete</button>
+        <button mat-button class="saveButton mat-elevation-z3" (click)="onSaveButtonClicked()">Save</button>
     </div>
 </form>

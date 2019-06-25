@@ -1,7 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ShoppingCartService} from './cart.service';
 import {CartItem} from './cart-product.model';
 import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-shopping-cart',
@@ -10,32 +11,45 @@ import {Subscription} from 'rxjs';
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
 
+    shippingCost = 5;
+
     cartItems: CartItem[];
     cartItemsCount = 0;
-
     cartSubTotal: number;
     cartTotal: number;
 
-    private cartSubscription: Subscription;
+    @Input()
+    addButton = true;
+
+    private cartItemsSubscription: Subscription;
+    private cartValueSubscription: Subscription;
 
     constructor(private cartService: ShoppingCartService) {
     }
 
     ngOnInit() {
-        this.cartSubscription = this.cartService.cartItemsSubject.subscribe((products) => {
-            this.loadCartItems(products);
-            this.cartTotal = this.cartService.getCartValue();
-            this.cartSubTotal = this.cartTotal;
+        this.cartValueSubscription = this.cartService.cartValueSubject.subscribe((value) => {
+            this.loadCartValue();
         });
-        this.cartService.loadCartItemsFromStorage();
+        this.cartItemsSubscription = this.cartService.cartItemsSubject.subscribe((products) => {
+            this.loadCartItems(products);
+            this.loadCartValue();
+            console.log('cart in shopping Value', this.cartSubTotal);
+        });
     }
 
     ngOnDestroy() {
-        this.cartSubscription.unsubscribe();
+        this.cartItemsSubscription.unsubscribe();
+        this.cartValueSubscription.unsubscribe();
     }
 
     private loadCartItems(cartProducts: CartItem[]) {
         this.cartItems = cartProducts;
         this.cartItemsCount = this.cartItems.length;
+    }
+
+    private loadCartValue() {
+        this.cartSubTotal = this.cartService.getCartValue();
+        this.cartTotal = this.cartSubTotal + this.shippingCost;
     }
 }

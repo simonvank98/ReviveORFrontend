@@ -13,6 +13,8 @@ import {FileUploaderEvent} from '../../../shared/components/mass-file-uploader/f
 })
 export class TradeInRequestFinalizationComponent implements OnInit {
 
+    requiredAmountOfImages = 2;
+
     allowedImageExtensions = ['.png', '.jpg', '.jpeg', '.bmp'];
     imageAPIUrl = `${environment.reviveORAPIUrl}images`;
 
@@ -29,8 +31,8 @@ export class TradeInRequestFinalizationComponent implements OnInit {
     }
 
     onNextClicked() {
-        if (this.images.length !== 2) {
-            this.snackBarService.show('Please upload two images of your jewelry piece.', 3000);
+        if (this.images.length !== this.requiredAmountOfImages) {
+            this.snackBarService.show('Please upload two images of your jewellery piece.', 3000);
         } else {
             this.tradeInProcessService.setImages(this.images);
             this.router.navigate(['/trade-in/overview']);

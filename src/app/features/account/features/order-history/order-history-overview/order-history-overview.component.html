@@ -1,3 +1,11 @@
-<p>
-  order-history-overview works!
-</p>
+<app-table
+    [formatters]="formatters"
+    [models]="orders"
+    [headers]="headers"
+    [attributes]="attributes"
+    [widths]="[30, 25, 15]"
+    [shadows]="false"
+    [hoverable]="false"
+    sortDirection="desc"
+    sortBy="createdAt">
+</app-table>

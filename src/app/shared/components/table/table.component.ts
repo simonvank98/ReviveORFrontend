@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatSortable, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-table',
@@ -39,6 +39,22 @@ export class TableComponent implements OnInit, AfterViewInit {
   @Input() hoverable = true;
   // Toggles the shadows.
   @Input() shadows = true;
+  // Sort the table by this column
+  @Input() sortBy = 'id';
+  // Sort the table by this direction
+  @Input() sortDirection = 'asc';
+  // Array of strings to match colors to
+  @Input() rowColorText = {};
+  // Attribute to retrieve color text from
+  @Input() rowColorAttribute;
+
+  // Array of colors for rows
+  private rowColors = {
+    success: '#28a745',
+    warn: '#ffc107',
+    problem: '#dc3545',
+    error: '#791a23'
+  };
 
   // Datasource the table will use. Will be filled with model data.
   dataSource = new MatTableDataSource();
@@ -94,6 +110,12 @@ export class TableComponent implements OnInit, AfterViewInit {
       const transformedFilter = filter.trim().toLowerCase();
       return accumulatedStringToFilter.indexOf(transformedFilter) !== -1;
     };
+  }
+
+  public getRowColor(model) {
+      const colorDecidingValue = model[this.rowColorAttribute];
+      const colorId = this.rowColorText[colorDecidingValue];
+      return colorId === undefined ? 'transparent' : this.rowColors[colorId];
   }
 
   // Loads the event handlers of the table.

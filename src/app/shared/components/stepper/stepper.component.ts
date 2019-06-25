@@ -8,13 +8,13 @@ import {Component, Input, OnInit} from '@angular/core';
 export class StepperComponent implements OnInit {
 
     @Input() steps = [
-        'Jewelry type',
+        'Jewellery type',
         'Value',
         'Extra details',
         'Trade-in overview'
     ];
     @Input() descriptions = [
-        'Determine the type of Ocean Republic jewelry.',
+        'Determine the type of Ocean Republic jewellery.',
         'Determine the name to estimate trade-in credit.',
         '',
         ''

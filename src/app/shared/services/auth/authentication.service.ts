@@ -28,7 +28,7 @@ export class AuthenticationService {
         return this.api.post(`auth/login`, loginData).pipe(tap(response => {
             localStorage.setItem('access_token', response['accessToken']);
             this.token = response['accessToken'];
-            this.loadUserData();
+            this.loadUserData().subscribe();
         }));
     }
 
@@ -36,7 +36,7 @@ export class AuthenticationService {
         return this.api.post(`auth/refresh`, null).pipe(tap(response => {
             localStorage.setItem('access_token', response['accessToken']);
             this.token = response['accessToken'];
-            this.loadUserData();
+            this.loadUserData().subscribe();
         }, error => {
             this.logout();
         }));
@@ -63,11 +63,12 @@ export class AuthenticationService {
 
     loadUserData() {
         this.permissionLevel = Number(localStorage.getItem('permissionLevel'));
-        this.api.post(`auth/me`, null).subscribe(data => {
+        return this.api.post(`auth/me`, null).pipe(tap(data => {
             this.userInfo = data;
-            this.userInfoChanged.emit();
             this.permissionLevel = data['roles'][0]['permissionLevel'];
             localStorage.setItem('permissionLevel', String(this.permissionLevel));
-        });
+            this.userInfoChanged.emit();
+            console.log('user info changed');
+        }));
     }
 }

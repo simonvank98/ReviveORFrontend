@@ -1,0 +1,12 @@
+<mat-card>
+    <!--<img src="{{ story.images[0].url }}" alt="">-->
+    <ng-container *ngIf="story.images.length > 0">
+        <app-image-gallery [galleryOptions]="galleryOptions" [imageURLs]="displayedImages">
+        </app-image-gallery>
+    </ng-container>
+    <mat-card-title>{{ story.storyTitle }}</mat-card-title>
+    <mat-card-subtitle>{{ story.storyContent }}</mat-card-subtitle>
+    <ng-container *ngIf="story.hasBuyableProduct">
+        <button mat-button class="mat-elevation-z3 buy-button" [routerLink]="['/shop/product', story.productId]">Buy This Piece</button>
+    </ng-container>
+</mat-card>

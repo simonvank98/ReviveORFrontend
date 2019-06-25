@@ -1,40 +1,58 @@
-<form class="grid" #f="ngForm">
-    <div class="user-form" *ngIf="usersLoaded">
-        <mat-form-field class="example-full-width">
-            <input 
-                type="text" 
-                (click)="$event.target.select()" 
-                id="userSelection" 
-                [(ngModel)]="selectedUser" 
-                placeholder="User" 
-                aria-label="User" 
-                matInput 
-                [formControl]="userFormControl" 
-                [matAutocomplete]="auto" 
-                required>
-            <mat-icon class="clear-input" (click)="onClearInputClicked()">close</mat-icon>
-            <mat-autocomplete required (optionSelected)="onUserChanged($event)" #auto="matAutocomplete" [displayWith]="displayFn">
-                <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
-                    {{ user.email }}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-        
-    </div>
-    <div class="roles-form" *ngIf="usersLoaded">
-        <mat-form-field>
-            <mat-select 
-                [compareWith]="compareSelection" 
-                (selectionChange)="onRolesChanged($event)" 
-                [(ngModel)]="selectedRole"
-                placeholder="Roles" 
-                [formControl]="roleFormControl">
-                <mat-option *ngFor="let role of roles" [value]="role"> 
-                    {{role.name}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-</form>
+<div class="wrapper">
+    <form class="grid" #f="ngForm">
+        <div class="user-form" *ngIf="usersLoaded">
+            <mat-form-field class="example-full-width">
+                <input
+                    type="text"
+                    (click)="$event.target.select()"
+                    id="userSelection"
+                    [(ngModel)]="selectedUser"
+                    placeholder="User"
+                    aria-label="User"
+                    matInput
+                    [formControl]="userFormControl"
+                    [matAutocomplete]="auto"
+                    required>
+                <mat-icon class="clear-input" (click)="onClearInputClicked()">close</mat-icon>
+                <mat-autocomplete required (optionSelected)="onUserChanged($event)" #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+                        {{ user.email }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
 
-<button mat-button [color]="primary" class="save-button mat-elevation-z3" (click)="onSaveClicked()">Save</button>
+        </div>
+        <div class="roles-form" *ngIf="usersLoaded">
+            <mat-form-field>
+                <mat-select
+                    [compareWith]="compareSelection"
+                    (selectionChange)="onRolesChanged($event)"
+                    [(ngModel)]="selectedRole"
+                    placeholder="Role"
+                    [formControl]="roleFormControl">
+                    <mat-option *ngFor="let role of roles" [value]="role">
+                        {{role.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div class="buttons">
+        <button mat-button class="save-button mat-elevation-z3" (click)="onSaveClicked()">Save</button>
+    </div>
+
+
+    <h2>
+        Roles
+    </h2>
+    <div class="role-descriptions">
+        <div class="role-description" *ngFor="let role of roles">
+            <h4>{{ role.name }}</h4>
+            <div>
+                {{ roleDescriptions[role.name] }}
+            </div>
+        </div>
+    </div>
+</div>
+

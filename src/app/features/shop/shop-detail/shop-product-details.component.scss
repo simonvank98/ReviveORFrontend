@@ -1,23 +1,50 @@
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 10%;
+    grid-gap: 20px;
+    padding-bottom: 50px;
 }
 
-.right {
-    text-align: right;
+.story-wrapper {
+    text-align: center;
+
+    margin: 20px 0;
+    width: 100%;
+    max-width: 350px;
+
+
+    p {
+        margin: 8px 4px;
+    }
+    .story-title {
+        font-weight: bold;
+    }
+    .story-content {
+
+    }
+    .story-author {
+        text-align: center;
+        font-style: italic;
+    }
 }
 
-img {
-    width: 400px;
-    height: 400px;
+.gallery {
+    width: 100%;
+    max-width: 400px;
 }
 
-.storyWrapper {
-    border: 1px black solid;
+
+.add-to-cart {
+    background-color: #5e646b;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+    max-width: 200px;
 }
 
-.imageDiv img {
-    width: 200px;
-    height: 200px;
+@media (max-width: 500px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }

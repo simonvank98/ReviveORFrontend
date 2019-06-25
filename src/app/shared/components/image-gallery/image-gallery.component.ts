@@ -65,7 +65,7 @@ export class ImageGalleryComponent implements OnInit {
                 width: '100%',
                 thumbnailsColumns: 4,
                 imageAnimation: NgxGalleryAnimation.Fade,
-                imageSize: NgxGalleryImageSize.Cover,
+                imageSize: NgxGalleryImageSize.Contain,
                 /*                arrowPrevIcon: 'fa fa-chevron-left',
                                 arrowNextIcon: 'fa fa-chevron-right',*/
                 arrowPrevIcon: 'fa fa-arrow-circle-left',

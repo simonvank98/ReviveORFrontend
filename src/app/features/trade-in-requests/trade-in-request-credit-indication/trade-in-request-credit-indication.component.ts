@@ -14,14 +14,14 @@ export class TradeInRequestCreditIndicationComponent implements OnInit {
     color = 'primary';
     mode = 'determinate';
     percentage = 0;
-    headerText = 'Credit you may receive for your jewelry!';
+    headerText = 'Credit you may receive for your jewellery!';
     disclaimerText = 'Note that this is an automatic credit indication. It is not final and therefore not a guarantee. The final credit received is subject to physical item inspection.';
 
     indication: any = 0;
 
     private countUpOptions = { decimalPlaces: 2, duration: 1.5, decimal: ',', separator: '.' };
 
-    constructor(private tradeInProcessService: TradeInProcessService,
+    constructor(public tradeInProcessService: TradeInProcessService,
                 private creditIndicationService: CreditIndicationService,
                 private router: Router) { }
 
@@ -31,7 +31,7 @@ export class TradeInRequestCreditIndicationComponent implements OnInit {
             this.percentage = 100;
             this.indication = '?';
             this.headerText = 'No automatic credit indication possible';
-            this.disclaimerText = 'Note that because no jewelry piece was selected, automatic credit indication is no possible. A manual credit indication will be given instead after completing the trade-in request. The final credit indication is subject to physical item inspection.';
+            this.disclaimerText = 'Note that because no jewellery piece was selected, automatic credit indication is no possible. A manual credit indication will be given instead after completing the trade-in request. The final credit indication is subject to physical item inspection.';
         } else {
             this.showIndication();
         }
@@ -48,7 +48,7 @@ export class TradeInRequestCreditIndicationComponent implements OnInit {
     private showIndication() {
         this.creditIndicationService.getIndication(this.tradeInProcessService.tradeInProcessContainer).subscribe(indication => {
             this.indication = indication['indication'];
-            this.percentage = (indication['indication'] / indication['basePrice']) * 100;
+            this.percentage = 100; // (indication['indication'] / indication['basePrice']) * 100;
             this.tradeInProcessService.tradeInProcessContainer.estimatedCredit = this.indication;
 
             new CountUp('indication-amount', this.indication, this.countUpOptions).start();

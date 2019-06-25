@@ -16,6 +16,7 @@ export class TradeInRequestJewelryTypeComponent implements OnInit {
 
     ngOnInit() {
         this.tradeInProcessService.setCurrentStep(0);
+        this.tradeInProcessService.reset();
     }
 
     onJewelryTypeButtonClicked(event) {
@@ -26,7 +27,7 @@ export class TradeInRequestJewelryTypeComponent implements OnInit {
         if (this.tradeInProcessService.tradeInProcessContainer.jewelryType.length > 0) {
             this.router.navigate(['/trade-in/material']);
         } else {
-            this.snackBarService.show('Please choose your jewelry type.');
+            this.snackBarService.show('Please choose your jewellery type.');
         }
     }
 

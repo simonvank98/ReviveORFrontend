@@ -5,6 +5,7 @@ import {ShoppingCartService} from '../cart/cart.service';
 import {ModalService} from '../../../shared/services/modal-service/modal.service';
 import {CurrencyPipe} from '@angular/common';
 import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
+import {first, take} from 'rxjs/operators';
 
 @Component({
     selector: 'app-shop-detail',
@@ -14,6 +15,7 @@ import {SnackbarService} from '../../../shared/services/snackbar/snackbar.servic
 export class ShopProductDetailsComponent implements OnInit {
 
     product: ProductModel;
+    displayedImages: string[];
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -25,13 +27,17 @@ export class ShopProductDetailsComponent implements OnInit {
 
     ngOnInit() {
         this.product = this.route.snapshot.data.product;
+        if (!this.product) {
+            this.router.navigate(['not-found']);
+        }
+        this.displayedImages = this.product.images.map(image => image.url);
     }
 
 
     onAddToShoppingCartButtonClicked() {
         try {
             this.cartService.addProductToCart(this.product);
-            this.showAddedToCartDialog();
+            this.cartService.cartValueSubject.pipe(first()).subscribe(() => this.showAddedToCartDialog());
         } catch (e) {
             this.snackBarService.show('This item is already in your shopping cart.');
         }

@@ -5,7 +5,6 @@ import {TradeInRequestJewelryTypeComponent} from './trade-in-request-jewelry-typ
 import {TradeInRequestJewelryMaterialComponent} from './trade-in-request-jewelry-material/trade-in-request-jewelry-material.component';
 import {TradeInRequestJewelrySelectionComponent} from './trade-in-request-jewelry-selection/trade-in-request-jewelry-selection.component';
 import {SelectionButtonComponent} from './selection-button/selection-button.component';
-import {StoryPageComponent} from '../stories/story-page.component';
 import {StepperComponent} from '../../shared/components/stepper/stepper.component';
 import {ControlButtonsComponent} from './control-buttons/control-buttons.component';
 import {TradeInRequestJewelryConditionComponent} from './trade-in-request-jewelry-condition/trade-in-request-jewelry-condition.component';
@@ -23,7 +22,6 @@ import {SharedModule} from '../../shared/shared.module';
         TradeInRequestJewelryMaterialComponent,
         TradeInRequestJewelrySelectionComponent,
         SelectionButtonComponent,
-        StoryPageComponent,
         StepperComponent,
         ControlButtonsComponent,
         TradeInRequestJewelryConditionComponent,

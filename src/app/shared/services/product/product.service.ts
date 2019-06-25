@@ -12,6 +12,14 @@ export class ProductService {
 
     constructor(private api: APIService) {}
 
+    public getAllAvailableProducts() {
+        return this.api.get<ProductModel[]>('products/available');
+    }
+
+    public getAllProductsWithoutStory() {
+        return this.api.get<ProductModel[]>('products/withoutstory');
+    }
+
     public getAllProducts() {
         return this.api.get<ProductModel[]>('products');
     }
@@ -38,5 +46,9 @@ export class ProductService {
 
     public getAllRatings() {
         return this.api.get<ProductRatingModel[]>('products/ratings');
+    }
+
+    public getEditProduct(id: number) {
+        return this.api.get<ProductModel>(`products/edit/${id}`);
     }
 }
