@@ -29,14 +29,14 @@ export class RegisterComponent implements OnInit {
         email: ['', EmailValidation],
         password: ['', PasswordValidation],
         passwordConfirmation: [''],
-        firstname: ['', [Validators.required, Validators.min(2)]],
-        lastname: ['', [Validators.required, Validators.min(3)]],
+        firstname: ['', [Validators.required, Validators.minLength(2)]],
+        lastname: ['', [Validators.required, Validators.minLength(3)]],
         address: this.fb.group({
-            address1: ['', [Validators.required, Validators.min(5)]],
+            address1: ['', [Validators.required, Validators.minLength(5)]],
             address2: [''],
-            city: ['', [Validators.required, Validators.min(4)]],
-            zipcode: ['', [Validators.required, Validators.min(4)]],
-            province: ['', [Validators.required, Validators.min(4)]],
+            city: ['', [Validators.required, Validators.minLength(4)]],
+            zipcode: ['', [Validators.required, Validators.minLength(4)]],
+            province: ['', [Validators.required, Validators.minLength(4)]],
             country: ['', Validators.required]
         })
     }, {validator: RepeatPasswordValidator});
