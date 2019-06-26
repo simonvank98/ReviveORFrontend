@@ -109,7 +109,7 @@
         <mat-form-field class="indicationFormfield">
             <label for="creditIndication">Estimated maximum credit</label>
             <input matInput id="creditIndication" name="creditIndication" [(ngModel)]="model.estimatedCredit" required
-                   type="text" [disabled]="disabled" [pattern]="'^[1-9]+[0-9]+$'">
+                   type="text" [disabled]="disabled" [pattern]="'^[1-9][0-9]*([.][0-9]{0,2}|)$'">
         </mat-form-field>
     </div>
 
@@ -117,7 +117,7 @@
         <mat-form-field class="indicationFormfield">
             <label for="finalCredit">Final credit sent to customer</label>
             <input matInput id="finalCredit" name="finalCredit" [(ngModel)]="model.finalCredit" required
-                   type="text" [disabled]="disabled" [pattern]="'^[1-9]+[0-9]+$'">
+                   type="text" [disabled]="disabled" [pattern]="'^[1-9][0-9]*([.][0-9]{0,2}|)$'">
         </mat-form-field>
         <section class="addToProductsSection" *ngIf="model.status === 'Approved for shipping'">
             <mat-checkbox id="addToProducts" color="primary" name="addToProducts" [(ngModel)]="model.addToProducts"></mat-checkbox>
@@ -135,4 +135,5 @@
             <button mat-button color="primary" class="confirmButton mat-elevation-z3" (click)="onSubmit()" [disabled]="disabled">{{ buttonText }}</button>
         </div>
     </div>
+
 </form>
