@@ -11,8 +11,8 @@ import {LabelType, Options} from 'ng5-slider';
 export class ShopListComponent implements OnInit {
     products: ProductModel[];
     displayedProducts: ProductModel[];
-    categories = ['rings', 'necklaces', 'earrings', 'bracelets'];
-    materials = ['gold', 'silver', 'other'];
+    categories = [];
+    materials = [];
     lowPrice = 0;
     highPrice = 0;
     rating = 1;
@@ -56,8 +56,8 @@ export class ShopListComponent implements OnInit {
 
     filter() {
         this.displayedProducts = this.products.filter(product => {
-            return this.categories.includes(product.category.name.toLocaleLowerCase()) &&
-                this.materials.includes(product.material.toLocaleLowerCase()) &&
+            return (this.categories.includes(product.category.name.toLocaleLowerCase()) || this.categories.length === 0) &&
+                (this.materials.includes(product.material.toLocaleLowerCase()) || this.materials.length === 0) &&
                 product.price >= this.lowPrice && product.price <= this.highPrice &&
                 +product.rating.name >= this.rating;
         });
