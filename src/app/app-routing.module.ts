@@ -69,8 +69,8 @@ const routes: Routes = [
                     {path: '', component: ShopListComponent},
                     {path: 'product/:id', component: ShopProductDetailsComponent, resolve: {product: ProductResolver}},
                     {path: 'cart', component: ShoppingCartComponent},
-                    {path: 'checkout', component: CheckoutComponent},
-                    {path: 'checkout/complete', component: CheckoutCompletionComponent},
+                    {path: 'checkout', component: CheckoutComponent,  canActivate: [LoginGuard]},
+                    {path: 'checkout/complete', component: CheckoutCompletionComponent,  canActivate: [LoginGuard]},
                 ]
             },
             {path: 'trade-in', redirectTo: 'trade-in/type', pathMatch: 'full'},
@@ -104,7 +104,7 @@ const routes: Routes = [
             {path: 'login', component: LoginComponent},
             {path: 'logout', component: LogoutComponent},
             {
-                path: 'account', component: AccountPageComponent, children: [
+                path: 'account', component: AccountPageComponent, canActivate: [LoginGuard], children: [
                     {path: '', redirectTo: '/account/order-history', pathMatch: 'full'},
                     {
                         path: 'order-history',

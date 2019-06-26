@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="First name" formControlName="firstname" autocomplete="name">
+                        <input matInput placeholder="First name" formControlName="firstname" autocomplete="name" required>
                         <mat-error *ngIf="userForm.controls['firstname'].hasError('required')">
                             First name is <strong>required</strong>
                         </mat-error>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col">
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Last name" formControlName="lastname">
+                        <input matInput placeholder="Last name" formControlName="lastname" required>
                         <mat-error *ngIf="userForm.controls['lastname'].hasError('required')">
                             Last name is <strong>required</strong>
                         </mat-error>
@@ -32,7 +32,7 @@
                 <div class="col">
                     <mat-form-field class="full-width">
                         <input matInput placeholder="Email address" type="email" formControlName="email"
-                               autocomplete="email">
+                               autocomplete="email" required>
                         <mat-error *ngIf="userForm.controls['email'].hasError('required')">
                             Email address is <strong>required</strong>
                         </mat-error>
@@ -64,7 +64,7 @@
                 <div class="col">
                     <mat-form-field class="full-width">
                         <input matInput type="password" autocomplete="off" placeholder="Password confirmation"
-                               formControlName="passwordConfirmation" [errorStateMatcher]="formMatcher">
+                               formControlName="passwordConfirmation" [errorStateMatcher]="formMatcher" required>
                         <mat-error *ngIf="userForm.hasError('passwordsNotEqual')">
                             The provided passwords do not match
                         </mat-error>
@@ -76,7 +76,7 @@
                     <div class="col">
                         <mat-form-field class="full-width">
                             <input matInput placeholder="Address line 1" formControlName="address1"
-                                   autocomplete="address-line1">
+                                   autocomplete="address-line1" required>
                             <mat-error *ngIf="userForm.get('address.address1').hasError('required')">
                                 Address line 1 is <strong>required</strong>
                             </mat-error>
@@ -100,7 +100,7 @@
                 <div class="row">
                     <div class="col">
                         <mat-form-field class="full-width">
-                            <input matInput placeholder="Zipcode" formControlName="zipcode" autocomplete="postal-code">
+                            <input matInput placeholder="Zipcode" formControlName="zipcode" autocomplete="postal-code" required>
                             <mat-error *ngIf="userForm.get('address.zipcode').hasError('required')">
                                 Zipcode is <strong>required</strong>
                             </mat-error>
@@ -113,7 +113,7 @@
                 <div class="row">
                     <div class="col">
                         <mat-form-field class="full-width">
-                            <input matInput placeholder="City" formControlName="city" autocomplete="city">
+                            <input matInput placeholder="City" formControlName="city" autocomplete="city" required>
                             <mat-error *ngIf="userForm.get('address.city').hasError('required')">
                                 City is <strong>required</strong>
                             </mat-error>
@@ -124,7 +124,7 @@
                     </div>
                     <div class="col">
                         <mat-form-field class="full-width">
-                            <mat-select formControlName="country" placeholder="Country">
+                            <mat-select formControlName="country" placeholder="Country" required>
                                 <mat-option *ngFor="let country of countriesService.countries | keyvalue"
                                             [value]="country.value">
                                     {{ country.key }}
@@ -138,7 +138,7 @@
                     <div class="col">
                         <mat-form-field class="full-width">
                             <input matInput placeholder="Province" formControlName="province"
-                                   autocomplete="address-level1">
+                                   autocomplete="address-level1" required>
                             <mat-error *ngIf="userForm.get('address.province').hasError('required')">
                                 Province is <strong>required</strong>
                             </mat-error>
